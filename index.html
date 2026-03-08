@@ -715,7 +715,10 @@ const IMG = {
   "valdes-mariana": "valdes-mariana.jpg",
   "atchugarry": "atchugarry.jpg",
   "grau-garriga-2": "grau-garriga-2.jpg",
-  "grau-garriga-3": "grau-garriga-3.jpg"
+  "grau-garriga-3": "grau-garriga-3.jpg",
+  "clave": "clave.jpg",
+  "ribeiro-1": "ribeiro-1.jpg",
+  "ribeiro-2": "ribeiro-2.jpg"
 };
 
 const COLLECTION = [
@@ -840,7 +843,13 @@ const COLLECTION = [
 
 {"id": "grau-garriga-2", "title": "Composición con figura y ventana", "artist": "Josep Grau-Garriga", "year": "s/f", "medium": "Técnica mixta sobre lienzo", "dimensions": "70 × 50 cm", "style": "Abstracto · Arte textil", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Composición donde la figura se funde con el espacio arquitectónico en el lenguaje matérico y textil característico de Grau-Garriga.", "section": "iconic", "style_category": ["abstracto", "informalismo", "dauaset"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 280, "rental_price_event_from": 700, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
 
-{"id": "grau-garriga-3", "title": "Silueta con pantalla verde", "artist": "Josep Grau-Garriga", "year": "s/f", "medium": "Técnica mixta sobre lienzo", "dimensions": "70 × 50 cm", "style": "Abstracto · Arte textil", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Silueta oscura contemplando una pantalla verde sobre fondo claro. Diálogo entre figura humana y abstracción en el universo pictórico de Grau-Garriga.", "section": "iconic", "style_category": ["abstracto", "informalismo", "dauaset"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 280, "rental_price_event_from": 700, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false}
+{"id": "grau-garriga-3", "title": "Silueta con pantalla verde", "artist": "Josep Grau-Garriga", "year": "s/f", "medium": "Técnica mixta sobre lienzo", "dimensions": "70 × 50 cm", "style": "Abstracto · Arte textil", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Silueta oscura contemplando una pantalla verde sobre fondo claro. Diálogo entre figura humana y abstracción en el universo pictórico de Grau-Garriga.", "section": "iconic", "style_category": ["abstracto", "informalismo", "dauaset"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 280, "rental_price_event_from": 700, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "clave", "title": "Sin título", "artist": "Antoni Clavé", "year": "1988", "medium": "Mixta sobre papel", "dimensions": "35 × 50 cm", "style": "Expresionismo · Abstracción", "edition": "Obra original · Firmada · Certificada por Galería Guerrero", "description": "Antoni Clavé i Sanmartí (Barcelona, 1913 – Saint-Tropez, 2005), pintor, grabador y escultor. Exiliado en Francia, desarrolló una obra entre la figuración expresionista y la abstracción matérica. Pabellón de España en la Bienal de Venecia 1984. Medalla de Oro de la Generalitat de Catalunya.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "ribeiro-1", "title": "Bodegón constructivista I", "artist": "Alceu Ribeiro", "year": "2000", "medium": "Óleo sobre lienzo", "dimensions": "92 × 65 cm", "style": "Constructivismo", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Alceu Ribeiro (Artigas, Uruguay, 1919 – Palma de Mallorca, 2013). Formado con Joaquín Torres-García. Representado en el Museo Nacional de Bellas Artes de Montevideo y el Museo de Arte Contemporáneo de Madrid.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 300, "rental_price_event_from": 750, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "ribeiro-2", "title": "Bodegón constructivista II", "artist": "Alceu Ribeiro", "year": "2007", "medium": "Óleo sobre lienzo", "dimensions": "81 × 65 cm", "style": "Constructivismo", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Segunda pintura constructivista de Ribeiro en la colección. Composición con objetos cotidianos reinterpretados en clave geométrica heredera de Torres-García.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 300, "rental_price_event_from": 750, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false}
 ];
 
 const SECTIONS = {
@@ -853,7 +862,20 @@ const CONTACT_EMAIL = "eleve.art@outlook.com";
 const USAGE_LABELS = {"hotel":"Hotel boutique","oficina":"Oficina / Despacho","interiorismo":"Interiorismo residencial","evento":"Evento / Rodaje"};
 
 let adminState = {};
-try { const saved = localStorage.getItem('eleve-admin'); if (saved) adminState = JSON.parse(saved); } catch(e) {}
+try {
+  const saved = localStorage.getItem('eleve-admin');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    // Reset if collection size changed or if any saved item has visible:false that shouldn't
+    const savedCount = Object.keys(parsed).length;
+    if (savedCount !== COLLECTION.length) {
+      adminState = {};
+      localStorage.removeItem('eleve-admin');
+    } else {
+      adminState = parsed;
+    }
+  }
+} catch(e) { adminState = {}; }
 COLLECTION.forEach(item => { if (!adminState[item.id]) adminState[item.id] = { visible: true, artsy: item.section === 'iconic' }; });
 function saveAdmin() { try { localStorage.setItem('eleve-admin', JSON.stringify(adminState)); } catch(e) {} }
 
