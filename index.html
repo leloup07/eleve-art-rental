@@ -750,7 +750,7 @@ function renderFeatured() {
       <div class="featured-card-body">
         <div class="featured-card-artist">${item.artist}</div>
         <div class="featured-card-title">${item.title}</div>
-        <div class="featured-card-price">Desde ${item.rental_price_month_from} €<small>/mes</small></div>
+        <div class="featured-card-price">${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small></div>
         <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
       </div>
     </div>
@@ -788,7 +788,7 @@ function renderGallery() {
       </div>
       <div class="featured-grid">
         ${allItems.map(item => {
-          const price = item.rental_price_month_from ? `Desde ${item.rental_price_month_from} €<small>/mes</small>` : '';
+          const price = item.rental_price_month_from ? `${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small>` : '';
           return `
           <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
             <div class="featured-card-img">
@@ -849,7 +849,7 @@ function renderGallery() {
             if (isRental && item.rental_price_month_from) {
               rentalLine = `
                 <div class="exhibit-rental-line">
-                  <div class="rental-price">Desde ${item.rental_price_month_from} € <small>/mes</small></div>
+                  <div class="rental-price">${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} € <small>/mes</small></div>
                   <button class="btn-sm" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
                 </div>`;
             }
@@ -916,7 +916,7 @@ function openLightbox(id) {
     rentalBlock.style.display = 'block';
     rentalRows.innerHTML = '';
     if (item.rental_price_month_from) {
-      rentalRows.innerHTML += `<div class="lb-rental-row"><span class="lb-rental-label">Alquiler mensual desde</span><span class="lb-rental-value">${item.rental_price_month_from} €</span></div>`;
+      rentalRows.innerHTML += `<div class="lb-rental-row"><span class="lb-rental-label">Alquiler mensual${item.rental_price_desde !== false ? ' desde' : ''}</span><span class="lb-rental-value">${item.rental_price_month_from} €</span></div>`;
     }
     if (item.rental_price_event_from) {
       rentalRows.innerHTML += `<div class="lb-rental-row"><span class="lb-rental-label">Evento / rodaje desde</span><span class="lb-rental-value">${item.rental_price_event_from} €</span></div>`;
@@ -1067,6 +1067,9 @@ function getFormHTML(item) {
         <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
           <input type="checkbox" id="wf-highlight" ${i.highlight_home?'checked':''}> En portada
         </label>
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-desde" ${i.rental_price_desde !== false?'checked':''}> "Desde"
+        </label>
       </div>
     </div>
     <div class="full"><label>Usos recomendados</label><div>${usageChecks}</div></div>
@@ -1120,7 +1123,8 @@ function saveWork(existingId) {
     rental_priority: document.getElementById('wf-priority').value,
     rental_usage: usages,
     featured_rental: document.getElementById('wf-featured').checked,
-    highlight_home: document.getElementById('wf-highlight').checked
+    highlight_home: document.getElementById('wf-highlight').checked,
+    rental_price_desde: document.getElementById('wf-desde').checked
   };
 
   const imgFile = document.getElementById('wf-img').value.trim();
