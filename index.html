@@ -3,10 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eleve Art Rental | Alquiler de arte moderno y contemporáneo</title>
-<meta name="description" content="Colección privada de arte moderno y contemporáneo con obras disponibles para alquiler para hoteles, empresas, interioristas y proyectos culturales.">
+<title>Eleve Art Rental | Alquiler de arte para hoteles, oficinas e interioristas</title>
+<meta name="description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales.">
+<meta name="keywords" content="alquiler de arte, art rental, arte para hoteles, arte para oficinas, arte para interioristas, alquiler de cuadros para empresas, art rental Spain, Picasso, Tàpies, Miró, Barceló">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Eleve Art Rental",
+      "description": "Colección privada de arte moderno y contemporáneo con obras disponibles para alquiler",
+      "url": "https://leloup07.github.io/eleve-art-rental/",
+      "email": "eleve.art@outlook.com",
+      "areaServed": "España"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Eleve Art Rental",
+      "url": "https://leloup07.github.io/eleve-art-rental/"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Alquiler de arte",
+      "provider": {"@type": "Organization", "name": "Eleve Art Rental"},
+      "areaServed": {"@type": "Country", "name": "España"},
+      "description": "Alquiler de obras de arte moderno y contemporáneo para hoteles, oficinas, interioristas y proyectos culturales. Obras de Picasso, Tàpies, Miró, Barceló y otros maestros.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
+</script>
 <style>
 :root {
   --ivory:#f7f4ef;--cream:#faf8f5;--parchment:#ede8df;--linen:#d9d0c1;
@@ -289,11 +322,17 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <!-- HERO -->
 <div class="hero">
   <h1 style="animation:fadeUp .8s ease .4s both;">Colección Eleve</h1>
-  <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Colección privada · Obras disponibles para alquiler</p>
+  <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Arte moderno y contemporáneo en alquiler para hoteles, oficinas e interioristas</p>
+  <p style="animation:fadeUp .8s ease .7s both;font-size:13px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Obras originales de la Colección Eleve disponibles para alquiler mensual y temporal.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
     <a href="#destacadas" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
   </div>
+</div>
+
+<!-- SEO BLOCK -->
+<div style="max-width:780px;margin:0 auto;padding:32px 48px 8px;text-align:center;">
+  <p style="font-size:13.5px;color:var(--ash);line-height:1.9;">Eleve Art Rental ofrece una selección de obras originales de la Colección Eleve en alquiler para hoteles, oficinas, interioristas y proyectos culturales. Un servicio curado y flexible con propuesta personalizada, instalación profesional y opciones de alquiler temporal o anual.</p>
 </div>
 
 <!-- SEARCH & FILTERS -->
@@ -322,7 +361,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="destacadas">
   <div class="section-header anim">
     <div class="section-label">Selección Eleve Art Rental</div>
-    <div class="section-title">Obras Destacadas</div>
+    <h2 class="section-title">Obras Destacadas</h2>
     <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
   </div>
   <div class="featured-grid anim" id="featuredGrid"></div>
@@ -332,7 +371,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="proyectos" style="background:var(--ivory);">
   <div class="section-header anim">
     <div class="section-label">Espacios reales</div>
-    <div class="section-title">Proyectos / Instalaciones</div>
+    <h2 class="section-title">Proyectos / Instalaciones</h2>
     <div class="section-desc">Ejemplos de cómo las obras de la colección funcionan en espacios profesionales y de hospitality.</div>
   </div>
   <div class="featured-grid anim">
@@ -373,7 +412,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="art-rental">
   <div class="section-header anim">
     <div class="section-label">Servicio</div>
-    <div class="section-title">Eleve Art Rental</div>
+    <h2 class="section-title">Eleve Art Rental</h2>
     <div class="section-desc">Selección de obras de la Colección Eleve disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
   </div>
   <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim">
@@ -390,7 +429,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="packs" style="background:var(--ivory);">
   <div class="section-header anim">
     <div class="section-label">Propuestas curadas</div>
-    <div class="section-title">Packs</div>
+    <h2 class="section-title">Packs</h2>
     <div class="section-desc">Combinaciones pensadas para distintos tipos de proyecto. Disponibles como propuesta inicial; también elaboramos selecciones a medida.</div>
   </div>
   <div class="packs-grid anim">
@@ -431,7 +470,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="como-funciona">
   <div class="section-header anim">
     <div class="section-label">Proceso</div>
-    <div class="section-title">Cómo Funciona</div>
+    <h2 class="section-title">Cómo Funciona</h2>
   </div>
   <div class="steps anim">
     <div class="step">
@@ -458,7 +497,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="interioristas" style="background:var(--ivory);">
   <div class="section-header anim">
     <div class="section-label">Profesionales</div>
-    <div class="section-title">Interioristas</div>
+    <h2 class="section-title">Interioristas</h2>
     <div class="section-desc">Trabajamos con estudios de interiorismo y arquitectura que buscan incorporar arte original de artistas reconocidos en sus proyectos.</div>
   </div>
   <div class="interior-content anim">
@@ -490,7 +529,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="contacto">
   <div class="section-header anim">
     <div class="section-label">Contacto</div>
-    <div class="section-title">Solicitar Información</div>
+    <h2 class="section-title">Solicitar Información</h2>
     <div class="section-desc">Servicio curado y gestión personalizada. Cuéntanos tu proyecto y te haremos una propuesta.</div>
   </div>
   <div class="contact-form anim">
@@ -787,7 +826,7 @@ function renderFeatured() {
   grid.innerHTML = featured.map(item => `
     <div class="featured-card" onclick="openLightbox('${item.id}')">
       <div class="featured-card-img">
-        <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
+        <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
       </div>
       <div class="featured-card-body">
         <div class="featured-card-artist">${item.artist}</div>
@@ -826,7 +865,7 @@ function renderGallery() {
     div.innerHTML = `
       <div class="section-header anim visible">
         <div class="section-label">${allItems.length} obra${allItems.length>1?'s':''}</div>
-        <div class="section-title">Resultados</div>
+        <h2 class="section-title">Resultados</h2>
       </div>
       <div class="featured-grid">
         ${allItems.map(item => {
@@ -834,7 +873,7 @@ function renderGallery() {
           return `
           <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
             <div class="featured-card-img">
-              <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
+              <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
             </div>
             <div class="featured-card-body">
               <div class="featured-card-artist">${item.artist}</div>
@@ -865,7 +904,7 @@ function renderGallery() {
       div.innerHTML = `
         <div class="section-header anim">
           <div class="section-label">${sec.label}</div>
-          <div class="section-title">${sec.title}</div>
+          <h2 class="section-title">${sec.title}</h2>
           <div class="section-desc">${sec.desc}</div>
         </div>
         <div class="exhibits">
@@ -900,7 +939,7 @@ function renderGallery() {
             <div class="exhibit anim" onclick="openLightbox('${item.id}')">
               <div class="exhibit-img">
                 ${badgeHTML}
-                <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
+                <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
               </div>
               <div class="exhibit-text">
                 <div class="exhibit-num">${numStr}</div>
