@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eleve Art Rental | Alquiler de arte moderno y contemporáneo</title>
+<meta name="description" content="Colección privada de arte moderno y contemporáneo con obras disponibles para alquiler para hoteles, empresas, interioristas y proyectos culturales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:#f7f4ef;--cream:#faf8f5;--parchment:#ede8df;--linen:#d9d0c1;
+  --ash:#9e9890;--charcoal:#2c2a27;--ink:#1a1917;--gold:#b89a5e;
+  --gold-light:#d4b87a;--rust:#8b4a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5;}
+
+/* ════════════════════════════════
+   HEADER
+   ════════════════════════════════ */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(247,244,239,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--parchment);transition:all .3s ease;}
+.header.scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--ink);cursor:pointer;white-space:nowrap;}
+.logo span{color:var(--gold);font-weight:600;}
+.nav{display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+.nav a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--ash);transition:color .3s;font-weight:400;white-space:nowrap;}
+.nav a:hover,.nav a.active{color:var(--ink);}
+.nav-admin{font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--linen);background:transparent;color:var(--ash);cursor:pointer;transition:all .3s;font-family:'Jost',sans-serif;}
+.nav-admin:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Mobile menu toggle */
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+.menu-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px 0;transition:all .3s;}
+
+/* ════════════════════════════════
+   HERO
+   ════════════════════════════════ */
+.hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%);position:relative;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--ink);margin-bottom:16px;animation:fadeUp .8s ease .4s both;}
+.hero .hero-sub{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);font-weight:300;animation:fadeUp .8s ease .6s both;}
+.hero-ctas{display:flex;gap:16px;margin-top:32px;animation:fadeUp .8s ease .8s both;flex-wrap:wrap;justify-content:center;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);text-decoration:none;background:var(--ink);padding:14px 28px;transition:all .3s;font-family:'Jost',sans-serif;border:1px solid var(--ink);cursor:pointer;}
+.btn-primary:hover{background:var(--charcoal);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--charcoal);text-decoration:none;background:transparent;padding:14px 28px;transition:all .3s;font-family:'Jost',sans-serif;border:1px solid var(--linen);cursor:pointer;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ════════════════════════════════
+   SEARCH & FILTERS
+   ════════════════════════════════ */
+.search-bar{max-width:720px;margin:0 auto;padding:24px 48px 16px;position:relative;}
+.search-bar input{width:100%;padding:14px 20px 14px 48px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:15px;color:var(--ink);letter-spacing:1px;outline:none;transition:border .3s;}
+.search-bar input::placeholder{color:var(--ash);letter-spacing:2px;font-size:13px;text-transform:uppercase;}
+.search-bar input:focus{border-color:var(--gold);}
+.search-bar svg{position:absolute;left:68px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ash);pointer-events:none;}
+
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 48px 32px;max-width:900px;margin:0 auto;}
+.filter-btn{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border:1px solid var(--linen);background:transparent;color:var(--ash);cursor:pointer;transition:all .3s;font-family:'Jost',sans-serif;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,154,94,.06);}
+
+/* ════════════════════════════════
+   SECTIONS
+   ════════════════════════════════ */
+.section{padding:80px 48px;position:relative;}
+.section:nth-child(even){background:var(--ivory);}
+.section-header{text-align:center;margin-bottom:60px;}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.section-desc{font-size:14px;color:var(--ash);max-width:600px;margin:0 auto;line-height:1.8;}
+
+/* ════════════════════════════════
+   ART RENTAL INTRO
+   ════════════════════════════════ */
+.rental-intro{background:var(--ivory);padding:100px 48px;text-align:center;}
+.rental-intro .section-title{margin-bottom:24px;}
+.rental-intro .section-desc{max-width:680px;}
+.rental-intro .hero-ctas{margin-top:36px;}
+
+/* ════════════════════════════════
+   FEATURED GRID
+   ════════════════════════════════ */
+.featured-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.featured-card{background:var(--ivory);border:1px solid var(--parchment);cursor:pointer;transition:all .4s ease;overflow:hidden;position:relative;}
+.featured-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-2px);}
+.featured-card-img{aspect-ratio:4/5;overflow:hidden;background:var(--parchment);display:flex;align-items:center;justify-content:center;padding:20px;}
+.featured-card-img img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .6s ease;}
+.featured-card:hover .featured-card-img img{transform:scale(1.04);}
+.featured-card-body{padding:20px 20px 24px;}
+.featured-card-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.featured-card-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:12px;line-height:1.3;}
+.featured-card-price{font-size:13px;color:var(--charcoal);margin-bottom:12px;}
+.featured-card-price strong{font-weight:500;}
+.featured-card-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:color .3s;display:inline-flex;align-items:center;gap:6px;}
+.featured-card-btn:hover{color:var(--rust);}
+
+/* ════════════════════════════════
+   EXHIBIT ROWS (Collection)
+   ════════════════════════════════ */
+.exhibits{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.exhibit{display:grid;grid-template-columns:1fr 1fr;min-height:420px;border-bottom:1px solid var(--parchment);cursor:pointer;transition:background .5s ease;}
+.exhibit:last-child{border-bottom:none;}
+.exhibit:hover{background:rgba(237,232,223,.35);}
+.exhibit:nth-child(even){direction:rtl;}
+.exhibit:nth-child(even) > *{direction:ltr;}
+.exhibit-img{position:relative;display:flex;align-items:center;justify-content:center;padding:40px;overflow:hidden;background:linear-gradient(135deg,rgba(237,232,223,.5) 0%,rgba(237,232,223,.2) 100%);}
+.exhibit-img img{max-width:100%;max-height:380px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(0,0,0,.1));transition:transform .8s cubic-bezier(.25,.46,.45,.94);}
+.exhibit:hover .exhibit-img img{transform:scale(1.03);}
+.exhibit-badge{position:absolute;top:24px;left:24px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;background:rgba(247,244,239,.92);backdrop-filter:blur(6px);color:var(--charcoal);border:1px solid var(--linen);}
+.exhibit:nth-child(even) .exhibit-badge{left:auto;right:24px;}
+/* Rental badge */
+.rental-badge{background:rgba(184,154,94,.12);border-color:var(--gold-light);color:var(--gold);}
+.exhibit-text{display:flex;flex-direction:column;justify-content:center;padding:48px 56px;}
+.exhibit-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--linen);letter-spacing:2px;margin-bottom:16px;font-weight:300;}
+.exhibit-artist{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:400;}
+.exhibit-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,32px);font-weight:300;color:var(--ink);margin-bottom:20px;font-style:italic;line-height:1.3;}
+.exhibit-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px;}
+.exhibit-field-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:2px;}
+.exhibit-field-value{font-size:13px;color:var(--charcoal);line-height:1.5;}
+.exhibit-desc{font-size:13.5px;line-height:1.9;color:var(--ash);font-style:italic;border-top:1px solid var(--parchment);padding-top:20px;max-width:480px;}
+.exhibit-rental-line{display:flex;align-items:center;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid var(--parchment);}
+.exhibit-rental-price{font-size:14px;color:var(--ink);font-weight:400;}
+.exhibit-rental-price strong{font-weight:500;}
+.exhibit-rental-cta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:color .3s;}
+.exhibit-rental-cta:hover{color:var(--rust);}
+
+/* ════════════════════════════════
+   LIGHTBOX
+   ════════════════════════════════ */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(26,25,23,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease;}
+.lightbox.open{display:flex;opacity:1;}
+.lb-close{position:absolute;top:24px;right:32px;font-size:28px;color:var(--linen);cursor:pointer;background:none;border:none;font-family:'Cormorant Garamond',serif;z-index:201;transition:color .3s;}
+.lb-close:hover{color:var(--gold);}
+.lb-content{display:flex;max-width:1200px;width:90%;max-height:85vh;gap:48px;align-items:center;}
+.lb-img{flex:1;max-height:80vh;display:flex;align-items:center;justify-content:center;}
+.lb-img img{max-width:100%;max-height:80vh;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4);}
+.lb-details{flex:0 0 380px;color:var(--parchment);overflow-y:auto;max-height:80vh;padding-right:16px;}
+.lb-details::-webkit-scrollbar{width:3px;}
+.lb-details::-webkit-scrollbar-thumb{background:var(--ash);}
+.lb-artist{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.lb-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;margin-bottom:24px;line-height:1.3;}
+.lb-field{margin-bottom:16px;}
+.lb-field-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-bottom:4px;}
+.lb-field-value{font-size:14px;color:var(--parchment);line-height:1.6;}
+.lb-desc{margin-top:24px;padding-top:24px;border-top:1px solid rgba(158,152,144,.3);font-size:14px;line-height:1.8;color:var(--linen);font-style:italic;}
+
+/* Lightbox rental block */
+.lb-rental{margin-top:24px;padding:20px;border:1px solid rgba(184,154,94,.3);background:rgba(184,154,94,.06);}
+.lb-rental-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.lb-rental-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.lb-rental-label{font-size:12px;color:var(--ash);}
+.lb-rental-value{font-size:14px;color:var(--parchment);font-weight:400;}
+.lb-rental-usage{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.lb-rental-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(184,154,94,.3);color:var(--gold-light);}
+
+.lb-actions{margin-top:28px;display:flex;flex-direction:column;gap:12px;}
+.lb-contact{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);text-decoration:none;border:1px solid var(--gold);padding:14px 24px;transition:all .3s;background:rgba(179,163,130,.15);text-align:center;justify-content:center;}
+.lb-contact:hover{color:white;border-color:white;background:rgba(179,163,130,.3);}
+.lb-contact-secondary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);text-decoration:none;border:1px solid rgba(184,154,94,.3);padding:14px 24px;transition:all .3s;text-align:center;justify-content:center;}
+.lb-contact-secondary:hover{color:white;border-color:var(--gold);}
+
+/* ════════════════════════════════
+   HOW IT WORKS
+   ════════════════════════════════ */
+.steps{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.step{text-align:center;position:relative;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:300;margin-bottom:12px;line-height:1;}
+.step-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:400;}
+.step-desc{font-size:13px;color:var(--ash);line-height:1.7;}
+.steps-note{text-align:center;margin-top:40px;font-size:13px;color:var(--ash);font-style:italic;}
+
+/* ════════════════════════════════
+   PACKS
+   ════════════════════════════════ */
+.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;}
+.pack-card{border:1px solid var(--parchment);background:var(--cream);padding:36px 32px;transition:all .4s;}
+.pack-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.06);}
+.pack-card-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);margin-bottom:20px;font-style:italic;}
+.pack-card-list{list-style:none;margin-bottom:24px;}
+.pack-card-list li{font-size:13px;color:var(--charcoal);padding:8px 0;border-bottom:1px solid var(--parchment);display:flex;align-items:center;gap:10px;}
+.pack-card-list li::before{content:'';width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg);flex-shrink:0;}
+.pack-card-cta{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:color .3s;}
+.pack-card-cta:hover{color:var(--rust);}
+
+/* ════════════════════════════════
+   INTERIORISTAS
+   ════════════════════════════════ */
+.interioristas-content{max-width:700px;margin:0 auto;text-align:center;}
+.interioristas-features{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px 0;text-align:left;}
+.int-feature{padding:20px;border-left:2px solid var(--gold);}
+.int-feature-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:6px;font-weight:400;}
+.int-feature-desc{font-size:13px;color:var(--ash);line-height:1.7;}
+
+/* ════════════════════════════════
+   CONTACT FORM
+   ════════════════════════════════ */
+.contact-form{max-width:680px;margin:0 auto;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:6px;font-weight:400;}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border .3s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group textarea{min-height:100px;}
+.form-group select{-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239e9890' stroke-width='1.2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;}
+.form-submit{margin-top:24px;text-align:center;}
+.form-submit button{font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:16px 40px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;font-family:'Jost',sans-serif;transition:background .3s;}
+.form-submit button:hover{background:var(--charcoal);}
+.form-note{text-align:center;margin-top:16px;font-size:12px;color:var(--ash);}
+
+/* ════════════════════════════════
+   ADMIN PANEL
+   ════════════════════════════════ */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(26,25,23,.92);display:none;backdrop-filter:blur(8px);}
+.admin-overlay.open{display:flex;justify-content:center;align-items:flex-start;padding-top:80px;overflow-y:auto;}
+.admin-panel{background:var(--cream);max-width:800px;width:90%;padding:48px;position:relative;margin-bottom:80px;}
+.admin-close{position:absolute;top:16px;right:24px;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ash);font-family:'Cormorant Garamond',serif;transition:color .3s;}
+.admin-close:hover{color:var(--ink);}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px;}
+.admin-subtitle{font-size:12px;color:var(--ash);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+.admin-section{margin-bottom:32px;}
+.admin-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--parchment);}
+.admin-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--parchment);}
+.admin-row-info{flex:1;}
+.admin-row-artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.admin-row-title{font-size:14px;color:var(--ink);font-style:italic;}
+.admin-toggles{display:flex;gap:16px;align-items:center;}
+.admin-toggle-group{display:flex;align-items:center;gap:6px;}
+.admin-toggle-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ash);}
+.toggle{width:36px;height:20px;border-radius:10px;background:var(--linen);cursor:pointer;position:relative;transition:background .3s;}
+.toggle.on{background:var(--gold);}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:white;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.toggle.on::after{transform:translateX(16px);}
+.admin-export{margin-top:24px;padding:12px 24px;background:var(--ink);color:var(--parchment);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.admin-export:hover{background:var(--charcoal);}
+
+/* ════════════════════════════════
+   FOOTER
+   ════════════════════════════════ */
+.footer{padding:60px 48px;text-align:center;border-top:1px solid var(--parchment);background:var(--ivory);}
+.footer-email{font-size:13px;color:var(--ash);letter-spacing:2px;margin-bottom:12px;}
+.footer-email a{color:var(--gold);text-decoration:none;transition:color .3s;}
+.footer-email a:hover{color:var(--rust);}
+.footer p{font-size:12px;color:var(--ash);letter-spacing:2px;}
+
+/* ════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.anim{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.25,.46,.45,.94);}
+.anim.visible{opacity:1;transform:translateY(0);}
+
+/* ════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════ */
+@media(max-width:900px){
+  .header{padding:0 24px;}
+  .nav{gap:12px;}
+  .nav a{font-size:10px;letter-spacing:1px;}
+  .search-bar{padding:16px 24px 12px;}
+  .search-bar svg{left:44px;}
+  .section{padding:60px 24px;}
+  .exhibit{grid-template-columns:1fr;min-height:auto;}
+  .exhibit:nth-child(even){direction:ltr;}
+  .exhibit-img{min-height:280px;padding:32px;}
+  .exhibit-text{padding:32px 24px;}
+  .exhibit-fields{grid-template-columns:1fr;}
+  .lb-content{flex-direction:column;gap:24px;}
+  .lb-details{flex:none;width:100%;}
+  .lb-img img{max-height:50vh;}
+  .hero{min-height:auto;padding:120px 24px 80px;}
+  .steps{grid-template-columns:1fr 1fr;gap:24px;}
+  .interioristas-features{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-group.full{grid-column:1;}
+  .filters{padding:0 24px 24px;}
+}
+@media(max-width:768px){
+  .nav{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;background:rgba(247,244,239,.98);backdrop-filter:blur(14px);padding:16px 24px;gap:0;border-bottom:1px solid var(--parchment);}
+  .nav.open{display:flex;}
+  .nav a{padding:12px 0;border-bottom:1px solid var(--parchment);}
+  .menu-toggle{display:block;}
+  .header.scrolled .nav{top:60px;}
+}
+@media(max-width:600px){
+  .header{padding:0 16px;}
+  .hero h1{letter-spacing:3px;}
+  .admin-panel{padding:24px;}
+  .admin-toggles{flex-direction:column;gap:8px;align-items:flex-end;}
+  .exhibit-text{padding:24px 20px;}
+  .steps{grid-template-columns:1fr;}
+  .featured-grid{grid-template-columns:1fr 1fr;}
+  .packs-grid{grid-template-columns:1fr;}
+}
+@media(max-width:400px){
+  .featured-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<div class="header">
+  <div class="logo" id="logo-trigger">Colección <span>Eleve</span></div>
+  <button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav">
+    <a href="#coleccion">Colección</a>
+    <a href="#art-rental">Art Rental</a>
+    <a href="#destacadas">Destacadas</a>
+    <a href="#packs">Packs</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#interioristas">Interioristas</a>
+    <a href="#contacto">Contacto</a>
+    <button class="nav-admin" onclick="openAdmin()">Gestión</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ HERO ════════════════════════════════ -->
+<div class="hero">
+  <h1>Colección Eleve</h1>
+  <p class="hero-sub">Colección privada · Obras disponibles para alquiler</p>
+  <div class="hero-ctas">
+    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
+    <a href="#destacadas" class="btn-primary">Ver obras en alquiler</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ SEARCH & FILTERS ════════════════════════════════ -->
+<div class="search-bar" id="search-area">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  <input type="text" id="searchInput" placeholder="Buscar por artista, título, técnica…" oninput="filterGallery()">
+</div>
+<div class="filters" id="filters-area">
+  <button class="filter-btn active" data-filter="todas" onclick="setFilter('todas',this)">Todas</button>
+  <button class="filter-btn" data-filter="alquiler" onclick="setFilter('alquiler',this)">Disponibles para alquiler</button>
+  <button class="filter-btn" data-filter="destacadas" onclick="setFilter('destacadas',this)">Destacadas</button>
+  <button class="filter-btn" data-filter="pintura" onclick="setFilter('pintura',this)">Pintura / Obra única</button>
+  <button class="filter-btn" data-filter="grafica" onclick="setFilter('grafica',this)">Obra gráfica</button>
+  <button class="filter-btn" data-filter="hotel" onclick="setFilter('hotel',this)">Hotel</button>
+  <button class="filter-btn" data-filter="corporate" onclick="setFilter('corporate',this)">Corporate</button>
+  <button class="filter-btn" data-filter="evento" onclick="setFilter('evento',this)">Eventos</button>
+</div>
+
+<!-- ════════════════════════════════ ART RENTAL INTRO ════════════════════════════════ -->
+<div class="rental-intro section" id="art-rental">
+  <div class="section-header anim">
+    <div class="section-label">Servicio</div>
+    <div class="section-title">Eleve Art Rental</div>
+    <div class="section-desc">Selección de obras de la Colección Eleve disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
+    <div class="hero-ctas">
+      <a href="#destacadas" class="btn-secondary">Ver obras destacadas</a>
+      <a href="#contacto" class="btn-primary">Solicitar dossier</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ FEATURED ════════════════════════════════ -->
+<div class="section" id="destacadas" style="background:var(--cream);">
+  <div class="section-header anim">
+    <div class="section-label">Selección Eleve Art Rental</div>
+    <div class="section-title">Obras Destacadas</div>
+    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
+  </div>
+  <div class="featured-grid" id="featured-grid"></div>
+</div>
+
+<!-- ════════════════════════════════ COLLECTION ════════════════════════════════ -->
+<div id="coleccion"></div>
+<div id="main"></div>
+
+<!-- ════════════════════════════════ PACKS ════════════════════════════════ -->
+<div class="section" id="packs" style="background:var(--ivory);">
+  <div class="section-header anim">
+    <div class="section-label">Propuestas</div>
+    <div class="section-title">Packs de Alquiler</div>
+    <div class="section-desc">Conjuntos curados pensados para distintos tipos de proyecto. Precios especiales por pack.</div>
+  </div>
+  <div class="packs-grid" id="packs-grid"></div>
+</div>
+
+<!-- ════════════════════════════════ HOW IT WORKS ════════════════════════════════ -->
+<div class="section" id="como-funciona">
+  <div class="section-header anim">
+    <div class="section-label">Proceso</div>
+    <div class="section-title">Cómo funciona</div>
+  </div>
+  <div class="steps anim">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Selecciona</div>
+      <div class="step-desc">Elige una o varias obras del catálogo o solicita una propuesta personalizada.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Consulta</div>
+      <div class="step-desc">Solicita disponibilidad y recibe un presupuesto adaptado a tu proyecto.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Propuesta</div>
+      <div class="step-desc">Recibe propuesta detallada con condiciones, seguros y duración.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Instalación</div>
+      <div class="step-desc">Coordinamos transporte, instalación profesional y recogida.</div>
+    </div>
+  </div>
+  <div class="steps-note anim">También disponible para alquiler temporal, rodajes y proyectos especiales.</div>
+</div>
+
+<!-- ════════════════════════════════ INTERIORISTAS ════════════════════════════════ -->
+<div class="section" id="interioristas" style="background:var(--ivory);">
+  <div class="section-header anim">
+    <div class="section-label">Profesionales</div>
+    <div class="section-title">Para Interioristas</div>
+  </div>
+  <div class="interioristas-content anim">
+    <p class="section-desc" style="margin-bottom:0;">Trabajamos con interioristas, decoradores y arquitectos que buscan incorporar obras originales en sus proyectos. Ofrecemos un servicio profesional orientado a facilitar la integración del arte en cada espacio.</p>
+    <div class="interioristas-features">
+      <div class="int-feature">
+        <div class="int-feature-title">Selección curada</div>
+        <div class="int-feature-desc">Obras de artistas reconocidos con certificación y procedencia documentada.</div>
+      </div>
+      <div class="int-feature">
+        <div class="int-feature-title">Servicio flexible</div>
+        <div class="int-feature-desc">Alquiler mensual, temporal o por proyecto. Adaptamos la duración a cada necesidad.</div>
+      </div>
+      <div class="int-feature">
+        <div class="int-feature-title">Apoyo en proyecto</div>
+        <div class="int-feature-desc">Asesoramiento en la selección de obras según el espacio, la luz y el estilo del proyecto.</div>
+      </div>
+      <div class="int-feature">
+        <div class="int-feature-title">Propuesta personalizada</div>
+        <div class="int-feature-desc">Podemos preparar una selección a medida para presentar a tu cliente.</div>
+      </div>
+    </div>
+    <a href="#contacto" class="btn-primary" style="display:inline-flex;">Presentar proyecto</a>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ CONTACT ════════════════════════════════ -->
+<div class="section" id="contacto">
+  <div class="section-header anim">
+    <div class="section-label">Contacto</div>
+    <div class="section-title">Solicitar información</div>
+    <div class="section-desc">Cuéntanos tu proyecto y te responderemos con una propuesta personalizada.</div>
+  </div>
+  <div class="contact-form anim">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="form-name" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label>Empresa / Estudio</label>
+        <input type="text" id="form-company" placeholder="Nombre de empresa o estudio">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="form-email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" id="form-phone" placeholder="+34 ...">
+      </div>
+      <div class="form-group">
+        <label>Tipo de proyecto</label>
+        <select id="form-type">
+          <option value="">Seleccionar...</option>
+          <option value="hotel">Hotel boutique</option>
+          <option value="oficina">Oficina / Despacho</option>
+          <option value="interiorismo">Interiorismo residencial</option>
+          <option value="evento">Evento / Rodaje</option>
+          <option value="staging">Home staging</option>
+          <option value="cultural">Proyecto cultural</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Duración estimada</label>
+        <select id="form-duration">
+          <option value="">Seleccionar...</option>
+          <option value="1-3">1–3 meses</option>
+          <option value="3-6">3–6 meses</option>
+          <option value="6-12">6–12 meses</option>
+          <option value="12+">Más de 12 meses</option>
+          <option value="evento">Evento puntual</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Obra de interés (opcional)</label>
+        <input type="text" id="form-artwork" placeholder="Ej: Picasso, Tàpies Gran X, Pack Hotel...">
+      </div>
+      <div class="form-group full">
+        <label>Mensaje</label>
+        <textarea id="form-message" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div>
+    </div>
+    <div class="form-submit">
+      <button onclick="submitForm()">Enviar solicitud</button>
+    </div>
+    <div class="form-note">También puedes escribirnos directamente a <a href="/cdn-cgi/l/email-protection#36535a53405318574442765943425a59595d1855595b" style="color:var(--gold);text-decoration:none;"><span class="__cf_email__" data-cfemail="87e2ebe2f1e2a9e6f5f3c7e8f2f3ebe8e8eca9e4e8ea">[email&#160;protected]</span></a></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ LIGHTBOX ════════════════════════════════ -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <div class="lb-content">
+    <div class="lb-img"><img src="" alt=""></div>
+    <div class="lb-details">
+      <div class="lb-artist"></div>
+      <div class="lb-title"></div>
+      <div class="lb-fields"></div>
+      <div class="lb-desc"></div>
+      <div class="lb-rental" id="lb-rental" style="display:none;"></div>
+      <div class="lb-actions">
+        <a class="lb-contact" href="#">Solicitar alquiler de esta obra →</a>
+        <a class="lb-contact-secondary" href="#contacto" onclick="closeLightbox()">Consultar disponibilidad</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ ADMIN ════════════════════════════════ -->
+<div class="admin-overlay" id="admin" onclick="if(event.target===this)closeAdmin()">
+  <div class="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">&#10005;</button>
+    <div class="admin-title">Panel de Gestión</div>
+    <div class="admin-subtitle">Activar / desactivar obras y plataformas</div>
+    <div id="admin-content"></div>
+    <button class="admin-export" onclick="exportData()">Exportar datos JSON</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════ FOOTER ════════════════════════════════ -->
+<div class="footer">
+  <div class="footer-email">Contacto: <a href="/cdn-cgi/l/email-protection#16737a73607338776462567963627a79797d3875797b"><span class="__cf_email__" data-cfemail="2d4841485b48034c5f596d42585941424246034e4240">[email&#160;protected]</span></a></div>
+  <p>Colección Eleve · Art Rental · Todos los derechos reservados</p>
+</div>
+
+<!-- ════════════════════════════════ JAVASCRIPT ════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ═══════════════════════════════════════
+   COLECCIÓN ELEVE — Art Rental
+   ═══════════════════════════════════════ */
+
+let COLLECTION = [];
+
+const SECTIONS = {
+  iconic: {
+    label: "Sección I",
+    title: "Piezas Icónicas",
+    desc: "Obras originales de los maestros: óleos, pinturas y grabados de autoría singular. Piezas con certificación y procedencia documentada.",
+    bg: "var(--cream)"
+  },
+  graphic: {
+    label: "Sección II",
+    title: "Obra Gráfica",
+    desc: "Grabados, aguafuertes y ediciones limitadas de artistas consagrados. Obra múltiple de alta calidad con certificados de autenticidad.",
+    bg: "var(--ivory)"
+  },
+  available: {
+    label: "Sección III",
+    title: "Obras Disponibles",
+    desc: "Piezas accesibles de artistas reconocidos. Oportunidades de adquisición para coleccionistas.",
+    bg: "var(--cream)"
+  }
+};
+
+const USAGE_LABELS = {
+  hotel: "Hotel boutique",
+  office: "Oficina / Despacho",
+  interiorismo: "Interiorismo residencial",
+  corporate: "Corporate",
+  evento: "Evento / Rodaje"
+};
+
+const CONTACT_EMAIL = "eleve.art@outlook.com";
+
+const PACKS = [
+  {
+    title: "Pack Hotel Boutique",
+    items: ["picasso", "dominguez", "barcelo"],
+    desc: "Tres piezas de máximo prestigio para lobbies y suites."
+  },
+  {
+    title: "Pack Oficina / Despacho",
+    items: ["tapies-gran-x", "plensa1", "plensa2"],
+    desc: "Combinación equilibrada para entornos corporativos."
+  },
+  {
+    title: "Pack Colección Catalana",
+    items: ["tapies-visca", "cuixart", "tharrats-18"],
+    desc: "Selección con identidad propia para proyectos culturales."
+  }
+];
+
+let adminState = {};
+try {
+  const saved = localStorage.getItem('eleve-admin');
+  if (saved) adminState = JSON.parse(saved);
+} catch(e) {}
+
+function saveAdmin() {
+  try { localStorage.setItem('eleve-admin', JSON.stringify(adminState)); } catch(e) {}
+}
+
+let searchTerm = '';
+let activeFilter = 'todas';
+
+function setFilter(filter, btn) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterGallery();
+}
+
+function filterGallery() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  renderGallery();
+}
+
+function matchesFilter(item) {
+  if (activeFilter === 'todas') return true;
+  if (activeFilter === 'alquiler') return item.rental_available;
+  if (activeFilter === 'destacadas') return item.featured_rental;
+  if (activeFilter === 'pintura') return item.section === 'iconic';
+  if (activeFilter === 'grafica') return item.section === 'graphic';
+  if (activeFilter === 'hotel') return item.rental_usage && item.rental_usage.includes('hotel');
+  if (activeFilter === 'corporate') return item.rental_usage && (item.rental_usage.includes('corporate') || item.rental_usage.includes('office'));
+  if (activeFilter === 'evento') return item.rental_usage && item.rental_usage.includes('evento');
+  return true;
+}
+
+function renderGallery() {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  
+  ['iconic', 'graphic', 'available'].forEach(sectionKey => {
+    const sec = SECTIONS[sectionKey];
+    const items = COLLECTION.filter(c => {
+      if (c.section !== sectionKey) return false;
+      if (adminState[c.id]?.visible === false) return false;
+      if (!matchesFilter(c)) return false;
+      if (searchTerm) {
+        const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description].join(' ').toLowerCase();
+        if (!haystack.includes(searchTerm)) return false;
+      }
+      return true;
+    });
+    if (items.length === 0) return;
+    
+    const div = document.createElement('div');
+    div.className = 'section';
+    div.id = 'section-' + sectionKey;
+    
+    div.innerHTML = `
+      <div class="section-header anim">
+        <div class="section-label">${sec.label}</div>
+        <div class="section-title">${sec.title}</div>
+        <div class="section-desc">${sec.desc}</div>
+      </div>
+      <div class="exhibits">
+        ${items.map((item) => {
+          const fields = [
+            ['Año', item.year],
+            ['Técnica', item.medium],
+            ['Dimensiones', item.dimensions],
+            ['Estilo', item.style],
+            ['Edición', item.edition],
+          ].filter(([,v]) => v && v !== '—' && v !== '');
+          
+          const globalIdx = COLLECTION.indexOf(item) + 1;
+          const numStr = String(globalIdx).padStart(2, '0');
+          
+          const rentalBadge = item.rental_available 
+            ? '<div class="exhibit-badge rental-badge">Disponible para alquiler</div>' 
+            : '';
+          
+          const rentalLine = item.rental_available
+            ? `<div class="exhibit-rental-line">
+                <div class="exhibit-rental-price">Desde <strong>${item.rental_price_month_from} €/mes</strong></div>
+                <div class="exhibit-rental-cta" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler →</div>
+              </div>`
+            : '';
+          
+          return `
+          <div class="exhibit anim" onclick="openLightbox('${item.id}')">
+            <div class="exhibit-img">
+              ${rentalBadge}
+              <img src="${item.image}" alt="${item.title}" loading="lazy">
+            </div>
+            <div class="exhibit-text">
+              <div class="exhibit-num">${numStr}</div>
+              <div class="exhibit-artist">${item.artist}</div>
+              <div class="exhibit-title">${item.title}</div>
+              <div class="exhibit-fields">
+                ${fields.map(([label, value]) => `
+                  <div>
+                    <div class="exhibit-field-label">${label}</div>
+                    <div class="exhibit-field-value">${value}</div>
+                  </div>
+                `).join('')}
+              </div>
+              <div class="exhibit-desc">${item.description}</div>
+              ${rentalLine}
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+    main.appendChild(div);
+  });
+  
+  initAnimations();
+}
+
+function renderFeatured() {
+  const grid = document.getElementById('featured-grid');
+  const featured = COLLECTION.filter(c => c.featured_rental && c.highlight_home);
+  
+  // Order: picasso, dominguez, tapies-sin-titulo, tapies-ulleres, barcelo, plensa1, plensa2, tapies-gran-x
+  const order = ['picasso','dominguez','tapies-sin-titulo','tapies-ulleres','barcelo','plensa1','plensa2','tapies-gran-x'];
+  featured.sort((a,b) => {
+    const ia = order.indexOf(a.id);
+    const ib = order.indexOf(b.id);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
+  
+  grid.innerHTML = featured.map(item => `
+    <div class="featured-card anim" onclick="openLightbox('${item.id}')">
+      <div class="featured-card-img">
+        <img src="${item.image}" alt="${item.title}" loading="lazy">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">${item.artist}</div>
+        <div class="featured-card-title">${item.title}</div>
+        <div class="featured-card-price">Desde <strong>${item.rental_price_month_from} €/mes</strong></div>
+        <div class="featured-card-btn">Solicitar alquiler →</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPacks() {
+  const grid = document.getElementById('packs-grid');
+  grid.innerHTML = PACKS.map(pack => {
+    const items = pack.items.map(id => COLLECTION.find(c => c.id === id)).filter(Boolean);
+    return `
+    <div class="pack-card anim">
+      <div class="pack-card-title">${pack.title}</div>
+      <ul class="pack-card-list">
+        ${items.map(item => `<li>${item.artist} — <em>${item.title}</em></li>`).join('')}
+      </ul>
+      <div class="pack-card-cta" onclick="scrollToContact('${pack.title}')">Consultar pack →</div>
+    </div>`;
+  }).join('');
+}
+
+function openLightbox(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  const lb = document.getElementById('lightbox');
+  
+  lb.querySelector('.lb-img img').src = item.image;
+  lb.querySelector('.lb-artist').textContent = item.artist;
+  lb.querySelector('.lb-title').textContent = item.title;
+  
+  const fields = lb.querySelector('.lb-fields');
+  fields.innerHTML = '';
+  [['Año', item.year], ['Técnica', item.medium], ['Dimensiones', item.dimensions], ['Estilo', item.style], ['Edición', item.edition]]
+    .forEach(([label, value]) => {
+      if (value && value !== '—' && value !== '') {
+        fields.innerHTML += `<div class="lb-field"><div class="lb-field-label">${label}</div><div class="lb-field-value">${value}</div></div>`;
+      }
+    });
+  
+  lb.querySelector('.lb-desc').textContent = item.description;
+  
+  // Rental block
+  const rentalBlock = document.getElementById('lb-rental');
+  if (item.rental_available) {
+    rentalBlock.style.display = 'block';
+    rentalBlock.innerHTML = `
+      <div class="lb-rental-title">Alquiler disponible</div>
+      <div class="lb-rental-row">
+        <div class="lb-rental-label">Precio mensual orientativo</div>
+        <div class="lb-rental-value">Desde ${item.rental_price_month_from} €/mes</div>
+      </div>
+      <div class="lb-rental-row">
+        <div class="lb-rental-label">Precio evento / rodaje</div>
+        <div class="lb-rental-value">Desde ${item.rental_price_event_from} €</div>
+      </div>
+      ${item.rental_usage && item.rental_usage.length > 0 ? `
+        <div style="margin-top:14px;">
+          <div class="lb-rental-label" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:8px;">Usos recomendados</div>
+          <div class="lb-rental-usage">
+            ${item.rental_usage.map(u => `<div class="lb-rental-tag">${USAGE_LABELS[u] || u}</div>`).join('')}
+          </div>
+        </div>
+      ` : ''}
+    `;
+  } else {
+    rentalBlock.style.display = 'none';
+  }
+  
+  // Update contact links
+  const contactLink = lb.querySelector('.lb-contact');
+  if (item.rental_available) {
+    contactLink.textContent = 'Solicitar alquiler de esta obra →';
+    contactLink.href = `mailto:${CONTACT_EMAIL}?subject=Solicitud de alquiler: ${item.artist} - ${item.title}&body=Estimado equipo de Eleve Art Rental,%0A%0AMe interesa alquilar la obra "${item.title}" de ${item.artist} (${item.year}).%0A%0ATipo de proyecto:%0ADuración estimada:%0A%0AQuedo a la espera de su respuesta.%0A%0AUn saludo.`;
+  } else {
+    contactLink.textContent = 'Contactar por esta obra →';
+    contactLink.href = `mailto:${CONTACT_EMAIL}?subject=Consulta: ${item.artist} - ${item.title}&body=Estimado equipo de Colección Eleve,%0A%0AMe interesa la obra "${item.title}" de ${item.artist} (${item.year}).%0A%0AQuedo a la espera de su respuesta.%0A%0AUn saludo.`;
+  }
+  
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function scrollToContact(artwork) {
+  closeLightbox();
+  setTimeout(() => {
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+    if (artwork) {
+      setTimeout(() => {
+        const artworkField = document.getElementById('form-artwork');
+        if (artworkField) artworkField.value = artwork;
+      }, 500);
+    }
+  }, 300);
+}
+
+function submitForm() {
+  const name = document.getElementById('form-name').value;
+  const company = document.getElementById('form-company').value;
+  const email = document.getElementById('form-email').value;
+  const phone = document.getElementById('form-phone').value;
+  const type = document.getElementById('form-type').value;
+  const duration = document.getElementById('form-duration').value;
+  const artwork = document.getElementById('form-artwork').value;
+  const message = document.getElementById('form-message').value;
+  
+  if (!name || !email) {
+    alert('Por favor, indica al menos tu nombre y email.');
+    return;
+  }
+  
+  const body = [
+    `Nombre: ${name}`,
+    company ? `Empresa: ${company}` : '',
+    `Email: ${email}`,
+    phone ? `Teléfono: ${phone}` : '',
+    type ? `Tipo de proyecto: ${type}` : '',
+    duration ? `Duración: ${duration}` : '',
+    artwork ? `Obra de interés: ${artwork}` : '',
+    '',
+    message || ''
+  ].filter(Boolean).join('%0A');
+  
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=Solicitud Eleve Art Rental — ${name}&body=${body}`;
+}
+
+function openAdmin() {
+  renderAdmin();
+  document.getElementById('admin').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdmin() {
+  document.getElementById('admin').classList.remove('open');
+  document.body.style.overflow = '';
+  renderGallery();
+}
+
+function renderAdmin() {
+  const container = document.getElementById('admin-content');
+  container.innerHTML = '';
+  
+  ['iconic', 'graphic', 'available'].forEach(sectionKey => {
+    const sec = SECTIONS[sectionKey];
+    const items = COLLECTION.filter(c => c.section === sectionKey);
+    
+    let html = `<div class="admin-section">
+      <div class="admin-section-title">${sec.title} (${items.length})</div>`;
+    
+    items.forEach(item => {
+      const state = adminState[item.id];
+      const rentalTag = item.rental_available ? ' · <span style="color:var(--gold);">Alquiler</span>' : '';
+      html += `
+        <div class="admin-row">
+          <div class="admin-row-info">
+            <div class="admin-row-artist">${item.artist}${rentalTag}</div>
+            <div class="admin-row-title">${item.title}</div>
+          </div>
+          <div class="admin-toggles">
+            <div class="admin-toggle-group">
+              <span class="admin-toggle-label">Visible</span>
+              <div class="toggle ${state.visible ? 'on' : ''}" onclick="toggleAdmin('${item.id}','visible',this)"></div>
+            </div>
+          </div>
+        </div>`;
+    });
+    
+    html += '</div>';
+    container.innerHTML += html;
+  });
+}
+
+function toggleAdmin(id, prop, el) {
+  adminState[id][prop] = !adminState[id][prop];
+  el.classList.toggle('on');
+  saveAdmin();
+}
+
+function exportData() {
+  const data = COLLECTION.map(item => ({
+    ...item,
+    admin: adminState[item.id]
+  }));
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'coleccion-eleve-rental-export.json';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function initAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('.anim:not(.visible)').forEach(el => observer.observe(el));
+}
+
+// Header scroll — FIXED: uses .header class selector
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  }
+});
+
+// Active nav on scroll
+window.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.nav a[href^="#"]');
+  const allSections = document.querySelectorAll('[id]');
+  const ids = Array.from(links).map(l => l.getAttribute('href').replace('#',''));
+  let current = '';
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 150) current = id;
+  });
+  links.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+
+// Escape key closes overlays
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLightbox(); closeAdmin(); }
+});
+
+// Logo click scrolls to top
+document.getElementById('logo-trigger').addEventListener('click', () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Close mobile menu on nav click
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelector('.nav').classList.remove('open');
+  });
+});
+
+// ═══════════════════════════════════════
+// INIT: load collection.json
+// ═══════════════════════════════════════
+fetch('collection.json')
+  .then(r => r.json())
+  .then(data => {
+    COLLECTION = data;
+    COLLECTION.forEach(item => {
+      if (!adminState[item.id]) {
+        adminState[item.id] = { visible: true };
+      }
+    });
+    saveAdmin();
+    renderFeatured();
+    renderGallery();
+    renderPacks
