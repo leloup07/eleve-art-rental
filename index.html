@@ -174,18 +174,43 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* ADMIN PANEL */
 .admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(26,25,23,.92);display:none;backdrop-filter:blur(8px);}
-.admin-overlay.open{display:flex;justify-content:center;align-items:flex-start;padding-top:80px;overflow-y:auto;}
-.admin-panel{background:var(--cream);max-width:800px;width:90%;padding:48px;position:relative;margin-bottom:80px;}
+.admin-overlay.open{display:flex;justify-content:center;align-items:flex-start;padding-top:40px;overflow-y:auto;}
+.admin-panel{background:var(--cream);max-width:960px;width:95%;padding:36px 40px;position:relative;margin-bottom:80px;}
 .admin-close{position:absolute;top:16px;right:24px;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ash);font-family:'Cormorant Garamond',serif;transition:color .3s;}
 .admin-close:hover{color:var(--ink);}
-.admin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px;}
-.admin-subtitle{font-size:12px;color:var(--ash);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
-.admin-section{margin-bottom:32px;}
-.admin-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--parchment);}
-.admin-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--parchment);}
-.admin-row-info{flex:1;}
-.admin-row-artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
-.admin-row-title{font-size:14px;color:var(--ink);font-style:italic;}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:4px;}
+.admin-subtitle{font-size:12px;color:var(--ash);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.admin-tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid var(--parchment);}
+.admin-tab{padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);cursor:pointer;border:none;background:none;font-family:'Jost',sans-serif;border-bottom:2px solid transparent;transition:all .3s;}
+.admin-tab:hover{color:var(--ink);}
+.admin-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.admin-section{margin-bottom:24px;}
+.admin-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--parchment);display:flex;justify-content:space-between;align-items:center;}
+.admin-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--parchment);gap:12px;}
+.admin-row-info{flex:1;min-width:0;}
+.admin-row-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.admin-row-title{font-size:13px;color:var(--ink);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.admin-row-price{font-size:12px;color:var(--gold);min-width:70px;text-align:right;}
+.admin-row-cats{display:flex;gap:4px;flex-wrap:wrap;min-width:120px;}
+.admin-row-cat{font-size:8px;padding:2px 6px;background:var(--parchment);color:var(--charcoal);letter-spacing:1px;text-transform:uppercase;}
+.admin-row-btns{display:flex;gap:8px;min-width:100px;justify-content:flex-end;}
+.admin-btn{padding:6px 14px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;border:1px solid var(--linen);background:transparent;color:var(--charcoal);transition:all .3s;}
+.admin-btn:hover{border-color:var(--gold);color:var(--gold);}
+.admin-btn-danger{color:var(--rust);border-color:var(--rust);}
+.admin-btn-danger:hover{background:var(--rust);color:white;}
+.admin-btn-primary{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.admin-btn-primary:hover{background:var(--charcoal);}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.admin-form .full{grid-column:1/-1;}
+.admin-form label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ash);margin-bottom:3px;display:block;}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;padding:10px 12px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border .3s;}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--gold);}
+.admin-form textarea{min-height:80px;resize:vertical;}
+.admin-form-actions{grid-column:1/-1;display:flex;gap:12px;justify-content:flex-end;margin-top:8px;}
+.admin-export{padding:12px 24px;background:var(--ink);color:var(--parchment);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.admin-export:hover{background:var(--charcoal);}
+.admin-bar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.admin-count{font-size:12px;color:var(--ash);margin-left:auto;align-self:center;}
 .admin-toggles{display:flex;gap:16px;align-items:center;}
 .admin-toggle-group{display:flex;align-items:center;gap:6px;}
 .admin-toggle-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ash);}
@@ -193,8 +218,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .toggle.on{background:var(--gold);}
 .toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:white;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 .toggle.on::after{transform:translateX(16px);}
-.admin-export{margin-top:24px;padding:12px 24px;background:var(--ink);color:var(--parchment);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
-.admin-export:hover{background:var(--charcoal);}
 
 /* FOOTER */
 .footer{padding:60px 48px;text-align:center;border-top:1px solid var(--parchment);background:var(--ivory);}
@@ -513,9 +536,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="admin-panel">
     <button class="admin-close" onclick="closeAdmin()">&#10005;</button>
     <div class="admin-title">Panel de Gestión</div>
-    <div class="admin-subtitle">Activar / desactivar obras y plataformas</div>
+    <div class="admin-subtitle">Añadir, editar y gestionar obras</div>
+    <div class="admin-bar">
+      <button class="admin-btn admin-btn-primary" onclick="showAddForm()">+ Añadir obra</button>
+      <button class="admin-export" onclick="exportHTML()">Exportar HTML</button>
+      <button class="admin-btn" onclick="exportData()">Exportar JSON</button>
+      <span class="admin-count" id="adminCount"></span>
+    </div>
+    <div id="admin-form-area"></div>
     <div id="admin-content"></div>
-    <button class="admin-export" onclick="exportData()">Exportar datos JSON</button>
   </div>
 </div>
 
@@ -691,6 +720,11 @@ function setFilter(filter, el) {
   document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   applyFilters();
+  // Scroll to results
+  const main = document.getElementById('main');
+  if (main && main.firstChild) {
+    main.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 }
 
 function applyFilters() {
@@ -894,6 +928,7 @@ function submitForm() {
 
 function openAdmin() {
   renderAdmin();
+  document.getElementById('admin-form-area').innerHTML = '';
   document.getElementById('admin').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -901,39 +936,177 @@ function openAdmin() {
 function closeAdmin() {
   document.getElementById('admin').classList.remove('open');
   document.body.style.overflow = '';
+  renderFeatured();
   renderGallery();
 }
+
+const ALL_CATEGORIES = ['abstracto','figurativo','surrealismo','informalismo','cubista','pop','contemporaneo','dauaset'];
+const CAT_LABELS = {abstracto:'Abstracto',figurativo:'Figurativo',surrealismo:'Surrealismo',informalismo:'Informalismo',cubista:'Cubista',pop:'Pop',contemporaneo:'Contemporáneo',dauaset:'Dau al Set'};
 
 function renderAdmin() {
   const container = document.getElementById('admin-content');
   container.innerHTML = '';
-  ['iconic', 'graphic', 'available'].forEach(sectionKey => {
+  document.getElementById('adminCount').textContent = COLLECTION.length + ' obras';
+
+  ['iconic','graphic','available'].forEach(sectionKey => {
     const sec = SECTIONS[sectionKey];
     const items = COLLECTION.filter(c => c.section === sectionKey);
-    let html = `<div class="admin-section"><div class="admin-section-title">${sec.title} (${items.length})</div>`;
+    let html = `<div class="admin-section"><div class="admin-section-title"><span>${sec.title} (${items.length})</span></div>`;
     items.forEach(item => {
-      const state = adminState[item.id];
+      const cats = (item.style_category||[]).map(c => `<span class="admin-row-cat">${CAT_LABELS[c]||c}</span>`).join('');
+      const price = item.rental_price_month_from ? item.rental_price_month_from+'€' : '—';
       html += `
         <div class="admin-row">
           <div class="admin-row-info">
             <div class="admin-row-artist">${item.artist}</div>
             <div class="admin-row-title">${item.title}</div>
           </div>
-          <div class="admin-toggles">
-            <div class="admin-toggle-group">
-              <span class="admin-toggle-label">Visible</span>
-              <div class="toggle ${state.visible ? 'on' : ''}" onclick="toggleAdmin('${item.id}','visible',this)"></div>
-            </div>
-            <div class="admin-toggle-group">
-              <span class="admin-toggle-label">Artsy</span>
-              <div class="toggle ${state.artsy ? 'on' : ''}" onclick="toggleAdmin('${item.id}','artsy',this)"></div>
-            </div>
+          <div class="admin-row-cats">${cats}</div>
+          <div class="admin-row-price">${price}</div>
+          <div class="admin-row-btns">
+            <button class="admin-btn" onclick="showEditForm('${item.id}')">Editar</button>
+            <button class="admin-btn admin-btn-danger" onclick="deleteWork('${item.id}')">×</button>
           </div>
         </div>`;
     });
     html += '</div>';
     container.innerHTML += html;
   });
+}
+
+function getFormHTML(item) {
+  const i = item || {};
+  const cats = i.style_category || [];
+  const usages = i.rental_usage || [];
+  const catChecks = ALL_CATEGORIES.map(c =>
+    `<label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;margin-right:10px;cursor:pointer;text-transform:none;letter-spacing:0;">
+      <input type="checkbox" name="cat" value="${c}" ${cats.includes(c)?'checked':''}> ${CAT_LABELS[c]}
+    </label>`
+  ).join('');
+  const usageChecks = ['hotel','oficina','interiorismo','evento'].map(u =>
+    `<label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;margin-right:10px;cursor:pointer;text-transform:none;letter-spacing:0;">
+      <input type="checkbox" name="usage" value="${u}" ${usages.includes(u)?'checked':''}> ${USAGE_LABELS[u]}
+    </label>`
+  ).join('');
+
+  return `<div class="admin-form" id="workForm">
+    <div><label>ID (slug, sin espacios)</label><input id="wf-id" value="${i.id||''}" ${item?'readonly style="opacity:.6"':''}></div>
+    <div><label>Artista</label><input id="wf-artist" value="${i.artist||''}"></div>
+    <div class="full"><label>Título</label><input id="wf-title" value="${i.title||''}"></div>
+    <div><label>Año</label><input id="wf-year" value="${i.year||''}"></div>
+    <div><label>Técnica</label><input id="wf-medium" value="${i.medium||''}"></div>
+    <div><label>Dimensiones</label><input id="wf-dimensions" value="${i.dimensions||''}"></div>
+    <div><label>Estilo</label><input id="wf-style" value="${i.style||''}"></div>
+    <div class="full"><label>Edición</label><input id="wf-edition" value="${i.edition||''}"></div>
+    <div class="full"><label>Descripción</label><textarea id="wf-desc">${i.description||''}</textarea></div>
+    <div><label>Sección</label>
+      <select id="wf-section">
+        <option value="iconic" ${i.section==='iconic'?'selected':''}>Piezas Icónicas</option>
+        <option value="graphic" ${i.section==='graphic'?'selected':''}>Obra Gráfica</option>
+        <option value="available" ${i.section==='available'?'selected':''}>Obras Disponibles</option>
+      </select>
+    </div>
+    <div><label>Imagen (nombre archivo .jpg)</label><input id="wf-img" value="${IMG[i.id]||i.id+'.jpg'}" placeholder="artista.jpg"></div>
+    <div class="full"><label>Categorías de estilo</label><div>${catChecks}</div></div>
+    <div><label>Precio mes (€)</label><input type="number" id="wf-price-month" value="${i.rental_price_month_from||''}"></div>
+    <div><label>Precio evento (€, por defecto ×2.5)</label><input type="number" id="wf-price-event" value="${i.rental_price_event_from||''}"></div>
+    <div><label>Prioridad</label>
+      <select id="wf-priority">
+        <option value="high" ${i.rental_priority==='high'?'selected':''}>Alta</option>
+        <option value="medium" ${(i.rental_priority||'medium')==='medium'?'selected':''}>Media</option>
+        <option value="low" ${i.rental_priority==='low'?'selected':''}>Baja</option>
+      </select>
+    </div>
+    <div><label>Opciones</label>
+      <div style="display:flex;gap:16px;padding-top:6px;">
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-featured" ${i.featured_rental?'checked':''}> Destacada
+        </label>
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-highlight" ${i.highlight_home?'checked':''}> En portada
+        </label>
+      </div>
+    </div>
+    <div class="full"><label>Usos recomendados</label><div>${usageChecks}</div></div>
+    <div class="admin-form-actions">
+      <button class="admin-btn" onclick="cancelForm()">Cancelar</button>
+      <button class="admin-btn admin-btn-primary" onclick="saveWork('${i.id||''}')">${item?'Guardar cambios':'Añadir obra'}</button>
+    </div>
+  </div>`;
+}
+
+function showAddForm() {
+  document.getElementById('admin-form-area').innerHTML = '<div style="margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--gold)"><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Nueva obra</div>' + getFormHTML(null) + '</div>';
+  document.getElementById('wf-id').focus();
+}
+
+function showEditForm(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  document.getElementById('admin-form-area').innerHTML = '<div style="margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--gold)"><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Editar: '+item.artist+' — '+item.title+'</div>' + getFormHTML(item) + '</div>';
+  document.getElementById('admin-form-area').scrollIntoView({behavior:'smooth'});
+}
+
+function cancelForm() {
+  document.getElementById('admin-form-area').innerHTML = '';
+}
+
+function saveWork(existingId) {
+  const id = document.getElementById('wf-id').value.trim().toLowerCase().replace(/\s+/g,'-');
+  if (!id) return alert('ID es obligatorio');
+
+  const cats = [...document.querySelectorAll('#workForm input[name="cat"]:checked')].map(cb => cb.value);
+  const usages = [...document.querySelectorAll('#workForm input[name="usage"]:checked')].map(cb => cb.value);
+  const priceMonth = parseInt(document.getElementById('wf-price-month').value) || 0;
+  const priceEvent = parseInt(document.getElementById('wf-price-event').value) || Math.round(priceMonth * 2.5);
+
+  const work = {
+    id: id,
+    title: document.getElementById('wf-title').value,
+    artist: document.getElementById('wf-artist').value,
+    year: document.getElementById('wf-year').value,
+    medium: document.getElementById('wf-medium').value,
+    dimensions: document.getElementById('wf-dimensions').value,
+    style: document.getElementById('wf-style').value,
+    edition: document.getElementById('wf-edition').value,
+    description: document.getElementById('wf-desc').value,
+    section: document.getElementById('wf-section').value,
+    style_category: cats,
+    rental_available: true,
+    rental_price_month_from: priceMonth,
+    rental_price_event_from: priceEvent,
+    rental_priority: document.getElementById('wf-priority').value,
+    rental_usage: usages,
+    featured_rental: document.getElementById('wf-featured').checked,
+    highlight_home: document.getElementById('wf-highlight').checked
+  };
+
+  const imgFile = document.getElementById('wf-img').value.trim();
+  IMG[id] = imgFile;
+
+  if (existingId) {
+    const idx = COLLECTION.findIndex(c => c.id === existingId);
+    if (idx > -1) COLLECTION[idx] = work;
+  } else {
+    if (COLLECTION.find(c => c.id === id)) return alert('Ya existe una obra con ese ID');
+    COLLECTION.push(work);
+  }
+
+  adminState[id] = adminState[id] || { visible: true, artsy: work.section === 'iconic' };
+  saveAdmin();
+  cancelForm();
+  renderAdmin();
+}
+
+function deleteWork(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  if (!confirm(`¿Eliminar "${item.title}" de ${item.artist}?`)) return;
+  const idx = COLLECTION.findIndex(c => c.id === id);
+  if (idx > -1) COLLECTION.splice(idx, 1);
+  delete adminState[id];
+  saveAdmin();
+  renderAdmin();
 }
 
 function toggleAdmin(id, prop, el) {
@@ -948,6 +1121,24 @@ function exportData() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = 'eleve-art-rental-export.json';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function exportHTML() {
+  // Get current page HTML and replace COLLECTION + IMG with current state
+  const imgBlock = 'const IMG = ' + JSON.stringify(IMG, null, 2) + ';';
+  const colBlock = 'const COLLECTION = ' + JSON.stringify(COLLECTION, null, 2) + ';';
+
+  let html = document.documentElement.outerHTML;
+  // Replace IMG block
+  html = html.replace(/const IMG = \{[\s\S]*?\};/, imgBlock);
+  // Replace COLLECTION block
+  html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
+
+  const blob = new Blob(['<!DOCTYPE html>\n<html lang="es">' + html.split('<html lang="es">')[1]], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'index.html';
   a.click(); URL.revokeObjectURL(url);
 }
 
