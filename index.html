@@ -768,7 +768,9 @@ function renderGallery() {
       if (adminState[c.id]?.visible === false) return false;
       if (!matchesFilter(c)) return false;
       if (searchTerm) {
-        const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description].join(' ').toLowerCase();
+        const catLabels = (c.style_category||[]).map(cat => ({abstracto:'abstracto',figurativo:'figurativo',surrealismo:'surrealismo',informalismo:'informalismo matérico',cubista:'cubista',pop:'pop figuración narrativa',contemporaneo:'contemporáneo',dauaset:'dau al set catalán català'}[cat]||cat)).join(' ');
+        const usageLabels = (c.rental_usage||[]).map(u => ({hotel:'hotel boutique hospitality',oficina:'oficina despacho corporate',interiorismo:'interiorismo residencial decoración',evento:'evento rodaje producción'}[u]||u)).join(' ');
+        const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description, catLabels, usageLabels].join(' ').toLowerCase();
         if (!haystack.includes(searchTerm)) return false;
       }
       return true;
