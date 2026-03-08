@@ -278,6 +278,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <a href="#coleccion">Colección</a>
     <a href="#art-rental">Art Rental</a>
     <a href="#destacadas">Destacadas</a>
+    <a href="#proyectos">Proyectos</a>
     <a href="#packs">Packs</a>
     <a href="#como-funciona">Cómo funciona</a>
     <a href="#interioristas">Interioristas</a>
@@ -317,8 +318,59 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </div>
 
+<!-- FEATURED / DESTACADAS -->
+<div class="section" id="destacadas">
+  <div class="section-header anim">
+    <div class="section-label">Selección Eleve Art Rental</div>
+    <div class="section-title">Obras Destacadas</div>
+    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
+  </div>
+  <div class="featured-grid anim" id="featuredGrid"></div>
+</div>
+
+<!-- PROYECTOS / INSTALACIONES -->
+<div class="section" id="proyectos" style="background:var(--ivory);">
+  <div class="section-header anim">
+    <div class="section-label">Espacios reales</div>
+    <div class="section-title">Proyectos / Instalaciones</div>
+    <div class="section-desc">Ejemplos de cómo las obras de la colección funcionan en espacios profesionales y de hospitality.</div>
+  </div>
+  <div class="featured-grid anim">
+    <div class="featured-card" onclick="openLightbox('barcelo')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-barcelo-hotel.jpg" alt="Hotel Boutique — Barceló" loading="lazy" onerror="this.src=IMG['barcelo']||'barcelo.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Hotel Boutique — Lobby</div>
+        <div class="featured-card-title" style="font-style:normal;">Miquel Barceló — Cabeza de cabra</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Obra instalada como pieza central en el lobby de un hotel boutique, aportando identidad artística y carácter contemporáneo.</p>
+      </div>
+    </div>
+    <div class="featured-card" onclick="openLightbox('tapies-gran-x')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-tapies-office.jpg" alt="Sala de reuniones — Tàpies" loading="lazy" onerror="this.src=IMG['tapies-gran-x']||'tapies-gran-x.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Sala de reuniones corporativa</div>
+        <div class="featured-card-title" style="font-style:normal;">Antoni Tàpies — Gran X</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Grabado instalado en una sala de reuniones donde el lenguaje matérico introduce una dimensión cultural en un entorno profesional.</p>
+      </div>
+    </div>
+    <div class="featured-card" onclick="openLightbox('picasso')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-picasso-office.jpg" alt="Despacho — Picasso" loading="lazy" onerror="this.src=IMG['picasso']||'picasso.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Despacho profesional</div>
+        <div class="featured-card-title" style="font-style:normal;">Pablo Picasso — Femme se coiffant devant la glace</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Aguafuerte instalado en un despacho privado, aportando un diálogo entre historia del arte moderno y el entorno contemporáneo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ART RENTAL INTRO -->
-<div class="section" id="art-rental" style="background:var(--ivory);">
+<div class="section" id="art-rental">
   <div class="section-header anim">
     <div class="section-label">Servicio</div>
     <div class="section-title">Eleve Art Rental</div>
@@ -328,16 +380,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <a href="#destacadas" class="btn-primary">Ver obras destacadas</a>
     <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
   </div>
-</div>
-
-<!-- FEATURED / DESTACADAS -->
-<div class="section" id="destacadas">
-  <div class="section-header anim">
-    <div class="section-label">Selección Eleve Art Rental</div>
-    <div class="section-title">Obras Destacadas</div>
-    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
-  </div>
-  <div class="featured-grid anim" id="featuredGrid"></div>
 </div>
 
 <!-- COLECCIÓN COMPLETA -->
@@ -1208,7 +1250,7 @@ window.addEventListener('scroll', () => {
 
 // Active nav on scroll
 window.addEventListener('scroll', () => {
-  const sections = ['art-rental','destacadas','coleccion','packs','como-funciona','interioristas','contacto'];
+  const sections = ['art-rental','destacadas','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
   const scrollY = window.scrollY + 150;
   let current = '';
   sections.forEach(id => {
