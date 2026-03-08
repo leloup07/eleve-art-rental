@@ -762,10 +762,9 @@ function renderGallery() {
   main.innerHTML = '';
   const isFiltered = activeFilter !== 'all' || searchTerm;
 
-  ['iconic', 'graphic', 'available'].forEach(sectionKey => {
-    const sec = SECTIONS[sectionKey];
-    const items = COLLECTION.filter(c => {
-      if (c.section !== sectionKey) return false;
+  if (isFiltered) {
+    // GRID VIEW when filtered — all matching items in one compact grid
+    const allItems = COLLECTION.filter(c => {
       if (adminState[c.id]?.visible === false) return false;
       if (!matchesFilter(c)) return false;
       if (searchTerm) {
@@ -776,73 +775,113 @@ function renderGallery() {
       }
       return true;
     });
-    if (items.length === 0) return;
-
+    if (allItems.length === 0) {
+      main.innerHTML = '<div class="section"><div class="section-header anim visible"><div class="section-desc">No se han encontrado obras con ese criterio.</div></div></div>';
+      return;
+    }
     const div = document.createElement('div');
     div.className = 'section';
-    div.id = 'section-' + sectionKey;
-
     div.innerHTML = `
-      <div class="section-header ${isFiltered ? 'anim visible' : 'anim'}">
-        <div class="section-label">${sec.label}</div>
-        <div class="section-title">${sec.title}</div>
-        <div class="section-desc">${sec.desc}</div>
+      <div class="section-header anim visible">
+        <div class="section-label">${allItems.length} obra${allItems.length>1?'s':''}</div>
+        <div class="section-title">Resultados</div>
       </div>
-      <div class="exhibits">
-        ${items.map((item, idx) => {
-          const fields = [
-            ['Año', item.year],
-            ['Técnica', item.medium],
-            ['Dimensiones', item.dimensions],
-            ['Estilo', item.style],
-            ['Edición', item.edition],
-          ].filter(([,v]) => v && v !== '—');
-
-          const globalIdx = COLLECTION.indexOf(item) + 1;
-          const numStr = String(globalIdx).padStart(2, '0');
-          const isRental = item.rental_available === true;
-
-          let badgeHTML = '';
-          if (isRental) {
-            badgeHTML = '<div class="exhibit-badge badge-rental">Disponible para alquiler</div>';
-          }
-
-          let rentalLine = '';
-          if (isRental && item.rental_price_month_from) {
-            rentalLine = `
-              <div class="exhibit-rental-line">
-                <div class="rental-price">Desde ${item.rental_price_month_from} € <small>/mes</small></div>
-                <button class="btn-sm" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
-              </div>`;
-          }
-
+      <div class="featured-grid">
+        ${allItems.map(item => {
+          const price = item.rental_price_month_from ? `Desde ${item.rental_price_month_from} €<small>/mes</small>` : '';
           return `
-          <div class="exhibit ${isFiltered ? 'anim visible' : 'anim'}" onclick="openLightbox('${item.id}')">
-            <div class="exhibit-img">
-              ${badgeHTML}
+          <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
+            <div class="featured-card-img">
               <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
             </div>
-            <div class="exhibit-text">
-              <div class="exhibit-num">${numStr}</div>
-              <div class="exhibit-artist">${item.artist}</div>
-              <div class="exhibit-title">${item.title}</div>
-              <div class="exhibit-fields">
-                ${fields.map(([label, value]) => `
-                  <div>
-                    <div class="exhibit-field-label">${label}</div>
-                    <div class="exhibit-field-value">${value}</div>
-                  </div>
-                `).join('')}
-              </div>
-              <div class="exhibit-desc">${item.description}</div>
-              ${rentalLine}
+            <div class="featured-card-body">
+              <div class="featured-card-artist">${item.artist}</div>
+              <div class="featured-card-title">${item.title}</div>
+              ${price ? `<div class="featured-card-price">${price}</div>` : ''}
+              <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
             </div>
           </div>`;
         }).join('')}
       </div>
     `;
     main.appendChild(div);
-  });
+  } else {
+    // FULL EXHIBIT VIEW when no filter
+    ['iconic', 'graphic', 'available'].forEach(sectionKey => {
+      const sec = SECTIONS[sectionKey];
+      const items = COLLECTION.filter(c => {
+        if (c.section !== sectionKey) return false;
+        if (adminState[c.id]?.visible === false) return false;
+        return true;
+      });
+      if (items.length === 0) return;
+
+      const div = document.createElement('div');
+      div.className = 'section';
+      div.id = 'section-' + sectionKey;
+
+      div.innerHTML = `
+        <div class="section-header anim">
+          <div class="section-label">${sec.label}</div>
+          <div class="section-title">${sec.title}</div>
+          <div class="section-desc">${sec.desc}</div>
+        </div>
+        <div class="exhibits">
+          ${items.map((item, idx) => {
+            const fields = [
+              ['Año', item.year],
+              ['Técnica', item.medium],
+              ['Dimensiones', item.dimensions],
+              ['Estilo', item.style],
+              ['Edición', item.edition],
+            ].filter(([,v]) => v && v !== '—');
+
+            const globalIdx = COLLECTION.indexOf(item) + 1;
+            const numStr = String(globalIdx).padStart(2, '0');
+            const isRental = item.rental_available === true;
+
+            let badgeHTML = '';
+            if (isRental) {
+              badgeHTML = '<div class="exhibit-badge badge-rental">Disponible para alquiler</div>';
+            }
+
+            let rentalLine = '';
+            if (isRental && item.rental_price_month_from) {
+              rentalLine = `
+                <div class="exhibit-rental-line">
+                  <div class="rental-price">Desde ${item.rental_price_month_from} € <small>/mes</small></div>
+                  <button class="btn-sm" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
+                </div>`;
+            }
+
+            return `
+            <div class="exhibit anim" onclick="openLightbox('${item.id}')">
+              <div class="exhibit-img">
+                ${badgeHTML}
+                <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
+              </div>
+              <div class="exhibit-text">
+                <div class="exhibit-num">${numStr}</div>
+                <div class="exhibit-artist">${item.artist}</div>
+                <div class="exhibit-title">${item.title}</div>
+                <div class="exhibit-fields">
+                  ${fields.map(([label, value]) => `
+                    <div>
+                      <div class="exhibit-field-label">${label}</div>
+                      <div class="exhibit-field-value">${value}</div>
+                    </div>
+                  `).join('')}
+                </div>
+                <div class="exhibit-desc">${item.description}</div>
+                ${rentalLine}
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      `;
+      main.appendChild(div);
+    });
+  }
 
   initAnimations();
 }
