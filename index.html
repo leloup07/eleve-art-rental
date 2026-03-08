@@ -760,6 +760,7 @@ function renderFeatured() {
 function renderGallery() {
   const main = document.getElementById('main');
   main.innerHTML = '';
+  const isFiltered = activeFilter !== 'all' || searchTerm;
 
   ['iconic', 'graphic', 'available'].forEach(sectionKey => {
     const sec = SECTIONS[sectionKey];
@@ -782,7 +783,7 @@ function renderGallery() {
     div.id = 'section-' + sectionKey;
 
     div.innerHTML = `
-      <div class="section-header anim">
+      <div class="section-header ${isFiltered ? 'anim visible' : 'anim'}">
         <div class="section-label">${sec.label}</div>
         <div class="section-title">${sec.title}</div>
         <div class="section-desc">${sec.desc}</div>
@@ -816,7 +817,7 @@ function renderGallery() {
           }
 
           return `
-          <div class="exhibit anim" onclick="openLightbox('${item.id}')">
+          <div class="exhibit ${isFiltered ? 'anim visible' : 'anim'}" onclick="openLightbox('${item.id}')">
             <div class="exhibit-img">
               ${badgeHTML}
               <img src="${IMG[item.id] || ''}" alt="${item.title}" loading="lazy">
