@@ -331,7 +331,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Arte moderno y contemporáneo en alquiler para hoteles, oficinas e interioristas</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:13px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Obras originales de la Colección Eleve disponibles para alquiler mensual y temporal.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#destacadas" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-primary" onclick="setTimeout(()=>{const pill=document.querySelector('[data-filter=\x27all\x27]');if(pill){setFilter('all',pill);}},100);">Ver obras en alquiler</a>
     <a href="#coleccion" class="btn-secondary">Explorar colección</a>
   </div>
 </div>
@@ -978,7 +978,6 @@ function renderGallery() {
   if (isFiltered) {
     // GRID VIEW when filtered — all matching items in one compact grid
     const allItems = COLLECTION.filter(c => {
-      if (adminState[c.id]?.visible === false) return false;
       if (!matchesFilter(c)) return false;
       if (searchTerm) {
         const catLabels = (c.style_category||[]).map(cat => ({abstracto:'abstracto',figurativo:'figurativo',surrealismo:'surrealismo',informalismo:'informalismo matérico',cubista:'cubista',pop:'pop figuración narrativa',contemporaneo:'contemporáneo',dauaset:'dau al set catalán català',escultura:'escultura'}[cat]||cat)).join(' ');
@@ -1024,12 +1023,11 @@ function renderGallery() {
     `;
     main.appendChild(div);
   } else {
-    // FULL EXHIBIT VIEW when no filter
+    // COMPACT GRID VIEW by section
     ['iconic', 'graphic', 'available'].forEach(sectionKey => {
       const sec = SECTIONS[sectionKey];
       const items = COLLECTION.filter(c => {
         if (c.section !== sectionKey) return false;
-        if (adminState[c.id]?.visible === false) return false;
         return true;
       });
       if (items.length === 0) return;
@@ -1044,61 +1042,24 @@ function renderGallery() {
           <h2 class="section-title">${sec.title}</h2>
           <div class="section-desc">${sec.desc}</div>
         </div>
-        <div class="exhibits">
-          ${items.map((item, idx) => {
-            const fields = [
-              ['Año', item.year],
-              ['Técnica', item.medium],
-              ['Dimensiones', item.dimensions],
-              ['Estilo', item.style],
-              ['Edición', item.edition],
-            ].filter(([,v]) => v && v !== '—');
-
-            const globalIdx = COLLECTION.indexOf(item) + 1;
-            const numStr = String(globalIdx).padStart(2, '0');
-            const isRental = item.rental_available === true;
-
-            let badgeHTML = '';
-            const status = item.rental_status || 'disponible';
-            if (status === 'alquilado') {
-              badgeHTML = '<div class="exhibit-badge badge-rented">Alquilado</div>';
-            } else if (status === 'reservado') {
-              badgeHTML = '<div class="exhibit-badge badge-reserved">Reservado</div>';
-            } else if (isRental) {
-              badgeHTML = '<div class="exhibit-badge badge-rental">Disponible para alquiler</div>';
-            }
-            const imgRentedClass = status === 'alquilado' ? ' exhibit-img-rented' : '';
-
-            let rentalLine = '';
-            if (isRental && item.rental_price_month_from) {
-              const btnText = status === 'alquilado' ? 'Consultar disponibilidad' : status === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
-              rentalLine = `
-                <div class="exhibit-rental-line">
-                  <div class="rental-price">${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} € <small>/mes</small>${status === 'alquilado' ? ' · <span style="color:var(--ash)">No disponible</span>' : ''}</div>
-                  <button class="btn-sm" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">${btnText}</button>
-                </div>`;
-            }
-
+        <div class="featured-grid">
+          ${items.map(item => {
+            const gst = item.rental_status || 'disponible';
+            const price = item.rental_price_month_from ? `${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small>` : '';
+            const gBadge = gst === 'alquilado' ? '<div class="featured-card-badge badge-rented" style="margin-bottom:6px;">Alquilado</div>' : gst === 'reservado' ? '<div class="featured-card-badge badge-reserved" style="margin-bottom:6px;">Reservado</div>' : '';
+            const gImgClass = gst === 'alquilado' ? ' featured-card-img-rented' : '';
+            const gBtnLabel = gst === 'alquilado' || gst === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
             return `
-            <div class="exhibit anim" onclick="openLightbox('${item.id}')">
-              <div class="exhibit-img${imgRentedClass}">
-                ${badgeHTML}
+            <div class="featured-card anim" onclick="openLightbox('${item.id}')">
+              <div class="featured-card-img${gImgClass}">
                 <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
               </div>
-              <div class="exhibit-text">
-                <div class="exhibit-num">${numStr}</div>
-                <div class="exhibit-artist">${item.artist}</div>
-                <div class="exhibit-title">${item.title}</div>
-                <div class="exhibit-fields">
-                  ${fields.map(([label, value]) => `
-                    <div>
-                      <div class="exhibit-field-label">${label}</div>
-                      <div class="exhibit-field-value">${value}</div>
-                    </div>
-                  `).join('')}
-                </div>
-                <div class="exhibit-desc">${item.description}</div>
-                ${rentalLine}
+              <div class="featured-card-body">
+                ${gBadge}
+                <div class="featured-card-artist">${item.artist}</div>
+                <div class="featured-card-title">${item.title}</div>
+                ${price ? `<div class="featured-card-price">${price}</div>` : ''}
+                <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">${gBtnLabel}</button>
               </div>
             </div>`;
           }).join('')}
