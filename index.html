@@ -633,6 +633,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <button class="admin-btn" onclick="exportData()">Exportar JSON</button>
       <span class="admin-count" id="adminCount"></span>
     </div>
+    <div style="margin-bottom:16px;">
+      <input type="text" id="adminSearch" placeholder="Buscar por artista, título o ID…" oninput="renderAdmin()" style="width:100%;padding:10px 16px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);outline:none;">
+    </div>
     <div id="admin-form-area"></div>
     <div id="admin-content"></div>
   </div>
@@ -1220,11 +1223,22 @@ const CAT_LABELS = {abstracto:'Abstracto',figurativo:'Figurativo',surrealismo:'S
 function renderAdmin() {
   const container = document.getElementById('admin-content');
   container.innerHTML = '';
+  const searchEl = document.getElementById('adminSearch');
+  const adminSearch = searchEl ? searchEl.value.toLowerCase().trim() : '';
   document.getElementById('adminCount').textContent = COLLECTION.length + ' obras';
 
+  let totalFiltered = 0;
   ['iconic','graphic','available'].forEach(sectionKey => {
     const sec = SECTIONS[sectionKey];
-    const items = COLLECTION.filter(c => c.section === sectionKey);
+    let items = COLLECTION.filter(c => c.section === sectionKey);
+    if (adminSearch) {
+      items = items.filter(c => {
+        const hay = [c.id, c.artist, c.title, c.medium||'', c.style||''].join(' ').toLowerCase();
+        return hay.includes(adminSearch);
+      });
+    }
+    if (items.length === 0 && adminSearch) return;
+    totalFiltered += items.length;
     let html = `<div class="admin-section"><div class="admin-section-title"><span>${sec.title} (${items.length})</span></div>`;
     items.forEach(item => {
       const cats = (item.style_category||[]).map(c => `<span class="admin-row-cat">${CAT_LABELS[c]||c}</span>`).join('');
@@ -1246,6 +1260,9 @@ function renderAdmin() {
     html += '</div>';
     container.innerHTML += html;
   });
+  if (adminSearch) {
+    document.getElementById('adminCount').textContent = totalFiltered + ' de ' + COLLECTION.length + ' obras';
+  }
 }
 
 function getFormHTML(item) {
