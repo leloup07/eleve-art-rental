@@ -361,6 +361,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <button class="filter-pill" data-filter="pop" onclick="setFilter('pop',this)">Pop / Figuración narrativa</button>
     <button class="filter-pill" data-filter="contemporaneo" onclick="setFilter('contemporaneo',this)">Contemporáneo</button>
     <button class="filter-pill" data-filter="escultura" onclick="setFilter('escultura',this)">Escultura</button>
+    <button class="filter-pill" data-filter="disponibles" onclick="setFilter('disponibles',this)">Disponibles ahora</button>
     <button class="filter-pill" data-filter="dauaset" onclick="setFilter('dauaset',this)">Dau al Set / Catalán</button>
   </div>
 </div>
@@ -895,7 +896,7 @@ const COLLECTION = [
 const SECTIONS = {
   iconic: {label:"Sección I", title:"Piezas Icónicas", desc:"Obras originales de los maestros: óleos, pinturas y grabados de autoría singular. Piezas con certificación y procedencia documentada.", bg:"var(--cream)"},
   graphic: {label:"Sección II", title:"Obra Gráfica", desc:"Grabados, aguafuertes y ediciones limitadas de artistas consagrados. Obra múltiple de alta calidad con certificados de autenticidad.", bg:"var(--ivory)"},
-  available: {label:"Sección III", title:"Obras Disponibles", desc:"Piezas accesibles de artistas reconocidos. Oportunidades de adquisición para coleccionistas.", bg:"var(--cream)"}
+  available: {label:"Sección III", title:"Obra Accesible", desc:"Piezas de artistas reconocidos a precios accesibles. Ideales para completar proyectos de interiorismo y coleccionismo.", bg:"var(--cream)"}
 };
 
 const CONTACT_EMAIL = "eleve.art@outlook.com";
@@ -942,6 +943,7 @@ function applyFilters() {
 function matchesFilter(item) {
   if (activeFilter === 'all') return true;
   if (activeFilter === 'destacadas') return item.highlight_home === true;
+  if (activeFilter === 'disponibles') return (item.rental_status || 'disponible') !== 'alquilado';
   if (item.style_category && item.style_category.includes(activeFilter)) return true;
   return false;
 }
@@ -1037,7 +1039,7 @@ function renderGallery() {
       div.id = 'section-' + sectionKey;
 
       div.innerHTML = `
-        <div class="section-header anim">
+        <div class="section-header anim visible">
           <div class="section-label">${sec.label}</div>
           <h2 class="section-title">${sec.title}</h2>
           <div class="section-desc">${sec.desc}</div>
@@ -1050,7 +1052,7 @@ function renderGallery() {
             const gImgClass = gst === 'alquilado' ? ' featured-card-img-rented' : '';
             const gBtnLabel = gst === 'alquilado' || gst === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
             return `
-            <div class="featured-card anim" onclick="openLightbox('${item.id}')">
+            <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
               <div class="featured-card-img${gImgClass}">
                 <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
               </div>
@@ -1255,7 +1257,7 @@ function getFormHTML(item) {
       <select id="wf-section">
         <option value="iconic" ${i.section==='iconic'?'selected':''}>Piezas Icónicas</option>
         <option value="graphic" ${i.section==='graphic'?'selected':''}>Obra Gráfica</option>
-        <option value="available" ${i.section==='available'?'selected':''}>Obras Disponibles</option>
+        <option value="available" ${i.section==='available'?'selected':''}>Obra Accesible</option>
       </select>
     </div>
     <div><label>Imagen (nombre archivo .jpg)</label><input id="wf-img" value="${IMG[i.id]||i.id+'.jpg'}" placeholder="artista.jpg"></div>
