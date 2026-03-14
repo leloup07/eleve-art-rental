@@ -3,1032 +3,1463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eleve Art | Alquiler de arte moderno y contemporáneo</title>
-<meta name="description" content="Colección privada de arte moderno y contemporáneo con obras disponibles para alquiler para hoteles, empresas, interioristas y proyectos culturales.">
-<meta name="keywords" content="alquiler arte Barcelona, alquiler arte Madrid, art leasing Spain, arte para hoteles, arte para oficinas, arte para interioristas, arte contemporáneo alquiler">
-<link rel="canonical" href="https://eleve-art.com">
-<meta property="og:title" content="Eleve Art | Alquiler de arte moderno y contemporáneo">
-<meta property="og:description" content="Colección privada de más de 80 obras de Picasso, Tàpies, Barceló, Miró y más. Alquiler para hoteles, empresas e interioristas en toda España.">
-<meta property="og:type" content="website">
+<title>Eleve Art Rental | Alquiler de arte para hoteles, oficinas e interioristas</title>
+<meta name="description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales.">
+<meta name="keywords" content="alquiler de arte, art rental, arte para hoteles, arte para oficinas, arte para interioristas, alquiler de cuadros para empresas, art rental Spain, Picasso, Tàpies, Miró, Barceló">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Eleve Art","description":"Colección privada de más de 80 obras de arte moderno y contemporáneo con obras disponibles para alquiler para hoteles, empresas, interioristas y proyectos culturales en toda España.","url":"https://eleve-art.com","email":"eleve.art@outlook.com","areaServed":"Spain","serviceType":"Art Rental"}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Eleve Art Rental",
+      "description": "Colección privada de arte moderno y contemporáneo con obras disponibles para alquiler",
+      "url": "https://leloup07.github.io/eleve-art-rental/",
+      "email": "eleve.art@outlook.com",
+      "areaServed": "España"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Eleve Art Rental",
+      "url": "https://leloup07.github.io/eleve-art-rental/"
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Alquiler de arte",
+      "provider": {"@type": "Organization", "name": "Eleve Art Rental"},
+      "areaServed": {"@type": "Country", "name": "España"},
+      "description": "Alquiler de obras de arte moderno y contemporáneo para hoteles, oficinas, interioristas y proyectos culturales. Obras de Picasso, Tàpies, Miró, Barceló y otros maestros.",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ]
+}
 </script>
 <style>
 :root {
-  --ivory: #FAF8F5;
-  --cream: #F5F1EB;
-  --parchment: #EDE8DF;
-  --warm-gray: #B8B0A4;
-  --mid-gray: #8A8279;
-  --charcoal: #3D3A36;
-  --deep: #2A2724;
-  --gold: #C9A96E;
-  --gold-soft: #D4BA82;
-  --gold-dark: #A88B4A;
-  --accent-green: #6B7F5E;
-  --accent-red: #9B4D4D;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Jost', 'Helvetica Neue', sans-serif;
-  --max-w: 1280px;
-  --header-h: 70px;
+  --ivory:#f7f4ef;--cream:#faf8f5;--parchment:#ede8df;--linen:#d9d0c1;
+  --ash:#9e9890;--charcoal:#2c2a27;--ink:#1a1917;--gold:#b89a5e;
+  --gold-light:#d4b87a;--rust:#8b4a2a;
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); background: var(--ivory); color: var(--charcoal); line-height: 1.6; font-weight: 300; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5;}
 
-/* ═══ HEADER ═══ */
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(250,248,245,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--parchment); transition: box-shadow .3s, background .3s; height: var(--header-h); display: flex; align-items: center; }
-.header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
-.header-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; }
-.logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); cursor: pointer; user-select: none; white-space: nowrap; }
-.logo span { color: var(--gold); }
-.nav { display: flex; gap: 1.8rem; align-items: center; }
-.nav a { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--mid-gray); transition: color .25s; font-weight: 400; }
-.nav a:hover, .nav a.active { color: var(--charcoal); }
-.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--charcoal); margin: 5px 0; transition: .3s; }
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(247,244,239,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--parchment);transition:all .3s ease;}
+.header.scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--ink);cursor:pointer;}
+.logo span{color:var(--gold);font-weight:600;}
+.nav{display:flex;gap:20px;align-items:center;}
+.nav a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--ash);transition:color .3s;font-weight:400;}
+.nav a:hover,.nav a.active{color:var(--ink);}
 
-/* ═══ HERO ═══ */
-.hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 4rem; background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%); }
-.hero-label { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; font-weight: 500; }
-.hero h1 { font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 300; line-height: 1.15; color: var(--deep); margin-bottom: 1rem; letter-spacing: 0.02em; }
-.hero-sub { font-size: 1.1rem; color: var(--mid-gray); max-width: 600px; margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300; }
-.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-.btn { display: inline-flex; align-items: center; gap: .5rem; padding: 0.85rem 2rem; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all .3s; font-weight: 400; }
-.btn-primary { background: var(--charcoal); color: var(--ivory); }
-.btn-primary:hover { background: var(--deep); }
-.btn-secondary { background: transparent; color: var(--charcoal); border: 1px solid var(--warm-gray); }
-.btn-secondary:hover { border-color: var(--charcoal); }
-.btn-gold { background: var(--gold); color: #fff; }
-.btn-gold:hover { background: var(--gold-dark); }
-.btn-sm { padding: 0.55rem 1.2rem; font-size: 0.72rem; }
+/* Mobile nav */
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px 0;transition:all .3s;}
 
-/* ═══ IMPACT NUMBERS ═══ */
-.impact { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; padding: 3.5rem 2rem; border-top: 1px solid var(--parchment); border-bottom: 1px solid var(--parchment); }
-.impact-item { text-align: center; }
-.impact-num { font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.2rem); font-weight: 300; color: var(--gold); line-height: 1; }
-.impact-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-top: 0.4rem; }
+/* HERO */
+.hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 24px 70px;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%);position:relative;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--ink);margin-bottom:16px;}
+.hero-sub{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);font-weight:300;margin-bottom:32px;}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--cream);text-decoration:none;background:var(--ink);padding:14px 32px;transition:all .3s;font-family:'Jost',sans-serif;border:1px solid var(--ink);cursor:pointer;}
+.btn-primary:hover{background:var(--charcoal);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);text-decoration:none;background:transparent;padding:14px 32px;transition:all .3s;font-family:'Jost',sans-serif;border:1px solid var(--linen);cursor:pointer;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ═══ SECTIONS ═══ */
-.section { padding: 5rem 2rem; max-width: var(--max-w); margin: 0 auto; }
-.section-alt { background: var(--cream); }
-.section-dark { background: var(--deep); color: var(--ivory); }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-label { font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 500; }
-.section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; color: var(--deep); line-height: 1.2; }
-.section-dark .section-title { color: var(--ivory); }
-.section-desc { font-size: 0.95rem; color: var(--mid-gray); max-width: 640px; margin: 1rem auto 0; line-height: 1.7; }
-.section-dark .section-desc { color: var(--warm-gray); }
+/* SEARCH & FILTERS */
+.search-filter-bar{max-width:900px;margin:0 auto;padding:24px 48px 16px;}
+.search-row{display:flex;gap:12px;align-items:center;margin-bottom:16px;}
+.search-row .search-wrap{flex:1;position:relative;}
+.search-wrap input{width:100%;padding:14px 20px 14px 48px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:15px;color:var(--ink);letter-spacing:1px;outline:none;transition:border .3s;}
+.search-wrap input::placeholder{color:var(--ash);letter-spacing:2px;font-size:13px;text-transform:uppercase;}
+.search-wrap input:focus{border-color:var(--gold);}
+.search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ash);pointer-events:none;}
+.filter-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.filter-pill{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border:1px solid var(--linen);background:transparent;color:var(--ash);cursor:pointer;transition:all .3s;font-family:'Jost',sans-serif;}
+.filter-pill:hover{border-color:var(--gold);color:var(--gold);}
+.filter-pill.active{background:var(--ink);color:var(--cream);border-color:var(--ink);}
 
-/* ═══ ART RENTAL INTRO ═══ */
-.rental-intro { text-align: center; padding: 4rem 2rem; }
-.rental-intro .rental-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 900px; margin: 2.5rem auto 0; }
-.rental-feature { padding: 1.5rem; }
-.rental-feature h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
-.rental-feature p { font-size: 0.85rem; color: var(--mid-gray); line-height: 1.6; }
+/* SECTIONS */
+.section{padding:80px 48px;position:relative;}
+.section:nth-child(even){background:var(--ivory);}
+.section-header{text-align:center;margin-bottom:60px;}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.section-desc{font-size:14px;color:var(--ash);max-width:600px;margin:0 auto;line-height:1.8;}
 
-/* ═══ FILTERS ═══ */
-.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2.5rem; padding: 0 2rem; max-width: var(--max-w); margin-left: auto; margin-right: auto; }
-.filter-btn { padding: 0.45rem 1rem; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; border: 1px solid var(--parchment); color: var(--mid-gray); cursor: pointer; transition: all .25s; }
-.filter-btn:hover { border-color: var(--warm-gray); color: var(--charcoal); }
-.filter-btn.active { background: var(--charcoal); color: var(--ivory); border-color: var(--charcoal); }
+/* EXHIBIT ROWS */
+.exhibits{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.exhibit{display:grid;grid-template-columns:1fr 1fr;min-height:420px;border-bottom:1px solid var(--parchment);cursor:pointer;transition:background .5s ease;}
+.exhibit:last-child{border-bottom:none;}
+.exhibit:hover{background:rgba(237,232,223,.35);}
+.exhibit:nth-child(even){direction:rtl;}
+.exhibit:nth-child(even) > *{direction:ltr;}
+.exhibit-img{position:relative;display:flex;align-items:center;justify-content:center;padding:40px;overflow:hidden;background:linear-gradient(135deg,rgba(237,232,223,.5) 0%,rgba(237,232,223,.2) 100%);}
+.exhibit-img img{max-width:100%;max-height:380px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(0,0,0,.1));transition:transform .8s cubic-bezier(.25,.46,.45,.94);}
+.exhibit:hover .exhibit-img img{transform:scale(1.03);}
+.exhibit-badge{position:absolute;top:24px;left:24px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;background:rgba(247,244,239,.92);backdrop-filter:blur(6px);color:var(--charcoal);border:1px solid var(--linen);}
+.badge-rented{background:rgba(180,160,140,.85);color:#fff;border-color:rgba(180,160,140,.6);}
+.badge-reserved{background:rgba(200,180,120,.85);color:#fff;border-color:rgba(200,180,120,.6);}
+.featured-card-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;text-align:center;}
+.featured-card-badge.badge-rented{background:rgba(180,160,140,.85);color:#fff;}
+.featured-card-badge.badge-reserved{background:rgba(200,180,120,.85);color:#fff;}
+.exhibit-img-rented img,.featured-card-img-rented img{opacity:.5;filter:grayscale(.3) drop-shadow(0 6px 24px rgba(0,0,0,.1));}
+.exhibit:nth-child(even) .exhibit-badge{left:auto;right:24px;}
+.badge-rental{background:rgba(184,154,94,.12);border-color:var(--gold);color:var(--gold);}
+.exhibit-text{display:flex;flex-direction:column;justify-content:center;padding:48px 56px;}
+.exhibit-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--linen);letter-spacing:2px;margin-bottom:16px;font-weight:300;}
+.exhibit-artist{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:400;}
+.exhibit-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,32px);font-weight:300;color:var(--ink);margin-bottom:20px;font-style:italic;line-height:1.3;}
+.exhibit-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px;}
+.exhibit-field-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:2px;}
+.exhibit-field-value{font-size:13px;color:var(--charcoal);line-height:1.5;}
+.exhibit-desc{font-size:13.5px;line-height:1.9;color:var(--ash);font-style:italic;border-top:1px solid var(--parchment);padding-top:20px;max-width:480px;}
+.exhibit-rental-line{margin-top:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.rental-price{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);font-weight:400;}
+.rental-price small{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:1px;color:var(--ash);font-weight:300;}
+.btn-sm{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;transition:all .3s;font-family:'Jost',sans-serif;}
+.btn-sm:hover{background:var(--gold);color:var(--cream);}
 
-/* ═══ SEARCH ═══ */
-.search-bar { max-width: 420px; margin: 0 auto 2rem; padding: 0 2rem; }
-.search-bar input { width: 100%; padding: 0.7rem 1rem; font-family: var(--font-body); font-size: 0.85rem; border: 1px solid var(--parchment); background: #fff; color: var(--charcoal); outline: none; transition: border .3s; }
-.search-bar input:focus { border-color: var(--gold); }
+/* FEATURED GRID */
+.featured-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.featured-card{background:var(--cream);border:1px solid var(--parchment);cursor:pointer;transition:all .4s ease;overflow:hidden;}
+.featured-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-4px);}
+.featured-card-img{aspect-ratio:4/3;overflow:hidden;background:var(--ivory);display:flex;align-items:center;justify-content:center;padding:24px;}
+.featured-card-img img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .6s ease;}
+.featured-card:hover .featured-card-img img{transform:scale(1.05);}
+.featured-card-body{padding:20px 24px 24px;}
+.featured-card-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.featured-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:12px;line-height:1.3;}
+.featured-card-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);margin-bottom:12px;}
+.featured-card-price small{font-family:'Jost',sans-serif;font-size:11px;color:var(--ash);font-weight:300;}
+.featured-card-btn{display:block;text-align:center;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px;border:1px solid var(--linen);color:var(--charcoal);transition:all .3s;font-family:'Jost',sans-serif;background:transparent;cursor:pointer;width:100%;}
+.featured-card-btn:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ═══ GALLERY GRID ═══ */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
-.card { background: #fff; cursor: pointer; transition: transform .3s, box-shadow .3s; overflow: hidden; position: relative; }
-.card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-.card-img { width: 100%; display: block; background: var(--parchment); }
-.card-body { padding: 1.2rem; }
-.card-artist { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--deep); }
-.card-title { font-size: 0.8rem; color: var(--mid-gray); margin-top: 0.15rem; }
-.card-price { font-size: 0.78rem; color: var(--gold-dark); margin-top: 0.5rem; font-weight: 500; }
-.card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
-.badge { display: inline-block; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.6rem; font-weight: 500; }
-.badge-rental { background: var(--accent-green); color: #fff; opacity: 0.9; }
-.badge-featured { background: var(--gold); color: #fff; }
-.badge-sale { background: var(--accent-red); color: #fff; opacity: 0.9; }
-.card-cta { display: block; text-align: center; padding: 0.6rem; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); border-top: 1px solid var(--parchment); transition: all .25s; background: transparent; }
-.card:hover .card-cta { background: var(--charcoal); color: var(--ivory); }
+/* STEPS */
+.steps{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;counter-reset:step;}
+.step{text-align:center;position:relative;}
+.step::before{counter-increment:step;content:counter(step);font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--parchment);font-weight:300;display:block;margin-bottom:12px;line-height:1;}
+.step-title{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:8px;font-weight:400;}
+.step-desc{font-size:13px;color:var(--ash);line-height:1.7;}
 
-/* ═══ FEATURED GRID ═══ */
-.featured-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.8rem; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+/* PACKS */
+.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.pack-card{border:1px solid var(--parchment);background:var(--cream);padding:36px 32px;text-align:center;transition:all .4s;}
+.pack-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.06);}
+.pack-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.pack-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--ink);margin-bottom:20px;}
+.pack-list{list-style:none;margin-bottom:24px;}
+.pack-list li{font-size:13px;color:var(--charcoal);padding:8px 0;border-bottom:1px solid var(--parchment);line-height:1.5;}
+.pack-list li:last-child{border-bottom:none;}
+.pack-list .li-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
 
-/* ═══ PACKS ═══ */
-.packs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
-.pack-card { background: #fff; padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--parchment); }
-.pack-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin-bottom: 0.5rem; color: var(--deep); }
-.pack-card .pack-desc { font-size: 0.85rem; color: var(--mid-gray); margin-bottom: 1.5rem; line-height: 1.6; }
-.pack-works { list-style: none; text-align: left; margin-bottom: 1.5rem; }
-.pack-works li { padding: 0.5rem 0; border-bottom: 1px solid var(--parchment); font-size: 0.85rem; color: var(--charcoal); }
-.pack-works li:last-child { border: none; }
-.pack-works .pw-artist { font-weight: 500; }
+/* INTERIORISTAS */
+.interior-content{max-width:700px;margin:0 auto;text-align:center;}
+.interior-features{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;text-align:left;}
+.interior-feat{padding:20px;border-left:2px solid var(--gold);}
+.interior-feat-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink);margin-bottom:6px;font-weight:400;}
+.interior-feat-desc{font-size:13px;color:var(--ash);line-height:1.7;}
 
-/* ═══ STEPS ═══ */
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 960px; margin: 0 auto; padding: 0 2rem; }
-.step { text-align: center; padding: 1.5rem; }
-.step-num { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--gold); margin-bottom: 0.75rem; }
-.step h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
-.step p { font-size: 0.85rem; color: var(--mid-gray); line-height: 1.6; }
+/* CONTACT FORM */
+.contact-form{max-width:700px;margin:0 auto;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:6px;}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border .3s;resize:vertical;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group textarea{min-height:100px;}
+.form-submit{margin-top:24px;text-align:center;}
 
-/* ═══ INTERIORISTAS ═══ */
-.int-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; max-width: 960px; margin: 2rem auto 0; }
-.int-feature { text-align: center; padding: 1.5rem; }
-.int-feature h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
-.int-feature p { font-size: 0.85rem; color: var(--mid-gray); line-height: 1.6; }
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(26,25,23,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease;}
+.lightbox.open{display:flex;opacity:1;}
+.lb-close{position:absolute;top:24px;right:32px;font-size:28px;color:var(--linen);cursor:pointer;background:none;border:none;font-family:'Cormorant Garamond',serif;z-index:201;transition:color .3s;}
+.lb-close:hover{color:var(--gold);}
+.lb-content{display:flex;max-width:1200px;width:90%;max-height:85vh;gap:48px;align-items:center;}
+.lb-img{flex:1;max-height:80vh;display:flex;align-items:center;justify-content:center;}
+.lb-img img{max-width:100%;max-height:80vh;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4);}
+.lb-details{flex:0 0 380px;color:var(--parchment);overflow-y:auto;max-height:80vh;padding-right:16px;}
+.lb-details::-webkit-scrollbar{width:3px;}
+.lb-details::-webkit-scrollbar-thumb{background:var(--ash);}
+.lb-artist{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.lb-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;margin-bottom:24px;line-height:1.3;}
+.lb-field{margin-bottom:16px;}
+.lb-field-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-bottom:4px;}
+.lb-field-value{font-size:14px;color:var(--parchment);line-height:1.6;}
+.lb-desc{margin-top:24px;padding-top:24px;border-top:1px solid rgba(158,152,144,.3);font-size:14px;line-height:1.8;color:var(--linen);font-style:italic;}
+.lb-rental-block{margin-top:24px;padding:20px;background:rgba(184,154,94,.08);border:1px solid rgba(184,154,94,.25);}
+.lb-rental-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.lb-rental-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(184,154,94,.15);}
+.lb-rental-row:last-of-type{border-bottom:none;}
+.lb-rental-label{font-size:12px;color:var(--linen);}
+.lb-rental-value{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);}
+.lb-rental-uses{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+.lb-rental-use-tag{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(184,154,94,.3);color:var(--gold-light);}
+.lb-actions{margin-top:20px;display:flex;flex-direction:column;gap:12px;}
+.lb-contact{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);text-decoration:none;border:1px solid var(--gold);padding:14px 24px;transition:all .3s;background:rgba(179,163,130,.15);text-align:center;justify-content:center;cursor:pointer;font-family:'Jost',sans-serif;}
+.lb-contact:hover{color:white;border-color:white;background:rgba(179,163,130,.3);}
+.lb-contact-secondary{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--linen);text-decoration:none;border:1px solid rgba(158,152,144,.3);padding:12px 24px;transition:all .3s;text-align:center;justify-content:center;cursor:pointer;font-family:'Jost',sans-serif;}
+.lb-contact-secondary:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ═══ PARA QUIÉN ═══ */
-.audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; max-width: 1000px; margin: 2rem auto 0; }
-.audience-card { background: #fff; padding: 2rem; border: 1px solid var(--parchment); text-align: center; transition: border-color .3s; }
-.audience-card:hover { border-color: var(--gold); }
-.audience-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; }
-.audience-card p { font-size: 0.85rem; color: var(--mid-gray); line-height: 1.6; }
+/* ADMIN PANEL */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(26,25,23,.92);display:none;backdrop-filter:blur(8px);}
+.admin-overlay.open{display:flex;justify-content:center;align-items:flex-start;padding-top:40px;overflow-y:auto;}
+.admin-panel{background:var(--cream);max-width:960px;width:95%;padding:36px 40px;position:relative;margin-bottom:80px;}
+.admin-close{position:absolute;top:16px;right:24px;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ash);font-family:'Cormorant Garamond',serif;transition:color .3s;}
+.admin-close:hover{color:var(--ink);}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:4px;}
+.admin-subtitle{font-size:12px;color:var(--ash);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.admin-tabs{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid var(--parchment);}
+.admin-tab{padding:10px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);cursor:pointer;border:none;background:none;font-family:'Jost',sans-serif;border-bottom:2px solid transparent;transition:all .3s;}
+.admin-tab:hover{color:var(--ink);}
+.admin-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.admin-section{margin-bottom:24px;}
+.admin-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--parchment);display:flex;justify-content:space-between;align-items:center;}
+.admin-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--parchment);gap:12px;}
+.admin-row-info{flex:1;min-width:0;}
+.admin-row-artist{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.admin-row-title{font-size:13px;color:var(--ink);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.admin-row-price{font-size:12px;color:var(--gold);min-width:70px;text-align:right;}
+.admin-row-cats{display:flex;gap:4px;flex-wrap:wrap;min-width:120px;}
+.admin-row-cat{font-size:8px;padding:2px 6px;background:var(--parchment);color:var(--charcoal);letter-spacing:1px;text-transform:uppercase;}
+.admin-row-btns{display:flex;gap:8px;min-width:100px;justify-content:flex-end;}
+.admin-btn{padding:6px 14px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;border:1px solid var(--linen);background:transparent;color:var(--charcoal);transition:all .3s;}
+.admin-btn:hover{border-color:var(--gold);color:var(--gold);}
+.admin-btn-danger{color:var(--rust);border-color:var(--rust);}
+.admin-btn-danger:hover{background:var(--rust);color:white;}
+.admin-btn-primary{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+.admin-btn-primary:hover{background:var(--charcoal);}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.admin-form .full{grid-column:1/-1;}
+.admin-form label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ash);margin-bottom:3px;display:block;}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;padding:10px 12px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);outline:none;transition:border .3s;}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--gold);}
+.admin-form textarea{min-height:80px;resize:vertical;}
+.admin-form-actions{grid-column:1/-1;display:flex;gap:12px;justify-content:flex-end;margin-top:8px;}
+.admin-export{padding:12px 24px;background:var(--ink);color:var(--parchment);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.admin-export:hover{background:var(--charcoal);}
+.admin-bar{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.admin-count{font-size:12px;color:var(--ash);margin-left:auto;align-self:center;}
+.admin-toggles{display:flex;gap:16px;align-items:center;}
+.admin-toggle-group{display:flex;align-items:center;gap:6px;}
+.admin-toggle-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ash);}
+.toggle{width:36px;height:20px;border-radius:10px;background:var(--linen);cursor:pointer;position:relative;transition:background .3s;}
+.toggle.on{background:var(--gold);}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:white;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.toggle.on::after{transform:translateX(16px);}
 
-/* ═══ CONTACT ═══ */
-.contact-form { max-width: 680px; margin: 0 auto; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-.form-group { display: flex; flex-direction: column; }
-.form-group.full { grid-column: 1 / -1; }
-.form-group label { font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 0.3rem; font-weight: 400; }
-.form-group input, .form-group select, .form-group textarea { padding: 0.7rem 0.85rem; font-family: var(--font-body); font-size: 0.88rem; border: 1px solid var(--parchment); background: #fff; color: var(--charcoal); outline: none; transition: border .3s; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-.form-group textarea { min-height: 100px; resize: vertical; }
-.form-submit { text-align: center; margin-top: 1.5rem; }
+/* FOOTER */
+.footer{padding:60px 48px;text-align:center;border-top:1px solid var(--parchment);background:var(--ivory);}
+.footer-email{font-size:13px;color:var(--ash);letter-spacing:2px;margin-bottom:12px;}
+.footer-email a{color:var(--gold);text-decoration:none;transition:color .3s;}
+.footer-email a:hover{color:var(--rust);}
+.footer p{font-size:12px;color:var(--ash);letter-spacing:2px;}
 
-/* ═══ CTA BANNER ═══ */
-.cta-banner { text-align: center; padding: 4rem 2rem; }
-.cta-banner h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; margin-bottom: 0.75rem; }
-.cta-banner p { font-size: 0.95rem; margin-bottom: 2rem; }
-.section-dark .cta-banner p { color: var(--warm-gray); }
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.anim{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.25,.46,.45,.94);}
+.anim.visible{opacity:1;transform:translateY(0);}
 
-/* ═══ LIGHTBOX ═══ */
-.lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.92); overflow-y: auto; }
-.lightbox-overlay.open { display: flex; justify-content: center; align-items: flex-start; padding: 2rem; }
-.lightbox { background: var(--ivory); max-width: 900px; width: 100%; margin: auto; position: relative; }
-.lightbox-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.8rem; color: var(--mid-gray); cursor: pointer; z-index: 10; line-height: 1; padding: 0.5rem; }
-.lightbox-close:hover { color: var(--charcoal); }
-.lightbox-img { width: 100%; max-height: 60vh; object-fit: contain; background: var(--parchment); display: block; }
-.lightbox-info { padding: 2rem 2.5rem; }
-.lightbox-artist { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--deep); }
-.lightbox-title { font-size: 1rem; color: var(--mid-gray); margin-top: 0.2rem; }
-.lightbox-meta { margin-top: 1rem; font-size: 0.85rem; color: var(--mid-gray); line-height: 1.8; }
-.lightbox-desc { margin-top: 1rem; font-size: 0.88rem; color: var(--charcoal); line-height: 1.7; }
-.lightbox-rental { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--parchment); }
-.lightbox-rental h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--gold-dark); margin-bottom: 0.75rem; }
-.lightbox-rental-row { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.88rem; border-bottom: 1px solid var(--parchment); }
-.lightbox-rental-row:last-of-type { border: none; }
-.lightbox-usage { margin-top: 0.75rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
-.lightbox-usage span { font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.2rem 0.6rem; background: var(--cream); color: var(--mid-gray); }
-.lightbox-sale { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--parchment); }
-.lightbox-sale h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--accent-red); margin-bottom: 0.75rem; }
-.lightbox-value { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--parchment); }
-.lightbox-value h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 400; color: var(--mid-gray); margin-bottom: 0.3rem; }
-.lightbox-ctas { margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
-
-/* ═══ FOOTER ═══ */
-.footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--parchment); }
-.footer-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal); }
-.footer-credit { font-size: 0.72rem; color: var(--warm-gray); margin-top: 0.5rem; letter-spacing: 0.04em; }
-
-/* ═══ ADMIN ═══ */
-.admin-overlay { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.85); overflow-y: auto; }
-.admin-overlay.open { display: block; }
-.admin-panel { background: #fff; max-width: 1100px; margin: 2rem auto; padding: 2rem; min-height: 80vh; }
-.admin-panel h2 { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 1rem; }
-.admin-close { position: fixed; top: 1rem; right: 1.5rem; background: var(--charcoal); color: #fff; border: none; padding: 0.5rem 1rem; cursor: pointer; font-size: 0.8rem; z-index: 3100; letter-spacing: 0.06em; text-transform: uppercase; }
-.admin-toolbar { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; }
-.admin-toolbar input { padding: 0.5rem 0.75rem; border: 1px solid #ddd; font-size: 0.85rem; flex: 1; min-width: 200px; }
-.admin-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
-.admin-table th { text-align: left; padding: 0.5rem; border-bottom: 2px solid #eee; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.68rem; color: var(--mid-gray); white-space: nowrap; }
-.admin-table td { padding: 0.45rem 0.5rem; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
-.admin-table tr:hover { background: #fafafa; }
-.admin-table .thumb { width: 40px; height: 40px; object-fit: cover; border-radius: 2px; }
-.toggle { position: relative; width: 36px; height: 20px; display: inline-block; }
-.toggle input { opacity: 0; width: 0; height: 0; }
-.toggle .slider { position: absolute; cursor: pointer; inset: 0; background: #ccc; border-radius: 20px; transition: .3s; }
-.toggle .slider::before { content: ''; position: absolute; height: 14px; width: 14px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .3s; }
-.toggle input:checked + .slider { background: var(--accent-green); }
-.toggle input:checked + .slider::before { transform: translateX(16px); }
-.toggle-sale input:checked + .slider { background: var(--accent-red); }
-.toggle-value input:checked + .slider { background: var(--gold); }
-.admin-input { padding: 0.3rem 0.4rem; border: 1px solid #ddd; font-size: 0.78rem; width: 80px; font-family: var(--font-body); }
-.admin-actions { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
-.admin-actions .btn { font-size: 0.72rem; }
-.admin-note { font-size: 0.72rem; color: var(--mid-gray); margin-top: 0.5rem; }
-
-/* ═══ ANIMATIONS ═══ */
-.anim { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
-.anim.visible { opacity: 1; transform: translateY(0); }
-
-/* ═══ RESPONSIVE ═══ */
-@media (max-width: 768px) {
-  .nav { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; background: var(--ivory); flex-direction: column; padding: 1.5rem 2rem; gap: 1rem; border-bottom: 1px solid var(--parchment); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-  .nav.open { display: flex; }
-  .hamburger { display: block; }
-  .form-row { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 1.8rem; }
-  .hero { min-height: 70vh; padding: 6rem 1.5rem 3rem; }
-  .impact { gap: 2rem; padding: 2.5rem 1.5rem; }
-  .impact-num { font-size: 1.8rem; }
-  .section { padding: 3.5rem 1.5rem; }
-  .gallery-grid, .featured-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; padding: 0 1rem; }
-  .packs-grid { grid-template-columns: 1fr; }
-  .lightbox-info { padding: 1.5rem; }
-  .filters { gap: 0.35rem; padding: 0 1rem; }
-  .filter-btn { padding: 0.35rem 0.7rem; font-size: 0.65rem; }
-  .admin-table { font-size: 0.68rem; }
-  .admin-table .thumb { width: 30px; height: 30px; }
+/* RESPONSIVE */
+@media(max-width:900px){
+  .header{padding:0 24px;}
+  .nav{position:fixed;top:72px;left:0;right:0;background:rgba(247,244,239,.98);backdrop-filter:blur(14px);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--parchment);transform:translateY(-120%);transition:transform .3s ease;z-index:99;}
+  .nav.open{transform:translateY(0);}
+  .nav-toggle{display:block;}
+  .search-filter-bar{padding:16px 24px 12px;}
+  .section{padding:60px 24px;}
+  .exhibit{grid-template-columns:1fr;min-height:auto;}
+  .exhibit:nth-child(even){direction:ltr;}
+  .exhibit-img{min-height:280px;padding:32px;}
+  .exhibit-text{padding:32px 24px;}
+  .exhibit-fields{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;gap:32px;}
+  .packs-grid{grid-template-columns:1fr;}
+  .interior-features{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .lb-content{flex-direction:column;gap:24px;}
+  .lb-details{flex:none;width:100%;}
+  .lb-img img{max-height:50vh;}
+  .hero{min-height:auto;padding:120px 24px 60px;}
+  .featured-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+}
+@media(max-width:600px){
+  .header{padding:0 16px;}
+  .hero h1{letter-spacing:3px;}
+  .admin-panel{padding:24px;}
+  .admin-toggles{flex-direction:column;gap:8px;align-items:flex-end;}
+  .exhibit-text{padding:24px 20px;}
+  .exhibit-fields{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr;}
+  .filter-pills{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:8px;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ HEADER ═══ -->
+<!-- HEADER -->
 <div class="header">
-  <div class="header-inner">
-    <div class="logo" id="logo-trigger">Eleve <span>Art</span></div>
-    <nav class="nav" id="main-nav">
-      <a href="#coleccion">Colección</a>
-      <a href="#art-rental">Art Rental</a>
-      <a href="#destacadas">Destacadas</a>
-      <a href="#packs">Packs</a>
-      <a href="#como-funciona">Cómo funciona</a>
-      <a href="#interioristas">Interioristas</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
-      <span></span><span></span><span></span>
-    </button>
+  <div class="logo" id="logo-trigger">Colección <span>Eleve</span></div>
+  <button class="nav-toggle" id="navToggle" onclick="document.querySelector('.nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav">
+    <a href="#coleccion">Colección</a>
+    <a href="#art-rental">Art Rental</a>
+    <a href="#destacadas">Destacadas</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#packs">Packs</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#interioristas">Interioristas</a>
+    <a href="#contacto">Contacto</a>
   </div>
 </div>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero" id="hero">
-  <div class="hero-label">Eleve Art · Barcelona · Madrid · España</div>
-  <h1>Alquiler de arte moderno y contemporáneo para hoteles, oficinas e interiorismo</h1>
-  <p class="hero-sub">Colección privada de más de 80 obras originales disponible para alquiler. El arte transforma un espacio — nuestra colección permite incorporar obras de artistas reconocidos sin necesidad de adquirirlas.</p>
-  <div class="hero-ctas">
-    <a href="#coleccion" class="btn btn-primary">Explorar colección</a>
-    <a href="#destacadas" class="btn btn-secondary">Ver obras en alquiler</a>
-    <a href="#contacto" class="btn btn-gold">Solicitar propuesta</a>
-  </div>
-</section>
-
-<!-- ═══ IMPACT NUMBERS ═══ -->
-<div class="impact">
-  <div class="impact-item anim"><div class="impact-num">+80</div><div class="impact-label">Obras originales</div></div>
-  <div class="impact-item anim"><div class="impact-num">15+</div><div class="impact-label">Artistas reconocidos</div></div>
-  <div class="impact-item anim"><div class="impact-num">BCN & MAD</div><div class="impact-label">Barcelona · Madrid</div></div>
-  <div class="impact-item anim"><div class="impact-num">España</div><div class="impact-label">Cobertura nacional</div></div>
-</div>
-
-<!-- ═══ ART RENTAL INTRO ═══ -->
-<section id="art-rental">
-  <div class="section rental-intro">
-    <div class="section-header">
-      <div class="section-label">Servicio</div>
-      <h2 class="section-title">Eleve Art Rental</h2>
-      <p class="section-desc">Selección de obras de Eleve Art disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</p>
-    </div>
-    <div class="rental-features">
-      <div class="rental-feature anim"><h3>Colección propia</h3><p>Más de 80 obras originales de artistas reconocidos internacionalmente.</p></div>
-      <div class="rental-feature anim"><h3>Alquiler flexible</h3><p>Mensual, temporal, por evento o por proyecto. Adaptamos la duración.</p></div>
-      <div class="rental-feature anim"><h3>Instalación</h3><p>Transporte, montaje y seguro nail-to-nail incluidos en el servicio.</p></div>
-      <div class="rental-feature anim"><h3>Asesoría curatorial</h3><p>Te ayudamos a seleccionar las obras que mejor encajan con tu espacio.</p></div>
-    </div>
-    <div style="text-align:center; margin-top:2.5rem;">
-      <a href="#destacadas" class="btn btn-primary btn-sm">Ver obras destacadas</a>
-      <a href="#contacto" class="btn btn-secondary btn-sm" style="margin-left:.5rem;">Solicitar dossier</a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PARA QUIÉN ═══ -->
-<div class="section-alt">
-  <div class="section" id="para-quien">
-    <div class="section-header">
-      <div class="section-label">Clientes</div>
-      <h2 class="section-title">¿Para quién?</h2>
-      <p class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Servicio disponible en Barcelona, Madrid y toda España.</p>
-    </div>
-    <div class="audience-grid">
-      <div class="audience-card anim"><h3>Hoteles</h3><p>Arte original para lobby, habitaciones y zonas comunes que refuerza identidad y experiencia del huésped.</p></div>
-      <div class="audience-card anim"><h3>Oficinas</h3><p>Obras que transmiten solidez y cultura corporativa en recepciones, despachos y salas de reuniones.</p></div>
-      <div class="audience-card anim"><h3>Interioristas</h3><p>Selección curada con asesoría personalizada para proyectos residenciales y comerciales premium.</p></div>
-      <div class="audience-card anim"><h3>Inmobiliaria</h3><p>Home staging de alto nivel con piezas que elevan la percepción de valor del espacio.</p></div>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <h1 style="animation:fadeUp .8s ease .4s both;">Colección Eleve</h1>
+  <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Arte moderno y contemporáneo en alquiler para hoteles, oficinas e interioristas</p>
+  <p style="animation:fadeUp .8s ease .7s both;font-size:13px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Obras originales de la Colección Eleve disponibles para alquiler mensual y temporal.</p>
+  <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
+    <a href="#coleccion" class="btn-primary" onclick="setTimeout(()=>{const pill=document.querySelector('[data-filter=\x27all\x27]');if(pill){setFilter('all',pill);}},100);">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
   </div>
 </div>
 
-<!-- ═══ FEATURED WORKS ═══ -->
-<section class="section" id="destacadas">
-  <div class="section-header">
-    <div class="section-label">Selección Eleve Art</div>
-    <h2 class="section-title">Obras destacadas</h2>
-    <p class="section-desc">Piezas prioritarias de la colección para alquiler. Artistas de máximo reconocimiento y fuerza visual.</p>
-  </div>
-  <div class="featured-grid" id="featured-grid"></div>
-</section>
+<!-- SEO BLOCK -->
+<div style="max-width:780px;margin:0 auto;padding:32px 48px 8px;text-align:center;">
+  <p style="font-size:13.5px;color:var(--ash);line-height:1.9;">Eleve Art Rental ofrece una selección de obras originales de la Colección Eleve en alquiler para hoteles, oficinas, interioristas y proyectos culturales. Un servicio curado y flexible con propuesta personalizada, instalación profesional y opciones de alquiler temporal o anual.</p>
+  <p style="font-size:12.5px;color:var(--ash);line-height:1.9;margin-top:12px;">Alquiler de arte moderno y contemporáneo en Barcelona. Obras de Picasso, Tàpies, Miró, Warhol, Barceló, Plensa, Wesselmann, Opie, Valdés, Clavé y otros maestros disponibles para alquiler mensual, eventos, rodajes y proyectos de interiorismo. Art rental en España para empresas, hoteles boutique y espacios corporativos.</p>
+</div>
 
-<!-- ═══ COLLECTION ═══ -->
-<div class="section-alt" id="coleccion">
-  <div class="section">
-    <div class="section-header">
-      <div class="section-label">Catálogo completo</div>
-      <h2 class="section-title">Colección</h2>
-      <p class="section-desc">Más de 80 obras de arte moderno y contemporáneo. Picasso, Tàpies, Barceló, Miró, Plensa, Domínguez, Valdés, Arroyo, Cuixart, Tharrats y más.</p>
+<!-- SEARCH & FILTERS -->
+<div class="search-filter-bar">
+  <div class="search-row">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar por artista, título, técnica…" oninput="applyFilters()">
     </div>
-    <div class="search-bar"><input type="text" id="search-input" placeholder="Buscar por artista, título, estilo, técnica…"></div>
-    <div class="filters" id="filters"></div>
-    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+  <div class="filter-pills" id="filterPills">
+    <button class="filter-pill active" data-filter="all" onclick="setFilter('all',this)">Todas</button>
+    <button class="filter-pill" data-filter="destacadas" onclick="setFilter('destacadas',this)">Destacadas</button>
+    <button class="filter-pill" data-filter="abstracto" onclick="setFilter('abstracto',this)">Abstracto</button>
+    <button class="filter-pill" data-filter="figurativo" onclick="setFilter('figurativo',this)">Figurativo</button>
+    <button class="filter-pill" data-filter="surrealismo" onclick="setFilter('surrealismo',this)">Surrealismo</button>
+    <button class="filter-pill" data-filter="informalismo" onclick="setFilter('informalismo',this)">Informalismo / Matérico</button>
+    <button class="filter-pill" data-filter="cubista" onclick="setFilter('cubista',this)">Cubista</button>
+    <button class="filter-pill" data-filter="pop" onclick="setFilter('pop',this)">Pop / Figuración narrativa</button>
+    <button class="filter-pill" data-filter="contemporaneo" onclick="setFilter('contemporaneo',this)">Contemporáneo</button>
+    <button class="filter-pill" data-filter="escultura" onclick="setFilter('escultura',this)">Escultura</button>
+    <button class="filter-pill" data-filter="disponibles" onclick="setFilter('disponibles',this)">Disponibles ahora</button>
+    <button class="filter-pill" data-filter="dauaset" onclick="setFilter('dauaset',this)">Dau al Set / Catalán</button>
   </div>
 </div>
 
-<!-- ═══ PACKS ═══ -->
-<section class="section" id="packs">
-  <div class="section-header">
+<!-- FEATURED / DESTACADAS -->
+<div class="section" id="destacadas">
+  <div class="section-header anim">
+    <div class="section-label">Selección Eleve Art Rental</div>
+    <h2 class="section-title">Obras Destacadas</h2>
+    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
+  </div>
+  <div class="featured-grid anim" id="featuredGrid"></div>
+</div>
+
+<!-- PROYECTOS / INSTALACIONES -->
+<div class="section" id="proyectos" style="background:var(--ivory);">
+  <div class="section-header anim">
+    <div class="section-label">Espacios reales</div>
+    <h2 class="section-title">Proyectos / Instalaciones</h2>
+    <div class="section-desc">Ejemplos de cómo las obras de la colección funcionan en espacios profesionales y de hospitality.</div>
+  </div>
+  <div class="featured-grid anim">
+    <div class="featured-card" onclick="openLightbox('barcelo')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-barcelo-hotel.jpg" alt="Hotel Boutique — Barceló" loading="lazy" onerror="this.src=IMG['barcelo']||'barcelo.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Hotel Boutique — Lobby</div>
+        <div class="featured-card-title" style="font-style:normal;">Miquel Barceló — Cabeza de cabra</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Obra instalada como pieza central en el lobby de un hotel boutique, aportando identidad artística y carácter contemporáneo.</p>
+      </div>
+    </div>
+    <div class="featured-card" onclick="openLightbox('tapies-gran-x')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-tapies-office.jpg" alt="Sala de reuniones — Tàpies" loading="lazy" onerror="this.src=IMG['tapies-gran-x']||'tapies-gran-x.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Sala de reuniones corporativa</div>
+        <div class="featured-card-title" style="font-style:normal;">Antoni Tàpies — Gran X</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Grabado instalado en una sala de reuniones donde el lenguaje matérico introduce una dimensión cultural en un entorno profesional.</p>
+      </div>
+    </div>
+    <div class="featured-card" onclick="openLightbox('picasso')" style="cursor:pointer;">
+      <div class="featured-card-img" style="aspect-ratio:16/11;">
+        <img src="project-picasso-office.jpg" alt="Despacho — Picasso" loading="lazy" onerror="this.src=IMG['picasso']||'picasso.jpg'">
+      </div>
+      <div class="featured-card-body">
+        <div class="featured-card-artist">Despacho profesional</div>
+        <div class="featured-card-title" style="font-style:normal;">Pablo Picasso — Femme se coiffant devant la glace</div>
+        <p style="font-size:13px;color:var(--ash);line-height:1.7;">Aguafuerte instalado en un despacho privado, aportando un diálogo entre historia del arte moderno y el entorno contemporáneo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ART RENTAL INTRO -->
+<div class="section" id="art-rental">
+  <div class="section-header anim">
+    <div class="section-label">Servicio</div>
+    <h2 class="section-title">Eleve Art Rental</h2>
+    <div class="section-desc">Selección de obras de la Colección Eleve disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
+  </div>
+  <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim">
+    <a href="#destacadas" class="btn-primary">Ver obras destacadas</a>
+    <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
+  </div>
+</div>
+
+<!-- COLECCIÓN COMPLETA -->
+<div id="coleccion"></div>
+<div id="main"></div>
+
+<!-- PACKS -->
+<div class="section" id="packs" style="background:var(--ivory);">
+  <div class="section-header anim">
     <div class="section-label">Propuestas curadas</div>
-    <h2 class="section-title">Packs de alquiler</h2>
-    <p class="section-desc">Selecciones predefinidas para diferentes tipos de proyecto. Precio y condiciones a consultar.</p>
+    <h2 class="section-title">Packs</h2>
+    <div class="section-desc">Combinaciones pensadas para distintos tipos de proyecto. Disponibles como propuesta inicial; también elaboramos selecciones a medida.</div>
   </div>
-  <div class="packs-grid" id="packs-grid"></div>
-</section>
-
-<!-- ═══ CÓMO FUNCIONA ═══ -->
-<div class="section-alt" id="como-funciona">
-  <div class="section">
-    <div class="section-header">
-      <div class="section-label">Proceso</div>
-      <h2 class="section-title">Cómo funciona</h2>
+  <div class="packs-grid anim">
+    <div class="pack-card">
+      <div class="pack-label">Hospitality</div>
+      <div class="pack-title">Pack Hotel Boutique</div>
+      <ul class="pack-list">
+        <li><span class="li-artist">Pablo Picasso</span><br>Femme se coiffant devant la glace</li>
+        <li><span class="li-artist">Óscar Dominguez</span><br>La Maison</li>
+        <li><span class="li-artist">Miquel Barceló</span><br>Cabeza de cabra</li>
+      </ul>
+      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
     </div>
-    <div class="steps">
-      <div class="step anim"><div class="step-num">1</div><h3>Selecciona</h3><p>Elige una o varias obras del catálogo, o cuéntanos tu proyecto y te proponemos una selección.</p></div>
-      <div class="step anim"><div class="step-num">2</div><h3>Consulta</h3><p>Solicita disponibilidad y recibe una propuesta con precios, condiciones y plazos.</p></div>
-      <div class="step anim"><div class="step-num">3</div><h3>Propuesta</h3><p>Recibe propuesta formal con condiciones, seguro nail-to-nail y logística de entrega.</p></div>
-      <div class="step anim"><div class="step-num">4</div><h3>Instalación</h3><p>Coordinamos transporte, instalación profesional y duración. También para rodajes y eventos.</p></div>
+    <div class="pack-card">
+      <div class="pack-label">Corporate</div>
+      <div class="pack-title">Pack Oficina / Despacho</div>
+      <ul class="pack-list">
+        <li><span class="li-artist">Antoni Tàpies</span><br>Gran X</li>
+        <li><span class="li-artist">Joan Miró</span><br>Barcelona III</li>
+        <li><span class="li-artist">Eduardo Arroyo</span><br>Payaso</li>
+      </ul>
+      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
     </div>
-    <p style="text-align:center; margin-top:2.5rem; font-size:0.88rem; color:var(--mid-gray);">También disponible para alquiler temporal, rodajes y proyectos especiales.</p>
+    <div class="pack-card">
+      <div class="pack-label">Identidad</div>
+      <div class="pack-title">Pack Colección Catalana</div>
+      <ul class="pack-list">
+        <li><span class="li-artist">Antoni Tàpies</span><br>Visca Catalunya</li>
+        <li><span class="li-artist">Modest Cuixart</span><br>Pintura sobre cartón</li>
+        <li><span class="li-artist">Joan-Josep Tharrats</span><br>Selección de composiciones</li>
+      </ul>
+      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
+    </div>
   </div>
 </div>
 
-<!-- ═══ INTERIORISTAS ═══ -->
-<section class="section" id="interioristas">
-  <div class="section-header">
+<!-- CÓMO FUNCIONA -->
+<div class="section" id="como-funciona">
+  <div class="section-header anim">
+    <div class="section-label">Proceso</div>
+    <h2 class="section-title">Cómo Funciona</h2>
+  </div>
+  <div class="steps anim">
+    <div class="step">
+      <div class="step-title">Selecciona</div>
+      <div class="step-desc">Elige una o varias obras del catálogo o solicita una propuesta a medida.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Consulta</div>
+      <div class="step-desc">Solicita disponibilidad y condiciones a través del formulario o por email.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Propuesta</div>
+      <div class="step-desc">Recibe propuesta detallada con precios, plazos y condiciones de alquiler.</div>
+    </div>
+    <div class="step">
+      <div class="step-title">Entrega</div>
+      <div class="step-desc">Coordinamos transporte, instalación profesional y duración del alquiler.</div>
+    </div>
+  </div>
+  <p class="anim" style="text-align:center;font-size:13px;color:var(--ash);margin-top:40px;letter-spacing:1px;">También disponible para alquiler temporal, rodajes y proyectos especiales.</p>
+</div>
+
+<!-- INTERIORISTAS -->
+<div class="section" id="interioristas" style="background:var(--ivory);">
+  <div class="section-header anim">
     <div class="section-label">Profesionales</div>
-    <h2 class="section-title">Para interioristas y arquitectos</h2>
-    <p class="section-desc">Colaboramos con profesionales del diseño y la arquitectura para integrar arte original en proyectos de alto nivel.</p>
+    <h2 class="section-title">Interioristas</h2>
+    <div class="section-desc">Trabajamos con estudios de interiorismo y arquitectura que buscan incorporar arte original de artistas reconocidos en sus proyectos.</div>
   </div>
-  <div class="int-features">
-    <div class="int-feature anim"><h3>Selección curada</h3><p>Te ayudamos a elegir obras que encajen con el concepto de tu proyecto.</p></div>
-    <div class="int-feature anim"><h3>Servicio flexible</h3><p>Alquiler adaptado a los tiempos y necesidades de cada proyecto.</p></div>
-    <div class="int-feature anim"><h3>Apoyo en proyecto</h3><p>Asesoría sobre formatos, enmarcados y ubicación de las obras.</p></div>
-    <div class="int-feature anim"><h3>Propuesta personalizada</h3><p>Dossiers específicos con selecciones a medida para tu cliente.</p></div>
-  </div>
-  <div style="text-align:center; margin-top:2.5rem;">
-    <a href="#contacto" class="btn btn-primary btn-sm">Presentar proyecto</a>
-  </div>
-</section>
-
-<!-- ═══ CTA BANNER ═══ -->
-<div class="section-dark">
-  <div class="cta-banner">
-    <h2>Solicita una propuesta curatorial para tu espacio</h2>
-    <p>Seleccionamos obras originales para hoteles, oficinas, interiorismo y proyectos premium en toda España.</p>
-    <a href="#contacto" class="btn btn-gold">Solicitar propuesta</a>
+  <div class="interior-content anim">
+    <div class="interior-features">
+      <div class="interior-feat">
+        <div class="interior-feat-title">Selección curada</div>
+        <div class="interior-feat-desc">Acceso a una colección con obras de Picasso, Tàpies, Barceló, Plensa, Miró y otros maestros.</div>
+      </div>
+      <div class="interior-feat">
+        <div class="interior-feat-title">Servicio flexible</div>
+        <div class="interior-feat-desc">Alquiler mensual, temporal o para proyectos específicos. Adaptamos plazos y condiciones.</div>
+      </div>
+      <div class="interior-feat">
+        <div class="interior-feat-title">Apoyo en proyecto</div>
+        <div class="interior-feat-desc">Asesoramiento curatorial para integrar las obras en el concepto del espacio.</div>
+      </div>
+      <div class="interior-feat">
+        <div class="interior-feat-title">Propuesta personalizada</div>
+        <div class="interior-feat-desc">Elaboramos selecciones a medida según las necesidades del proyecto y el espacio.</div>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="#contacto" class="btn-primary">Presentar proyecto</a>
+    </div>
   </div>
 </div>
 
-<!-- ═══ CONTACT ═══ -->
-<section class="section" id="contacto">
-  <div class="section-header">
+<!-- CONTACTO -->
+<div class="section" id="contacto">
+  <div class="section-header anim">
     <div class="section-label">Contacto</div>
-    <h2 class="section-title">Hablemos de tu proyecto</h2>
-    <p class="section-desc">Cuéntanos qué necesitas y te preparamos una propuesta a medida.</p>
+    <h2 class="section-title">Solicitar Información</h2>
+    <div class="section-desc">Servicio curado y gestión personalizada. Cuéntanos tu proyecto y te haremos una propuesta.</div>
   </div>
-  <form class="contact-form" id="contact-form" action="https://formspree.io/f/eleve" method="POST">
-    <div class="form-row">
-      <div class="form-group"><label>Nombre</label><input type="text" name="nombre" required></div>
-      <div class="form-group"><label>Empresa / Estudio</label><input type="text" name="empresa"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
-      <div class="form-group"><label>Teléfono</label><input type="tel" name="telefono"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Tipo de proyecto</label>
-        <select name="tipo_proyecto">
-          <option value="">Seleccionar…</option>
-          <option value="hotel">Hotel</option>
-          <option value="oficina">Oficina / Despacho</option>
-          <option value="interiorismo">Interiorismo</option>
-          <option value="inmobiliaria">Inmobiliaria / Home staging</option>
-          <option value="evento">Evento / Rodaje</option>
-          <option value="otro">Otro</option>
+  <div class="contact-form anim">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="f-name" placeholder="Nombre completo">
+      </div>
+      <div class="form-group">
+        <label>Empresa / Estudio</label>
+        <input type="text" id="f-company" placeholder="Nombre de empresa o estudio">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="f-email" placeholder="email@ejemplo.com">
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" id="f-phone" placeholder="+34 ...">
+      </div>
+      <div class="form-group">
+        <label>Tipo de proyecto</label>
+        <select id="f-type">
+          <option value="">Seleccionar...</option>
+          <option>Hotel / Hospitality</option>
+          <option>Oficina / Despacho</option>
+          <option>Interiorismo residencial</option>
+          <option>Evento / Rodaje</option>
+          <option>Staging / Promoción inmobiliaria</option>
+          <option>Proyecto cultural</option>
+          <option>Otro</option>
         </select>
       </div>
-      <div class="form-group"><label>Ciudad</label><input type="text" name="ciudad" placeholder="Barcelona, Madrid…"></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>Obra de interés</label><input type="text" name="obra_interes" id="form-obra"></div>
-      <div class="form-group"><label>Duración estimada</label>
-        <select name="duracion">
-          <option value="">Seleccionar…</option>
-          <option value="1-3 meses">1–3 meses</option>
-          <option value="3-6 meses">3–6 meses</option>
-          <option value="6-12 meses">6–12 meses</option>
-          <option value="evento">Evento puntual</option>
-          <option value="indefinido">Indefinido</option>
+      <div class="form-group">
+        <label>Duración estimada</label>
+        <select id="f-duration">
+          <option value="">Seleccionar...</option>
+          <option>1-3 meses</option>
+          <option>3-6 meses</option>
+          <option>6-12 meses</option>
+          <option>Más de 12 meses</option>
+          <option>Evento puntual</option>
         </select>
       </div>
+      <div class="form-group full">
+        <label>Obra(s) de interés</label>
+        <input type="text" id="f-artwork" placeholder="Indicar obra/s o &laquo;propuesta a medida&raquo;">
+      </div>
+      <div class="form-group full">
+        <label>Mensaje</label>
+        <textarea id="f-message" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+      </div>
     </div>
-    <div class="form-row">
-      <div class="form-group full"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto, espacio o necesidades…"></textarea></div>
-    </div>
-    <input type="hidden" name="_subject" value="Nueva solicitud Eleve Art">
     <div class="form-submit">
-      <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+      <button class="btn-primary" onclick="submitForm()">Enviar solicitud</button>
     </div>
-    <p style="text-align:center; margin-top:1rem; font-size:0.78rem; color:var(--mid-gray);">O escríbenos directamente a <a href="mailto:eleve.art@outlook.com" style="color:var(--gold-dark);">eleve.art@outlook.com</a></p>
-  </form>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="footer-logo">Eleve <span style="color:var(--gold)">Art</span></div>
-  <div class="footer-credit">Cortesía de Eleve Art</div>
-  <div style="margin-top:0.5rem; font-size:0.68rem; color:var(--warm-gray);">Barcelona · Madrid · Toda España</div>
-</footer>
-
-<!-- ═══ LIGHTBOX ═══ -->
-<div class="lightbox-overlay" id="lightbox-overlay">
-  <div class="lightbox" id="lightbox"></div>
-</div>
-
-<!-- ═══ ADMIN PANEL ═══ -->
-<div class="admin-overlay" id="admin-overlay">
-  <button class="admin-close" id="admin-close">✕ Cerrar</button>
-  <div class="admin-panel" id="admin-panel">
-    <h2>Gestión de colección</h2>
-    <div class="admin-toolbar">
-      <input type="text" id="admin-search" placeholder="Buscar obra…">
-      <button class="btn btn-sm btn-primary" id="btn-export-json">Exportar JSON</button>
-      <button class="btn btn-sm btn-secondary" id="btn-export-html">Exportar HTML</button>
-    </div>
-    <div style="overflow-x:auto;">
-      <table class="admin-table" id="admin-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Artista</th>
-            <th>Título</th>
-            <th>Visible</th>
-            <th>Alquiler</th>
-            <th>€/mes</th>
-            <th>Destacada</th>
-            <th>En venta</th>
-            <th>Precio venta</th>
-            <th>Valor est.</th>
-            <th>Mostrar valor</th>
-          </tr>
-        </thead>
-        <tbody id="admin-tbody"></tbody>
-      </table>
-    </div>
-    <div class="admin-actions">
-      <button class="btn btn-sm btn-primary" id="btn-save-admin">Guardar cambios</button>
-      <button class="btn btn-sm btn-secondary" id="btn-reset-admin">Descartar</button>
-    </div>
-    <p class="admin-note">Los cambios se guardan en localStorage del navegador. Usa "Exportar JSON" para guardar permanentemente.</p>
   </div>
 </div>
 
-<script>
-// ═══════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════
-let COLLECTION = [];
-let adminState = {};
-let activeFilter = 'all';
-let searchTerm = '';
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <div class="lb-content">
+    <div class="lb-img"><img src="" alt=""></div>
+    <div class="lb-details">
+      <div class="lb-artist"></div>
+      <div class="lb-title"></div>
+      <div class="lb-fields"></div>
+      <div class="lb-desc"></div>
+      <div class="lb-rental-block" id="lbRental" style="display:none;">
+        <div class="lb-rental-title">Disponible para alquiler</div>
+        <div id="lbRentalRows"></div>
+        <div class="lb-rental-uses" id="lbRentalUses"></div>
+      </div>
+      <div class="lb-actions">
+        <a class="lb-contact" id="lbContactMain" href="#">Solicitar alquiler de esta obra</a>
+        <a class="lb-contact-secondary" id="lbContactSecondary" href="#">Contactar por esta obra →</a>
+        <a class="lb-contact-secondary" id="lbFichaLink" href="#" style="margin-top:6px;font-size:10px;color:var(--ash);border-color:transparent;" target="_blank">Ver ficha completa ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-// Image map: id → filename
-const IMG = {};
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="admin" onclick="if(event.target===this)closeAdmin()">
+  <div class="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">&#10005;</button>
+    <div class="admin-title">Panel de Gestión</div>
+    <div class="admin-subtitle">Añadir, editar y gestionar obras</div>
+    <div class="admin-bar">
+      <button class="admin-btn admin-btn-primary" onclick="showAddForm()">+ Añadir obra</button>
+      <button class="admin-export" onclick="exportHTML()">Exportar HTML</button>
+      <button class="admin-btn" onclick="exportData()">Exportar JSON</button>
+      <span class="admin-count" id="adminCount"></span>
+    </div>
+    <div style="margin-bottom:16px;">
+      <input type="text" id="adminSearch" placeholder="Buscar por artista, título o ID…" oninput="renderAdmin()" style="width:100%;padding:10px 16px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:13px;color:var(--ink);outline:none;">
+    </div>
+    <div id="admin-form-area"></div>
+    <div id="admin-content"></div>
+  </div>
+</div>
 
-// Load admin state from localStorage
-function loadAdmin() {
-  try {
-    const s = localStorage.getItem('eleve-admin-state');
-    if (s) adminState = JSON.parse(s);
-  } catch(e) {}
-}
-function saveAdmin() {
-  try { localStorage.setItem('eleve-admin-state', JSON.stringify(adminState)); } catch(e) {}
-}
-loadAdmin();
+<!-- FOOTER -->
+<div style="max-width:1100px;margin:0 auto;padding:40px 48px;font-size:11px;line-height:2.2;color:var(--ash);">
+<p style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Obras de la colección</p>
+<a href="obras/picasso.html">Pablo Picasso — Femme se coiffant devant la glace</a> · <a href="obras/dominguez.html">Óscar Dominguez — La Maison</a> · <a href="obras/tapies-sin-titulo.html">Antoni Tàpies — Sin Título</a> · <a href="obras/tapies-ulleres.html">Antoni Tàpies — Ulleres i Pluja</a> · <a href="obras/barcelo.html">Miquel Barceló — Cabeza de cabra</a> · <a href="obras/warhol-stocking.html">Andy Warhol — A Whole Stocking Full of Good Wishes</a> · <a href="obras/warhol-gee-merrie-colour.html">Andy Warhol — Gee, Merrie Shoes (Coloured)</a> · <a href="obras/warhol-gee-merrie-bw.html">Andy Warhol — Gee Merrie Shoes (B/W)</a> · <a href="obras/warhol-tattooed-woman.html">Andy Warhol — Tattooed Woman Holding A Rose</a> · <a href="obras/warhol-flowers.html">Andy Warhol — Flowers</a> · <a href="obras/arroyo-payaso.html">Eduardo Arroyo — Payaso</a> · <a href="obras/castillo.html">Jorge Castillo — Amarillo Dorado Surrealista</a> · <a href="obras/derain-perfil.html">André Derain — Cara de perfil</a> · <a href="obras/derain-cabeza.html">André Derain — Pequeña cabeza a lápiz</a> · <a href="obras/grau-garriga.html">Josep Grau-Garriga — Textil Bobinas de hilo Verde Ocre</a> · <a href="obras/miro-barcelona-iii.html">Joan Miró — Barcelona III (Serie Barcelona)</a> · <a href="obras/miro-barcelona-vii.html">Joan Miró — Barcelona VII (Serie Barcelona)</a> · <a href="obras/tracey-emin.html">Tracey Emin — Crazy</a> · <a href="obras/tapies-visca.html">Antoni Tàpies — Visca Catalunya</a> · <a href="obras/tapies-gran-x.html">Antoni Tàpies — Gran X</a> · <a href="obras/tapies-creu.html">Antoni Tàpies — Creu i S</a> · <a href="obras/tapies-dues-mans.html">Antoni Tàpies — Dues Mans</a> · <a href="obras/tapies-esgrafiat.html">Antoni Tàpies — Esgrafiat sobre negre</a> · <a href="obras/tapies-espai.html">Antoni Tàpies — Espai amb signes</a> · <a href="obras/tapies-lletra-o.html">Antoni Tàpies — Lletra O</a> · <a href="obras/tapies-lletres.html">Antoni Tàpies — Lletres i Gris</a> · <a href="obras/plensa1.html">Jaume Plensa — Grabado 1</a> · <a href="obras/plensa2.html">Jaume Plensa — Grabado 2</a> · <a href="obras/valdes-1.html">Manolo Valdés — Grabado 1 (Serie Art of this Century)</a> · <a href="obras/valdes-10.html">Manolo Valdés — Grabado 10</a> · <a href="obras/valdes-2.html">Manolo Valdés — Grabado 2</a> · <a href="obras/valdes-3.html">Manolo Valdés — Grabado 3</a> · <a href="obras/valdes-4.html">Manolo Valdés — Grabado 4</a> · <a href="obras/valdes-5.html">Manolo Valdés — Grabado 5</a> · <a href="obras/valdes-6.html">Manolo Valdés — Grabado 6</a> · <a href="obras/valdes-7.html">Manolo Valdés — Grabado 7</a> · <a href="obras/valdes-8.html">Manolo Valdés — Grabado 8</a> · <a href="obras/valdes-9.html">Manolo Valdés — Grabado 9</a> · <a href="obras/cuixart.html">Modest Cuixart — Pintura sobre cartón en técnica mixta</a> · <a href="obras/subirachs.html">Josep Maria Subirachs — Dibujo a lápiz de carbón</a> · <a href="obras/raventos.html">Maria Assumpció Raventós — Obra gráfica</a> · <a href="obras/tharrats-18.html">Joan-Josep Tharrats — Composición nº 18</a> · <a href="obras/tharrats-19.html">Joan-Josep Tharrats — Composición nº 19</a> · <a href="obras/tharrats-20.html">Joan-Josep Tharrats — Composición nº 20</a> · <a href="obras/tharrats-21.html">Joan-Josep Tharrats — Composición nº 21</a> · <a href="obras/tharrats-22.html">Joan-Josep Tharrats — Composición nº 22</a> · <a href="obras/tharrats-25.html">Joan-Josep Tharrats — Composición nº 25</a> · <a href="obras/tharrats-26.html">Joan-Josep Tharrats — Composición nº 26</a> · <a href="obras/tharrats-27.html">Joan-Josep Tharrats — Composición nº 27</a> · <a href="obras/tharrats-28.html">Joan-Josep Tharrats — Composición nº 28</a> · <a href="obras/tharrats-29.html">Joan-Josep Tharrats — Composición nº 29</a> · <a href="obras/tharrats-30.html">Joan-Josep Tharrats — Composición nº 30</a> · <a href="obras/tharrats-32.html">Joan-Josep Tharrats — Composición nº 32</a> · <a href="obras/bultrini.html">Matteo Bultrini — Camino entre árboles</a> · <a href="obras/fernandez-capitol.html">Luis Fernández — Edificio Capitol</a> · <a href="obras/hurtuna.html">Josep Hurtuna — Composición</a> · <a href="obras/ribas.html">Lluís Ribas — Vendedor de Caramelos</a> · <a href="obras/cuixart-1.html">Modest Cuixart — Pintura sobre cartón (Figura)</a> · <a href="obras/rafols-acord-ombres.html">Albert Ràfols-Casamada — Acord d'Ombres</a> · <a href="obras/dylan-two-sisters.html">Bob Dylan — Two Sisters (Large Format)</a> · <a href="obras/dylan-train-tracks.html">Bob Dylan — Train Tracks</a> · <a href="obras/opie-ika.html">Julian Opie — Ika (2)</a> · <a href="obras/wesselmann-monica.html">Tom Wesselmann — Monica Nude With Cezanne</a> · <a href="obras/feito.html">Luis Feito — COMPLETAR</a> · <a href="obras/hartung.html">Hans Hartung — COMPLETAR</a> · <a href="obras/subirachs-las-meninas.html">Josep Maria Subirachs — Las Meninas</a> · <a href="obras/subirachs-a-david.html">Josep Maria Subirachs — A David</a> · <a href="obras/paricio.html">Pedro Paricio — COMPLETAR</a> · <a href="obras/valdes-mariana.html">Manolo Valdés — Mariana</a> · <a href="obras/atchugarry.html">Pablo Atchugarry — COMPLETAR</a> · <a href="obras/grau-garriga-2.html">Josep Grau-Garriga — Composición con figura y ventana</a> · <a href="obras/grau-garriga-3.html">Josep Grau-Garriga — Silueta con pantalla verde</a> · <a href="obras/clave.html">Antoni Clavé — Sin título</a> · <a href="obras/ribeiro-1.html">Alceu Ribeiro — Bodegón constructivista I</a> · <a href="obras/ribeiro-2.html">Alceu Ribeiro — Bodegón constructivista II</a>
+</div>
 
-// ═══════════════════════════════════════
-// FILTERS
-// ═══════════════════════════════════════
-const FILTERS = [
-  { key: 'all', label: 'Todas' },
-  { key: 'rental', label: 'Disponibles para alquiler' },
-  { key: 'featured', label: 'Destacadas' },
-  { key: 'sale', label: 'En venta' },
-  { key: 'pintura', label: 'Pintura / Obra única' },
-  { key: 'grafica', label: 'Obra gráfica' },
-  { key: 'hotel', label: 'Hotel' },
-  { key: 'corporate', label: 'Corporate' },
-  { key: 'evento', label: 'Eventos' }
+<div class="footer">
+  <div class="footer-email">Contacto: <a href="/cdn-cgi/l/email-protection#4d2821283b28632c3f390d22383921222226632e2220"><span class="__cf_email__" data-cfemail="84e1e8e1f2e1aae5f6f0c4ebf1f0e8ebebefaae7ebe9">[email&#160;protected]</span></a></div>
+  <p>Colección Eleve · Art Rental · Todos los derechos reservados</p>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const IMG = {
+  "picasso": "picasso.jpg",
+  "dominguez": "dominguez.jpg",
+  "tapies-sin-titulo": "tapies-sin-titulo.jpg",
+  "tapies-ulleres": "tapies-ulleres.jpg",
+  "barcelo": "barcelo.jpg",
+  "tapies-visca": "tapies-visca.jpg",
+  "tapies-gran-x": "tapies-gran-x.jpg",
+  "tapies-creu": "tapies-creu.jpg",
+  "tapies-dues-mans": "tapies-dues-mans.jpg",
+  "tapies-esgrafiat": "tapies-esgrafiat.jpg",
+  "tapies-espai": "tapies-espai.jpg",
+  "tapies-lletra-o": "tapies-lletra-o.jpg",
+  "tapies-lletres": "tapies-lletres.jpg",
+  "plensa1": "plensa1.jpg",
+  "plensa2": "plensa2.jpg",
+  "cuixart": "cuixart.jpg",
+  "raventos": "raventos.jpg",
+  "subirachs": "subirachs.jpg",
+  "tharrats-18": "tharrats-18.jpg",
+  "tharrats-19": "tharrats-19.jpg",
+  "tharrats-20": "tharrats-20.jpg",
+  "tharrats-21": "tharrats-21.jpg",
+  "tharrats-22": "tharrats-22.jpg",
+  "tharrats-25": "tharrats-25.jpg",
+  "tharrats-26": "tharrats-26.jpg",
+  "tharrats-27": "tharrats-27.jpg",
+  "tharrats-28": "tharrats-28.jpg",
+  "tharrats-29": "tharrats-29.jpg",
+  "tharrats-30": "tharrats-30.jpg",
+  "tharrats-32": "tharrats-32.jpg",
+  "arroyo-payaso": "arroyo-payaso.jpg",
+  "bultrini": "bultrini.jpg",
+  "castillo": "castillo.jpg",
+  "derain-perfil": "derain-perfil.jpg",
+  "derain-cabeza": "derain-cabeza.jpg",
+  "fernandez-capitol": "fernandez-capitol.jpg",
+  "grau-garriga": "grau-garriga.jpg",
+  "hurtuna": "hurtuna.jpg",
+  "ribas": "ribas.jpg",
+  "miro-barcelona-iii": "miro-barcelona-iii.jpg",
+  "miro-barcelona-vii": "miro-barcelona-vii.jpg",
+  "cuixart-1": "cuixart-1.jpg",
+  "valdes-1": "valdes-1.jpg",
+  "valdes-10": "valdes-10.jpg",
+  "valdes-2": "valdes-2.jpg",
+  "valdes-3": "valdes-3.jpg",
+  "valdes-4": "valdes-4.jpg",
+  "valdes-5": "valdes-5.jpg",
+  "valdes-6": "valdes-6.jpg",
+  "valdes-7": "valdes-7.jpg",
+  "valdes-8": "valdes-8.jpg",
+  "valdes-9": "valdes-9.jpg",
+  "tracey-emin": "tracey-emin.jpg",
+  "rafols-acord-ombres": "rafols-acord-ombres.jpg",
+  "warhol-stocking": "warhol-stocking.jpg",
+  "warhol-gee-merrie-colour": "warhol-gee-merrie-colour.jpg",
+  "warhol-gee-merrie-bw": "warhol-gee-merrie-bw.jpg",
+  "warhol-tattooed-woman": "warhol-tattooed-woman.jpg",
+  "warhol-flowers": "warhol-flowers.jpg",
+  "dylan-two-sisters": "dylan-two-sisters.jpg",
+  "dylan-train-tracks": "dylan-train-tracks.jpg",
+  "opie-ika": "opie-ika.jpg",
+  "wesselmann-monica": "wesselmann-monica.jpg",
+  "feito": "feito.jpg",
+  "hartung": "hartung.jpg",
+  "subirachs-las-meninas": "subirachs-las-meninas.jpg",
+  "subirachs-a-david": "subirachs-a-david.jpg",
+  "paricio": "paricio.jpg",
+  "valdes-mariana": "valdes-mariana.jpg",
+  "atchugarry": "atchugarry.jpg",
+  "grau-garriga-2": "grau-garriga-2.jpg",
+  "grau-garriga-3": "grau-garriga-3.jpg",
+  "clave": "clave.jpg",
+  "ribeiro-1": "ribeiro-1.jpg",
+  "ribeiro-2": "ribeiro-2.jpg",
+  "hiro-ando-pandasan-1": "hiro-ando-pandasan-1.jpg",
+  "hiro-ando-pandasan-2": "hiro-ando-pandasan-2.jpg",
+  "plensa-twins1": "plensa-twins1.jpg",
+  "plensa-untitled": "plensa-untitled.jpg",
+  "plensa-untitled1": "plensa-untitled1.jpg",
+  "plensa-untitled2": "plensa-untitled2.jpg",
+  "plensa-untitled3": "plensa-untitled3.jpg",
+  "plensa-monocrom": "plensa-monocrom.jpg",
+  "picasso-buho": "picasso-buho.jpg",
+  "picasso-corrida": "picasso-corrida.jpg"
+};
+
+const COLLECTION = [
+// === ICONIC ===
+{"id":"picasso","title":"Femme se coiffant devant la glace","artist":"Pablo Picasso","year":"1933","medium":"Aguafuerte sobre papel verjurado","dimensions":"Plancha: 31,7 × 24,7 cm · Hoja: 44,5 × 34,5 cm","style":"Suite Vollard","edition":"","description":"Perteneciente a la Suite Vollard, plancha G.208, catalogada por Georges Bloch (Tomo I, nº 141). Grabado ejecutado el 10 de abril de 1933, firmado a lápiz. Impresa por Lacourière y editada por Ambroise Vollard, París.","section":"iconic","style_category":["figurativo","contemporaneo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":450,"rental_price_event_from":1125,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo","evento"],"featured_rental":true,"highlight_home":true},
+
+{"id":"dominguez","title":"La Maison","artist":"Óscar Dominguez","year":"1953-1954","medium":"Óleo sobre lienzo","dimensions":"33 × 41 cm","style":"Cubista · Serie 'Vistas urbanas de una ciudad irreal'","edition":"","description":"Óleo perteneciente a la serie 'Vistas urbanas de una ciudad irreal'. Certificada por Ana Vázquez de Parga e inscrita en el Museo TEA.","section":"iconic","style_category":["cubista","surrealismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":650,"rental_price_event_from":1625,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo"],"featured_rental":true,"highlight_home":true},
+
+{"id":"tapies-sin-titulo","title":"Sin Título","artist":"Antoni Tàpies","year":"1976","medium":"Pintura y lápiz sobre papel","dimensions":"30,6 × 40,5 cm","style":"Abstracto","edition":"Obra única · Firmada","description":"Pintura original sobre papel, firmada en el ángulo inferior derecho. Tàpies plasma aquí su lenguaje matérico con tajos expresionistas y empastes ásperos.","section":"iconic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":550,"rental_price_event_from":1375,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo"],"featured_rental":true,"highlight_home":true},
+
+{"id":"tapies-ulleres","title":"Ulleres i Pluja","artist":"Antoni Tàpies","year":"1979","medium":"Pintura y lápiz sobre papel de estraza","dimensions":"36 × 51 cm","style":"Abstracto","edition":"Obra única · Archivo Foto T-9239","description":"Registrada en el archivo de obra completa del artista (Foto T-9239). Pintura sobre papel de estraza.","section":"iconic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":550,"rental_price_event_from":1375,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo"],"featured_rental":true,"highlight_home":true},
+
+{"id":"barcelo","title":"Cabeza de cabra","artist":"Miquel Barceló","year":"1988","medium":"Gouache sobre papel","dimensions":"50 × 66 cm","style":"Expresionismo","edition":"Firmado y fechado","description":"Obra certificada por Galerie Bruno Bischofberger AG, Zúrich (2010). En 2009 representó a España en la Bienal de Venecia.","section":"iconic","style_category":["contemporaneo","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":600,"rental_price_event_from":1500,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo","evento"],"featured_rental":true,"highlight_home":true},
+
+
+{"id": "warhol-stocking", "title": "A Whole Stocking Full of Good Wishes", "artist": "Andy Warhol", "year": "1955", "medium": "Offset lithograph", "dimensions": "56 × 43 cm", "style": "Pop Art · Época temprana", "edition": "Authenticated by The Andy Warhol Foundation for The Visual Arts", "description": "Litografía offset de la época temprana de Warhol como ilustrador comercial. Autenticada por la Andy Warhol Foundation y con sello del Estate of Andy Warhol en el verso.", "section": "iconic", "style_category": ["pop", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 550, "rental_price_event_from": 1375, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "warhol-gee-merrie-colour", "title": "Gee, Merrie Shoes (Coloured)", "artist": "Andy Warhol", "year": "c. 1956", "medium": "Litografía offset con coloreado a mano sobre papel", "dimensions": "COMPLETAR", "style": "Pop Art · Época temprana", "edition": "", "description": "Pieza de la carrera temprana de Warhol como ilustrador comercial para I. Miller. Refleja el espíritu de la moda de posguerra con un estilo lúdico y elegante.", "section": "iconic", "style_category": ["pop", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 600, "rental_price_event_from": 1500, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "warhol-gee-merrie-bw", "title": "Gee Merrie Shoes (B/W)", "artist": "Andy Warhol", "year": "c. 1956", "medium": "Monochrome lithograph", "dimensions": "22.8 × 19.4 cm", "style": "Pop Art · Época temprana", "edition": "", "description": "Versión monocroma de la serie Gee, Merrie Shoes. Litografía que evidencia la maestría de Warhol en el dibujo de línea durante su etapa como ilustrador.", "section": "iconic", "style_category": ["pop", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 450, "rental_price_event_from": 1125, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "warhol-tattooed-woman", "title": "Tattooed Woman Holding A Rose", "artist": "Andy Warhol", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Pop Art", "edition": "Not in F. & S.", "description": "Obra no catalogada en Feldman & Schellmann. Representa una mujer tatuada sosteniendo una rosa.", "section": "iconic", "style_category": ["pop", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "warhol-flowers", "title": "Flowers", "artist": "Andy Warhol", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Pop Art", "edition": "COMPLETAR", "description": "Icónica serie Flowers de Andy Warhol. Documento de valoración Halcyon Gallery.", "section": "iconic", "style_category": ["pop", "abstracto"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 650, "rental_price_event_from": 1625, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+{"id":"arroyo-payaso","title":"Payaso","artist":"Eduardo Arroyo","year":"c. 1980","medium":"Acuarela y collage sobre papel","dimensions":"38 × 25 cm","style":"Pop Art · Figuración narrativa","edition":"Pieza única · Firmada","description":"Eduardo Arroyo (Madrid, 1937-2018), figura clave de la figuración narrativa española y el pop art europeo. Certificada por Galería Guerrero.","section":"iconic","style_category":["pop","figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":350,"rental_price_event_from":875,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo","evento"],"featured_rental":true,"highlight_home":true},
+
+{"id":"castillo","title":"Amarillo Dorado Surrealista","artist":"Jorge Castillo","year":"1985","medium":"Óleo sobre lienzo","dimensions":"65 × 81 cm","style":"Abstracto","edition":"Obra original · Certificada por el artista","description":"Jorge Castillo (Pontevedra, 1933). Participó en las Bienales de São Paulo (1960) y Venecia (1964, 1976). Su obra se encuentra en el Guggenheim de Nueva York.","section":"iconic","style_category":["abstracto","surrealismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":300,"rental_price_event_from":750,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"derain-perfil","title":"Cara de perfil","artist":"André Derain","year":"1920","medium":"Dibujo a lápiz","dimensions":"14 × 13 cm","style":"Fauvismo · Dibujo clásico","edition":"Obra original · Sello Atelier André Derain","description":"André Derain (Chatou, 1880 – Garches, 1954), cofundador del fauvismo. Certificado por Galería Guerrero.","section":"iconic","style_category":["figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":250,"rental_price_event_from":625,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"derain-cabeza","title":"Pequeña cabeza a lápiz","artist":"André Derain","year":"1920","medium":"Dibujo a lápiz","dimensions":"10 × 10 cm","style":"Fauvismo · Dibujo clásico","edition":"Obra original · Sello Atelier André Derain","description":"Segundo dibujo de Derain en la colección. Certificado por Galería Guerrero.","section":"iconic","style_category":["figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":250,"rental_price_event_from":625,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"grau-garriga","title":"Textil Bobinas de hilo Verde Ocre","artist":"Josep Grau-Garriga","year":"1990","medium":"Técnica mixta sobre lienzo (collage textil)","dimensions":"100 × 81 cm","style":"Abstracto · Arte textil","edition":"Obra original","description":"Josep Grau-Garriga (Sant Cugat del Vallès, 1928 – Angers, 2011), muralista e innovador del tapiz contemporáneo. Colecciones del Metropolitan y el MACBA.","section":"iconic","style_category":["abstracto","informalismo","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":300,"rental_price_event_from":750,"rental_priority":"medium","rental_usage":["hotel","oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"miro-barcelona-iii","title":"Barcelona III (Serie Barcelona)","artist":"Joan Miró","year":"1972","medium":"Aguafuerte, aguatinta y carborundo en colores sobre papel Guarro","dimensions":"69,2 × 106 cm","style":"Surrealismo · Automatismo","edition":"Ed. 50 · Firmada a lápiz · Editada por Sala Gaspar, Barcelona","description":"Joan Miró (Barcelona, 1893 – Palma de Mallorca, 1983), uno de los principales surrealistas. Serie Barcelona (1972-73), talleres de J.J. Torralba.","section":"iconic","style_category":["surrealismo","abstracto"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":500,"rental_price_event_from":1250,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo","evento"],"featured_rental":true,"highlight_home":true},
+
+{"id":"miro-barcelona-vii","title":"Barcelona VII (Serie Barcelona)","artist":"Joan Miró","year":"1973","medium":"Aguafuerte, aguatinta y carborundo en colores sobre papel Guarro","dimensions":"69,2 × 106 cm","style":"Surrealismo · Automatismo","edition":"Ed. 50 · Firmada a lápiz · Editada por Sala Gaspar, Barcelona","description":"Segunda pieza de Miró en la colección, también de la Serie Barcelona (1972-73).","section":"iconic","style_category":["surrealismo","abstracto"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":500,"rental_price_event_from":1250,"rental_priority":"high","rental_usage":["hotel","oficina","interiorismo","evento"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tracey-emin","title":"Crazy","artist":"Tracey Emin","year":"2013","medium":"Dibujo en tinta azul sobre papel","dimensions":"30 x 24 cm","style":"Contemporáneo · YBA","edition":"Obra única · Firmada","description":"Dibujo de la artista británica Tracey Emin, figura destacada del arte contemporáneo europeo y los Young British Artists.","section":"iconic","style_category":["contemporaneo","figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":400,"rental_price_event_from":1000,"rental_priority":"medium","rental_usage":["hotel","oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+// === GRAPHIC ===
+{"id":"tapies-visca","title":"Visca Catalunya","artist":"Antoni Tàpies","year":"c. 1976","medium":"Aguafuerte","dimensions":"56 × 76 cm","style":"Abstracto","edition":"","description":"Obra gráfica de alto contenido simbólico, donde Tàpies funde su compromiso identitario catalán con su vocabulario abstracto.","section":"graphic","style_category":["abstracto","informalismo","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":220,"rental_price_event_from":550,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-gran-x","title":"Gran X","artist":"Antoni Tàpies","year":"1976","medium":"Aguafuerte","dimensions":"56 × 76 cm","style":"Abstracto","edition":"","description":"Aguafuerte que presenta el motivo recurrente de la X, símbolo central en la iconografía tapiana.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":220,"rental_price_event_from":550,"rental_priority":"high","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":true,"highlight_home":true},
+
+{"id":"tapies-creu","title":"Creu i S","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Grabado que conjuga la cruz y la letra S, marcas que transitan entre la escritura y la abstracción pura.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-dues-mans","title":"Dues Mans","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Composición gráfica en la que las 'dues mans' emergen como huellas sobre el plano.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-esgrafiat","title":"Esgrafiat sobre negre","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Esgrafiado sobre fondo negro, técnica de rascado característica de Tàpies.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-espai","title":"Espai amb signes","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Espacio configurado mediante signos: números, letras y marcas como vestigios de comunicación.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-lletra-o","title":"Lletra O","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Exploración gráfica centrada en la letra O, forma pura, vacío y circularidad.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tapies-lletres","title":"Lletres i Gris","artist":"Antoni Tàpies","year":"c. 1970s","medium":"Grabado","dimensions":"—","style":"Abstracto","edition":"","description":"Composición donde las letras se disuelven en una atmósfera gris.","section":"graphic","style_category":["abstracto","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":180,"rental_price_event_from":450,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"plensa1","title":"Grabado 1","artist":"Jaume Plensa","year":"—","medium":"Grabado","dimensions":"76 × 56 cm","style":"Contemporáneo","edition":"","description":"Grabado del escultor catalán Jaume Plensa, conocido mundialmente por sus instalaciones monumentales.","section":"graphic","style_category":["contemporaneo","abstracto"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":280,"rental_price_event_from":700,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"plensa2","title":"Grabado 2","artist":"Jaume Plensa","year":"—","medium":"Grabado","dimensions":"76 × 56 cm","style":"Contemporáneo","edition":"","description":"Segunda pieza gráfica de Plensa en la colección.","section":"graphic","style_category":["contemporaneo","abstracto"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":280,"rental_price_event_from":700,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"valdes-1","title":"Grabado 1 (Serie Art of this Century)","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej. Numerado y firmado.","description":"Grabado original de Manolo Valdés, editado por Art of this Century en 2002, París.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-10","title":"Grabado 10","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-2","title":"Grabado 2","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-3","title":"Grabado 3","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-4","title":"Grabado 4","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-5","title":"Grabado 5","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-6","title":"Grabado 6","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-7","title":"Grabado 7","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-8","title":"Grabado 8","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"valdes-9","title":"Grabado 9","artist":"Manolo Valdés","year":"2002","medium":"Punta seca sobre papel Chiné","dimensions":"51 × 40,5 cm","style":"Grabado original","edition":"Ed. 75 ej.","description":"Grabado original de Manolo Valdés.","section":"graphic","style_category":["figurativo","contemporaneo","pop"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":200,"rental_price_event_from":500,"rental_priority":"medium","rental_usage":["oficina","hotel","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+// === AVAILABLE ===
+{"id":"cuixart","title":"Pintura sobre cartón en técnica mixta","artist":"Modest Cuixart","year":"c. 1985","medium":"Técnica mixta sobre cartulina","dimensions":"38 × 31 cm","style":"Moderno · Dau al Set","edition":"","description":"Modest Cuixart, cofundador del grupo Dau al Set.","section":"available","style_category":["abstracto","dauaset","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":120,"rental_price_event_from":300,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"subirachs","title":"Dibujo a lápiz de carbón","artist":"Josep Maria Subirachs","year":"1980","medium":"Lápiz de carbón","dimensions":"17,5 × 27,5 cm","style":"Moderno","edition":"","description":"Dibujo del escultor Josep Maria Subirachs (1927-2014), conocido por la fachada de la Pasión de la Sagrada Familia.","section":"available","style_category":["figurativo","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":140,"rental_price_event_from":350,"rental_priority":"medium","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"raventos","title":"Obra gráfica","artist":"Maria Assumpció Raventós","year":"—","medium":"Grabado / Técnica mixta","dimensions":"—","style":"Informalismo","edition":"","description":"Maria Assumpció Raventós i Torras (Sant Sadurní d'Anoia, 1930), pintora y grabadora catalana.","section":"available","style_category":["abstracto","informalismo","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":95,"rental_price_event_from":238,"rental_priority":"low","rental_usage":["interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"tharrats-18","title":"Composición nº 18","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Joan-Josep Tharrats, cofundador del grupo Dau al Set. Técnica de las 'maculaturas'.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-19","title":"Composición nº 19","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-20","title":"Composición nº 20","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-21","title":"Composición nº 21","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-22","title":"Composición nº 22","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-25","title":"Composición nº 25","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-26","title":"Composición nº 26","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-27","title":"Composición nº 27","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-28","title":"Composición nº 28","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-29","title":"Composición nº 29","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-30","title":"Composición nº 30","artist":"Joan-Josep Tharrats","year":"1990","medium":"Acrílico sobre cartulina","dimensions":"54 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":90,"rental_price_event_from":225,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"tharrats-32","title":"Composición nº 32","artist":"Joan-Josep Tharrats","year":"1980","medium":"Acrílico sobre madera","dimensions":"26 × 37 cm","style":"Abstracto · Dau al Set","edition":"","description":"Composición de Tharrats sobre madera.","section":"available","style_category":["abstracto","dauaset"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":110,"rental_price_event_from":275,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id":"bultrini","title":"Camino entre árboles","artist":"Matteo Bultrini","year":"2008","medium":"Técnica mixta","dimensions":"100 × 63 cm","style":"Expresionismo abstracto","edition":"Obra original","description":"Matteo Bultrini (Roma, 1979). Certificada por Galería Guerrero.","section":"available","style_category":["abstracto","contemporaneo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":120,"rental_price_event_from":300,"rental_priority":"low","rental_usage":["interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"fernandez-capitol","title":"Edificio Capitol","artist":"Luis Fernández","year":"1976","medium":"Óleo sobre lienzo","dimensions":"130 × 100 cm","style":"Realismo urbano","edition":"Obra original","description":"Luis Fernández (1923-2012). Certificado por Galería Guerrero.","section":"available","style_category":["figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":150,"rental_price_event_from":375,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"hurtuna","title":"Composición","artist":"Josep Hurtuna","year":"1969","medium":"Óleo sobre lienzo","dimensions":"100 × 73 cm","style":"Abstracto","edition":"Obra original","description":"Josep Hurtuna Giralt (1913-1978), pintor y grabador catalán. Certificado por Galería Guerrero.","section":"available","style_category":["abstracto"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":120,"rental_price_event_from":300,"rental_priority":"low","rental_usage":["interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"ribas","title":"Vendedor de Caramelos","artist":"Lluís Ribas","year":"1980","medium":"Óleo sobre lienzo","dimensions":"100 × 100 cm","style":"Realismo · Contemporáneo","edition":"Obra original","description":"Lluís Ribas (El Masnou, Barcelona, 1949). Certificado por Galería Guerrero.","section":"available","style_category":["figurativo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":150,"rental_price_event_from":375,"rental_priority":"low","rental_usage":["interiorismo"],"featured_rental":false,"highlight_home":false},
+{"id":"cuixart-1","title":"Pintura sobre cartón (Figura)","artist":"Modest Cuixart","year":"c. 1985","medium":"Técnica mixta sobre cartulina","dimensions":"38 × 31 cm","style":"Moderno · Dau al Set","edition":"Obra original y única","description":"Modest Cuixart (Barcelona, 1925 – Palafrugell, 2007), cofundador del grupo Dau al Set. Certificado por Galería Guerrero.","section":"available","style_category":["abstracto","dauaset","informalismo"],"rental_status":"disponible","rental_available":true,"rental_price_month_from":120,"rental_price_event_from":300,"rental_priority":"low","rental_usage":["oficina","interiorismo"],"featured_rental":false,"highlight_home":false},
+
+{"id": "rafols-acord-ombres", "title": "Acord d'Ombres", "artist": "Albert Ràfols-Casamada", "year": "2002", "medium": "Aguafuerte", "dimensions": "77 × 112 cm", "style": "Abstracto", "edition": "", "description": "Aguafuerte de gran formato donde Ràfols-Casamada explora la tensión entre luz y sombra mediante una paleta contenida y gestos equilibrados.", "section": "graphic", "style_category": ["abstracto"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 180, "rental_price_event_from": 450, "rental_priority": "medium", "rental_usage": ["office", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "dylan-two-sisters", "title": "Two Sisters (Large Format)", "artist": "Bob Dylan", "year": "2008", "medium": "COMPLETAR", "dimensions": "124.5 × 94 cm (imagen) · 155 × 132 cm (enmarcada)", "style": "Figurativo", "edition": "Ed. 295", "description": "Estampa de gran formato de la serie gráfica de Bob Dylan. Edición limitada firmada.", "section": "iconic", "style_category": ["figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 220, "rental_price_event_from": 550, "rental_priority": "medium", "rental_usage": ["hotel", "oficina"], "featured_rental": true, "highlight_home": true},
+
+{"id": "dylan-train-tracks", "title": "Train Tracks", "artist": "Bob Dylan", "year": "2010", "medium": "Portfolio Limited Edition Signed", "dimensions": "69.8 × 55.9 cm", "style": "Figurativo · Paisaje", "edition": "Ed. 295", "description": "Parte del portfolio de edición limitada firmado por Bob Dylan. Paisaje de vías de tren que refleja la iconografía del viaje tan presente en su obra.", "section": "graphic", "style_category": ["figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 200, "rental_price_event_from": 500, "rental_priority": "medium", "rental_usage": ["hotel", "oficina"], "featured_rental": true, "highlight_home": true},
+
+{"id": "opie-ika", "title": "Ika (2)", "artist": "Julian Opie", "year": "2011", "medium": "Inkjet print on Epson Premium Semigloss", "dimensions": "COMPLETAR", "style": "Pop Art contemporáneo · Retrato", "edition": "Ed. 40", "description": "Retrato de la serie Portraits de Julian Opie. Impresión inkjet sobre papel semibrillo en edición limitada de 40 ejemplares.", "section": "iconic", "style_category": ["pop", "contemporaneo", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "wesselmann-monica", "title": "Monica Nude With Cezanne", "artist": "Tom Wesselmann", "year": "1992", "medium": "Screenprint", "dimensions": "145 × 103 cm", "style": "Pop Art · Desnudo", "edition": "Ed. 90", "description": "Serigrafía de gran formato donde Wesselmann fusiona el desnudo contemporáneo con una referencia directa a Cézanne.", "section": "iconic", "style_category": ["pop", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 450, "rental_price_event_from": 1125, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "feito", "title": "COMPLETAR", "artist": "Luis Feito", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Abstracto · Informalismo", "edition": "", "description": "Composición abstracta en rojos y negros característica del lenguaje informalista de Feito.", "section": "iconic", "style_category": ["abstracto", "informalismo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 250, "rental_price_event_from": 625, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "hartung", "title": "COMPLETAR", "artist": "Hans Hartung", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Abstracto · Abstracción lírica", "edition": "", "description": "Obra característica del lenguaje gestual de Hartung, con líneas convergentes sobre fondo negro y franja cromática amarilla.", "section": "iconic", "style_category": ["abstracto"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "subirachs-las-meninas", "title": "Las Meninas", "artist": "Josep Maria Subirachs", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Figurativo · Reinterpretación", "edition": "", "description": "Reinterpretación escultórica del tema velazqueño de Las Meninas, con el lenguaje geométrico y monumental propio de Subirachs.", "section": "iconic", "style_category": ["figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 300, "rental_price_event_from": 750, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "subirachs-a-david", "title": "A David", "artist": "Josep Maria Subirachs", "year": "COMPLETAR", "medium": "Escultura en bronce", "dimensions": "COMPLETAR", "style": "Escultura · Figurativo", "edition": "", "description": "Escultura en bronce que rinde homenaje a la figura de David con el característico estilo geométrico y monumental de Subirachs.", "section": "iconic", "style_category": ["figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 350, "rental_price_event_from": 875, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "paricio", "title": "COMPLETAR", "artist": "Pedro Paricio", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Abstracto · Retrato", "edition": "", "description": "Retrato abstracto de gran fuerza cromática realizado con la técnica característica de empastes densos de Paricio.", "section": "iconic", "style_category": ["abstracto", "contemporaneo", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 200, "rental_price_event_from": 500, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "valdes-mariana", "title": "Mariana", "artist": "Manolo Valdés", "year": "COMPLETAR", "medium": "COMPLETAR", "dimensions": "COMPLETAR", "style": "Figurativo · Reinterpretación", "edition": "", "description": "Reinterpretación de la iconografía clásica con el lenguaje pictórico propio de Valdés, donde las figuras emergen entre veladuras y texturas etéreas.", "section": "iconic", "style_category": ["figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": true, "highlight_home": true},
+
+{"id": "atchugarry", "title": "COMPLETAR", "artist": "Pablo Atchugarry", "year": "COMPLETAR", "medium": "Escultura en mármol", "dimensions": "COMPLETAR", "style": "Escultura · Abstracto", "edition": "", "description": "Escultura en mármol que captura el movimiento ascendente y la fluidez orgánica característicos de la obra de Atchugarry.", "section": "iconic", "style_category": ["abstracto", "contemporaneo", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "grau-garriga-2", "title": "Composición con figura y ventana", "artist": "Josep Grau-Garriga", "year": "s/f", "medium": "Técnica mixta sobre lienzo", "dimensions": "70 × 50 cm", "style": "Abstracto · Arte textil", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Composición donde la figura se funde con el espacio arquitectónico en el lenguaje matérico y textil característico de Grau-Garriga.", "section": "iconic", "style_category": ["abstracto", "informalismo", "dauaset"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 280, "rental_price_event_from": 700, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "grau-garriga-3", "title": "Silueta con pantalla verde", "artist": "Josep Grau-Garriga", "year": "s/f", "medium": "Técnica mixta sobre lienzo", "dimensions": "70 × 50 cm", "style": "Abstracto · Arte textil", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Silueta oscura contemplando una pantalla verde sobre fondo claro. Diálogo entre figura humana y abstracción en el universo pictórico de Grau-Garriga.", "section": "iconic", "style_category": ["abstracto", "informalismo", "dauaset"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 280, "rental_price_event_from": 700, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "clave", "title": "Sin título", "artist": "Antoni Clavé", "year": "1988", "medium": "Mixta sobre papel", "dimensions": "35 × 50 cm", "style": "Expresionismo · Abstracción", "edition": "Obra original · Firmada · Certificada por Galería Guerrero", "description": "Antoni Clavé i Sanmartí (Barcelona, 1913 – Saint-Tropez, 2005), pintor, grabador y escultor. Exiliado en Francia, desarrolló una obra entre la figuración expresionista y la abstracción matérica. Pabellón de España en la Bienal de Venecia 1984. Medalla de Oro de la Generalitat de Catalunya.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "ribeiro-1", "title": "Bodegón constructivista I", "artist": "Alceu Ribeiro", "year": "2000", "medium": "Óleo sobre lienzo", "dimensions": "92 × 65 cm", "style": "Constructivismo", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Alceu Ribeiro (Artigas, Uruguay, 1919 – Palma de Mallorca, 2013). Formado con Joaquín Torres-García. Representado en el Museo Nacional de Bellas Artes de Montevideo y el Museo de Arte Contemporáneo de Madrid.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 300, "rental_price_event_from": 750, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "ribeiro-2", "title": "Bodegón constructivista II", "artist": "Alceu Ribeiro", "year": "2007", "medium": "Óleo sobre lienzo", "dimensions": "81 × 65 cm", "style": "Constructivismo", "edition": "Obra original · Certificada por Galería Guerrero", "description": "Segunda pintura constructivista de Ribeiro en la colección. Composición con objetos cotidianos reinterpretados en clave geométrica heredera de Torres-García.", "section": "iconic", "style_category": ["abstracto", "figurativo", "contemporaneo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 300, "rental_price_event_from": 750, "rental_priority": "medium", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "hiro-ando-pandasan-1", "title": "Pandasan (Manga)", "artist": "Hiro Ando", "year": "", "medium": "Stainless carved, painted & varnished", "dimensions": "53 × 43 × 43 cm", "style": "Escultura · Neo-Pop", "edition": "Unique Edition", "description": "Hiro Ando (Shikoku, 1973), artista y escultor japonés contemporáneo, líder del neo-pop nipón. Sus esculturas en resina, bronce y porcelana fusionan la cultura tradicional japonesa con el manga y el arte urbano. Acabados vibrantes y personajes icónicos.", "section": "iconic", "style_category": ["contemporaneo", "pop", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 450, "rental_price_event_from": 1125, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+
+{"id": "hiro-ando-pandasan-2", "title": "Pandasan (Splash)", "artist": "Hiro Ando", "year": "", "medium": "Stainless carved, painted & varnished", "dimensions": "53 × 43 × 43 cm", "style": "Escultura · Neo-Pop", "edition": "Unique Edition", "description": "Segunda escultura Pandasan de Hiro Ando en la colección. Acabado multicolor explosivo sobre acero inoxidable tallado. Pieza única de gran impacto visual para espacios de hospitality y corporativos.", "section": "iconic", "style_category": ["contemporaneo", "pop", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 450, "rental_price_event_from": 1125, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+
+{"id": "plensa-twins1", "title": "Twins 1", "artist": "Jaume Plensa", "year": "2021", "medium": "Grabado original", "dimensions": "100 × 70 cm", "style": "Contemporáneo", "edition": "Prueba de taller · Lelong Editions, París · Impreso en Taller 46, Joan Barbará, Barcelona", "description": "Grabado original de Jaume Plensa de la serie Twins. Editado por Lelong Editions (París) e impreso en los talleres de Joan Barbará - Taller 46 (Barcelona). Certificado por Barbará Calcografía.", "section": "graphic", "style_category": ["contemporaneo", "abstracto"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 350, "rental_price_event_from": 875, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "plensa-untitled", "title": "Untitled", "artist": "Jaume Plensa", "year": "2020", "medium": "Aguafuerte sobre papel Hanji Korean hecho a mano", "dimensions": "178 × 125 cm", "style": "Contemporáneo", "edition": "Ed. 14/15 · Firmado a mano · Certificado por Polígrafa Obra Gráfica, Barcelona", "description": "Aguafuerte de gran formato sobre papel coreano Hanji hecho a mano. Edición de 15 ejemplares + 3 HC + 2 PA. Pieza excepcional por su escala monumental y la calidad del soporte artesanal.", "section": "graphic", "style_category": ["contemporaneo", "abstracto"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+
+{"id": "plensa-untitled1", "title": "Untitled-1", "artist": "Jaume Plensa", "year": "2020", "medium": "Fotograbado sobre papel Hahnemühle", "dimensions": "105 × 75 cm", "style": "Contemporáneo", "edition": "Ed. 11/15 · Firmado a mano · Certificado por Polígrafa Obra Gráfica, Barcelona", "description": "Fotograbado de la serie de figuras etéreas de Plensa. Edición de 15 ejemplares sobre papel Hahnemühle de alta calidad.", "section": "graphic", "style_category": ["contemporaneo", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "plensa-untitled2", "title": "Untitled-2", "artist": "Jaume Plensa", "year": "2020", "medium": "Fotograbado sobre papel Hahnemühle", "dimensions": "105 × 75 cm", "style": "Contemporáneo", "edition": "Ed. 11/15 · Firmado a mano · Certificado por Polígrafa Obra Gráfica, Barcelona", "description": "Segundo fotograbado de la serie. Figura vertical con el lenguaje de veladuras y trazos disueltos característico de Plensa.", "section": "graphic", "style_category": ["contemporaneo", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "plensa-untitled3", "title": "Untitled-3", "artist": "Jaume Plensa", "year": "2020", "medium": "Fotograbado sobre papel Hahnemühle", "dimensions": "105 × 75 cm", "style": "Contemporáneo", "edition": "Ed. 11/15 · Firmado a mano · Certificado por Polígrafa Obra Gráfica, Barcelona", "description": "Tercer fotograbado de la serie. Composición de figura oscura con el carácter intimista y espiritual de la obra gráfica de Plensa.", "section": "graphic", "style_category": ["contemporaneo", "figurativo"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 400, "rental_price_event_from": 1000, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo"], "featured_rental": false, "highlight_home": false},
+
+{"id": "plensa-monocrom", "title": "Monocrom VIII", "artist": "Jaume Plensa", "year": "1990", "medium": "Pulpa de papel moldeada, resina de poliéster y pigmento negro", "dimensions": "101 × 102 cm (104,5 × 105,5 cm con marco)", "style": "Escultura · Contemporáneo", "edition": "Ed. limitada numerada", "description": "Escultura en relieve de la serie Monocrom de Jaume Plensa. Pieza realizada en pulpa de papel moldeada con resina de poliéster y pigmento negro, donde una forma central emerge de una textura matérica densa y mineral.", "section": "iconic", "style_category": ["contemporaneo", "abstracto", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+
+{"id": "picasso-buho", "title": "Hibou Marron Noir (Búho)", "artist": "Pablo Picasso", "year": "", "medium": "Loza blanca con decoración grabada a cuchillo sobre esmalte blanco", "dimensions": "", "style": "Cerámica · Escultura", "edition": "Ed. 300 · Madoura Plein Feu / Edition Picasso", "description": "Cerámica original de Pablo Picasso producida en el taller Madoura de Vallauris. Pieza de la edición limitada de 300 ejemplares estampada en la base como Madoura Plein Feu / Edition Picasso. El búho fue uno de los motivos recurrentes en la producción cerámica de Picasso.", "section": "iconic", "style_category": ["figurativo", "contemporaneo", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true},
+
+{"id": "picasso-corrida", "title": "Corrida (A.R. 182)", "artist": "Pablo Picasso", "year": "1953", "medium": "Cerámica", "dimensions": "", "style": "Cerámica · Figurativo", "edition": "Múltiple · Madoura", "description": "Plato cerámico de Pablo Picasso con escena de corrida. Catalogado como A.R. 182 en el catálogo razonado de Alain Ramié. Producido en el taller Madoura de Vallauris, donde Picasso desarrolló una prolífica producción cerámica a partir de 1947.", "section": "iconic", "style_category": ["figurativo", "contemporaneo", "escultura"], "rental_status": "disponible", "rental_available": true, "rental_price_month_from": 500, "rental_price_event_from": 1250, "rental_priority": "high", "rental_usage": ["hotel", "oficina", "interiorismo", "evento"], "featured_rental": true, "highlight_home": true}
 ];
 
-function renderFilters() {
-  const el = document.getElementById('filters');
-  el.innerHTML = FILTERS.map(f =>
-    `<button class="filter-btn${activeFilter === f.key ? ' active' : ''}" data-filter="${f.key}">${f.label}</button>`
-  ).join('');
-  el.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.filter;
-      renderFilters();
-      renderGallery();
-    });
-  });
+const SECTIONS = {
+  iconic: {label:"Sección I", title:"Piezas Icónicas", desc:"Obras originales de los maestros: óleos, pinturas y grabados de autoría singular. Piezas con certificación y procedencia documentada.", bg:"var(--cream)"},
+  graphic: {label:"Sección II", title:"Obra Gráfica", desc:"Grabados, aguafuertes y ediciones limitadas de artistas consagrados. Obra múltiple de alta calidad con certificados de autenticidad.", bg:"var(--ivory)"},
+  available: {label:"Sección III", title:"Obra Accesible", desc:"Piezas de artistas reconocidos a precios accesibles. Ideales para completar proyectos de interiorismo y coleccionismo.", bg:"var(--cream)"}
+};
+
+const CONTACT_EMAIL = "eleve.art@outlook.com";
+const USAGE_LABELS = {"hotel":"Hotel boutique","oficina":"Oficina / Despacho","interiorismo":"Interiorismo residencial","evento":"Evento / Rodaje"};
+
+let adminState = {};
+try {
+  const saved = localStorage.getItem('eleve-admin');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    // Reset if collection size changed or if any saved item has visible:false that shouldn't
+    const savedCount = Object.keys(parsed).length;
+    if (savedCount !== COLLECTION.length) {
+      adminState = {};
+      localStorage.removeItem('eleve-admin');
+    } else {
+      adminState = parsed;
+    }
+  }
+} catch(e) { adminState = {}; }
+COLLECTION.forEach(item => { if (!adminState[item.id]) adminState[item.id] = { visible: true, artsy: item.section === 'iconic' }; });
+function saveAdmin() { try { localStorage.setItem('eleve-admin', JSON.stringify(adminState)); } catch(e) {} }
+
+let searchTerm = '';
+let activeFilter = 'all';
+
+function setFilter(filter, el) {
+  activeFilter = filter;
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+  // Scroll to results
+  const main = document.getElementById('main');
+  if (main && main.firstChild) {
+    main.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+function applyFilters() {
+  searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  renderGallery();
 }
 
 function matchesFilter(item) {
-  const state = adminState[item.id] || {};
-  const rental = state.rental_available !== undefined ? state.rental_available : item.rental_available;
-  const featured = state.featured_rental !== undefined ? state.featured_rental : item.featured_rental;
-  const forSale = state.for_sale !== undefined ? state.for_sale : item.for_sale;
-
-  switch(activeFilter) {
-    case 'all': return true;
-    case 'rental': return rental;
-    case 'featured': return featured;
-    case 'sale': return forSale;
-    case 'pintura': return item.type === 'pintura';
-    case 'grafica': return item.type === 'grafica';
-    case 'hotel': return (item.rental_usage || []).includes('hotel') && rental;
-    case 'corporate': return ((item.rental_usage || []).includes('oficina') || (item.rental_usage || []).includes('corporate')) && rental;
-    case 'evento': return (item.rental_usage || []).includes('evento') && rental;
-    default: return true;
-  }
+  if (activeFilter === 'all') return true;
+  if (activeFilter === 'destacadas') return item.highlight_home === true;
+  if (activeFilter === 'disponibles') return (item.rental_status || 'disponible') !== 'alquilado';
+  if (item.style_category && item.style_category.includes(activeFilter)) return true;
+  return false;
 }
 
-// ═══════════════════════════════════════
-// RENDER HELPERS
-// ═══════════════════════════════════════
-function getItemState(item) {
-  const s = adminState[item.id] || {};
-  return {
-    visible: s.visible !== undefined ? s.visible : true,
-    rental_available: s.rental_available !== undefined ? s.rental_available : item.rental_available,
-    rental_price_month_from: s.rental_price_month_from !== undefined ? s.rental_price_month_from : item.rental_price_month_from,
-    rental_price_event_from: s.rental_price_event_from !== undefined ? s.rental_price_event_from : item.rental_price_event_from,
-    featured_rental: s.featured_rental !== undefined ? s.featured_rental : item.featured_rental,
-    for_sale: s.for_sale !== undefined ? s.for_sale : item.for_sale,
-    sale_price: s.sale_price !== undefined ? s.sale_price : item.sale_price,
-    estimated_value: s.estimated_value !== undefined ? s.estimated_value : item.estimated_value,
-    show_estimated_value: s.show_estimated_value !== undefined ? s.show_estimated_value : item.show_estimated_value,
-    show_sale_option: s.show_sale_option !== undefined ? s.show_sale_option : item.show_sale_option
-  };
-}
-
-function getImgSrc(item) {
-  return item.id + '.jpg';
-}
-
-function fmt(n) {
-  if (!n && n !== 0) return '—';
-  return n.toLocaleString('es-ES') + ' €';
-}
-
-const USAGE_LABELS = {
-  hotel: 'Hotel boutique',
-  oficina: 'Oficina / Despacho',
-  interiorismo: 'Interiorismo',
-  evento: 'Evento / Rodaje',
-  corporate: 'Corporate'
-};
-
-function buildCard(item, isFeatured) {
-  const st = getItemState(item);
-  if (!st.visible) return '';
-
-  let badges = '';
-  if (st.rental_available) badges += '<span class="badge badge-rental">Disponible para alquiler</span>';
-  if (st.featured_rental) badges += '<span class="badge badge-featured">Obra destacada</span>';
-  if (st.for_sale) badges += '<span class="badge badge-sale">En venta</span>';
-
-  let priceHtml = '';
-  if (st.rental_available && st.rental_price_month_from) {
-    priceHtml = `<div class="card-price">Desde ${fmt(st.rental_price_month_from)}/mes</div>`;
-  }
-  if (st.for_sale && st.sale_price) {
-    priceHtml += `<div class="card-price" style="color:var(--accent-red)">Venta: ${fmt(st.sale_price)}</div>`;
-  }
-
-  const ctaText = st.for_sale ? 'Consultar' : (st.rental_available ? 'Solicitar alquiler' : 'Ver obra');
-
-  return `<div class="card ${isFeatured ? '' : 'anim'}" onclick="openLightbox('${item.id}')">
-    <img class="card-img" src="${getImgSrc(item)}" alt="${item.artist} — ${item.title}" loading="lazy" onerror="this.style.background='var(--parchment)'">
-    <div class="card-body">
-      <div class="card-artist">${item.artist}</div>
-      <div class="card-title">${item.title}, ${item.year}</div>
-      ${priceHtml}
-      <div class="card-badges">${badges}</div>
-    </div>
-    <div class="card-cta">${ctaText}</div>
-  </div>`;
-}
-
-// ═══════════════════════════════════════
-// FEATURED
-// ═══════════════════════════════════════
 function renderFeatured() {
-  const grid = document.getElementById('featured-grid');
-  const items = COLLECTION.filter(c => {
-    const st = getItemState(c);
-    return st.featured_rental && st.visible;
-  });
-  grid.innerHTML = items.map(i => buildCard(i, true)).join('');
-}
-
-// ═══════════════════════════════════════
-// GALLERY
-// ═══════════════════════════════════════
-function renderGallery() {
-  const grid = document.getElementById('gallery-grid');
-  const isFiltered = activeFilter !== 'all' || searchTerm;
-
-  const items = COLLECTION.filter(c => {
-    const st = getItemState(c);
-    if (!st.visible) return false;
-    if (!matchesFilter(c)) return false;
-    if (searchTerm) {
-      const catLabels = (c.style_category||[]).map(cat => ({
-        abstracto:'abstracto',figurativo:'figurativo',surrealismo:'surrealismo',
-        informalismo:'informalismo matérico',cubista:'cubista',pop:'pop figuración narrativa',
-        contemporaneo:'contemporáneo',dauaset:'dau al set catalán català'
-      }[cat]||cat)).join(' ');
-      const usageLabels = (c.rental_usage||[]).map(u => USAGE_LABELS[u]||u).join(' ');
-      const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description, catLabels, usageLabels, c.type].join(' ').toLowerCase();
-      if (!haystack.includes(searchTerm)) return false;
-    }
-    return true;
-  });
-
-  grid.innerHTML = items.length > 0
-    ? items.map(i => buildCard(i, false)).join('')
-    : '<p style="text-align:center;color:var(--mid-gray);padding:3rem;">No se encontraron obras con ese criterio.</p>';
-
-  if (isFiltered) {
-    grid.querySelectorAll('.anim').forEach(el => el.classList.add('visible'));
-  } else {
-    initAnimations();
-  }
-}
-
-// ═══════════════════════════════════════
-// PACKS
-// ═══════════════════════════════════════
-function renderPacks() {
-  const PACKS = [
-    {
-      name: 'Pack Hotel Boutique',
-      desc: 'Obras de máximo impacto para zonas comunes y habitaciones premium.',
-      ids: ['picasso', 'dominguez', 'barcelo']
-    },
-    {
-      name: 'Pack Oficina / Despacho',
-      desc: 'Selección sobria y potente para entornos corporativos de nivel.',
-      ids: ['tapies-gran-x', 'plensa-1', 'plensa-2']
-    },
-    {
-      name: 'Pack Colección Catalana',
-      desc: 'Artistas vinculados a Cataluña: identidad y vanguardia.',
-      ids: ['tapies-visca', 'cuixart-1', 'tharrats-22']
-    }
-  ];
-
-  const grid = document.getElementById('packs-grid');
-  grid.innerHTML = PACKS.map(pack => {
-    const works = pack.ids.map(id => COLLECTION.find(c => c.id === id)).filter(Boolean);
-    return `<div class="pack-card anim">
-      <h3>${pack.name}</h3>
-      <p class="pack-desc">${pack.desc}</p>
-      <ul class="pack-works">
-        ${works.map(w => `<li><span class="pw-artist">${w.artist}</span> — ${w.title}</li>`).join('')}
-      </ul>
-      <a href="#contacto" class="btn btn-sm btn-primary" onclick="document.getElementById('form-obra').value='${pack.name}'">Consultar pack</a>
+  const grid = document.getElementById('featuredGrid');
+  const featured = COLLECTION.filter(c => c.highlight_home === true);
+  grid.innerHTML = featured.map(item => {
+    const st = item.rental_status || 'disponible';
+    const imgClass = st === 'alquilado' ? ' featured-card-img-rented' : '';
+    const statusBadge = st === 'alquilado' ? '<div class="featured-card-badge badge-rented">Alquilado</div>' : st === 'reservado' ? '<div class="featured-card-badge badge-reserved">Reservado</div>' : '';
+    const btnLabel = st === 'alquilado' ? 'Consultar disponibilidad' : st === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
+    return `
+    <div class="featured-card" onclick="openLightbox('${item.id}')">
+      <div class="featured-card-img${imgClass}">
+        <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
+      </div>
+      <div class="featured-card-body">
+        ${statusBadge}
+        <div class="featured-card-artist">${item.artist}</div>
+        <div class="featured-card-title">${item.title}</div>
+        <div class="featured-card-price">${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small></div>
+        <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">${btnLabel}</button>
+      </div>
     </div>`;
   }).join('');
 }
 
-// ═══════════════════════════════════════
-// LIGHTBOX
-// ═══════════════════════════════════════
+function renderGallery() {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  const isFiltered = activeFilter !== 'all' || searchTerm;
+
+  if (isFiltered) {
+    // GRID VIEW when filtered — all matching items in one compact grid
+    const allItems = COLLECTION.filter(c => {
+      if (!matchesFilter(c)) return false;
+      if (searchTerm) {
+        const catLabels = (c.style_category||[]).map(cat => ({abstracto:'abstracto',figurativo:'figurativo',surrealismo:'surrealismo',informalismo:'informalismo matérico',cubista:'cubista',pop:'pop figuración narrativa',contemporaneo:'contemporáneo',dauaset:'dau al set catalán català',escultura:'escultura'}[cat]||cat)).join(' ');
+        const usageLabels = (c.rental_usage||[]).map(u => ({hotel:'hotel boutique hospitality',oficina:'oficina despacho corporate',interiorismo:'interiorismo residencial decoración',evento:'evento rodaje producción'}[u]||u)).join(' ');
+        const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description, catLabels, usageLabels].join(' ').toLowerCase();
+        if (!haystack.includes(searchTerm)) return false;
+      }
+      return true;
+    });
+    if (allItems.length === 0) {
+      main.innerHTML = '<div class="section"><div class="section-header anim visible"><div class="section-desc">No se han encontrado obras con ese criterio.</div></div></div>';
+      return;
+    }
+    const div = document.createElement('div');
+    div.className = 'section';
+    div.innerHTML = `
+      <div class="section-header anim visible">
+        <div class="section-label">${allItems.length} obra${allItems.length>1?'s':''}</div>
+        <h2 class="section-title">Resultados</h2>
+      </div>
+      <div class="featured-grid">
+        ${allItems.map(item => {
+          const gst = item.rental_status || 'disponible';
+          const price = item.rental_price_month_from ? `${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small>` : '';
+          const gBadge = gst === 'alquilado' ? '<div class="featured-card-badge badge-rented" style="margin-bottom:6px;">Alquilado</div>' : gst === 'reservado' ? '<div class="featured-card-badge badge-reserved" style="margin-bottom:6px;">Reservado</div>' : '';
+          const gImgClass = gst === 'alquilado' ? ' featured-card-img-rented' : '';
+          const gBtnLabel = gst === 'alquilado' || gst === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
+          return `
+          <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
+            <div class="featured-card-img${gImgClass}">
+              <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
+            </div>
+            <div class="featured-card-body">
+              ${gBadge}
+              <div class="featured-card-artist">${item.artist}</div>
+              <div class="featured-card-title">${item.title}</div>
+              ${price ? `<div class="featured-card-price">${price}</div>` : ''}
+              <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">${gBtnLabel}</button>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+    main.appendChild(div);
+  } else {
+    // COMPACT GRID VIEW by section
+    ['iconic', 'graphic', 'available'].forEach(sectionKey => {
+      const sec = SECTIONS[sectionKey];
+      const items = COLLECTION.filter(c => {
+        if (c.section !== sectionKey) return false;
+        return true;
+      });
+      if (items.length === 0) return;
+
+      const div = document.createElement('div');
+      div.className = 'section';
+      div.id = 'section-' + sectionKey;
+
+      div.innerHTML = `
+        <div class="section-header anim visible">
+          <div class="section-label">${sec.label}</div>
+          <h2 class="section-title">${sec.title}</h2>
+          <div class="section-desc">${sec.desc}</div>
+        </div>
+        <div class="featured-grid">
+          ${items.map(item => {
+            const gst = item.rental_status || 'disponible';
+            const price = item.rental_price_month_from ? `${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small>` : '';
+            const gBadge = gst === 'alquilado' ? '<div class="featured-card-badge badge-rented" style="margin-bottom:6px;">Alquilado</div>' : gst === 'reservado' ? '<div class="featured-card-badge badge-reserved" style="margin-bottom:6px;">Reservado</div>' : '';
+            const gImgClass = gst === 'alquilado' ? ' featured-card-img-rented' : '';
+            const gBtnLabel = gst === 'alquilado' || gst === 'reservado' ? 'Consultar disponibilidad' : 'Solicitar alquiler';
+            return `
+            <div class="featured-card anim visible" onclick="openLightbox('${item.id}')">
+              <div class="featured-card-img${gImgClass}">
+                <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
+              </div>
+              <div class="featured-card-body">
+                ${gBadge}
+                <div class="featured-card-artist">${item.artist}</div>
+                <div class="featured-card-title">${item.title}</div>
+                ${price ? `<div class="featured-card-price">${price}</div>` : ''}
+                <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">${gBtnLabel}</button>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      `;
+      main.appendChild(div);
+    });
+  }
+
+  initAnimations();
+}
+
 function openLightbox(id) {
   const item = COLLECTION.find(c => c.id === id);
   if (!item) return;
-  const st = getItemState(item);
-  const overlay = document.getElementById('lightbox-overlay');
-  const box = document.getElementById('lightbox');
+  const lb = document.getElementById('lightbox');
 
-  let rentalHtml = '';
-  if (st.rental_available) {
-    rentalHtml = `<div class="lightbox-rental">
-      <h4>Disponible para alquiler</h4>
-      ${st.rental_price_month_from ? `<div class="lightbox-rental-row"><span>Alquiler mensual desde</span><strong>${fmt(st.rental_price_month_from)}/mes</strong></div>` : ''}
-      ${st.rental_price_event_from ? `<div class="lightbox-rental-row"><span>Evento / rodaje desde</span><strong>${fmt(st.rental_price_event_from)}</strong></div>` : ''}
-      ${(item.rental_usage && item.rental_usage.length) ? `<div class="lightbox-usage">${item.rental_usage.map(u => `<span>${USAGE_LABELS[u]||u}</span>`).join('')}</div>` : ''}
-    </div>`;
+  lb.querySelector('.lb-img img').src = IMG[id] || '';
+  lb.querySelector('.lb-artist').textContent = item.artist;
+  lb.querySelector('.lb-title').textContent = item.title;
+
+  const fields = lb.querySelector('.lb-fields');
+  fields.innerHTML = '';
+  [['Año', item.year],['Técnica', item.medium],['Dimensiones', item.dimensions],['Estilo', item.style],['Edición', item.edition]].forEach(([label, value]) => {
+    if (value && value !== '—') {
+      fields.innerHTML += `<div class="lb-field"><div class="lb-field-label">${label}</div><div class="lb-field-value">${value}</div></div>`;
+    }
+  });
+
+  lb.querySelector('.lb-desc').textContent = item.description;
+
+  // Rental block
+  const rentalBlock = document.getElementById('lbRental');
+  const rentalRows = document.getElementById('lbRentalRows');
+  const rentalUses = document.getElementById('lbRentalUses');
+  const mainBtn = document.getElementById('lbContactMain');
+  const secBtn = document.getElementById('lbContactSecondary');
+
+  if (item.rental_available) {
+    rentalBlock.style.display = 'block';
+    const rstatus = item.rental_status || 'disponible';
+    rentalRows.innerHTML = '';
+    if (rstatus === 'alquilado') {
+      rentalRows.innerHTML += '<div class="lb-rental-row"><span class="lb-rental-label" style="color:var(--ash);font-weight:500;">Estado</span><span class="lb-rental-value" style="color:rgba(180,160,140,1);">Alquilado · No disponible</span></div>';
+    } else if (rstatus === 'reservado') {
+      rentalRows.innerHTML += '<div class="lb-rental-row"><span class="lb-rental-label" style="color:var(--ash);font-weight:500;">Estado</span><span class="lb-rental-value" style="color:rgba(200,180,120,1);">Reservado</span></div>';
+    }
+    if (item.rental_price_month_from) {
+      rentalRows.innerHTML += `<div class="lb-rental-row"><span class="lb-rental-label">Alquiler mensual${item.rental_price_desde !== false ? ' desde' : ''}</span><span class="lb-rental-value">${item.rental_price_month_from} €</span></div>`;
+    }
+    if (item.rental_price_event_from) {
+      rentalRows.innerHTML += `<div class="lb-rental-row"><span class="lb-rental-label">Evento / rodaje desde</span><span class="lb-rental-value">${item.rental_price_event_from} €</span></div>`;
+    }
+    rentalUses.innerHTML = '';
+    if (item.rental_usage) {
+      item.rental_usage.forEach(u => {
+        rentalUses.innerHTML += `<span class="lb-rental-use-tag">${USAGE_LABELS[u] || u}</span>`;
+      });
+    }
+    mainBtn.style.display = 'flex';
+    mainBtn.href = `mailto:${CONTACT_EMAIL}?subject=Solicitud de alquiler: ${item.artist} - ${item.title}&body=Estimado equipo de Eleve Art Rental,%0A%0AMe interesa alquilar la obra "${item.title}" de ${item.artist}.%0A%0ATipo de proyecto:%0ADuración estimada:%0A%0AQuedo a la espera de su propuesta.%0A%0AUn saludo.`;
+    secBtn.textContent = 'Consultar disponibilidad →';
+    secBtn.href = `mailto:${CONTACT_EMAIL}?subject=Consulta disponibilidad: ${item.artist} - ${item.title}&body=Estimado equipo,%0A%0ADesearía consultar la disponibilidad de la obra "${item.title}" de ${item.artist}.%0A%0AUn saludo.`;
+  } else {
+    rentalBlock.style.display = 'none';
+    mainBtn.style.display = 'none';
+    secBtn.textContent = 'Contactar por esta obra →';
+    secBtn.href = `mailto:${CONTACT_EMAIL}?subject=Consulta: ${item.artist} - ${item.title}&body=Estimado equipo de Colección Eleve,%0A%0AMe interesa la obra "${item.title}" de ${item.artist} (${item.year}).%0A%0AQuedo a la espera de su respuesta.%0A%0AUn saludo.`;
   }
 
-  let saleHtml = '';
-  if (st.rental_available) {
-    saleHtml = `<div class="lightbox-sale" style="border-top-color:var(--parchment);">
-      <p style="font-size:0.88rem; color:var(--mid-gray); font-style:italic; margin:0;">Opción de compra disponible tras alquiler.</p>
-    </div>`;
-  }
-  if (st.for_sale && st.sale_price) {
-    saleHtml = `<div class="lightbox-sale">
-      <h4>Disponible para compra</h4>
-      <div class="lightbox-rental-row"><span>Precio de venta</span><strong>${fmt(st.sale_price)}</strong></div>
-      <p style="font-size:0.82rem; color:var(--mid-gray); font-style:italic; margin-top:0.5rem;">También disponible en alquiler con opción a compra.</p>
-    </div>`;
-  }
+  // Ficha individual link
+  const fichaLink = document.getElementById('lbFichaLink');
+  if (fichaLink) fichaLink.href = `obras/${id}.html`;
 
-  let valueHtml = '';
-  if (st.show_estimated_value && st.estimated_value) {
-    valueHtml = `<div class="lightbox-value">
-      <h4>Valor estimado</h4>
-      <div style="font-size:1.1rem; font-weight:500; color:var(--charcoal);">${fmt(st.estimated_value)}</div>
-    </div>`;
-  }
-
-  let ctaPrimary = '';
-  let ctaSecondary = '';
-  if (st.rental_available) {
-    ctaPrimary = `<a href="#contacto" class="btn btn-sm btn-primary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title}'">Solicitar alquiler</a>`;
-    ctaSecondary = `<a href="#contacto" class="btn btn-sm btn-secondary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title} (consulta compra)'">Consultar disponibilidad</a>`;
-  }
-
-  box.innerHTML = `
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <img class="lightbox-img" src="${getImgSrc(item)}" alt="${item.artist} — ${item.title}" onerror="this.style.background='var(--parchment)'">
-    <div class="lightbox-info">
-      <div class="lightbox-artist">${item.artist}</div>
-      <div class="lightbox-title">${item.title}, ${item.year}</div>
-      <div class="lightbox-meta">
-        ${item.medium}<br>
-        ${item.dimensions}
-        ${item.edition ? '<br>' + item.edition : ''}
-        ${item.style ? '<br>' + item.style : ''}
-      </div>
-      <div class="lightbox-desc">${item.description}</div>
-      ${rentalHtml}
-      ${saleHtml}
-      ${valueHtml}
-      <div class="lightbox-ctas">
-        ${ctaPrimary}
-        ${ctaSecondary}
-      </div>
-    </div>`;
-  overlay.classList.add('open');
+  lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox-overlay').classList.remove('open');
+  document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// ═══════════════════════════════════════
-// ADMIN PANEL
-// ═══════════════════════════════════════
-let logoClicks = 0;
-let logoTimer = null;
+function scrollToContact(artwork) {
+  document.getElementById('f-artwork').value = artwork || '';
+  document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+}
+
+function submitForm() {
+  const name = document.getElementById('f-name').value;
+  const company = document.getElementById('f-company').value;
+  const email = document.getElementById('f-email').value;
+  const phone = document.getElementById('f-phone').value;
+  const type = document.getElementById('f-type').value;
+  const duration = document.getElementById('f-duration').value;
+  const artwork = document.getElementById('f-artwork').value;
+  const message = document.getElementById('f-message').value;
+
+  const body = `Nombre: ${name}%0AEmpresa: ${company}%0AEmail: ${email}%0ATeléfono: ${phone}%0ATipo de proyecto: ${type}%0ADuración: ${duration}%0AObra(s) de interés: ${artwork}%0A%0AMensaje:%0A${encodeURIComponent(message)}`;
+  const subject = `Solicitud Art Rental${artwork ? ': ' + artwork : ''}`;
+
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+}
 
 function openAdmin() {
-  document.getElementById('admin-overlay').classList.add('open');
+  renderAdmin();
+  document.getElementById('admin-form-area').innerHTML = '';
+  document.getElementById('admin').classList.add('open');
   document.body.style.overflow = 'hidden';
-  renderAdminTable();
 }
+
 function closeAdmin() {
-  document.getElementById('admin-overlay').classList.remove('open');
+  document.getElementById('admin').classList.remove('open');
   document.body.style.overflow = '';
+  renderFeatured();
+  renderGallery();
 }
 
-function renderAdminTable() {
-  const tbody = document.getElementById('admin-tbody');
-  const filter = (document.getElementById('admin-search').value || '').toLowerCase();
+const ALL_CATEGORIES = ['abstracto','figurativo','surrealismo','informalismo','cubista','pop','contemporaneo','dauaset','escultura'];
+const CAT_LABELS = {abstracto:'Abstracto',figurativo:'Figurativo',surrealismo:'Surrealismo',informalismo:'Informalismo',cubista:'Cubista',pop:'Pop',contemporaneo:'Contemporáneo',dauaset:'Dau al Set',escultura:'Escultura'};
 
-  const items = COLLECTION.filter(c => {
-    if (!filter) return true;
-    return (c.artist + ' ' + c.title + ' ' + c.id).toLowerCase().includes(filter);
-  });
+function renderAdmin() {
+  const container = document.getElementById('admin-content');
+  container.innerHTML = '';
+  const searchEl = document.getElementById('adminSearch');
+  const adminSearch = searchEl ? searchEl.value.toLowerCase().trim() : '';
+  document.getElementById('adminCount').textContent = COLLECTION.length + ' obras';
 
-  tbody.innerHTML = items.map(item => {
-    const st = getItemState(item);
-    return `<tr data-id="${item.id}">
-      <td><img class="thumb" src="${getImgSrc(item)}" alt="" onerror="this.style.background='#eee'"></td>
-      <td><strong>${item.artist}</strong></td>
-      <td>${item.title}</td>
-      <td><label class="toggle"><input type="checkbox" data-field="visible" ${st.visible ? 'checked' : ''}><span class="slider"></span></label></td>
-      <td><label class="toggle"><input type="checkbox" data-field="rental_available" ${st.rental_available ? 'checked' : ''}><span class="slider"></span></label></td>
-      <td><input class="admin-input" type="number" data-field="rental_price_month_from" value="${st.rental_price_month_from || ''}" placeholder="—"></td>
-      <td><label class="toggle"><input type="checkbox" data-field="featured_rental" ${st.featured_rental ? 'checked' : ''}><span class="slider"></span></label></td>
-      <td><label class="toggle toggle-sale"><input type="checkbox" data-field="for_sale" ${st.for_sale ? 'checked' : ''}><span class="slider"></span></label></td>
-      <td><input class="admin-input" type="number" data-field="sale_price" value="${st.sale_price || ''}" placeholder="—"></td>
-      <td><input class="admin-input" type="number" data-field="estimated_value" value="${st.estimated_value || ''}" placeholder="—"></td>
-      <td><label class="toggle toggle-value"><input type="checkbox" data-field="show_estimated_value" ${st.show_estimated_value ? 'checked' : ''}><span class="slider"></span></label></td>
-    </tr>`;
-  }).join('');
-}
-
-function collectAdminChanges() {
-  const rows = document.querySelectorAll('#admin-tbody tr');
-  rows.forEach(row => {
-    const id = row.dataset.id;
-    if (!adminState[id]) adminState[id] = {};
-    row.querySelectorAll('input[data-field]').forEach(input => {
-      const field = input.dataset.field;
-      if (input.type === 'checkbox') {
-        adminState[id][field] = input.checked;
-      } else if (input.type === 'number') {
-        adminState[id][field] = input.value ? parseFloat(input.value) : null;
-      }
+  let totalFiltered = 0;
+  ['iconic','graphic','available'].forEach(sectionKey => {
+    const sec = SECTIONS[sectionKey];
+    let items = COLLECTION.filter(c => c.section === sectionKey);
+    if (adminSearch) {
+      items = items.filter(c => {
+        const hay = [c.id, c.artist, c.title, c.medium||'', c.style||''].join(' ').toLowerCase();
+        return hay.includes(adminSearch);
+      });
+    }
+    if (items.length === 0 && adminSearch) return;
+    totalFiltered += items.length;
+    let html = `<div class="admin-section"><div class="admin-section-title"><span>${sec.title} (${items.length})</span></div>`;
+    items.forEach(item => {
+      const cats = (item.style_category||[]).map(c => `<span class="admin-row-cat">${CAT_LABELS[c]||c}</span>`).join('');
+      const price = item.rental_price_month_from ? item.rental_price_month_from+'€' : '—';
+      html += `
+        <div class="admin-row">
+          <div class="admin-row-info">
+            <div class="admin-row-artist">${item.artist}</div>
+            <div class="admin-row-title">${item.title}</div>
+          </div>
+          <div class="admin-row-cats">${cats}</div>
+          <div class="admin-row-price">${price}</div>
+          <div class="admin-row-btns">
+            <button class="admin-btn" onclick="showEditForm('${item.id}')">Editar</button>
+            <button class="admin-btn admin-btn-danger" onclick="deleteWork('${item.id}')">×</button>
+          </div>
+        </div>`;
     });
-    // Auto-calc event price
-    if (adminState[id].rental_price_month_from) {
-      adminState[id].rental_price_event_from = Math.round(adminState[id].rental_price_month_from * 2.5);
-    }
+    html += '</div>';
+    container.innerHTML += html;
   });
+  if (adminSearch) {
+    document.getElementById('adminCount').textContent = totalFiltered + ' de ' + COLLECTION.length + ' obras';
+  }
 }
 
-// ═══════════════════════════════════════
-// EXPORT
-// ═══════════════════════════════════════
-function exportJSON() {
-  collectAdminChanges();
-  const exported = COLLECTION.map(item => {
-    const s = adminState[item.id] || {};
-    const merged = { ...item };
-    for (const key in s) {
-      if (s[key] !== undefined) merged[key] = s[key];
-    }
-    delete merged.img_key;  // Clean export
-    return merged;
-  });
-  const blob = new Blob([JSON.stringify(exported, null, 2)], { type: 'application/json' });
+function getFormHTML(item) {
+  const i = item || {};
+  const cats = i.style_category || [];
+  const usages = i.rental_usage || [];
+  const catChecks = ALL_CATEGORIES.map(c =>
+    `<label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;margin-right:10px;cursor:pointer;text-transform:none;letter-spacing:0;">
+      <input type="checkbox" name="cat" value="${c}" ${cats.includes(c)?'checked':''}> ${CAT_LABELS[c]}
+    </label>`
+  ).join('');
+  const usageChecks = ['hotel','oficina','interiorismo','evento'].map(u =>
+    `<label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;margin-right:10px;cursor:pointer;text-transform:none;letter-spacing:0;">
+      <input type="checkbox" name="usage" value="${u}" ${usages.includes(u)?'checked':''}> ${USAGE_LABELS[u]}
+    </label>`
+  ).join('');
+
+  return `<div class="admin-form" id="workForm">
+    <div><label>ID (slug, sin espacios)</label><input id="wf-id" value="${i.id||''}" ${item?'readonly style="opacity:.6"':''}></div>
+    <div><label>Artista</label><input id="wf-artist" value="${i.artist||''}"></div>
+    <div class="full"><label>Título</label><input id="wf-title" value="${i.title||''}"></div>
+    <div><label>Año</label><input id="wf-year" value="${i.year||''}"></div>
+    <div><label>Técnica</label><input id="wf-medium" value="${i.medium||''}"></div>
+    <div><label>Dimensiones</label><input id="wf-dimensions" value="${i.dimensions||''}"></div>
+    <div><label>Estilo</label><input id="wf-style" value="${i.style||''}"></div>
+    <div class="full"><label>Edición</label><input id="wf-edition" value="${i.edition||''}"></div>
+    <div class="full"><label>Descripción</label><textarea id="wf-desc">${i.description||''}</textarea></div>
+    <div><label>Sección</label>
+      <select id="wf-section">
+        <option value="iconic" ${i.section==='iconic'?'selected':''}>Piezas Icónicas</option>
+        <option value="graphic" ${i.section==='graphic'?'selected':''}>Obra Gráfica</option>
+        <option value="available" ${i.section==='available'?'selected':''}>Obra Accesible</option>
+      </select>
+    </div>
+    <div><label>Imagen (nombre archivo .jpg)</label><input id="wf-img" value="${IMG[i.id]||i.id+'.jpg'}" placeholder="artista.jpg"></div>
+    <div class="full"><label>Categorías de estilo</label><div>${catChecks}</div></div>
+    <div><label>Precio mes (€)</label><input type="number" id="wf-price-month" value="${i.rental_price_month_from||''}"></div>
+    <div><label>Precio evento (€, por defecto ×2.5)</label><input type="number" id="wf-price-event" value="${i.rental_price_event_from||''}"></div>
+    <div><label>Prioridad</label>
+      <select id="wf-priority">
+        <option value="high" ${i.rental_priority==='high'?'selected':''}>Alta</option>
+        <option value="medium" ${(i.rental_priority||'medium')==='medium'?'selected':''}>Media</option>
+        <option value="low" ${i.rental_priority==='low'?'selected':''}>Baja</option>
+      </select>
+    </div>
+    <div><label>Estado alquiler</label>
+      <select id="wf-rental-status">
+        <option value="disponible" ${(i.rental_status||'disponible')==='disponible'?'selected':''}>Disponible</option>
+        <option value="alquilado" ${i.rental_status==='alquilado'?'selected':''}>Alquilado (No disponible)</option>
+        <option value="reservado" ${i.rental_status==='reservado'?'selected':''}>Reservado</option>
+      </select>
+    </div>
+    <div><label>Opciones</label>
+      <div style="display:flex;gap:16px;padding-top:6px;">
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-featured" ${i.featured_rental?'checked':''}> Destacada
+        </label>
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-highlight" ${i.highlight_home?'checked':''}> En portada
+        </label>
+        <label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer;text-transform:none;letter-spacing:0;">
+          <input type="checkbox" id="wf-desde" ${i.rental_price_desde !== false?'checked':''}> "Desde"
+        </label>
+      </div>
+    </div>
+    <div class="full"><label>Usos recomendados</label><div>${usageChecks}</div></div>
+    <div class="admin-form-actions">
+      <button class="admin-btn" onclick="cancelForm()">Cancelar</button>
+      <button class="admin-btn admin-btn-primary" onclick="saveWork('${i.id||''}')">${item?'Guardar cambios':'Añadir obra'}</button>
+    </div>
+  </div>`;
+}
+
+function showAddForm() {
+  document.getElementById('admin-form-area').innerHTML = '<div style="margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--gold)"><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Nueva obra</div>' + getFormHTML(null) + '</div>';
+  document.getElementById('wf-id').focus();
+}
+
+function showEditForm(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  document.getElementById('admin-form-area').innerHTML = '<div style="margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--gold)"><div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Editar: '+item.artist+' — '+item.title+'</div>' + getFormHTML(item) + '</div>';
+  document.getElementById('admin-form-area').scrollIntoView({behavior:'smooth'});
+}
+
+function cancelForm() {
+  document.getElementById('admin-form-area').innerHTML = '';
+}
+
+function saveWork(existingId) {
+  const id = document.getElementById('wf-id').value.trim().toLowerCase().replace(/\s+/g,'-');
+  if (!id) return alert('ID es obligatorio');
+
+  const cats = [...document.querySelectorAll('#workForm input[name="cat"]:checked')].map(cb => cb.value);
+  const usages = [...document.querySelectorAll('#workForm input[name="usage"]:checked')].map(cb => cb.value);
+  const priceMonth = parseInt(document.getElementById('wf-price-month').value) || 0;
+  const priceEvent = parseInt(document.getElementById('wf-price-event').value) || Math.round(priceMonth * 2.5);
+
+  const work = {
+    id: id,
+    title: document.getElementById('wf-title').value,
+    artist: document.getElementById('wf-artist').value,
+    year: document.getElementById('wf-year').value,
+    medium: document.getElementById('wf-medium').value,
+    dimensions: document.getElementById('wf-dimensions').value,
+    style: document.getElementById('wf-style').value,
+    edition: document.getElementById('wf-edition').value,
+    description: document.getElementById('wf-desc').value,
+    section: document.getElementById('wf-section').value,
+    style_category: cats,
+    rental_status: document.getElementById('wf-rental-status').value,
+    rental_available: true,
+    rental_price_month_from: priceMonth,
+    rental_price_event_from: priceEvent,
+    rental_priority: document.getElementById('wf-priority').value,
+    rental_usage: usages,
+    featured_rental: document.getElementById('wf-featured').checked,
+    highlight_home: document.getElementById('wf-highlight').checked,
+    rental_price_desde: document.getElementById('wf-desde').checked
+  };
+
+  const imgFile = document.getElementById('wf-img').value.trim();
+  IMG[id] = imgFile;
+
+  if (existingId) {
+    const idx = COLLECTION.findIndex(c => c.id === existingId);
+    if (idx > -1) COLLECTION[idx] = work;
+  } else {
+    if (COLLECTION.find(c => c.id === id)) return alert('Ya existe una obra con ese ID');
+    COLLECTION.push(work);
+  }
+
+  adminState[id] = adminState[id] || { visible: true, artsy: work.section === 'iconic' };
+  saveAdmin();
+  cancelForm();
+  renderAdmin();
+}
+
+function deleteWork(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  if (!confirm(`¿Eliminar "${item.title}" de ${item.artist}?`)) return;
+  const idx = COLLECTION.findIndex(c => c.id === id);
+  if (idx > -1) COLLECTION.splice(idx, 1);
+  delete adminState[id];
+  saveAdmin();
+  renderAdmin();
+}
+
+function toggleAdmin(id, prop, el) {
+  adminState[id][prop] = !adminState[id][prop];
+  el.classList.toggle('on');
+  saveAdmin();
+}
+
+function exportData() {
+  const data = COLLECTION.map(item => ({...item, admin: adminState[item.id]}));
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = 'collection.json';
-  a.click();
-  URL.revokeObjectURL(url);
+  a.href = url; a.download = 'eleve-art-rental-export.json';
+  a.click(); URL.revokeObjectURL(url);
 }
 
-// ═══════════════════════════════════════
-// ANIMATIONS
-// ═══════════════════════════════════════
+function exportHTML() {
+  // Get current page HTML and replace COLLECTION + IMG with current state
+  const imgBlock = 'const IMG = ' + JSON.stringify(IMG, null, 2) + ';';
+  const colBlock = 'const COLLECTION = ' + JSON.stringify(COLLECTION, null, 2) + ';';
+
+  let html = document.documentElement.outerHTML;
+  // Replace IMG block
+  html = html.replace(/const IMG = \{[\s\S]*?\};/, imgBlock);
+  // Replace COLLECTION block
+  html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
+
+  const blob = new Blob(['<!DOCTYPE html>\n<html lang="es">' + html.split('<html lang="es">')[1]], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'index.html';
+  a.click(); URL.revokeObjectURL(url);
+}
+
 function initAnimations() {
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.anim:not(.visible)').forEach(el => observer.observe(el));
 }
 
-// ═══════════════════════════════════════
-// HEADER SCROLL
-// ═══════════════════════════════════════
-const header = document.querySelector('.header');
+// Header scroll — FIXED: uses .header not header
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 50);
+  const header = document.querySelector('.header');
+  if (header) header.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-  // Active nav
-  const links = document.querySelectorAll('.nav a');
-  const ids = Array.from(links).map(l => l.getAttribute('href').replace('#',''));
+// Active nav on scroll
+window.addEventListener('scroll', () => {
+  const sections = ['art-rental','destacadas','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
+  const scrollY = window.scrollY + 150;
   let current = '';
-  ids.forEach(id => {
+  sections.forEach(id => {
     const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 150) current = id;
+    if (el && el.offsetTop <= scrollY) current = id;
   });
-  links.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 });
 
-// ═══════════════════════════════════════
-// EVENT LISTENERS
-// ═══════════════════════════════════════
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeLightbox(); closeAdmin(); }
-});
-
-document.getElementById('lightbox-overlay').addEventListener('click', e => {
-  if (e.target === e.currentTarget) closeLightbox();
-});
-
-// Logo triple-click → admin
-document.getElementById('logo-trigger').addEventListener('click', () => {
-  logoClicks++;
-  clearTimeout(logoTimer);
-  if (logoClicks >= 3) {
-    logoClicks = 0;
-    openAdmin();
-  } else {
-    logoTimer = setTimeout(() => {
-      if (logoClicks === 1) window.scrollTo({top: 0, behavior: 'smooth'});
-      logoClicks = 0;
-    }, 400);
-  }
-});
-
-// Hamburger
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('main-nav').classList.toggle('open');
-});
+// Close mobile nav on link click
 document.querySelectorAll('.nav a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('main-nav').classList.remove('open'));
+  a.addEventListener('click', () => document.querySelector('.nav').classList.remove('open'));
 });
 
-// Search
-document.getElementById('search-input').addEventListener('input', e => {
-  searchTerm = e.target.value.toLowerCase().trim();
-  renderGallery();
-});
-
-// Admin events
-document.getElementById('admin-close').addEventListener('click', closeAdmin);
-document.getElementById('admin-search').addEventListener('input', renderAdminTable);
-document.getElementById('btn-save-admin').addEventListener('click', () => {
-  collectAdminChanges();
-  saveAdmin();
+// Init
+document.addEventListener('DOMContentLoaded', () => {
   renderFeatured();
   renderGallery();
-  renderPacks();
-  alert('Cambios guardados.');
-});
-document.getElementById('btn-reset-admin').addEventListener('click', () => {
-  if (confirm('¿Descartar todos los cambios del admin?')) {
-    adminState = {};
-    saveAdmin();
-    renderAdminTable();
-    renderFeatured();
-    renderGallery();
-    renderPacks();
-  }
-});
-document.getElementById('btn-export-json').addEventListener('click', exportJSON);
-document.getElementById('btn-export-html').addEventListener('click', () => {
-  collectAdminChanges();
-  saveAdmin();
-  const html = document.documentElement.outerHTML;
-  const blob = new Blob([html], {type: 'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'index.html';
-  a.click();
-  URL.revokeObjectURL(url);
+  initAnimations();
 });
 
-// ═══════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════
-fetch('collection.json')
-  .then(r => r.json())
-  .then(data => {
-    COLLECTION = data;
-    COLLECTION.forEach(item => {
-      if (!adminState[item.id]) adminState[item.id] = {};
-    });
-    saveAdmin();
-    renderFilters();
-    renderFeatured();
-    renderGallery();
-    renderPacks();
-    initAnimations();
-  })
-  .catch(err => {
-    console.error('Error loading collection:', err);
-    document.getElementById('gallery-grid').innerHTML =
-      '<p style="text-align:center;color:var(--accent-red);padding:3rem;">Error cargando la colección. Verifica que collection.json existe.</p>';
-  });
+// Secret admin: triple-click logo
+let clickCount=0,clickTimer;
+document.querySelector('.logo')?.addEventListener('click',()=>{
+  clickCount++;
+  clearTimeout(clickTimer);
+  clickTimer=setTimeout(()=>{clickCount=0;},600);
+  if(clickCount>=3){clickCount=0;openAdmin();}
+});
 </script>
 </body>
 </html>
