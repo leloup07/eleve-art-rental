@@ -105,7 +105,7 @@ body { font-family: var(--font-body); background: var(--ivory); color: var(--cha
 .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
 .card { background: #fff; cursor: pointer; transition: transform .3s, box-shadow .3s; overflow: hidden; position: relative; }
 .card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-.card-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; background: var(--parchment); }
+.card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; background: var(--parchment); }
 .card-body { padding: 1.2rem; }
 .card-artist { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; color: var(--deep); }
 .card-title { font-size: 0.8rem; color: var(--mid-gray); margin-top: 0.15rem; }
@@ -753,10 +753,16 @@ function openLightbox(id) {
   }
 
   let saleHtml = '';
-  if (st.for_sale) {
+  if (st.rental_available) {
+    saleHtml = `<div class="lightbox-sale" style="border-top-color:var(--parchment);">
+      <p style="font-size:0.88rem; color:var(--mid-gray); font-style:italic; margin:0;">Opción de compra disponible tras alquiler.</p>
+    </div>`;
+  }
+  if (st.for_sale && st.sale_price) {
     saleHtml = `<div class="lightbox-sale">
       <h4>Disponible para compra</h4>
-      ${st.sale_price ? `<div class="lightbox-rental-row"><span>Precio de venta</span><strong>${fmt(st.sale_price)}</strong></div>` : '<p style="font-size:0.88rem;color:var(--mid-gray);">Precio a consultar.</p>'}
+      <div class="lightbox-rental-row"><span>Precio de venta</span><strong>${fmt(st.sale_price)}</strong></div>
+      <p style="font-size:0.82rem; color:var(--mid-gray); font-style:italic; margin-top:0.5rem;">También disponible en alquiler con opción a compra.</p>
     </div>`;
   }
 
@@ -768,11 +774,12 @@ function openLightbox(id) {
     </div>`;
   }
 
-  const mainCta = st.for_sale
-    ? `<a href="#contacto" class="btn btn-sm btn-primary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title} (compra)'">Consultar compra</a>`
-    : (st.rental_available
-      ? `<a href="#contacto" class="btn btn-sm btn-primary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title}'">Solicitar alquiler</a>`
-      : '');
+  let ctaPrimary = '';
+  let ctaSecondary = '';
+  if (st.rental_available) {
+    ctaPrimary = `<a href="#contacto" class="btn btn-sm btn-primary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title}'">Solicitar alquiler</a>`;
+    ctaSecondary = `<a href="#contacto" class="btn btn-sm btn-secondary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title} (consulta compra)'">Consultar disponibilidad</a>`;
+  }
 
   box.innerHTML = `
     <button class="lightbox-close" onclick="closeLightbox()">✕</button>
@@ -791,8 +798,8 @@ function openLightbox(id) {
       ${saleHtml}
       ${valueHtml}
       <div class="lightbox-ctas">
-        ${mainCta}
-        ${st.rental_available && st.for_sale ? `<a href="#contacto" class="btn btn-sm btn-secondary" onclick="closeLightbox(); document.getElementById('form-obra').value='${item.artist} — ${item.title}'">Solicitar alquiler</a>` : ''}
+        ${ctaPrimary}
+        ${ctaSecondary}
       </div>
     </div>`;
   overlay.classList.add('open');
