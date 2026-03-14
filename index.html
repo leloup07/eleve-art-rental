@@ -316,7 +316,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="nav">
     <a href="#coleccion">Colección</a>
     <a href="#art-rental">Art Rental</a>
-    <a href="#destacadas">Destacadas</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#packs">Packs</a>
     <a href="#como-funciona">Cómo funciona</a>
@@ -331,8 +330,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Alquiler de arte moderno y contemporáneo para hoteles, oficinas e interiorismo</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:15px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Colección privada de más de 80 obras originales. Barcelona · Madrid · Toda España.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#destacadas" class="btn-primary">Ver obras en alquiler</a>
-    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
+    <a href="#coleccion" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#contacto" class="btn-secondary">Solicitar propuesta</a>
   </div>
 </div>
 
@@ -372,16 +371,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="anim" style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--gold);line-height:1;">15+</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-top:6px;">Artistas reconocidos</div></div>
   <div class="anim" style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--gold);line-height:1;">BCN</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-top:6px;">Barcelona · Madrid</div></div>
   <div class="anim" style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,48px);font-weight:300;color:var(--gold);line-height:1;">ESP</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-top:6px;">Cobertura nacional</div></div>
-</div>
-
-<!-- FEATURED / DESTACADAS -->
-<div class="section" id="destacadas">
-  <div class="section-header anim">
-    <div class="section-label">Selección Eleve Art</div>
-    <h2 class="section-title">Obras Destacadas</h2>
-    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
-  </div>
-  <div class="featured-grid anim" id="featuredGrid"></div>
 </div>
 
 <!-- PROYECTOS / INSTALACIONES -->
@@ -433,7 +422,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="section-desc">Selección de obras de Eleve Art disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
   </div>
   <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim">
-    <a href="#destacadas" class="btn-primary">Ver obras destacadas</a>
+    <a href="#coleccion" class="btn-primary">Ver obras destacadas</a>
     <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
   </div>
 </div>
@@ -1192,7 +1181,7 @@ function openAdmin() {
 function closeAdmin() {
   document.getElementById('admin').classList.remove('open');
   document.body.style.overflow = '';
-  renderFeatured();
+
   renderGallery();
 }
 
@@ -1444,7 +1433,7 @@ window.addEventListener('scroll', () => {
 
 // Active nav on scroll
 window.addEventListener('scroll', () => {
-  const sections = ['art-rental','destacadas','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
+  const sections = ['art-rental','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
   const scrollY = window.scrollY + 150;
   let current = '';
   sections.forEach(id => {
@@ -1463,7 +1452,7 @@ document.querySelectorAll('.nav a').forEach(a => {
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {
-  renderFeatured();
+
   renderGallery();
   initAnimations();
 });
