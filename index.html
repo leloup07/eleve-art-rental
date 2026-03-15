@@ -4620,7 +4620,7 @@ function openLightbox(id) {
 
   if (item.rental_available) {
     rentalBlock.style.display = 'block';
-    document.getElementById('lbPurchaseHint').style.display = item.purchase_option ? 'block' : 'none';
+    document.getElementById('lbPurchaseHint').style.display = (item.purchase_option !== false) ? 'block' : 'none';
     const rstatus = item.rental_status || 'disponible';
     rentalRows.innerHTML = '';
     if (rstatus === 'alquilado') {
