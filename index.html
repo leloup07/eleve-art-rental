@@ -4925,4 +4925,43 @@ function exportHTML() {
   // Replace COLLECTION block
   html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
 
-  const blob = new Blob(['<!DOCTYPE html>\n
+  const blob = new Blob(['<!DOCTYPE html>\n' + html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'index.html';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+// Triple-click logo → admin panel
+let logoClicks = 0;
+let logoTimer = null;
+document.getElementById('logo-trigger').addEventListener('click', function() {
+  logoClicks++;
+  clearTimeout(logoTimer);
+  if (logoClicks >= 3) {
+    logoClicks = 0;
+    openAdmin();
+  } else {
+    logoTimer = setTimeout(function() {
+      if (logoClicks === 1) window.scrollTo({top: 0, behavior: 'smooth'});
+      logoClicks = 0;
+    }, 400);
+  }
+});
+
+// Header scroll
+window.addEventListener('scroll', function() {
+  document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Init animations
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.anim').forEach(function(el) { observer.observe(el); });
+
+</script>
+</body>
+</html>
