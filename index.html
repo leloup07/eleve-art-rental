@@ -329,7 +329,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Alquiler de arte moderno y contemporáneo para hoteles, oficinas e interiorismo</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:15px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Colección privada de más de 80 obras originales. Barcelona · Madrid · Toda España.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#coleccion" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-primary" onclick="setTimeout(()=>{const pill=document.querySelector('[data-filter=\'disponibles\']');if(pill){setFilter('disponibles',pill);}},300);">Ver obras en alquiler</a>
     <a href="#contacto" class="btn-secondary">Solicitar propuesta</a>
   </div>
 </div>
