@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colección Eleve — Galería Privada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:#f7f4ef;--cream:#faf8f5;--parchment:#ede8df;--linen:#d9d0c1;
+  --ash:#9e9890;--charcoal:#2c2a27;--ink:#1a1917;--gold:#b89a5e;
+  --gold-light:#d4b87a;--rust:#8b4a2a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5;}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(247,244,239,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--parchment);transition:all .3s ease;}
+.header.scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,.06);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--ink);cursor:pointer;}
+.logo span{color:var(--gold);font-weight:600;}
+.nav{display:flex;gap:32px;align-items:center;}
+.nav a{font-size:12px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:var(--ash);transition:color .3s;font-weight:400;}
+.nav a:hover,.nav a.active{color:var(--ink);}
+.nav-admin{font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--linen);background:transparent;color:var(--ash);cursor:pointer;transition:all .3s;font-family:'Jost',sans-serif;}
+.nav-admin:hover{border-color:var(--gold);color:var(--gold);}
+
+/* HERO */
+.hero{height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;background:linear-gradient(180deg,var(--ivory) 0%,var(--cream) 100%);position:relative;}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,60px);font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--ink);margin-bottom:16px;}
+.hero p{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);font-weight:300;}
+.hero .count{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold);font-weight:300;margin-bottom:8px;}
+.search-bar{max-width:520px;margin:0 auto;padding:24px 48px 48px;position:relative;}
+.search-bar input{width:100%;padding:14px 20px 14px 48px;border:1px solid var(--linen);background:var(--ivory);font-family:'Jost',sans-serif;font-size:15px;color:var(--ink);letter-spacing:1px;outline:none;transition:border .3s;}
+.search-bar input::placeholder{color:var(--ash);letter-spacing:2px;font-size:13px;text-transform:uppercase;}
+.search-bar input:focus{border-color:var(--gold);}
+.search-bar svg{position:absolute;left:68px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--ash);pointer-events:none;}
+
+/* SECTIONS */
+.section{padding:80px 48px;position:relative;}
+.section:nth-child(even){background:var(--ivory);}
+.section-header{text-align:center;margin-bottom:60px;}
+.section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;color:var(--ink);margin-bottom:16px;}
+.section-desc{font-size:14px;color:var(--ash);max-width:600px;margin:0 auto;line-height:1.8;}
+
+
+/* EXHIBIT ROWS */
+.exhibits{max-width:1300px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+.exhibit{display:grid;grid-template-columns:1fr 1fr;min-height:420px;border-bottom:1px solid var(--parchment);cursor:pointer;transition:background .5s ease;}
+.exhibit:last-child{border-bottom:none;}
+.exhibit:hover{background:rgba(237,232,223,.35);}
+.exhibit:nth-child(even){direction:rtl;}
+.exhibit:nth-child(even) > *{direction:ltr;}
+
+/* Image side */
+.exhibit-img{position:relative;display:flex;align-items:center;justify-content:center;padding:40px;overflow:hidden;background:var(--parchment);background:linear-gradient(135deg,rgba(237,232,223,.5) 0%,rgba(237,232,223,.2) 100%);}
+.exhibit-img img{max-width:100%;max-height:380px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(0,0,0,.1));transition:transform .8s cubic-bezier(.25,.46,.45,.94);}
+.exhibit:hover .exhibit-img img{transform:scale(1.03);}
+.exhibit-badge{position:absolute;top:24px;left:24px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;background:rgba(247,244,239,.92);backdrop-filter:blur(6px);color:var(--charcoal);border:1px solid var(--linen);}
+.exhibit:nth-child(even) .exhibit-badge{left:auto;right:24px;}
+
+/* Text side */
+.exhibit-text{display:flex;flex-direction:column;justify-content:center;padding:48px 56px;}
+.exhibit-num{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--linen);letter-spacing:2px;margin-bottom:16px;font-weight:300;}
+.exhibit-artist{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:400;}
+.exhibit-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,32px);font-weight:300;color:var(--ink);margin-bottom:20px;font-style:italic;line-height:1.3;}
+.exhibit-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-bottom:24px;}
+.exhibit-field-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:2px;}
+.exhibit-field-value{font-size:13px;color:var(--charcoal);line-height:1.5;}
+.exhibit-desc{font-size:13.5px;line-height:1.9;color:var(--ash);font-style:italic;border-top:1px solid var(--parchment);padding-top:20px;max-width:480px;}
+/* FEATURED GRID */
+.featured-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.featured-card{background:var(--cream);border:1px solid var(--parchment);cursor:pointer;transition:all .4s ease;overflow:hidden;}
+.featured-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);transform:translateY(-4px);}
+.featured-card-img{aspect-ratio:4/3;overflow:hidden;background:var(--ivory);display:flex;align-items:center;justify-content:center;padding:24px;}
+.featured-card-img img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .6s ease;}
+.featured-card:hover .featured-card-img img{transform:scale(1.05);}
+.featured-card-body{padding:20px 24px 24px;}
+.featured-card-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.featured-card-title{font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:300;font-style:italic;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.featured-card-medium{font-size:12px;color:var(--ash);line-height:1.5;}
+
+
+
+@media(max-width:900px){
+  .exhibit{grid-template-columns:1fr;min-height:auto;}
+  .exhibit:nth-child(even){direction:ltr;}
+  .exhibit-img{min-height:280px;padding:32px;}
+  .exhibit-text{padding:32px 24px;}
+  .exhibit-fields{grid-template-columns:1fr;}
+}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(26,25,23,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease;}
+.lightbox.open{display:flex;opacity:1;}
+.lb-close{position:absolute;top:24px;right:32px;font-size:28px;color:var(--linen);cursor:pointer;background:none;border:none;font-family:'Cormorant Garamond',serif;z-index:201;transition:color .3s;}
+.lb-close:hover{color:var(--gold);}
+.lb-content{display:flex;max-width:1200px;width:90%;max-height:85vh;gap:48px;align-items:center;}
+.lb-img{flex:1;max-height:80vh;display:flex;align-items:center;justify-content:center;}
+.lb-img img{max-width:100%;max-height:80vh;object-fit:contain;box-shadow:0 8px 40px rgba(0,0,0,.4);}
+.lb-details{flex:0 0 360px;color:var(--parchment);overflow-y:auto;max-height:80vh;padding-right:16px;}
+.lb-details::-webkit-scrollbar{width:3px;}
+.lb-details::-webkit-scrollbar-thumb{background:var(--ash);}
+.lb-artist{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.lb-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;margin-bottom:24px;line-height:1.3;}
+.lb-field{margin-bottom:16px;}
+.lb-field-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);margin-bottom:4px;}
+.lb-field-value{font-size:14px;color:var(--parchment);line-height:1.6;}
+.lb-desc{margin-top:24px;padding-top:24px;border-top:1px solid rgba(158,152,144,.3);font-size:14px;line-height:1.8;color:var(--linen);font-style:italic;}
+.lb-actions{margin-top:28px;display:flex;flex-direction:column;gap:12px;}
+
+.lb-contact{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);text-decoration:none;border:1px solid var(--gold);padding:14px 24px;transition:all .3s;background:rgba(179,163,130,.15);}
+.lb-contact:hover{color:white;border-color:white;background:rgba(179,163,130,.3);}
+
+/* ADMIN PANEL */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(26,25,23,.92);display:none;backdrop-filter:blur(8px);}
+.admin-overlay.open{display:flex;justify-content:center;align-items:flex-start;padding-top:80px;overflow-y:auto;}
+.admin-panel{background:var(--cream);max-width:800px;width:90%;padding:48px;position:relative;margin-bottom:80px;}
+.admin-close{position:absolute;top:16px;right:24px;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ash);font-family:'Cormorant Garamond',serif;transition:color .3s;}
+.admin-close:hover{color:var(--ink);}
+.admin-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px;}
+.admin-subtitle{font-size:12px;color:var(--ash);letter-spacing:2px;text-transform:uppercase;margin-bottom:32px;}
+.admin-section{margin-bottom:32px;}
+.admin-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--parchment);}
+.admin-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--parchment);}
+.admin-row-info{flex:1;}
+.admin-row-artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);}
+.admin-row-title{font-size:14px;color:var(--ink);font-style:italic;}
+.admin-toggles{display:flex;gap:16px;align-items:center;}
+.admin-toggle-group{display:flex;align-items:center;gap:6px;}
+.admin-toggle-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ash);}
+.toggle{width:36px;height:20px;border-radius:10px;background:var(--linen);cursor:pointer;position:relative;transition:background .3s;}
+.toggle.on{background:var(--gold);}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:white;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.toggle.on::after{transform:translateX(16px);}
+.admin-export{margin-top:24px;padding:12px 24px;background:var(--ink);color:var(--parchment);border:none;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .3s;}
+.admin-export:hover{background:var(--charcoal);}
+
+/* FOOTER */
+.footer{padding:60px 48px;text-align:center;border-top:1px solid var(--parchment);background:var(--ivory);}
+.footer-email{font-size:13px;color:var(--ash);letter-spacing:2px;margin-bottom:12px;}
+.footer-email a{color:var(--gold);text-decoration:none;transition:color .3s;}
+.footer-email a:hover{color:var(--rust);}
+.footer p{font-size:12px;color:var(--ash);letter-spacing:2px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.anim{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.25,.46,.45,.94);}
+.anim.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .header{padding:0 24px;}
+  .nav{gap:16px;}
+  .search-bar{padding:16px 24px 32px;}
+  .search-bar svg{left:44px;}
+  .section{padding:60px 24px;}
+  .lb-content{flex-direction:column;gap:24px;}
+  .lb-details{flex:none;width:100%;}
+  .lb-img img{max-height:50vh;}
+  .hero{height:auto;padding:120px 24px 80px;}
+}
+@media(max-width:600px){
+  .header{padding:0 16px;}
+  .nav a{font-size:10px;letter-spacing:1px;}
+  .hero h1{letter-spacing:3px;}
+  .admin-panel{padding:24px;}
+  .admin-toggles{flex-direction:column;gap:8px;align-items:flex-end;}
+  .exhibit-text{padding:24px 20px;}
+  .exhibit-fields{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo" id="logo-trigger">Colección <span>Eleve</span></div>
+  <div class="nav">
+    <a href="#section-iconic" class="active">Icónicas</a>
+    <a href="#section-graphic">Obra Gráfica</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 style="animation:fadeUp .8s ease .4s both;">Colección Eleve</h1>
+  <p style="animation:fadeUp .8s ease .6s both;">Galería privada · Catálogo completo</p>
+  <div style="animation:fadeUp .8s ease .8s both;margin-top:24px;">
+    <a href="mailto:eleve.art@outlook.com" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);text-decoration:none;border:1px solid var(--linen);padding:12px 28px;transition:all .3s;font-family:'Jost',sans-serif;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      eleve.art@outlook.com
+    </a>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  <input type="text" id="searchInput" placeholder="Buscar por artista, título, técnica…" oninput="filterGallery(this.value)">
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <div class="lb-content">
+    <div class="lb-img"><img src="" alt=""></div>
+    <div class="lb-details">
+      <div class="lb-artist"></div>
+      <div class="lb-title"></div>
+      <div class="lb-fields"></div>
+      <div class="lb-desc"></div>
+      <div class="lb-actions">
+        <a class="lb-contact" href="#">Contactar por esta obra →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN OVERLAY -->
+<div class="admin-overlay" id="admin" onclick="if(event.target===this)closeAdmin()">
+  <div class="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">&#10005;</button>
+    <div class="admin-title">Panel de Gestión</div>
+    <div class="admin-subtitle">Activar / desactivar obras y plataformas</div>
+    <div id="admin-content"></div>
+    <button class="admin-export" onclick="exportData()">Exportar datos JSON</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-email">Contacto: <a href="mailto:eleve.art@outlook.com">eleve.art@outlook.com</a></div>
+  <p>Colección Eleve · Galería Privada · Todos los derechos reservados</p>
+</div>
+
+<script>
+const IMG = {
+  "picasso": "https://eleve-art.com/picasso.jpg",
+  "dominguez": "https://eleve-art.com/dominguez.jpg",
+  "tapies-sin-titulo": "https://eleve-art.com/tapies-sin-titulo.jpg",
+  "tapies-ulleres": "https://eleve-art.com/tapies-ulleres.jpg",
+  "barcelo": "https://eleve-art.com/barcelo.jpg",
+  "tapies-visca": "https://eleve-art.com/tapies-visca.jpg",
+  "tapies-gran-x": "https://eleve-art.com/tapies-gran-x.jpg",
+  "tapies-creu": "https://eleve-art.com/tapies-creu.jpg",
+  "tapies-dues-mans": "https://eleve-art.com/tapies-dues-mans.jpg",
+  "tapies-esgrafiat": "https://eleve-art.com/tapies-esgrafiat.jpg",
+  "tapies-espai": "https://eleve-art.com/tapies-espai.jpg",
+  "tapies-lletra-o": "https://eleve-art.com/tapies-lletra-o.jpg",
+  "tapies-lletres": "https://eleve-art.com/tapies-lletres.jpg",
+  "plensa1": "https://eleve-art.com/plensa1.jpg",
+  "plensa2": "https://eleve-art.com/plensa2.jpg",
+  "cuixart": "https://eleve-art.com/cuixart.jpg",
+  "raventos": "https://eleve-art.com/raventos.jpg",
+  "subirachs": "https://eleve-art.com/subirachs.jpg",
+  "arroyo-payaso": "https://eleve-art.com/arroyo-payaso.jpg",
+  "bultrini": "https://eleve-art.com/bultrini.jpg",
+  "castillo": "https://eleve-art.com/castillo.jpg",
+  "derain-perfil": "https://eleve-art.com/derain-perfil.jpg",
+  "derain-cabeza": "https://eleve-art.com/derain-cabeza.jpg",
+  "fernandez-capitol": "https://eleve-art.com/fernandez-capitol.jpg",
+  "grau-garriga": "https://eleve-art.com/grau-garriga.jpg",
+  "hurtuna": "https://eleve-art.com/hurtuna.jpg",
+  "ribas": "https://eleve-art.com/ribas.jpg",
+  "miro-barcelona-iii": "https://eleve-art.com/miro-barcelona-iii.jpg",
+  "miro-barcelona-vii": "https://eleve-art.com/miro-barcelona-vii.jpg",
+  "cuixart-1": "https://eleve-art.com/cuixart-1.jpg",
+  "valdes-1": "https://eleve-art.com/valdes-1.jpg",
+  "valdes-10": "https://eleve-art.com/valdes-10.jpg",
+  "valdes-2": "https://eleve-art.com/valdes-2.jpg",
+  "valdes-3": "https://eleve-art.com/valdes-3.jpg",
+  "valdes-4": "https://eleve-art.com/valdes-4.jpg",
+  "valdes-5": "https://eleve-art.com/valdes-5.jpg",
+  "valdes-6": "https://eleve-art.com/valdes-6.jpg",
+  "valdes-7": "https://eleve-art.com/valdes-7.jpg",
+  "valdes-8": "https://eleve-art.com/valdes-8.jpg",
+  "valdes-9": "https://eleve-art.com/valdes-9.jpg",
+  "tracey-emin": "https://eleve-art.com/tracey-emin.jpg",
+  "warhol-stocking": "https://eleve-art.com/warhol-stocking.jpg",
+  "warhol-gee-merrie-colour": "https://eleve-art.com/warhol-gee-merrie-colour.jpg",
+  "warhol-gee-merrie-bw": "https://eleve-art.com/warhol-gee-merrie-bw.jpg",
+  "warhol-tattooed-woman": "https://eleve-art.com/warhol-tattooed-woman.jpg",
+  "warhol-flowers": "https://eleve-art.com/warhol-flowers.jpg",
+  "rafols-acord-ombres": "https://eleve-art.com/rafols-acord-ombres.jpg",
+  "dylan-two-sisters": "https://eleve-art.com/dylan-two-sisters.jpg",
+  "dylan-train-tracks": "https://eleve-art.com/dylan-train-tracks.jpg",
+  "opie-ika": "https://eleve-art.com/opie-ika.jpg",
+  "wesselmann-monica": "https://eleve-art.com/wesselmann-monica.jpg",
+  "feito": "https://eleve-art.com/feito.jpg",
+  "hartung": "https://eleve-art.com/hartung.jpg",
+  "subirachs-las-meninas": "https://eleve-art.com/subirachs-las-meninas.jpg",
+  "subirachs-a-david": "https://eleve-art.com/subirachs-a-david.jpg",
+  "paricio": "https://eleve-art.com/paricio.jpg",
+  "valdes-mariana": "https://eleve-art.com/valdes-mariana.jpg",
+  "atchugarry": "https://eleve-art.com/atchugarry.jpg",
+  "barcelo-lanzarote": "https://eleve-art.com/barcelo-lanzarote.jpg",
+  "akushov-party-line": "https://eleve-art.com/akushov-party-line.jpg",
+  "akushov-two-lenin": "https://eleve-art.com/akushov-two-lenin.jpg",
+  "bulatov-wanted-dark": "https://eleve-art.com/bulatov-wanted-dark.jpg",
+  "brandmeier-untitled": "https://eleve-art.com/brandmeier-untitled.jpg",
+  "lashai-tyranny-autumn": "https://eleve-art.com/lashai-tyranny-autumn.jpg",
+  "grau-garriga-2": "https://eleve-art.com/grau-garriga-2.jpg",
+  "grau-garriga-3": "https://eleve-art.com/grau-garriga-3.jpg",
+  "clave": "https://eleve-art.com/clave.jpg",
+  "ribeiro-1": "https://eleve-art.com/ribeiro-1.jpg",
+  "ribeiro-2": "https://eleve-art.com/ribeiro-2.jpg",
+  "ando-manga": "https://eleve-art.com/hiro-ando-pandasan-1.jpg",
+  "ando-splash": "https://eleve-art.com/hiro-ando-pandasan-2.jpg",
+  "plensa-monocrom": "https://eleve-art.com/plensa-monocrom.jpg",
+  "picasso-buho": "https://eleve-art.com/picasso-buho.jpg",
+  "picasso-corrida": "https://eleve-art.com/picasso-corrida.jpg",
+  "plensa-twins": "https://eleve-art.com/plensa-twins1.jpg",
+  "plensa-untitled": "https://eleve-art.com/plensa-untitled.jpg",
+  "plensa-untitled-1": "https://eleve-art.com/plensa-untitled1.jpg",
+  "plensa-untitled-2": "https://eleve-art.com/plensa-untitled2.jpg",
+  "plensa-untitled-3": "https://eleve-art.com/plensa-untitled3.jpg",
+  "tharrats-18": "https://eleve-art.com/tharrats-18.jpg",
+  "tharrats-19": "https://eleve-art.com/tharrats-19.jpg",
+  "tharrats-20": "https://eleve-art.com/tharrats-20.jpg",
+  "tharrats-21": "https://eleve-art.com/tharrats-21.jpg",
+  "tharrats-22": "https://eleve-art.com/tharrats-22.jpg",
+  "tharrats-25": "https://eleve-art.com/tharrats-25.jpg",
+  "tharrats-26": "https://eleve-art.com/tharrats-26.jpg",
+  "tharrats-27": "https://eleve-art.com/tharrats-27.jpg",
+  "tharrats-28": "https://eleve-art.com/tharrats-28.jpg",
+  "tharrats-29": "https://eleve-art.com/tharrats-29.jpg",
+  "tharrats-30": "https://eleve-art.com/tharrats-30.jpg",
+  "tharrats-32": "https://eleve-art.com/tharrats-32.jpg",
+};
+
+const COLLECTION = [
+{"id": "dominguez", "title": "La Maison", "artist": "Óscar Dominguez", "year": "1953-1954", "medium": "Óleo sobre lienzo", "dimensions": "33 × 41 cm", "style": "Cubista · Serie 'Vistas urbanas de una ciudad irreal'", "edition": "", "description": "Óleo perteneciente a la serie 'Vistas urbanas de una ciudad irreal'. Certificada por Ana Vázquez de Parga e inscrita en el Museo TEA (Tenerife Espacio de las Artes). Expuesta en Galería Juana Mordo (Madrid), Galerie Les Cadres (París), Galerie Roche (Bremen), y otras.", "section": "iconic", "img_key": "Óscar Dominguez"},
+{"id": "tapies-sin-titulo", "title": "Sin Título", "artist": "Antoni Tàpies", "year": "1976", "medium": "Pintura y lápiz sobre papel", "dimensions": "30,6 × 40,5 cm", "style": "Abstracto", "edition": "Obra única · Firmada", "description": "Pintura original sobre papel, firmada en el ángulo inferior derecho. Tàpies, considerado el pintor más importante de España tras Picasso, plasma aquí su lenguaje matérico con tajos expresionistas y empastes ásperos.", "section": "iconic", "img_key": "Tàpies - Pintura y lápiz sobre papel"},
+{"id": "tapies-ulleres", "title": "Ulleres i Pluja", "artist": "Antoni Tàpies", "year": "1979", "medium": "Pintura y lápiz sobre papel de estraza", "dimensions": "36 × 51 cm", "style": "Abstracto", "edition": "Obra única · Archivo Foto T-9239", "description": "Registrada en el archivo de obra completa del artista (Foto T-9239). Pintura sobre papel de estraza que evidencia la fascinación de Tàpies por los materiales humildes y su capacidad de transformarlos en vehículos de expresión poética.", "section": "iconic", "img_key": "Tàpies - Ulleres i Pluja"},
+{"id": "barcelo", "title": "Cabeza de cabra", "artist": "Miquel Barceló", "year": "1988", "medium": "Gouache sobre papel", "dimensions": "50 × 66 cm", "style": "Expresionismo", "edition": "Firmado y fechado", "description": "Miquel Barceló realiza pinturas abstractas de técnica mixta que captan la diversidad del mundo natural y reflejan sus extensos viajes. Al igual que Pablo Picasso y Francisco de Goya antes que él, el artista traspasa los límites de la representación. Obra certificada por Galerie Bruno Bischofberger AG, Zúrich (2010). Ha expuesto ampliamente en ciudades de todo el mundo y en 2009 representó a España en la Bienal de Venecia. Su obra pertenece a colecciones como el Centro Pompidou, el Museo Reina Sofía y el MACBA.", "section": "iconic", "img_key": "Barceló"},
+{"id": "arroyo-payaso", "title": "Payaso", "artist": "Eduardo Arroyo", "year": "c. 1980", "medium": "Acuarela y collage sobre papel", "dimensions": "38 × 25 cm", "style": "Pop Art · Figuración narrativa", "edition": "Pieza única · Firmada", "description": "Eduardo Arroyo (Madrid, 1937-2018), figura clave de la figuración narrativa española y el pop art europeo. Esta acuarela y collage sobre papel presenta un payaso construido con recortes y aguadas, combinando ironía visual y virtuosismo técnico. Certificada por Galería Guerrero, Sant Just Desvern.", "section": "iconic", "img_key": "arroyo-payaso"},
+{"id": "castillo", "title": "Amarillo Dorado Surrealista", "artist": "Jorge Castillo", "year": "1985", "medium": "Óleo sobre lienzo", "dimensions": "65 × 81 cm", "style": "Abstracto", "edition": "Obra original · Certificada por el artista", "description": "Jorge Castillo (Pontevedra, 1933), artista español de proyección internacional. Participó en las Bienales de São Paulo (1960) y Venecia (1964, 1976), y realizó exposición individual en la Nationalgalerie de Berlín (1970). Su obra se encuentra en el Guggenheim de Nueva York, la Albertina de Viena y la Fundación Juan March, entre otros.", "section": "iconic", "img_key": "castillo"},
+{"id": "derain-perfil", "title": "Cara de perfil", "artist": "André Derain", "year": "1920", "medium": "Dibujo a lápiz", "dimensions": "14 × 13 cm", "style": "Fauvismo · Dibujo clásico", "edition": "Obra original · Sello Atelier André Derain", "description": "André Derain (Chatou, 1880 – Garches, 1954), cofundador del fauvismo junto a Matisse y Vlaminck. Tras la Primera Guerra Mundial se decantó por el dibujo clásico. Este retrato a lápiz, con sello del Atelier André Derain, pertenece a ese período de madurez. Certificado por Galería Guerrero.", "section": "iconic", "img_key": "derain-perfil"},
+{"id": "derain-cabeza", "title": "Pequeña cabeza a lápiz", "artist": "André Derain", "year": "1920", "medium": "Dibujo a lápiz", "dimensions": "10 × 10 cm", "style": "Fauvismo · Dibujo clásico", "edition": "Obra original · Sello Atelier André Derain", "description": "Segundo dibujo de Derain en la colección. Pequeño estudio de cabeza que evidencia la maestría del artista en el trazo mínimo. Sello del Atelier André Derain. Certificado por Galería Guerrero.", "section": "iconic", "img_key": "derain-cabeza"},
+{"id": "grau-garriga", "title": "Textil Bobinas de hilo Verde Ocre", "artist": "Josep Grau-Garriga", "year": "1990", "medium": "Técnica mixta sobre lienzo (collage textil)", "dimensions": "100 × 81 cm", "style": "Abstracto · Arte textil", "edition": "Obra original", "description": "Josep Grau-Garriga (Sant Cugat del Vallès, 1928 – Angers, 2011), muralista e innovador del tapiz contemporáneo. Trabajó con Miró, Subirachs y Tàpies en Casa Aymat. Su obra pertenece a las colecciones del Metropolitan de Nueva York y el MACBA. Certificado por Galería Guerrero.", "section": "iconic", "img_key": "grau-garriga"},
+{"id": "miro-barcelona-iii", "title": "Barcelona III (Serie Barcelona)", "artist": "Joan Miró", "year": "1972", "medium": "Aguafuerte, aguatinta y carborundo en colores sobre papel Guarro", "dimensions": "69,2 × 106 cm", "style": "Surrealismo · Automatismo", "edition": "Ed. 50 · Firmada a lápiz · Editada por Sala Gaspar, Barcelona", "description": "Joan Miró (Barcelona, 1893 – Palma de Mallorca, 1983), uno de los principales surrealistas y pionero del automatismo. Esta estampa pertenece a la Serie Barcelona (1972-73), impresa en los talleres de J.J. Torralba. Gran Premio de Obra Gráfica en la Bienal de Venecia (1954). Su obra se encuentra en el MoMA, el Art Institute of Chicago y museos de todo el mundo.", "section": "iconic", "img_key": "miro-barcelona-iii"},
+{"id": "miro-barcelona-vii", "title": "Barcelona VII (Serie Barcelona)", "artist": "Joan Miró", "year": "1973", "medium": "Aguafuerte, aguatinta y carborundo en colores sobre papel Guarro", "dimensions": "69,2 × 106 cm", "style": "Surrealismo · Automatismo", "edition": "Ed. 50 · Firmada a lápiz · Editada por Sala Gaspar, Barcelona", "description": "Segunda pieza de Miró en la colección, también de la Serie Barcelona (1972-73). Composición nocturna donde las formas orgánicas y los círculos cromáticos flotan sobre un fondo oscuro, en el vocabulario visual inconfundible de Miró. Impresa en los talleres de J.J. Torralba, Barcelona.", "section": "iconic", "img_key": "miro-barcelona-vii"},
+{"id": "picasso", "title": "Femme se coiffant devant la glace", "artist": "Pablo Picasso", "year": "1933", "medium": "Aguafuerte sobre papel verjurado", "dimensions": "Plancha: 31,7 × 24,7 cm · Hoja: 44,5 × 34,5 cm", "style": "Suite Vollard", "edition": "", "description": "Perteneciente a la Suite Vollard, plancha G.208, catalogada por Georges Bloch (Tomo I, nº 141). Grabado ejecutado el 10 de abril de 1933, firmado a lápiz. Impresa por Lacourière y editada por Ambroise Vollard, París. La Suite Vollard es uno de los conjuntos gráficos más importantes del siglo XX.", "section": "iconic", "img_key": "Picasso"},
+{"id": "tapies-visca", "title": "Visca Catalunya", "artist": "Antoni Tàpies", "year": "c. 1976", "medium": "Aguafuerte", "dimensions": "56 × 76 cm", "style": "Abstracto", "edition": "", "description": "Obra gráfica de alto contenido simbólico, donde Tàpies funde su compromiso identitario catalán con su vocabulario abstracto de signos, cruces y materia.", "section": "graphic", "img_key": "Tàpies - Visca Catalunya"},
+{"id": "tapies-gran-x", "title": "Gran X", "artist": "Antoni Tàpies", "year": "1976", "medium": "Aguafuerte", "dimensions": "56 × 76 cm", "style": "Abstracto", "edition": "", "description": "Aguafuerte que presenta el motivo recurrente de la cruz o la X, símbolo central en la iconografía tapiana, evocando conceptos de negación, identidad y huella humana.", "section": "graphic", "img_key": "Tàpies - Gran X"},
+{"id": "tapies-creu", "title": "Creu i S", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Grabado que conjuga dos de los símbolos más reconocibles de Tàpies: la cruz y la letra S, marcas que transitan entre la escritura y la abstracción pura.", "section": "graphic", "img_key": "Tàpies - Creu i S"},
+{"id": "tapies-dues-mans", "title": "Dues Mans", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Composición gráfica en la que las 'dues mans' (dos manos) emergen como huellas sobre el plano, conectando el cuerpo con la materia en el lenguaje gestual de Tàpies.", "section": "graphic", "img_key": "Tàpies - Dues mans"},
+{"id": "tapies-esgrafiat", "title": "Esgrafiat sobre negre", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Esgrafiado sobre fondo negro que plasma la técnica de rascado tan característica de Tàpies, donde la incisión revela capas de significado bajo la superficie oscura.", "section": "graphic", "img_key": "Tàpies - Esgrafiat sobre negre"},
+{"id": "tapies-espai", "title": "Espai amb signes", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Espacio configurado mediante signos: números, letras y marcas que flotan en la composición como vestigios de comunicación y memoria colectiva.", "section": "graphic", "img_key": "Tàpies - Espai amb signes"},
+{"id": "tapies-lletra-o", "title": "Lletra O", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Exploración gráfica centrada en la letra O, que en el universo de Tàpies trasciende su función lingüística para convertirse en forma pura, vacío y circularidad.", "section": "graphic", "img_key": "Tàpies - Lletra O"},
+{"id": "tapies-lletres", "title": "Lletres i Gris", "artist": "Antoni Tàpies", "year": "c. 1970s", "medium": "Grabado", "dimensions": "—", "style": "Abstracto", "edition": "", "description": "Composición donde las letras se disuelven en una atmósfera gris, difuminando la frontera entre texto e imagen en una poética visual del silencio.", "section": "graphic", "img_key": "Tàpies - Lletres i Gris"},
+{"id": "plensa1", "title": "Grabado 1", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "76 × 56 cm", "style": "Contemporáneo", "edition": "", "description": "Grabado del reconocido escultor y artista catalán Jaume Plensa, conocido mundialmente por sus instalaciones monumentales que exploran la relación entre cuerpo, lenguaje y espacio.", "section": "graphic", "img_key": "Plensa - Grabado 1"},
+{"id": "plensa2", "title": "Grabado 2", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "76 × 56 cm", "style": "Contemporáneo", "edition": "", "description": "Segunda pieza gráfica de Plensa en la colección. Su obra transita entre la escultura pública y la intimidad del grabado, manteniendo siempre el diálogo entre la materia y lo etéreo.", "section": "graphic", "img_key": "Plensa - Grabado 2"},
+{"id": "valdes-1", "title": "Grabado 1 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-1"},
+{"id": "valdes-10", "title": "Grabado 10 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-10"},
+{"id": "valdes-2", "title": "Grabado 2 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-2"},
+{"id": "valdes-3", "title": "Grabado 3 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-3"},
+{"id": "valdes-4", "title": "Grabado 4 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-4"},
+{"id": "valdes-5", "title": "Grabado 5 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-5"},
+{"id": "valdes-6", "title": "Grabado 6 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-6"},
+{"id": "valdes-7", "title": "Grabado 7 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-7"},
+{"id": "valdes-8", "title": "Grabado 8 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-8"},
+{"id": "valdes-9", "title": "Grabado 9 (Serie Art of this Century)", "artist": "Manolo Valdés", "year": "2002", "medium": "Punta seca sobre papel Chiné", "dimensions": "51 × 40,5 cm", "style": "Grabado original", "edition": "Ed. 75 ej., 12 P.E., 15 H.C. y 15 P.A. Numerado y firmado por el artista.", "description": "Grabado original de Manolo Valdés, parte de una colección de 15 grabados diferentes impresos en papel hecho a mano. Editado por Art of this Century en 2002, París. Valdés, uno de los artistas españoles contemporáneos más reconocidos internacionalmente, fusiona referencias de la historia del arte con un lenguaje visual propio de gran potencia expresiva.", "section": "graphic", "img_key": "valdes-9"},
+{"id": "cuixart", "title": "Pintura sobre cartón en técnica mixta", "artist": "Modest Cuixart", "year": "c. 1985", "medium": "Técnica mixta sobre cartulina", "dimensions": "38 × 31 cm", "style": "Moderno · Dau al Set", "edition": "", "description": "Modest Cuixart i Tàpies, cofundador del grupo Dau al Set junto a Brossa, Ponç y Tàpies, desarrolló una obra de fuerte relación con el surrealismo y el valor artístico del signo. Técnica mixta sobre cartulina que refleja su período de madurez.", "section": "available", "img_key": "Modest Cuixart 2"},
+{"id": "raventos", "title": "Obra gráfica", "artist": "Maria Assumpció Raventós", "year": "—", "medium": "Grabado / Técnica mixta", "dimensions": "—", "style": "Informalismo", "edition": "", "description": "Maria Assumpció Raventós i Torras (Sant Sadurní d'Anoia, 1930), pintora, grabadora y tapicera catalana. Formada en la Escuela de Bellas Artes de Sant Jordi, amplió estudios en el taller Friedlaender (París) y el Smithsonian (Washington D.C.). Su obra evoluciona desde el cubismo hacia un informalismo de armonías austeras.", "section": "available", "img_key": "Raventós"},
+{"id": "subirachs", "title": "Dibujo a lápiz de carbón", "artist": "Josep Maria Subirachs", "year": "1980", "medium": "Lápiz de carbón", "dimensions": "17,5 × 27,5 cm", "style": "Moderno", "edition": "", "description": "Dibujo del prestigioso escultor barcelonés Josep Maria Subirachs (1927-2014), conocido internacionalmente por sus esculturas y especialmente por su trabajo en la fachada de la Pasión de la Sagrada Familia. Su obra se encuentra en museos y espacios públicos de todo el mundo.", "section": "available", "img_key": "Subirachs"},
+{"id": "tharrats-18", "title": "Composición nº 18", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 18"},
+{"id": "tharrats-19", "title": "Composición nº 19", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 19"},
+{"id": "tharrats-20", "title": "Composición nº 20", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 20"},
+{"id": "tharrats-21", "title": "Composición nº 21", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 21"},
+{"id": "tharrats-22", "title": "Composición nº 22", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 22"},
+{"id": "tharrats-25", "title": "Composición nº 25", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 25"},
+{"id": "tharrats-26", "title": "Composición nº 26", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 26"},
+{"id": "tharrats-27", "title": "Composición nº 27", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 27"},
+{"id": "tharrats-28", "title": "Composición nº 28", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 28"},
+{"id": "tharrats-29", "title": "Composición nº 29", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 29"},
+{"id": "tharrats-30", "title": "Composición nº 30", "artist": "Joan-Josep Tharrats", "year": "1990", "medium": "Acrílico sobre cartulina", "dimensions": "54 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 30"},
+{"id": "tharrats-32", "title": "Composición nº 32", "artist": "Joan-Josep Tharrats", "year": "1980", "medium": "Acrílico sobre madera", "dimensions": "26 × 37 cm", "style": "Abstracto · Dau al Set", "edition": "", "description": "Joan-Josep Tharrats i Vidal (Girona, 1918 – Barcelona, 2001), cofundador del grupo Dau al Set junto a Brossa, Ponç, Cuixart y Tàpies. Formado en la Escuela Massana, evolucionó del impresionismo al arte abstracto bajo la influencia de Miró. Desarrolló la técnica de las 'maculaturas', creando composiciones mediante la superposición de capas de pintura con efectos de azar controlado.", "section": "available", "img_key": "Tharrats 32"},
+{"id": "bultrini", "title": "Camino entre árboles", "artist": "Matteo Bultrini", "year": "2008", "medium": "Técnica mixta", "dimensions": "100 × 63 cm", "style": "Expresionismo abstracto", "edition": "Obra original", "description": "Matteo Bultrini (Roma, 1979), pintor italiano autodidacta cuya obra abstracta prolonga los experimentos cromáticos de Poliakoff y Pasmore. Actualmente vive y trabaja en Pratola Peligna (Abruzzo). Certificada por Galería Guerrero.", "section": "available", "img_key": "bultrini"},
+{"id": "fernandez-capitol", "title": "Edificio Capitol", "artist": "Luis Fernández", "year": "1976", "medium": "Óleo sobre lienzo", "dimensions": "130 × 100 cm", "style": "Realismo urbano", "edition": "Obra original", "description": "Luis Fernández (1923-2012), pintor español. Este gran óleo captura el emblemático Edificio Capitol de la Gran Vía madrileña con una atmósfera cinematográfica de claroscuros urbanos. Certificado por Galería Guerrero.", "section": "available", "img_key": "fernandez-capitol"},
+{"id": "hurtuna", "title": "Composición", "artist": "Josep Hurtuna", "year": "1969", "medium": "Óleo sobre lienzo", "dimensions": "100 × 73 cm", "style": "Abstracto", "edition": "Obra original", "description": "Josep Hurtuna Giralt (1913-1978), pintor y grabador catalán formado en la Escuela de Bellas Artes de San Jorge de Barcelona. Evolucionó del paisajismo impresionista a la abstracción, compartiendo inquietudes con los informalistas europeos. Certificado por Galería Guerrero.", "section": "available", "img_key": "hurtuna"},
+{"id": "ribas", "title": "Vendedor de Caramelos", "artist": "Lluís Ribas", "year": "1980", "medium": "Óleo sobre lienzo", "dimensions": "100 × 100 cm", "style": "Realismo · Contemporáneo", "edition": "Obra original", "description": "Lluís Ribas (El Masnou, Barcelona, 1949), pintor español conocido por sus cuadros de gran formato hiperrealistas. Esta escena costumbrista captura con maestría la relación entre un vendedor ambulante y una niña, en un juego de luces y sombras de marcada influencia clásica. Certificado por Galería Guerrero.", "section": "available", "img_key": "ribas"},
+{"id": "cuixart-1", "title": "Pintura sobre cartón (Figura)", "artist": "Modest Cuixart", "year": "c. 1985", "medium": "Técnica mixta sobre cartulina", "dimensions": "38 × 31 cm", "style": "Moderno · Dau al Set", "edition": "Obra original y única", "description": "Modest Cuixart i Tàpies (Barcelona, 1925 – Palafrugell, 2007), cofundador del grupo Dau al Set. Ganó el primer premio de la Bienal de São Paulo (1959), expuso en la Documenta de Kassel, la Tate Gallery y el Guggenheim de Nueva York. Cruz de San Jorge de la Generalitat y Medalla de Oro al Mérito en Bellas Artes. Certificado por Galería Guerrero.", "section": "available", "img_key": "cuixart-1"},
+{"id": "tracey-emin", "title": "Crazy", "artist": "Tracey Emin", "year": "2013", "medium": "Dibujo en tinta azul sobre papel", "dimensions": "30 x 24 cm", "style": "Contemporaneo - YBA", "edition": "Obra unica - Firmada", "description": "Dibujo sobre papel realizado en 2013 por la artista britanica Tracey Emin, figura destacada del arte contemporaneo europeo y asociada al movimiento de los Young British Artists surgido en Londres en la decada de 1990.", "section": "iconic", "img_key": "Tracey Emin - Crazy"},
+{"id": "warhol-stocking", "title": "A Whole Stocking Full of Good Wishes", "artist": "Andy Warhol", "year": "1955", "medium": "Offset lithograph", "dimensions": "56 × 43 cm", "style": "Pop Art · Época temprana", "edition": "Authenticated by The Andy Warhol Foundation for The Visual Arts", "description": "Litografía offset de la época temprana de Warhol como ilustrador comercial. Autenticada por la Andy Warhol Foundation y con sello del Estate of Andy Warhol en el verso.", "section": "iconic"},
+{"id": "warhol-gee-merrie-colour", "title": "Gee, Merrie Shoes (Coloured)", "artist": "Andy Warhol", "year": "c. 1956", "medium": "Litografía offset con coloreado a mano sobre papel", "dimensions": "23,8 × 20,3 cm", "style": "Pop Art · Época temprana", "edition": "", "description": "Pieza de la carrera temprana de Warhol como ilustrador comercial para I. Miller. Refleja el espíritu de la moda de posguerra con un estilo lúdico y elegante.", "section": "iconic"},
+{"id": "warhol-gee-merrie-bw", "title": "Gee Merrie Shoes (B/W)", "artist": "Andy Warhol", "year": "c. 1956", "medium": "Monochrome lithograph", "dimensions": "22.8 × 19.4 cm", "style": "Pop Art · Época temprana", "edition": "", "description": "Versión monocroma de la serie Gee, Merrie Shoes. Litografía que evidencia la maestría de Warhol en el dibujo de línea durante su etapa como ilustrador.", "section": "iconic"},
+{"id": "warhol-tattooed-woman", "title": "Tattooed Woman Holding A Rose", "artist": "Andy Warhol", "year": "1955", "medium": "Litografía offset en color sobre papel cebolla verde", "dimensions": "74,6 × 27,9 cm", "style": "Pop Art", "edition": "Not in F. & S.", "description": "Obra no catalogada en Feldman & Schellmann. Representa una mujer tatuada sosteniendo una rosa.", "section": "iconic"},
+{"id": "warhol-flowers", "title": "Flowers", "artist": "Andy Warhol", "year": "1970", "medium": "Serigrafía sobre Lenox Museum Board", "dimensions": "91,4 × 91,4 cm", "style": "Pop Art", "edition": "Ed. 250 · F. & S. II.64-73 · Factory Additions, New York", "description": "Icónica serie Flowers de Andy Warhol. Documento de valoración Halcyon Gallery.", "section": "iconic"},
+{"id": "rafols-acord-ombres", "title": "Acord d'Ombres", "artist": "Albert Ràfols-Casamada", "year": "2002", "medium": "Aguafuerte", "dimensions": "77 × 112 cm", "style": "Abstracto", "edition": "", "description": "Aguafuerte de gran formato donde Ràfols-Casamada explora la tensión entre luz y sombra mediante una paleta contenida y gestos equilibrados.", "section": "graphic"},
+{"id": "dylan-two-sisters", "title": "Two Sisters (Large Format)", "artist": "Bob Dylan", "year": "2008", "medium": "Grabado en edición limitada firmada", "dimensions": "124.5 × 94 cm (imagen) · 155 × 132 cm (enmarcada)", "style": "Figurativo", "edition": "Ed. 295", "description": "Estampa de gran formato de la serie gráfica de Bob Dylan. Edición limitada firmada.", "section": "iconic"},
+{"id": "dylan-train-tracks", "title": "Train Tracks", "artist": "Bob Dylan", "year": "2010", "medium": "Portfolio Limited Edition Signed", "dimensions": "69.8 × 55.9 cm", "style": "Figurativo · Paisaje", "edition": "Ed. 295", "description": "Parte del portfolio de edición limitada firmado por Bob Dylan. Paisaje de vías de tren que refleja la iconografía del viaje tan presente en su obra.", "section": "graphic"},
+{"id": "opie-ika", "title": "Ika (2)", "artist": "Julian Opie", "year": "2011", "medium": "Inkjet print on Epson Premium Semigloss", "dimensions": "128 × 90,5 cm (enmarcada)", "style": "Pop Art contemporáneo · Retrato", "edition": "Ed. 40", "description": "Retrato de la serie Portraits de Julian Opie. Impresión inkjet sobre papel semibrillo en edición limitada de 40 ejemplares.", "section": "iconic"},
+{"id": "wesselmann-monica", "title": "Monica Nude With Cezanne", "artist": "Tom Wesselmann", "year": "1992", "medium": "Screenprint", "dimensions": "145 × 103 cm", "style": "Pop Art · Desnudo", "edition": "Ed. 90", "description": "Serigrafía de gran formato donde Wesselmann fusiona el desnudo contemporáneo con una referencia directa a Cézanne.", "section": "iconic"},
+{"id": "feito", "title": "Composición abstracta", "artist": "Luis Feito", "year": "c. 1970", "medium": "Litografía en colores", "dimensions": "76 × 56 cm", "style": "Abstracto · Informalismo", "edition": "", "description": "Composición abstracta en rojos y negros característica del lenguaje informalista de Feito.", "section": "iconic"},
+{"id": "hartung", "title": "Litografía abstracta", "artist": "Hans Hartung", "year": "c. 1970", "medium": "Litografía en colores sobre papel", "dimensions": "76 × 56 cm", "style": "Abstracto · Abstracción lírica", "edition": "", "description": "Obra característica del lenguaje gestual de Hartung, con líneas convergentes sobre fondo negro y franja cromática amarilla.", "section": "iconic"},
+{"id": "subirachs-las-meninas", "title": "Las Meninas", "artist": "Josep Maria Subirachs", "year": "c. 1980", "medium": "Escultura en bronce", "dimensions": "34 × 25 × 12 cm", "style": "Figurativo · Reinterpretación", "edition": "", "description": "Reinterpretación escultórica del tema velazqueño de Las Meninas, con el lenguaje geométrico y monumental propio de Subirachs.", "section": "iconic"},
+{"id": "subirachs-a-david", "title": "A David", "artist": "Josep Maria Subirachs", "year": "c. 1980", "medium": "Escultura en bronce", "dimensions": "42 × 15 × 12 cm", "style": "Escultura · Figurativo", "edition": "", "description": "Escultura en bronce que rinde homenaje a la figura de David con el característico estilo geométrico y monumental de Subirachs.", "section": "iconic"},
+{"id": "paricio", "title": "Two Flowers for Van Gogh", "artist": "David Paricio", "year": "2018", "medium": "Óleo sobre lienzo", "dimensions": "100 × 81 cm", "style": "Abstracto · Retrato", "edition": "", "description": "Retrato abstracto de gran fuerza cromática realizado con la técnica característica de empastes densos de Paricio.", "section": "iconic"},
+{"id": "valdes-mariana", "title": "Mariana", "artist": "Manolo Valdés", "year": "2002", "medium": "Grabado sobre papel", "dimensions": "76 × 56 cm", "style": "Figurativo · Reinterpretación", "edition": "", "description": "Reinterpretación de la iconografía clásica con el lenguaje pictórico propio de Valdés, donde las figuras emergen entre veladuras y texturas etéreas.", "section": "iconic"},
+{"id": "atchugarry", "title": "Olas Góticas", "artist": "Pablo Atchugarry", "year": "2010", "medium": "Escultura en mármol", "dimensions": "45 × 20 × 15 cm", "style": "Escultura · Abstracto", "edition": "", "description": "Escultura en mármol que captura el movimiento ascendente y la fluidez orgánica característicos de la obra de Atchugarry.", "section": "iconic"},
+{"id": "barcelo-lanzarote", "title": "Lanzarote 10", "artist": "Miquel Barceló", "year": "2000", "medium": "Grabado", "dimensions": "66 × 50 cm", "style": "Contemporáneo · Paisaje", "edition": "Ed. limitada · Firmado", "description": "Grabado de la serie Lanzarote de Miquel Barceló, donde el paisaje volcánico de la isla se funde con su expresionismo gestual. Barceló, uno de los artistas españoles más importantes de su generación, representó a España en la Bienal de Venecia en 2009.", "section": "iconic", "img_key": "barcelo-lanzarote"},
+{"id": "akushov-party-line", "title": "Party Line. Mantra USSR", "artist": "Vyacheslav Akushov", "year": "2005", "medium": "Técnica mixta sobre lienzo", "dimensions": "—", "style": "Contemporáneo · Figurativo", "edition": "Obra original", "description": "Vyacheslav Akushov (Rusia, 1965), artista ruso contemporáneo cuya obra explora la iconografía soviética con una mirada crítica y lúdica. Party Line forma parte de su serie Mantra USSR, donde los símbolos del poder se transforman en elementos pop.", "section": "iconic", "img_key": "akushov-party-line"},
+{"id": "akushov-two-lenin", "title": "Two Lenin. Communism there! / Towards Communism!", "artist": "Vyacheslav Akushov", "year": "2005", "medium": "Técnica mixta sobre lienzo", "dimensions": "—", "style": "Contemporáneo · Figurativo · Pop", "edition": "Obra original", "description": "Segunda pieza de Akushov en la colección. Díptico que enfrenta dos representaciones de Lenin, decodificando la propaganda visual soviética mediante la repetición y la ironía.", "section": "iconic", "img_key": "akushov-two-lenin"},
+{"id": "bulatov-wanted-dark", "title": "Study for 'Wanted to make it dark, But was too late'", "artist": "Erik Bulatov", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Contemporáneo · Figurativo", "edition": "Obra original", "description": "Erik Bulatov (Sverdlovsk, 1933), uno de los artistas más destacados del Sots Art y el arte conceptual ruso. Estudio preparatorio para una de sus composiciones emblemáticas donde texto e imagen se superponen para cuestionar la relación entre lenguaje y percepción.", "section": "iconic", "img_key": "bulatov-wanted-dark"},
+{"id": "brandmeier-untitled", "title": "Untitled", "artist": "Monika Brandmeier", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Contemporáneo · Abstracto", "edition": "Obra original", "description": "Monika Brandmeier (Alemania, 1959), artista alemana que trabaja en la intersección entre escultura, instalación y dibujo. Su obra investiga las relaciones entre espacio, materia y percepción.", "section": "iconic", "img_key": "brandmeier-untitled"},
+{"id": "lashai-tyranny-autumn", "title": "The Tyranny of Autumn, Not Every Tree Can Bear", "artist": "Farideh Lashai", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Contemporáneo · Abstracto", "edition": "Obra original", "description": "Farideh Lashai (Rasht, 1944 – Teherán, 2013), artista iraní reconocida internacionalmente por sus instalaciones de video-pintura y su profunda reflexión poética sobre la naturaleza y la condición humana. Su obra ha sido expuesta en la Tate Modern, el Metropolitan Museum y la Bienal de Venecia.", "section": "iconic", "img_key": "lashai-tyranny-autumn"},
+{"id": "grau-garriga-2", "title": "Composición con figura y ventana", "artist": "Josep Grau-Garriga", "year": "1990", "medium": "Técnica mixta sobre lienzo", "dimensions": "—", "style": "Abstracto · Informalismo", "edition": "Obra original", "description": "Segunda pieza de Grau-Garriga en la colección. Composición donde una figura y una ventana se integran en una superficie matérica de texturas textiles y pictóricas, en el cruce entre pintura y tapiz que define su obra.", "section": "iconic", "img_key": "grau-garriga-2"},
+{"id": "grau-garriga-3", "title": "Silueta con pantalla verde", "artist": "Josep Grau-Garriga", "year": "1990", "medium": "Técnica mixta sobre lienzo", "dimensions": "—", "style": "Abstracto · Informalismo", "edition": "Obra original", "description": "Tercera pieza de Grau-Garriga. Silueta emergenente sobre un fondo de pantalla verde que condensa la exploración material y la síntesis entre figura y abstracción del artista.", "section": "iconic", "img_key": "grau-garriga-3"},
+{"id": "clave", "title": "Sin título", "artist": "Antoni Clavé", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Abstracto · Figurativo · Contemporáneo", "edition": "", "description": "Antoni Clavé (Barcelona, 1913 – Saint-Tropez, 2005), pintor, escultor y grabador catalán. Exiliado en Francia tras la Guerra Civil, desarrolló una carrera de reconocimiento mundial. Su obra, que transita del expresionismo al informalismo, se encuentra en el MoMA, el Centro Pompidou y el Museo Reina Sofía.", "section": "iconic", "img_key": "clave"},
+{"id": "ribeiro-1", "title": "Bodegón constructivista I", "artist": "Alceu Ribeiro", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Abstracto · Figurativo · Contemporáneo", "edition": "", "description": "Alceu Ribeiro (Artigas, Uruguay, 1919 – Palma de Mallorca, 2013), pintor uruguayo-español formado en el Taller Torres-García de Montevideo. Su obra fusiona el constructivismo universalista con la luminosidad mediterránea, creando composiciones de bodegones geométricos de fuerte identidad plástica.", "section": "iconic", "img_key": "ribeiro-1"},
+{"id": "ribeiro-2", "title": "Bodegón constructivista II", "artist": "Alceu Ribeiro", "year": "—", "medium": "Técnica mixta", "dimensions": "—", "style": "Abstracto · Figurativo · Contemporáneo", "edition": "", "description": "Segunda pieza de Alceu Ribeiro en la colección. Bodegón constructivista que continúa la exploración de formas geométricas y colores planos heredados del taller Torres-García.", "section": "iconic", "img_key": "ribeiro-2"},
+{"id": "ando-manga", "title": "Pandasan (Manga)", "artist": "Hiro Ando", "year": "—", "medium": "Escultura en resina", "dimensions": "—", "style": "Contemporáneo · Pop · Escultura", "edition": "", "description": "Hiro Ando (Japón), artista y escultor japonés conocido por sus esculturas neo-pop que fusionan la cultura manga con la tradición escultórica. Pandasan, su personaje icónico, es un panda estilizado que se ha convertido en símbolo del cruce entre cultura popular y arte contemporáneo.", "section": "iconic", "img_key": "ando-manga"},
+{"id": "ando-splash", "title": "Pandasan (Splash)", "artist": "Hiro Ando", "year": "—", "medium": "Escultura en resina policromada", "dimensions": "—", "style": "Contemporáneo · Pop · Escultura", "edition": "", "description": "Segunda escultura de Hiro Ando en la colección. Versión splash del Pandasan donde las salpicaduras de color convierten la pieza en una explosión cromática tridimensional.", "section": "iconic", "img_key": "ando-splash"},
+{"id": "plensa-monocrom", "title": "Monocrom VIII", "artist": "Jaume Plensa", "year": "—", "medium": "Escultura", "dimensions": "—", "style": "Contemporáneo · Abstracto · Escultura", "edition": "", "description": "Jaume Plensa (Barcelona, 1955), uno de los escultores contemporáneos más reconocidos internacionalmente. Monocrom VIII forma parte de su investigación sobre la relación entre cuerpo, lenguaje y espacio. Su obra monumental se exhibe en Chicago, Tokio, Londres y otras ciudades del mundo.", "section": "iconic", "img_key": "plensa-monocrom"},
+{"id": "picasso-buho", "title": "Hibou Marron Noir (Búho)", "artist": "Pablo Picasso", "year": "—", "medium": "Cerámica", "dimensions": "—", "style": "Figurativo · Contemporáneo · Escultura", "edition": "", "description": "Cerámica original de Pablo Picasso producida en el taller Madoura de Vallauris. Los búhos fueron uno de los motivos recurrentes en la producción cerámica de Picasso, quien los transformó en piezas de extraordinaria expresividad.", "section": "iconic", "img_key": "picasso-buho"},
+{"id": "picasso-corrida", "title": "Corrida (A.R. 182)", "artist": "Pablo Picasso", "year": "—", "medium": "Cerámica", "dimensions": "—", "style": "Figurativo · Contemporáneo · Escultura", "edition": "A.R. 182", "description": "Plato cerámico original de Picasso con escena de corrida, producido en el taller Madoura de Vallauris. Catalogado como A.R. 182 en el Catalogue Raisonné de la obra cerámica de Picasso por Alain Ramié.", "section": "iconic", "img_key": "picasso-corrida"},
+{"id": "plensa-twins", "title": "Twins 1", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "—", "style": "Contemporáneo · Abstracto", "edition": "", "description": "Grabado de Jaume Plensa perteneciente a la serie Twins, donde la dualidad y el espejo se convierten en metáforas del diálogo entre el yo y el otro.", "section": "graphic", "img_key": "plensa-twins"},
+{"id": "plensa-untitled", "title": "Untitled", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "—", "style": "Contemporáneo · Abstracto", "edition": "", "description": "Grabado de Jaume Plensa. Su trabajo gráfico explora las mismas tensiones entre materia y espíritu, cuerpo y lenguaje, que definen su escultura monumental.", "section": "graphic", "img_key": "plensa-untitled"},
+{"id": "plensa-untitled-1", "title": "Untitled (I)", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "—", "style": "Contemporáneo · Figurativo", "edition": "", "description": "Obra gráfica de Jaume Plensa que traduce a la intimidad del papel la monumentalidad y presencia de sus esculturas de rostros y figuras.", "section": "graphic", "img_key": "plensa-untitled-1"},
+{"id": "plensa-untitled-2", "title": "Untitled (II)", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "—", "style": "Contemporáneo · Figurativo", "edition": "", "description": "Quinta pieza gráfica de Plensa en la colección. Grabado que continúa la exploración del retrato y la figura humana como contenedores de lenguaje y memoria.", "section": "graphic", "img_key": "plensa-untitled-2"},
+{"id": "plensa-untitled-3", "title": "Untitled (III)", "artist": "Jaume Plensa", "year": "—", "medium": "Grabado", "dimensions": "—", "style": "Contemporáneo · Figurativo", "edition": "", "description": "Sexta pieza gráfica de Plensa en la colección, completando un conjunto significativo de su producción sobre papel.", "section": "graphic", "img_key": "plensa-untitled-3"}
+];
+
+
+const SECTIONS = {
+  iconic: {
+    label: "Sección I",
+    title: "Piezas Icónicas",
+    desc: "Obras originales de los maestros: óleos, pinturas y grabados de autoría singular. Piezas con certificación y procedencia documentada.",
+    bg: "var(--cream)"
+  },
+  graphic: {
+    label: "Sección II",
+    title: "Obra Gráfica",
+    desc: "Grabados, aguafuertes y ediciones limitadas de artistas consagrados. Obra múltiple de alta calidad con certificados de autenticidad.",
+    bg: "var(--ivory)"
+  }
+};
+
+const CONTACT_EMAIL = "eleve.art@outlook.com";
+
+let adminState = {};
+try {
+  const saved = localStorage.getItem('eleve-admin');
+  if (saved) adminState = JSON.parse(saved);
+} catch(e) {}
+
+COLLECTION.forEach(item => {
+  if (!adminState[item.id]) {
+    adminState[item.id] = { visible: true, artsy: item.section === 'iconic' };
+  }
+});
+
+function saveAdmin() {
+  try { localStorage.setItem('eleve-admin', JSON.stringify(adminState)); } catch(e) {}
+}
+
+let searchTerm = '';
+
+function filterGallery(term) {
+  searchTerm = term.toLowerCase().trim();
+  renderGallery();
+}
+
+function renderGallery() {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  
+  ['iconic', 'graphic'].forEach(sectionKey => {
+    const sec = SECTIONS[sectionKey];
+    const items = COLLECTION.filter(c => {
+      if (c.section !== sectionKey) return false;
+      if (adminState[c.id]?.visible === false) return false;
+      if (searchTerm) {
+        const haystack = [c.artist, c.title, c.medium, c.style, c.year, c.description].join(' ').toLowerCase();
+        if (!haystack.includes(searchTerm)) return false;
+      }
+      return true;
+    });
+    if (items.length === 0) return;
+    
+    const div = document.createElement('div');
+    div.className = 'section';
+    div.id = 'section-' + sectionKey;
+    
+    const arrowSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+    
+    div.innerHTML = `
+      <div class="section-header anim">
+        <div class="section-label">${sec.label}</div>
+        <div class="section-title">${sec.title}</div>
+        <div class="section-desc">${sec.desc}</div>
+
+      </div>
+      <div class="featured-grid">
+        ${items.map(item => {
+          return `
+          <div class="featured-card anim" onclick="openLightbox('${item.id}')">
+            <div class="featured-card-img">
+              <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title}" loading="lazy">
+            </div>
+            <div class="featured-card-body">
+              <div class="featured-card-artist">${item.artist}</div>
+              <div class="featured-card-title">${item.title}</div>
+              <div class="featured-card-medium">${item.medium}${item.year && item.year !== '—' ? ' · ' + item.year : ''}</div>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+    main.appendChild(div);
+  });
+  
+  initAnimations();
+}
+
+function openLightbox(id) {
+  const item = COLLECTION.find(c => c.id === id);
+  if (!item) return;
+  const sec = SECTIONS[item.section];
+  const lb = document.getElementById('lightbox');
+  
+  lb.querySelector('.lb-img img').src = IMG[id] || '';
+  lb.querySelector('.lb-artist').textContent = item.artist;
+  lb.querySelector('.lb-title').textContent = item.title;
+  
+  const fields = lb.querySelector('.lb-fields');
+  fields.innerHTML = '';
+  const data = [
+    ['Año', item.year],
+    ['Técnica', item.medium],
+    ['Dimensiones', item.dimensions],
+    ['Estilo', item.style],
+    ['Edición', item.edition]
+  ];
+  data.forEach(([label, value]) => {
+    if (value && value !== '—') {
+      fields.innerHTML += `<div class="lb-field"><div class="lb-field-label">${label}</div><div class="lb-field-value">${value}</div></div>`;
+    }
+  });
+  
+  lb.querySelector('.lb-desc').textContent = item.description;
+  
+  
+  const contactLink = lb.querySelector('.lb-contact');
+  contactLink.href = `mailto:${CONTACT_EMAIL}?subject=Consulta: ${item.artist} - ${item.title}&body=Estimado equipo de Colección Eleve,%0A%0AMe interesa la obra "${item.title}" de ${item.artist} (${item.year}).%0A%0AQuedo a la espera de su respuesta.%0A%0AUn saludo.`;
+  
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openAdmin() {
+  renderAdmin();
+  document.getElementById('admin').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAdmin() {
+  document.getElementById('admin').classList.remove('open');
+  document.body.style.overflow = '';
+  renderGallery();
+}
+
+function renderAdmin() {
+  const container = document.getElementById('admin-content');
+  container.innerHTML = '';
+  
+  ['iconic', 'graphic'].forEach(sectionKey => {
+    const sec = SECTIONS[sectionKey];
+    const items = COLLECTION.filter(c => c.section === sectionKey);
+    
+    let html = `<div class="admin-section">
+      <div class="admin-section-title">${sec.title} (${items.length})</div>`;
+    
+    items.forEach(item => {
+      const state = adminState[item.id];
+      html += `
+        <div class="admin-row">
+          <div class="admin-row-info">
+            <div class="admin-row-artist">${item.artist}</div>
+            <div class="admin-row-title">${item.title}</div>
+          </div>
+          <div class="admin-toggles">
+            <div class="admin-toggle-group">
+              <span class="admin-toggle-label">Visible</span>
+              <div class="toggle ${state.visible ? 'on' : ''}" onclick="toggleAdmin('${item.id}','visible',this)"></div>
+            </div>
+            <div class="admin-toggle-group">
+              <span class="admin-toggle-label">Artsy</span>
+              <div class="toggle ${state.artsy ? 'on' : ''}" onclick="toggleAdmin('${item.id}','artsy',this)"></div>
+            </div>
+
+          </div>
+        </div>`;
+    });
+    
+    html += '</div>';
+    container.innerHTML += html;
+  });
+}
+
+function toggleAdmin(id, prop, el) {
+  adminState[id][prop] = !adminState[id][prop];
+  el.classList.toggle('on');
+  saveAdmin();
+}
+
+function exportData() {
+  const data = COLLECTION.map(item => ({
+    ...item,
+    admin: adminState[item.id]
+  }));
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'coleccion-eleve-export.json';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function initAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  
+  document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+}
+
+// Header scroll
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  }
+});
+
+// Active nav on scroll
+window.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.nav a[href^="#"]');
+  const sections = document.querySelectorAll('.section[id]');
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+  });
+  links.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+
+// Escape key closes overlays
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLightbox(); closeAdmin(); }
+});
+
+// Init
+renderGallery();
+</script>
+</body>
+</html>
