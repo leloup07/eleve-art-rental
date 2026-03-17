@@ -4457,6 +4457,7 @@ function setFilter(filter, el) {
 function applyFilters() {
   searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
   renderGallery();
+  setTimeout(() => { const el = document.getElementById('coleccion'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
 }
 
 function matchesFilter(item) {
