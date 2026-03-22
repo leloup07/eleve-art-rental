@@ -4752,6 +4752,8 @@ function closeAdmin() {
   renderGallery();
 }
 
+document.getElementById("searchInput").value = ""; renderFeatured(); renderGallery();
+
 const ALL_CATEGORIES = ['abstracto','figurativo','surrealismo','informalismo','cubista','pop','contemporaneo','dauaset','escultura'];
 const CAT_LABELS = {abstracto:'Abstracto',figurativo:'Figurativo',surrealismo:'Surrealismo',informalismo:'Informalismo',cubista:'Cubista',pop:'Pop',contemporaneo:'Contemporáneo',dauaset:'Dau al Set',escultura:'Escultura'};
 
