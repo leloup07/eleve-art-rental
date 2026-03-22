@@ -314,7 +314,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 }
 </style>
 </head>
-<body>
+<body style="overflow: hidden;">
 
 <!-- HEADER -->
 <div class="header scrolled">
@@ -4516,7 +4516,16 @@ function setFilter(filter, el) {
 
 function applyFilters() {
   searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+  const isFiltered = activeFilter !== 'all' || searchTerm !== '';
+  const sectionsToHide = ['proyectos', 'art-rental'];
+  sectionsToHide.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = isFiltered ? 'none' : '';
+  });
   renderGallery();
+  if (isFiltered) {
+    setTimeout(() => { const el = document.getElementById('main'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
+  }
 }
 
 function matchesFilter(item) {
