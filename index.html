@@ -151,7 +151,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .step-desc{font-size:13px;color:var(--ash);line-height:1.7;}
 
 /* PACKS */
-.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}.packs-grid .pack-card:last-child:nth-child(3n+1){grid-column:2;}
 .pack-card{border:1px solid var(--parchment);background:var(--cream);padding:36px 32px;text-align:center;transition:all .4s;}
 .pack-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.06);}
 .pack-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
