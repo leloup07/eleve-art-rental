@@ -4,16 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eleve Art | Alquiler de arte moderno y contemporáneo</title>
 <meta name="description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales.">
-<link rel="canonical" href="https://eleve-art.com/">
-<meta property="og:title" content="Eleve Art | Alquiler de arte moderno y contemporáneo">
-<meta property="og:description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales. Barcelona · Madrid · España.">
-<meta property="og:url" content="https://eleve-art.com/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://eleve-art.com/picasso.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Eleve Art | Alquiler de arte moderno y contemporáneo">
-<meta name="twitter:description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales.">
-<meta name="twitter:image" content="https://eleve-art.com/picasso.jpg">
 <meta name="keywords" content="alquiler de arte, art rental, arte para hoteles, arte para oficinas, arte para interioristas, alquiler de cuadros para empresas, art rental Spain, Picasso, Tàpies, Miró, Barceló">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
@@ -161,7 +151,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .step-desc{font-size:13px;color:var(--ash);line-height:1.7;}
 
 /* PACKS */
-.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}.packs-grid .pack-card:last-child:nth-child(3n+1){grid-column:2;}
+.packs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
 .pack-card{border:1px solid var(--parchment);background:var(--cream);padding:36px 32px;text-align:center;transition:all .4s;}
 .pack-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.06);}
 .pack-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
@@ -190,7 +180,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .form-submit{margin-top:24px;text-align:center;}
 
 /* LIGHTBOX */
-.lightbox{position:fixed;inset:0;z-index:200;background:rgba(26,25,23,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease;overflow-y:auto;}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(26,25,23,.95);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .4s ease;}
 .lightbox.open{display:flex;opacity:1;}
 .lb-close{position:absolute;top:24px;right:32px;font-size:28px;color:var(--linen);cursor:pointer;background:none;border:none;font-family:'Cormorant Garamond',serif;z-index:201;transition:color .3s;}
 .lb-close:hover{color:var(--gold);}
@@ -296,9 +286,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   .packs-grid{grid-template-columns:1fr;}
   .interior-features{grid-template-columns:1fr;}
   .form-grid{grid-template-columns:1fr;}
-  .lightbox.open{align-items:flex-start;}
-  .lb-content{flex-direction:column;gap:24px;max-height:none;align-items:stretch;padding:60px 16px 40px;}
-  .lb-details{flex:none;width:100%;max-height:none;overflow-y:visible;}
+  .lb-content{flex-direction:column;gap:24px;}
+  .lb-details{flex:none;width:100%;}
   .lb-img img{max-height:50vh;}
   .hero{min-height:auto;padding:120px 24px 60px;}
   .featured-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
@@ -315,7 +304,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 }
 </style>
 </head>
-<body>
+<body style="overflow: hidden;">
 
 <!-- HEADER -->
 <div class="header scrolled">
@@ -340,14 +329,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Alquiler de arte moderno y contemporáneo para hoteles, oficinas e interiorismo</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:15px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Colección privada de más de 80 obras originales. Barcelona · Madrid · Toda España.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#coleccion" class="btn-primary" onclick="setTimeout(()=>{const pill=document.querySelector('[data-filter=\'disponibles\']');if(pill){setFilter('disponibles',pill);}},300);">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-primary">Ver obras en alquiler</a>
     <a href="#contacto" class="btn-secondary">Solicitar propuesta</a>
   </div>
 </div>
 
 <!-- SEARCH & FILTERS -->
 <div class="search-filter-bar">
-  <div class="search-row" id="coleccion">
+  <div class="search-row">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
       <input type="text" id="searchInput" placeholder="Buscar por artista, título, técnica…" oninput="applyFilters()">
@@ -388,7 +377,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="section-header anim visible">
     <div class="section-label">Espacios reales</div>
     <h2 class="section-title">Proyectos / Instalaciones</h2>
-    <div class="section-desc">Ejemplos de cómo las obras de la colección encajan en espacios profesionales, hoteles y proyectos de interiorismo.</div>
+    <div class="section-desc">Ejemplos de cómo las obras de la colección funcionan en espacios profesionales y de hospitality.</div>
   </div>
   <div class="featured-grid anim visible">
     <div class="featured-card" onclick="openLightbox('barcelo')" style="cursor:pointer;">
@@ -429,7 +418,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="section-header anim visible">
     <div class="section-label">Servicio</div>
     <h2 class="section-title">Eleve Art Rental</h2>
-    <div class="section-desc">Una selección de la Colección Eleve disponible para empresas, hoteles, interioristas y proyectos culturales. Servicio flexible y curado, con propuesta personalizada y gestión integral.</div>
+    <div class="section-desc">Selección de obras de Eleve Art disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
   </div>
   <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim visible">
     <a href="#coleccion" class="btn-primary">Ver obras destacadas</a>
@@ -438,7 +427,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </div>
 
 <!-- COLECCIÓN COMPLETA -->
-
+<div id="coleccion"></div>
 <div id="main"><div class="section">
       <div class="section-header anim visible">
         <div class="section-label">1 obra</div>
@@ -477,8 +466,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <li><span class="li-artist">Andy Warhol</span><br>Flowers</li>
         <li><span class="li-artist">Miquel Barceló</span><br>Cabeza de cabra</li>
       </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Tres nombres internacionales de máximo reconocimiento para lobby, habitaciones y zonas nobles.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 1.190 €/mes</div>
+      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:20px;">Tres nombres internacionales de máximo reconocimiento para lobby, habitaciones y zonas nobles.</p>
       <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
     </div>
     <div class="pack-card">
@@ -489,8 +477,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <li><span class="li-artist">Óscar Domínguez</span><br>La Maison</li>
         <li><span class="li-artist">Joan Miró</span><br>Barcelona III</li>
       </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Abstracción y rigor visual para despachos, salas de reuniones y recepciones corporativas.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 1.050 €/mes</div>
+      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:20px;">Abstracción y rigor visual para despachos, salas de reuniones y recepciones corporativas.</p>
       <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
     </div>
     <div class="pack-card">
@@ -501,56 +488,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
         <li><span class="li-artist">Eduardo Arroyo</span><br>Payaso</li>
         <li><span class="li-artist">Tracey Emin</span><br>Crazy</li>
       </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Pop, figuración y arte contemporáneo para oficinas creativas, agencias y coworkings.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 890 €/mes</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Identidad catalana</div>
-      <div class="pack-title">Pack Colección Catalana</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Antoni Tàpies</span><br>Visca Catalunya</li>
-        <li><span class="li-artist">Modest Cuixart</span><br>Pintura sobre cartón</li>
-        <li><span class="li-artist">Joan-Josep Tharrats</span><br>Selección (2 piezas)</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Para hoteles con identidad catalana, instituciones y espacios culturales.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 520 €/mes</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Gráfica</div>
-      <div class="pack-title">Pack Gráfica Internacional</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 1</li>
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 2</li>
-        <li><span class="li-artist">Manolo Valdés</span><br>Grabado 1</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Fácil de instalar, nombres reconocibles. Perfecto para despachos medianos y zonas de paso.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 590 €/mes</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Selección premium</div>
-      <div class="pack-title">Pack Flagship</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Pablo Picasso</span><br>Femme se coiffant devant la glace</li>
-        <li><span class="li-artist">Óscar Domínguez</span><br>La Maison</li>
-        <li><span class="li-artist">Antoni Tàpies</span><br>Sin Título</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Tres obras de primer nivel para espacios que no admiten concesiones.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 1.490 €/mes</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Residencial</div>
-      <div class="pack-title">Pack Residencial Premium</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Miquel Barceló</span><br>Cabeza de cabra</li>
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 1</li>
-        <li><span class="li-artist">Antoni Tàpies</span><br>Ulleres i Pluja</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Para interiorismo residencial premium, apartamentos de lujo y segunda residencia.</p>
-      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:20px;">Desde 1.190 €/mes</div>
+      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:20px;">Pop, figuración y arte contemporáneo para oficinas creativas, agencias y coworkings.</p>
       <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
     </div>
   </div>
@@ -565,7 +503,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="steps anim">
     <div class="step">
       <div class="step-title">Selecciona</div>
-      <div class="step-desc">Elige una o varias obras del catálogo o solicita una propuesta a medida. ¿No sabes por dónde empezar? Cuéntanos el espacio y te hacemos una selección curada sin compromiso.</div>
+      <div class="step-desc">Elige una o varias obras del catálogo o solicita una propuesta a medida.</div>
     </div>
     <div class="step">
       <div class="step-title">Consulta</div>
@@ -619,8 +557,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <div class="section" id="contacto">
   <div class="section-header anim">
     <div class="section-label">Contacto</div>
-    <h2 class="section-title">Cuéntanos tu proyecto</h2>
-    <div class="section-desc">Respondemos en menos de 24 horas con una selección adaptada a tu espacio y presupuesto.</div>
+    <h2 class="section-title">Solicitar Información</h2>
+    <div class="section-desc">Servicio curado y gestión personalizada. Cuéntanos tu proyecto y te haremos una propuesta.</div>
   </div>
   <div class="contact-form anim">
     <div class="form-grid">
@@ -707,7 +645,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </div>
 
 <!-- ADMIN OVERLAY -->
-<div class="admin-overlay" id="admin" onclick="if(event.target===this)closeAdmin()">
+<div class="admin-overlay open" id="admin" onclick="if(event.target===this)closeAdmin()">
   <div class="admin-panel">
     <button class="admin-close" onclick="closeAdmin()">✕</button>
     <div class="admin-title">Panel de Gestión</div>
@@ -3928,7 +3866,7 @@ const COLLECTION = [
     "dimensions": "70x50 cm.",
     "style": "Figurativo",
     "edition": "",
-    "description": "Litografía que rinde homenaje a la figura de David con el característico estilo geométrico y monumental de Subirachs.",
+    "description": "Escultura en bronce que rinde homenaje a la figura de David con el característico estilo geométrico y monumental de Subirachs.",
     "section": "iconic",
     "style_category": [
       "figurativo",
@@ -4517,16 +4455,7 @@ function setFilter(filter, el) {
 
 function applyFilters() {
   searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-  const isFiltered = activeFilter !== 'all' || searchTerm !== '';
-  const sectionsToHide = ['proyectos', 'art-rental'];
-  sectionsToHide.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = isFiltered ? 'none' : '';
-  });
   renderGallery();
-  if (isFiltered) {
-    setTimeout(() => { const el = document.getElementById('main'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 80);
-  }
 }
 
 function matchesFilter(item) {
@@ -4691,7 +4620,7 @@ function openLightbox(id) {
 
   if (item.rental_available) {
     rentalBlock.style.display = 'block';
-    document.getElementById('lbPurchaseHint').style.display = (item.purchase_option !== false) ? 'block' : 'none';
+    document.getElementById('lbPurchaseHint').style.display = item.purchase_option ? 'block' : 'none';
     const rstatus = item.rental_status || 'disponible';
     rentalRows.innerHTML = '';
     if (rstatus === 'alquilado') {
@@ -4996,43 +4925,4 @@ function exportHTML() {
   // Replace COLLECTION block
   html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
 
-  const blob = new Blob(['<!DOCTYPE html>\n' + html], {type: 'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'index.html';
-  a.click(); URL.revokeObjectURL(url);
-}
-
-// Triple-click logo → admin panel
-let logoClicks = 0;
-let logoTimer = null;
-document.getElementById('logo-trigger').addEventListener('click', function() {
-  logoClicks++;
-  clearTimeout(logoTimer);
-  if (logoClicks >= 3) {
-    logoClicks = 0;
-    openAdmin();
-  } else {
-    logoTimer = setTimeout(function() {
-      if (logoClicks === 1) window.scrollTo({top: 0, behavior: 'smooth'});
-      logoClicks = 0;
-    }, 400);
-  }
-});
-
-// Header scroll
-window.addEventListener('scroll', function() {
-  document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Init animations
-const observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, {threshold: 0.1});
-document.querySelectorAll('.anim').forEach(function(el) { observer.observe(el); });
-
-</script>
-</body>
-</html>
+  const blob = new Blob(['<!DOCTYPE html>\n
