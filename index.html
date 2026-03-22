@@ -4995,17 +4995,7 @@ function exportHTML() {
   // Replace COLLECTION block
   html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
 
-  const blob = new Blob([html], {type: 'text/html'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'index.html';
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-</script>
-
+  const blob = new Blob(['<!DOCTYPE html>\n
 <!-- ELEVE ART AI AGENT -->
 <style>
 #eleve-chat-btn{position:fixed;bottom:28px;right:28px;z-index:9999;width:52px;height:52px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.18);transition:transform .2s,box-shadow .2s;}
@@ -5024,10 +5014,10 @@ function exportHTML() {
 #eleve-chat-messages{overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;min-height:280px;max-height:380px;}
 #eleve-chat-messages::-webkit-scrollbar{width:4px;}
 #eleve-chat-messages::-webkit-scrollbar-thumb{background:var(--linen);border-radius:2px;}
-.eleve-msg{display:flex;flex-direction:column;max-width:88%;}
+.eleve-msg{display:flex;flex-direction:column;gap:4px;max-width:88%;}
 .eleve-msg.user{align-self:flex-end;}
 .eleve-msg.assistant{align-self:flex-start;}
-.eleve-msg-bubble{padding:10px 14px;border-radius:3px;font-size:13px;line-height:1.6;font-weight:300;margin-top:4px;}
+.eleve-msg-bubble{padding:10px 14px;border-radius:3px;font-size:13px;line-height:1.6;font-weight:300;}
 .eleve-msg.user .eleve-msg-bubble{background:var(--ink);color:var(--ivory);}
 .eleve-msg.assistant .eleve-msg-bubble{background:var(--parchment);color:var(--charcoal);}
 .eleve-typing{display:flex;gap:4px;padding:10px 14px;background:var(--parchment);border-radius:3px;}
@@ -5077,7 +5067,7 @@ function exportHTML() {
     var p=document.getElementById('eleve-chat-panel');
     isOpen=!isOpen;
     if(isOpen)p.classList.add('open');else p.classList.remove('open');
-    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art. Cuentame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la coleccion.');}
+    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\nCuentame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la coleccion.');}
     if(isOpen)setTimeout(function(){document.getElementById('eleve-chat-input').focus();},200);
   };
   window.eleveSubmitChat=async function(){
@@ -5088,9 +5078,9 @@ function exportHTML() {
     addMsg('user',txt);msgs.push({role:'user',content:txt});
     var t=showTyping();
     try{
-      var r=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SP,messages:msgs})});
+      var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:SP,messages:msgs})});
       var d=await r.json();
-      var rep=d.reply||'Ha habido un problema. Contacta a eleve.art@outlook.com';
+      var rep=(d.content&&d.content[0]&&d.content[0].text)?d.content[0].text:'Ha habido un problema. Contacta a eleve.art@outlook.com';
       t.remove();addMsg('assistant',rep);msgs.push({role:'assistant',content:rep});
       if(!leadOK&&msgs.length>=4)document.getElementById('eleve-chat-lead').style.display='flex';
     }catch(e){t.remove();addMsg('assistant','Problema de conexion. Contacta a eleve.art@outlook.com');}
