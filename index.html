@@ -4995,7 +4995,17 @@ function exportHTML() {
   // Replace COLLECTION block
   html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
 
-  const blob = new Blob(['<!DOCTYPE html>\n
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'index.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+</script>
+
 <!-- ELEVE ART AI AGENT -->
 <style>
 #eleve-chat-btn{position:fixed;bottom:28px;right:28px;z-index:9999;width:52px;height:52px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.18);transition:transform .2s,box-shadow .2s;}
@@ -5067,7 +5077,7 @@ function exportHTML() {
     var p=document.getElementById('eleve-chat-panel');
     isOpen=!isOpen;
     if(isOpen)p.classList.add('open');else p.classList.remove('open');
-    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\nCuentame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la coleccion.');}
+    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art. Cuentame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la coleccion.');}
     if(isOpen)setTimeout(function(){document.getElementById('eleve-chat-input').focus();},200);
   };
   window.eleveSubmitChat=async function(){
@@ -5107,4 +5117,3 @@ function exportHTML() {
 })();
 </script>
 <!-- END ELEVE ART AI AGENT -->
-
