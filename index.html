@@ -1520,7 +1520,7 @@ document.querySelector('.logo')?.addEventListener('click',()=>{
     addMsg('user',txt);msgs.push({role:'user',content:txt});
     var t=showTyping();
     try{
-      var r=await fetch('/.netlify/functions/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SP,messages:msgs})});
+      var r=await fetch('https://eleve-proxy-production.up.railway.app/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SP,messages:msgs})});
       var d=await r.json();
       var rep=d.reply||'Ha habido un problema. Contacta a eleve.art@outlook.com';
       t.remove();addMsg('assistant',rep);msgs.push({role:'assistant',content:rep});
