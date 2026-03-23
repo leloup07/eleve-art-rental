@@ -1534,6 +1534,7 @@ document.querySelector('.logo')?.addEventListener('click',()=>{
     if(!em||!em.includes('@'))return;
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Perfecto. Te enviamos la propuesta a '+em+' en breve.');
+    try{fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})});}catch(e){}
   };
   function addMsg(role,text){
     var c=document.getElementById('eleve-chat-messages'),d=document.createElement('div'),b=document.createElement('div');
