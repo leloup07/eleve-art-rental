@@ -1494,7 +1494,7 @@ document.querySelector('.logo')?.addEventListener('click',()=>{
     <div id="eleve-chat-lead-row"><input type="email" id="eleve-lead-email" placeholder="tu@email.com"><button onclick="eleveSubmitLead()">Enviar</button></div>
   </div>
   <div id="eleve-chat-footer">
-    <textarea id="eleve-chat-input" placeholder="Cuentame tu proyecto..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();eleveSubmitChat();}"></textarea>
+    <textarea id="eleve-chat-input" placeholder="Cuéntame tu proyecto..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();eleveSubmitChat();}"></textarea>
     <button id="eleve-chat-send" onclick="eleveSubmitChat()">&#8594;</button>
   </div>
 </div>
@@ -1510,7 +1510,7 @@ document.querySelector('.logo')?.addEventListener('click',()=>{
     var p=document.getElementById('eleve-chat-panel');
     isOpen=!isOpen;
     if(isOpen)p.classList.add('open');else p.classList.remove('open');
-    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art. Cuentame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la coleccion.');}
+    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\n¿Cuéntame tu proyecto? Tipo de espacio, estilo que buscas o presupuesto, y te sugiero obras de la colección.');}
     if(isOpen)setTimeout(function(){document.getElementById('eleve-chat-input').focus();},200);
   };
   window.eleveSubmitChat=async function(){
