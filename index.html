@@ -1502,8 +1502,8 @@ document.querySelector('.logo')?.addEventListener('click',()=>{
 (function(){
   var SP='';
   function buildSP(){
-    var col=(typeof COLLECTION!=='undefined')?COLLECTION.map(function(c){return c.artist+' - '+c.title+' | '+(c.medium||'')+' | '+(c.year||'')+' | Desde '+(c.rental_price_month_from||'consultar')+' euros/mes';}).join('\n'):'Coleccion de mas de 80 obras de Picasso, Tapies, Barcelo, Plensa, Miro, Warhol y otros.';
-    SP='Eres el asistente de Eleve Art, servicio de alquiler de arte moderno y contemporaneo de una coleccion privada en Espana.\n\nColeccion:\n'+col+'\n\nReglas:\n- Responde SIEMPRE en segunda persona singular (tu, cuéntame, dime, tu espacio)\n- Responde en el idioma del usuario (español o inglés)\n- Se conciso y elegante\n- Usa ortografia correcta con tildes\n- Sugiere obras concretas con precio segun el espacio descrito\n- Tras 2 intercambios ofrece enviar propuesta por email\n- No inventes obras ni precios\n- Max 3-4 obras por sugerencia\n- Tono calido y culto';
+    var col=(typeof COLLECTION!=='undefined')?COLLECTION.map(function(c){return c.artist+' - '+c.title+' | '+c.id+' | Desde '+(c.rental_price_month_from||'consultar')+' euros/mes';}).join('\n'):'Coleccion de mas de 80 obras de Picasso, Tapies, Barcelo, Plensa, Miro, Warhol y otros.';
+    SP='Eres el asistente de Eleve Art, servicio de alquiler de arte moderno y contemporaneo de una coleccion privada en Espana.\n\nColeccion (formato: artista - titulo | id | precio):\n'+col+'\n\nReglas:\n- Responde SIEMPRE en segunda persona singular\n- Responde en el idioma del usuario\n- Se conciso y elegante con tildes correctas\n- Cuando sugieras obras USA SIEMPRE este formato exacto: [Artista — Titulo](https://eleve-art.com/obras/ID.html) · Desde X euros/mes\n- Tras 2 intercambios ofrece enviar propuesta por email\n- No inventes obras ni precios\n- Max 3-4 obras por sugerencia\n- Tono calido y culto';
   }
   var msgs=[],leadOK=false,isOpen=false,init=false;
   window.eleveToggleChat=function(){
