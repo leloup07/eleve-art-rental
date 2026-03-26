@@ -4954,17 +4954,24 @@ function exportData() {
 }
 
 function exportHTML() {
-  // Get current page HTML and replace COLLECTION + IMG with current state
   const imgBlock = 'const IMG = ' + JSON.stringify(IMG, null, 2) + ';';
   const colBlock = 'const COLLECTION = ' + JSON.stringify(COLLECTION, null, 2) + ';';
-
   let html = document.documentElement.outerHTML;
-  // Replace IMG block
   html = html.replace(/const IMG = \{[\s\S]*?\};/, imgBlock);
-  // Replace COLLECTION block
   html = html.replace(/const COLLECTION = \[[\s\S]*?\];/, colBlock);
-
-  const blob = new Blob(['<!DOCTYPE html>\n
+  // Clean admin overlay state
+  html = html.replace(' class="open"', '');
+  html = html.replace(' style="overflow:hidden"', '');
+  html = html.replace(' style="overflow: hidden;"', '');
+  const blob = new Blob(['<!DOCTYPE html>\n' + html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'index.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
 <!-- ELEVE ART AI AGENT -->
 <style>
 #eleve-chat-btn{position:fixed;bottom:28px;right:28px;z-index:9999;width:52px;height:52px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.18);transition:transform .2s,box-shadow .2s;}
