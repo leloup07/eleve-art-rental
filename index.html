@@ -339,7 +339,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Alquiler de arte moderno y contemporáneo para hoteles, oficinas e interiorismo</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:15px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Colección privada de más de 90 obras originales. Barcelona · Madrid · Toda España.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="javascript:void(0)" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'})" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#coleccion" class="btn-primary">Ver obras en alquiler</a>
     <a href="#contacto" class="btn-secondary">Solicitar propuesta</a>
   </div>
 </div>
@@ -367,7 +367,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </div>
 
-<div id="coleccion"></div>
+<div id="coleccion" style="scroll-margin-top:80px;"></div>
 <div id="main" style="scroll-margin-top:80px;"></div>
 
 <!-- SEO BLOCK -->
@@ -392,7 +392,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <div class="section-desc">Una selección de la Colección Eleve disponible para empresas, hoteles, interioristas y proyectos culturales. Servicio flexible y curado, con propuesta personalizada y gestión integral.</div>
   </div>
   <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim visible">
-    <a href="javascript:void(0)" onclick="document.getElementById('main').scrollIntoView({behavior:'smooth',block:'start'})" class="btn-primary">Explorar colección</a>
+    <a href="#coleccion" class="btn-primary">Explorar colección</a>
     <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
   </div>
 </div>
@@ -4483,6 +4483,15 @@ function saveAdmin() { try { localStorage.setItem('eleve-admin', JSON.stringify(
 
 let searchTerm = '';
 let activeFilter = 'all';
+
+function initAnimations() {
+  document.querySelectorAll('.anim:not(.visible)').forEach(el => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    observer.observe(el);
+  });
+}
 
 function setFilter(filter, el) {
   activeFilter = filter;
