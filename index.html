@@ -320,7 +320,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <div class="nav">
     <a href="#coleccion">Colección</a>
     <a href="#art-rental">Art Rental</a>
-    <a href="#destacadas">Destacadas</a>
     <a href="#proyectos">Proyectos</a>
     <a href="#packs">Packs</a>
     <a href="#como-funciona">Cómo funciona</a>
@@ -335,8 +334,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   <p class="hero-sub" style="animation:fadeUp .8s ease .6s both;">Arte moderno y contemporáneo en alquiler para hoteles, oficinas e interioristas</p>
   <p style="animation:fadeUp .8s ease .7s both;font-size:13px;color:var(--ash);margin-bottom:28px;max-width:560px;text-align:center;line-height:1.7;">Obras originales de la Colección Eleve disponibles para alquiler mensual y temporal.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
-    <a href="#destacadas" class="btn-primary">Ver obras en alquiler</a>
-    <a href="#coleccion" class="btn-secondary">Explorar colección</a>
+    <a href="#main" class="btn-primary">Ver obras en alquiler</a>
+    <a href="#main" class="btn-secondary">Explorar colección</a>
   </div>
 </div>
 
@@ -355,7 +354,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
   <div class="filter-pills" id="filterPills">
     <button class="filter-pill active" data-filter="all" onclick="setFilter('all',this)">Todas</button>
-    <button class="filter-pill" data-filter="destacadas" onclick="setFilter('destacadas',this)">Destacadas</button>
     <button class="filter-pill" data-filter="abstracto" onclick="setFilter('abstracto',this)">Abstracto</button>
     <button class="filter-pill" data-filter="figurativo" onclick="setFilter('figurativo',this)">Figurativo</button>
     <button class="filter-pill" data-filter="surrealismo" onclick="setFilter('surrealismo',this)">Surrealismo</button>
@@ -368,18 +366,25 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </div>
 
-<!-- FEATURED / DESTACADAS -->
-<div class="section" id="destacadas">
+<!-- COLECCIÓN COMPLETA — renders right after filters -->
+<div id="coleccion"></div>
+<div id="main"></div>
+
+<!-- ART RENTAL INTRO -->
+<div class="section mid-section" id="art-rental">
   <div class="section-header anim">
-    <div class="section-label">Selección Eleve Art Rental</div>
-    <h2 class="section-title">Obras Destacadas</h2>
-    <div class="section-desc">Obras seleccionadas para empresas, hoteles e interiorismo. Alquiler mensual y temporal.</div>
+    <div class="section-label">Servicio</div>
+    <h2 class="section-title">Eleve Art Rental</h2>
+    <div class="section-desc">Selección de obras de la Colección Eleve disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
   </div>
-  <div class="featured-grid anim" id="featuredGrid"></div>
+  <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim">
+    <a href="#main" class="btn-primary">Explorar colección</a>
+    <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
+  </div>
 </div>
 
 <!-- PROYECTOS / INSTALACIONES -->
-<div class="section" id="proyectos" style="background:var(--ivory);">
+<div class="section mid-section" id="proyectos" style="background:var(--ivory);">
   <div class="section-header anim">
     <div class="section-label">Espacios reales</div>
     <h2 class="section-title">Proyectos / Instalaciones</h2>
@@ -418,23 +423,6 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
   </div>
 </div>
-
-<!-- ART RENTAL INTRO -->
-<div class="section" id="art-rental">
-  <div class="section-header anim">
-    <div class="section-label">Servicio</div>
-    <h2 class="section-title">Eleve Art Rental</h2>
-    <div class="section-desc">Selección de obras de la Colección Eleve disponibles para alquiler para empresas, hoteles, interioristas y proyectos culturales. Un servicio flexible y curado, orientado a proyectos que buscan incorporar arte moderno y contemporáneo con identidad y presencia.</div>
-  </div>
-  <div style="text-align:center;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="anim">
-    <a href="#destacadas" class="btn-primary">Ver obras destacadas</a>
-    <a href="#contacto" class="btn-secondary">Solicitar dossier</a>
-  </div>
-</div>
-
-<!-- COLECCIÓN COMPLETA -->
-<div id="coleccion"></div>
-<div id="main"></div>
 
 <!-- PACKS -->
 <div class="section" id="packs" style="background:var(--ivory);">
@@ -932,33 +920,19 @@ function applyFilters() {
 
 function matchesFilter(item) {
   if (activeFilter === 'all') return true;
-  if (activeFilter === 'destacadas') return item.highlight_home === true;
   if (item.style_category && item.style_category.includes(activeFilter)) return true;
   return false;
-}
-
-function renderFeatured() {
-  const grid = document.getElementById('featuredGrid');
-  const featured = COLLECTION.filter(c => c.highlight_home === true);
-  grid.innerHTML = featured.map(item => `
-    <div class="featured-card" onclick="openLightbox('${item.id}')">
-      <div class="featured-card-img">
-        <img src="${IMG[item.id] || ''}" alt="${item.artist} - ${item.title} | Eleve Art Rental" loading="lazy">
-      </div>
-      <div class="featured-card-body">
-        <div class="featured-card-artist">${item.artist}</div>
-        <div class="featured-card-title">${item.title}</div>
-        <div class="featured-card-price">${item.rental_price_desde !== false ? 'Desde ' : ''}${item.rental_price_month_from} €<small>/mes</small></div>
-        <button class="featured-card-btn" onclick="event.stopPropagation();scrollToContact('${item.artist} - ${item.title}')">Solicitar alquiler</button>
-      </div>
-    </div>
-  `).join('');
 }
 
 function renderGallery() {
   const main = document.getElementById('main');
   main.innerHTML = '';
   const isFiltered = activeFilter !== 'all' || searchTerm;
+
+  // Hide/show mid-sections (Proyectos, Art Rental) based on filter state
+  document.querySelectorAll('.mid-section').forEach(s => {
+    s.style.display = isFiltered ? 'none' : '';
+  });
 
   if (isFiltered) {
     // GRID VIEW when filtered — all matching items in one compact grid
@@ -1176,7 +1150,6 @@ function openAdmin() {
 function closeAdmin() {
   document.getElementById('admin').classList.remove('open');
   document.body.style.overflow = '';
-  renderFeatured();
   renderGallery();
 }
 
@@ -1406,7 +1379,7 @@ window.addEventListener('scroll', () => {
 
 // Active nav on scroll
 window.addEventListener('scroll', () => {
-  const sections = ['art-rental','destacadas','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
+  const sections = ['art-rental','proyectos','coleccion','packs','como-funciona','interioristas','contacto'];
   const scrollY = window.scrollY + 150;
   let current = '';
   sections.forEach(id => {
@@ -1425,7 +1398,6 @@ document.querySelectorAll('.nav a').forEach(a => {
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {
-  renderFeatured();
   renderGallery();
   initAnimations();
 });
