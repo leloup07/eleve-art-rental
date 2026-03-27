@@ -4985,8 +4985,8 @@ function exportHTML() {
 @keyframes elevePulse{0%,100%{opacity:1}50%{opacity:.4}}
 #eleve-chat-header h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;font-weight:400;color:var(--ivory);letter-spacing:.5px;}
 #eleve-chat-header p{font-size:10px;color:var(--ash);letter-spacing:1px;text-transform:uppercase;margin-top:1px;}
-#eleve-chat-close{background:none;border:none;cursor:pointer;color:var(--ash);font-size:18px;padding:2px;}
-#eleve-chat-close:hover{color:var(--ivory);}
+#eleve-chat-close{background:none;border:none;cursor:pointer;color:var(--ivory);font-size:24px;padding:12px;line-height:1;z-index:10001;position:relative;}
+#eleve-chat-close:hover{color:var(--gold);}
 #eleve-chat-messages{overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px;min-height:280px;max-height:380px;}
 #eleve-chat-messages::-webkit-scrollbar{width:4px;}
 #eleve-chat-messages::-webkit-scrollbar-thumb{background:var(--linen);border-radius:2px;}
@@ -5019,7 +5019,7 @@ function exportHTML() {
 <div id="eleve-chat-panel">
   <div id="eleve-chat-header">
     <div id="eleve-chat-header-left"><div id="eleve-chat-dot"></div><div><h3>Eleve Art</h3><p>Asistente de colección</p></div></div>
-    <button id="eleve-chat-close" onclick="eleveToggleChat()">&#x2715;</button>
+    <button id="eleve-chat-close" onclick="event.stopPropagation();eleveCloseChat()">&#x2715;</button>
   </div>
   <div id="eleve-chat-messages"></div>
   <div id="eleve-chat-lead">
@@ -5046,6 +5046,11 @@ function exportHTML() {
     if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\nCuéntame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la colección.');}
     if(isOpen)setTimeout(function(){document.getElementById('eleve-chat-input').focus();},200);
   };
+  window.eleveCloseChat=function(){
+    var p=document.getElementById('eleve-chat-panel');
+    isOpen=false;
+    p.classList.remove('open');
+  };
   window.eleveSubmitChat=async function(){
     var inp=document.getElementById('eleve-chat-input'),txt=inp.value.trim();
     if(!txt)return;
@@ -5067,7 +5072,10 @@ function exportHTML() {
     if(!em||!em.includes('@'))return;
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Perfecto. Te enviamos la propuesta a '+em+' en breve.');
-    try{fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})});}catch(e){}
+    var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).catch(function(){
+      window.open('mailto:eleve.art@outlook.com?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
+    });
   };
   function addMsg(role,text){
     var c=document.getElementById('eleve-chat-messages'),d=document.createElement('div'),b=document.createElement('div');
