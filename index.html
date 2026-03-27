@@ -5062,27 +5062,12 @@ function exportHTML() {
     }catch(e){t.remove();addMsg('assistant','Problema de conexion. Contacta a eleve.art@outlook.com');}
     btn.disabled=false;inp.focus();
   };
-  window.eleveSubmitLead=async function(){
+  window.eleveSubmitLead=function(){
     var em=document.getElementById('eleve-lead-email').value.trim();
     if(!em||!em.includes('@'))return;
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Perfecto. Te enviamos la propuesta a '+em+' en breve.');
-    // Build conversation summary for email
-    var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    var subj='Nueva consulta Eleve Art — '+em;
-    var body='Email cliente: '+em+'\n\nConversación:\n'+conv;
-    // Send notification to Eleve Art via mailto fallback + fetch attempt
-    try{
-      await fetch('https://eleve-proxy-production.up.railway.app/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:'Envía un resumen de esta conversación al equipo de Eleve Art.',messages:[{role:'user',content:'Email cliente: '+em+'\nConversación:\n'+conv}]})});
-    }catch(e){}
-    // Also open mailto as backup to ensure the team gets notified
-    var mailtoLink='mailto:eleve.art@outlook.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
-    var a=document.createElement('a');a.href=mailtoLink;a.style.display='none';document.body.appendChild(a);a.click();document.body.removeChild(a);
-    // Send proposal email to client
-    var clientSubj='Tu selección de Eleve Art';
-    var clientBody='Gracias por tu interés en Eleve Art.\n\nHemos recibido tu consulta y prepararemos una propuesta personalizada en las próximas 24 horas.\n\nResumen de la conversación:\n'+conv+'\n\nEquipo Eleve Art\neleve.art@outlook.com';
-    var clientMailto='mailto:'+em+'?subject='+encodeURIComponent(clientSubj)+'&body='+encodeURIComponent(clientBody)+'&bcc=eleve.art@outlook.com';
-    setTimeout(function(){var b=document.createElement('a');b.href=clientMailto;b.style.display='none';document.body.appendChild(b);b.click();document.body.removeChild(b);},500);
+    try{fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})});}catch(e){}
   };
   function addMsg(role,text){
     var c=document.getElementById('eleve-chat-messages'),d=document.createElement('div'),b=document.createElement('div');
