@@ -4737,6 +4737,15 @@ function closeAdmin() {
   renderGallery();
 }
 
+// Secret admin: triple-click logo
+let clickCount=0,clickTimer;
+document.querySelector('.logo')?.addEventListener('click',()=>{
+  clickCount++;
+  clearTimeout(clickTimer);
+  clickTimer=setTimeout(()=>{clickCount=0;},600);
+  if(clickCount>=3){clickCount=0;openAdmin();}
+});
+
 document.getElementById("searchInput").value = ""; renderGallery();
 
 const ALL_CATEGORIES = ['abstracto','figurativo','surrealismo','informalismo','cubista','pop','contemporaneo','dauaset','escultura'];
