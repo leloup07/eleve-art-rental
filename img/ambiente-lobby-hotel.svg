@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Ilustración: lobby de hotel boutique con una composición abstracta original en la pared">
+  <defs><filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="4" result="n"/>
+    <feColorMatrix type="saturate" values="0" in="n" result="g"/>
+    <feComponentTransfer in="g" result="g2"><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+    <feBlend in="SourceGraphic" in2="g2" mode="multiply"/>
+  </filter>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="11" result="t"/>
+    <feDisplacementMap in="SourceGraphic" in2="t" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f4ef"/>
+      <stop offset="1" stop-color="#efe9df"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e4dccd"/>
+      <stop offset="1" stop-color="#d9d0c1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0" r="0.9">
+      <stop offset="0" stop-color="#fffaf0" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fffaf0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ede8df"/>
+      <stop offset="1" stop-color="#e2d9ca"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pared y suelo -->
+  <rect width="1600" height="1000" fill="url(#wall)"/>
+  <rect y="742" width="1600" height="258" fill="url(#floor)"/>
+  <line x1="0" y1="742" x2="1600" y2="742" stroke="#b9ad99" stroke-width="2"/>
+  <rect y="728" width="1600" height="14" fill="#e6dfd3"/>
+  <!-- Juntas del suelo en perspectiva -->
+  <g stroke="#cbbfac" stroke-width="1.2" opacity="0.7">
+    <line x1="800" y1="742" x2="-200" y2="1000"/>
+    <line x1="800" y1="742" x2="200" y2="1000"/>
+    <line x1="800" y1="742" x2="600" y2="1000"/>
+    <line x1="800" y1="742" x2="1000" y2="1000"/>
+    <line x1="800" y1="742" x2="1400" y2="1000"/>
+    <line x1="800" y1="742" x2="1800" y2="1000"/>
+    <line x1="0" y1="800" x2="1600" y2="800"/>
+    <line x1="0" y1="880" x2="1600" y2="880"/>
+  </g>
+
+  <!-- Moldura de zócalo y paneles de pared -->
+  <g fill="none" stroke="#ddd3c3" stroke-width="2">
+    <rect x="70" y="120" width="250" height="560"/>
+    <rect x="1280" y="120" width="250" height="560"/>
+  </g>
+
+  <!-- Arco hacia el patio (izquierda) -->
+  <path d="M110 742 V330 a95 95 0 0 1 190 0 V742" fill="url(#arch)" stroke="#c9bda9" stroke-width="2"/>
+  <path d="M150 742 V350 a55 55 0 0 1 110 0 V742" fill="#e9e2d6" stroke="#d3c8b6" stroke-width="1.5"/>
+  <!-- Palmera en maceta dentro del arco -->
+  <g stroke="#6f7a62" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M205 640 C205 560 200 500 205 440"/>
+    <path d="M205 450 C170 420 140 420 118 440"/>
+    <path d="M205 450 C240 418 270 420 292 438"/>
+    <path d="M205 448 C185 400 170 380 150 372"/>
+    <path d="M205 448 C228 400 245 384 266 376"/>
+    <path d="M205 446 C200 405 205 380 212 360"/>
+  </g>
+  <path d="M175 640 h60 l-8 70 h-44 z" fill="#c8a98a" stroke="#9c8066" stroke-width="2"/>
+
+  <!-- Luz de cuadro y halo -->
+  <ellipse cx="800" cy="300" rx="330" ry="250" fill="url(#glow)"/>
+  <rect x="740" y="132" width="120" height="10" rx="5" fill="#b89a5e"/>
+  <path d="M800 142 v-16" stroke="#b89a5e" stroke-width="3"/>
+
+  <!-- Marco vacío (sin obra) -->
+  <rect x="610" y="170" width="380" height="460" fill="#b89a5e"/>
+  <rect x="622" y="182" width="356" height="436" fill="#f3eee6"/>
+  <rect x="660" y="220" width="280" height="360" fill="#f1e8d8" stroke="#e2d9ca" stroke-width="2"/>
+  <clipPath id="cv"><rect x="660" y="220" width="280" height="360"/></clipPath>
+  <g clip-path="url(#cv)"><rect x="660" y="220" width="280" height="360" fill="#f1e9da" filter="url(#grain)"/><g filter="url(#rough)" fill="none" stroke-linecap="round"><path d="M693.6 479.2 C744.0 346.0 814.0 328.0 900.8 292.0" stroke="#2c2a27" stroke-width="22.400000000000002"/><path d="M716.0 529.6 C786.0 472.0 856.0 500.8 912.0 443.2" stroke="#b07a3e" stroke-width="16.8" opacity="0.9"/></g></g>
+  <rect x="610" y="170" width="380" height="460" fill="none" stroke="#8f7645" stroke-width="2"/>
+  <line x1="660" y1="580" x2="940" y2="580" stroke="#ddd3c3" stroke-width="3"/>
+
+  <!-- Cartela -->
+  <rect x="1010" y="470" width="78" height="54" fill="#faf8f5" stroke="#d9d0c1" stroke-width="1.5"/>
+  <g stroke="#9e9890" stroke-width="2" stroke-linecap="round">
+    <line x1="1020" y1="484" x2="1062" y2="484"/>
+    <line x1="1020" y1="496" x2="1078" y2="496"/>
+    <line x1="1020" y1="508" x2="1050" y2="508"/>
+  </g>
+  <line x1="1020" y1="484" x2="1036" y2="484" stroke="#b89a5e" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Consola bajo la obra -->
+  <rect x="560" y="640" width="480" height="18" fill="#2c2a27"/>
+  <rect x="580" y="658" width="12" height="84" fill="#2c2a27"/>
+  <rect x="1008" y="658" width="12" height="84" fill="#2c2a27"/>
+  <line x1="592" y1="712" x2="1008" y2="712" stroke="#2c2a27" stroke-width="4"/>
+  <!-- Jarrón con ramas -->
+  <path d="M655 640 c-18 -10 -18 -48 0 -62 h28 c18 14 18 52 0 62 z" fill="#d4b87a" stroke="#8f7645" stroke-width="1.5"/>
+  <g stroke="#5f5a50" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M669 580 C660 520 640 490 612 470"/>
+    <path d="M669 580 C676 515 700 480 728 462"/>
+    <path d="M669 580 C667 530 672 500 668 470"/>
+  </g>
+  <!-- Libros -->
+  <rect x="880" y="626" width="110" height="14" fill="#ede8df" stroke="#9e9890" stroke-width="1.5"/>
+  <rect x="890" y="614" width="92" height="12" fill="#b89a5e" opacity="0.8"/>
+  <circle cx="936" cy="600" r="14" fill="#f7f4ef" stroke="#9e9890" stroke-width="1.5"/>
+
+  <!-- Alfombra -->
+  <ellipse cx="800" cy="900" rx="520" ry="58" fill="#cfc4b2" opacity="0.45"/>
+
+  <!-- Butaca izquierda -->
+  <g>
+    <path d="M430 760 c-6 -70 10 -120 70 -128 c60 8 76 58 70 128 z" fill="#efe6d6" stroke="#2c2a27" stroke-width="2"/>
+    <rect x="418" y="742" width="164" height="60" rx="26" fill="#e6dac4" stroke="#2c2a27" stroke-width="2"/>
+    <line x1="440" y1="802" x2="432" y2="840" stroke="#2c2a27" stroke-width="5" stroke-linecap="round"/>
+    <line x1="560" y1="802" x2="568" y2="840" stroke="#2c2a27" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- Butaca derecha -->
+  <g>
+    <path d="M1030 760 c-6 -70 10 -120 70 -128 c60 8 76 58 70 128 z" fill="#efe6d6" stroke="#2c2a27" stroke-width="2"/>
+    <rect x="1018" y="742" width="164" height="60" rx="26" fill="#e6dac4" stroke="#2c2a27" stroke-width="2"/>
+    <line x1="1040" y1="802" x2="1032" y2="840" stroke="#2c2a27" stroke-width="5" stroke-linecap="round"/>
+    <line x1="1160" y1="802" x2="1168" y2="840" stroke="#2c2a27" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- Mesa baja redonda -->
+  <ellipse cx="800" cy="822" rx="150" ry="26" fill="#2c2a27"/>
+  <ellipse cx="800" cy="816" rx="150" ry="26" fill="#3a3733"/>
+  <rect x="790" y="836" width="20" height="44" fill="#2c2a27"/>
+  <ellipse cx="800" cy="882" rx="70" ry="10" fill="#2c2a27"/>
+  <ellipse cx="760" cy="806" rx="22" ry="6" fill="#d4b87a"/>
+  <path d="M842 806 v-26 h18 v26 z" fill="#f7f4ef" stroke="#9e9890" stroke-width="1.2"/>
+
+  <!-- Lámpara de pie (derecha) -->
+  <g>
+    <line x1="1380" y1="742" x2="1380" y2="430" stroke="#2c2a27" stroke-width="4"/>
+    <ellipse cx="1380" cy="745" rx="40" ry="8" fill="#2c2a27"/>
+    <path d="M1330 430 h100 l-18 -64 h-64 z" fill="#f2e9d6" stroke="#2c2a27" stroke-width="2"/>
+    <ellipse cx="1380" cy="440" rx="120" ry="90" fill="url(#glow)" opacity="0.6"/>
+  </g>
+
+  <!-- Firma discreta -->
+  <text x="1540" y="975" text-anchor="end" font-family="Cormorant Garamond, Georgia, serif" font-size="22" letter-spacing="6" fill="#b89a5e">ELEVE ART</text>
+</svg>
