@@ -13,3 +13,4 @@ Web pública de [eleve-art.com](https://eleve-art.com): servicio de alquiler de 
 - El índice de la colección y los datos estructurados están pre-renderizados en el HTML. Tras editar obras desde el panel, usar **Exportar HTML** para regenerarlos.
 - Cada obra tiene página propia en `/obra/<id>.html` (para Google). Tras cualquier cambio de obras, regenerarlas con `node _tools/generar-fichas.js`, que también actualiza `sitemap.xml`.
 - Tipografías alojadas en `/fonts` (sin Google Fonts).
+- Versión inglesa en `/en/`: se genera desde `index.html` con `python3 _tools/generar-en.py` (traducciones de obras en `_tools/i18n/en-collection.json`). Si se añade o cambia una obra o un texto, actualizar ahí la traducción y volver a generar; después, pre-renderizar el índice como en la versión española.
