@@ -593,6 +593,19 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .privacy-chat{margin-top:8px;font-size:11px;color:var(--ash);}
 .privacy-info{margin-top:18px;font-size:10.5px;line-height:1.7;color:var(--ash);text-align:left;}
 .privacy-info a{color:var(--ash);}
+.tiers-grid{grid-template-columns:repeat(3,1fr);align-items:stretch;}
+.tier-card{display:flex;flex-direction:column;text-align:left;padding:40px 34px;}
+.tier-card .pack-label,.tier-card .pack-title{text-align:left;}
+.tier-card .pack-title{font-size:32px;margin-bottom:12px;}
+.tier-desc{font-size:13.5px;line-height:1.75;color:var(--charcoal);margin-bottom:20px;}
+.tier-artists,.tier-uses{font-size:12.5px;line-height:1.7;color:var(--charcoal);margin-bottom:14px;}
+.tier-artists span,.tier-uses span{display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--ash);margin-bottom:4px;}
+.tier-btn{margin-top:auto;justify-content:center;width:100%;}
+.tier-hl{border-color:var(--gold);box-shadow:0 10px 40px rgba(184,154,94,.12);}
+.rotation{max-width:1100px;margin:64px auto 0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;border-top:1px solid var(--linen);padding-top:48px;}
+.rotation h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.15;color:var(--ink);}
+.rotation-body p{font-size:14.5px;line-height:1.9;color:var(--charcoal);margin-bottom:14px;}
+@media(max-width:900px){.tiers-grid{grid-template-columns:1fr;}.rotation{grid-template-columns:1fr;gap:16px;}}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -663,7 +676,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <a href="#destacadas">Destacadas</a>
     <a href="#procedencia">Procedencia</a>
     <a href="#proyectos">Espacios</a>
-    <a href="#packs">Packs</a>
+    <a href="#packs">Modalidades</a>
     <a href="#como-funciona">Proceso</a>
     <a href="#preguntas">Preguntas</a>
     <a href="#acceso">Acceso privado</a>
@@ -1894,97 +1907,52 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
 
 <!-- PACKS -->
 <div class="section" id="packs" style="background:var(--ivory);">
-  <div class="section-header anim">
-    <div class="section-label">Propuestas curadas</div>
-    <h2 class="section-title">Packs</h2>
-    <div class="section-desc">Combinaciones pensadas para distintos tipos de proyecto. Disponibles como propuesta inicial; también elaboramos selecciones a medida.</div>
+  <div class="section-header anim visible">
+    <div class="section-label">Modalidades</div>
+    <h2 class="section-title">Tres niveles, una misma exigencia</h2>
+    <div class="section-desc">Elige el nivel que encaja con tu proyecto y tu presupuesto. En todos, obra original y documentada, seleccionada para tu espacio. Las condiciones económicas se detallan en la propuesta personalizada.</div>
   </div>
-  <div class="packs-grid anim">
-    <div class="pack-card">
-      <div class="pack-label">Hospitality</div>
-      <div class="pack-title">Pack Hotel Boutique</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Pablo Picasso</span><br>Femme se coiffant devant la glace</li>
-        <li><span class="li-artist">Andy Warhol</span><br>Flowers</li>
-        <li><span class="li-artist">Miquel Barceló</span><br>Cabeza de cabra</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Tres nombres internacionales de máximo reconocimiento para lobby, habitaciones y zonas nobles.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
+  <div class="packs-grid tiers-grid anim visible">
+    <div class="pack-card tier-card">
+      <div class="pack-label">Nivel I</div>
+      <div class="pack-title">Esencial</div>
+      <p class="tier-desc">Obra original de autores reconocidos para dar carácter a un espacio desde el primer día.</p>
+      <ul class="pack-list"><li>3 a 5 piezas de series del mismo formato</li><li>Rotación hasta 4 veces al año</li><li>Duración mínima: 6 meses</li><li>Transporte, instalación y cambios incluidos</li></ul>
+      <div class="tier-artists"><span>Artistas</span>Joan-Josep Tharrats · Manolo Valdés (obra gráfica) · Modest Cuixart · Lluís Ribas · Josep Hurtuna</div>
+      <div class="tier-uses"><span>Ideal para</span>Recepciones, pasillos, habitaciones, coworkings, home staging</div>
+      <a href="#contacto" class="btn-secondary tier-btn" onclick="scrollToContact('Nivel Esencial')">Solicitar propuesta Esencial</a>
     </div>
-    <div class="pack-card">
-      <div class="pack-label">Corporate</div>
-      <div class="pack-title">Pack Oficina / Despacho</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Antoni Tàpies</span><br>Gran X</li>
-        <li><span class="li-artist">Óscar Domínguez</span><br>La Maison</li>
-        <li><span class="li-artist">Joan Miró</span><br>Barcelona III</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Abstracción y rigor visual para despachos, salas de reuniones y recepciones corporativas.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
+    <div class="pack-card tier-card tier-hl">
+      <div class="pack-label">Nivel II</div>
+      <div class="pack-title">Colección</div>
+      <p class="tier-desc">Firmas de primer nivel internacional para espacios que quieren ser recordados.</p>
+      <ul class="pack-list"><li>2 a 4 piezas de firma</li><li>Rotación 2 veces al año</li><li>Duración mínima: 12 meses</li><li>Transporte, instalación y cambios incluidos</li></ul>
+      <div class="tier-artists"><span>Artistas</span>Jaume Plensa · Joan Miró · Antoni Tàpies (obra gráfica) · Andy Warhol · Julian Opie · Tom Wesselmann · Hans Hartung</div>
+      <div class="tier-uses"><span>Ideal para</span>Lobbies, salas de juntas, despachos de dirección, restaurantes</div>
+      <a href="#contacto" class="btn-secondary tier-btn" onclick="scrollToContact('Nivel Colección')">Solicitar propuesta Colección</a>
     </div>
-    <div class="pack-card">
-      <div class="pack-label">Creativo</div>
-      <div class="pack-title">Pack Contemporáneo</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Andy Warhol</span><br>Gee, Merrie Shoes (Coloured)</li>
-        <li><span class="li-artist">Eduardo Arroyo</span><br>Payaso</li>
-        <li><span class="li-artist">Tracey Emin</span><br>Crazy</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Pop, figuración y arte contemporáneo para oficinas creativas, agencias y coworkings.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Identidad catalana</div>
-      <div class="pack-title">Pack Colección Catalana</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Antoni Tàpies</span><br>Visca Catalunya</li>
-        <li><span class="li-artist">Modest Cuixart</span><br>Pintura sobre cartón</li>
-        <li><span class="li-artist">Joan-Josep Tharrats</span><br>Selección (2 piezas)</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Para hoteles con identidad catalana, instituciones y espacios culturales.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Gráfica</div>
-      <div class="pack-title">Pack Gráfica Internacional</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 1</li>
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 2</li>
-        <li><span class="li-artist">Manolo Valdés</span><br>Grabado 1</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Fácil de instalar, nombres reconocibles. Perfecto para despachos medianos y zonas de paso.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card">
-      <div class="pack-label">Selección premium</div>
-      <div class="pack-title">Pack Flagship</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Pablo Picasso</span><br>Femme se coiffant devant la glace</li>
-        <li><span class="li-artist">Óscar Domínguez</span><br>La Maison</li>
-        <li><span class="li-artist">Antoni Tàpies</span><br>Sin Título</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Tres obras de primer nivel para espacios que no admiten concesiones.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
-    </div>
-    <div class="pack-card" style="grid-column:2;">
-      <div class="pack-label">Residencial</div>
-      <div class="pack-title">Pack Residencial Premium</div>
-      <ul class="pack-list">
-        <li><span class="li-artist">Miquel Barceló</span><br>Cabeza de cabra</li>
-        <li><span class="li-artist">Jaume Plensa</span><br>Grabado 1</li>
-        <li><span class="li-artist">Antoni Tàpies</span><br>Ulleres i Pluja</li>
-      </ul>
-      <p style="font-size:12px;color:var(--ash);line-height:1.6;margin-bottom:12px;">Para interiorismo residencial premium, apartamentos de lujo y segunda residencia.</p>
-      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);margin-bottom:20px;">Condiciones en propuesta personalizada</div>
-      <a href="#contacto" class="btn-secondary" style="width:100%;justify-content:center;">Consultar disponibilidad</a>
+    <div class="pack-card tier-card">
+      <div class="pack-label">Nivel III</div>
+      <div class="pack-title">Maestros</div>
+      <p class="tier-desc">Piezas únicas de los grandes nombres del siglo XX, con procedencia documentada.</p>
+      <ul class="pack-list"><li>1 a 3 obras únicas o de edición muy limitada</li><li>Sin rotación: la obra se queda contigo</li><li>Duración mínima: 12 meses</li><li>Transporte, instalación e informe de estado de la obra</li></ul>
+      <div class="tier-artists"><span>Artistas</span>Pablo Picasso · Óscar Domínguez · Antoni Tàpies (obra única) · Miquel Barceló · André Derain · Tracey Emin</div>
+      <div class="tier-uses"><span>Ideal para</span>Zonas nobles, presidencia, suites, proyectos singulares</div>
+      <a href="#contacto" class="btn-secondary tier-btn" onclick="scrollToContact('Nivel Maestros')">Solicitar propuesta Maestros</a>
     </div>
   </div>
+  <div class="rotation anim visible">
+    <div class="rotation-head">
+      <div class="section-label">Suscripción con rotación</div>
+      <h3>Un espacio que cambia sin hacer obras</h3>
+    </div>
+    <div class="rotation-body">
+      <p>En los niveles Esencial y Colección, las obras se renuevan periódicamente: tus clientes, empleados o huéspedes descubren piezas nuevas cada temporada, y el espacio se mantiene vivo.</p>
+      <p>Trabajamos con series del mismo formato —como las estampas de Manolo Valdés o las composiciones de Joan-Josep Tharrats—, de modo que cada cambio se hace sobre los mismos anclajes, sin nuevos agujeros ni molestias.</p>
+      <p>La frecuencia de rotación respeta la conservación de las obras: cuanto más valiosa y delicada es una pieza, menos se manipula. Por eso el nivel Maestros no rota.</p>
+    </div>
+  </div>
+  <p class="anim visible" style="text-align:center;font-size:13px;color:var(--ash);margin-top:36px;">¿Necesitas otra cosa? También alquilamos obras sueltas, por plazos más cortos o para eventos, y preparamos selecciones a medida.</p>
 </div>
 
 <!-- CÓMO FUNCIONA -->
