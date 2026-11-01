@@ -552,6 +552,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .faq details[open] summary::after{transform:rotate(45deg);}
 .faq details p{padding:0 40px 24px 4px;font-size:14px;line-height:1.9;color:var(--charcoal);}
 /* ACCESO */
+.form-status{margin-top:16px;font-size:13px;line-height:1.7;text-align:center;max-width:520px;margin-left:auto;margin-right:auto;}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -673,7 +674,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <h3><span>IV</span>Por qué no mostramos imágenes</h3>
       <p>Los derechos de reproducción de una obra pertenecen a sus autores y herederos, no a quien posee el original. Por respeto a ellos, esta web no reproduce las obras sin licencia. Solo publicamos fotografías de una obra cuando está permitido: si la obra es de dominio público, si contamos con licencia de la entidad de gestión de derechos (VEGAP) o con autorización expresa del artista o de sus herederos. Cuando otro ejemplar de la misma edición está publicado de forma autorizada —por un museo, una fundación o una casa de subastas—, enlazamos a esa página en lugar de copiar la imagen.</p>
       <p>Lo que encontrarás aquí son textos, fichas, medidas y documentación; las fotografías se comparten en un dossier privado, en el marco de un proyecto concreto.</p>
-      <p>Hay también una convicción detrás: una pantalla no sustituye la experiencia de estar frente a una obra. Esta web es un índice y una invitación. El encuentro de verdad ocurre en el espacio.</p>
+      <p>Hay también una convicción detrás: una pantalla no sustituye la experiencia de estar frente a una obra. Esta web es un índice y una invitación. El encuentro de verdad ocurre cuando la obra cuelga en tu pared: en el hotel, la oficina o la casa donde va a vivir.</p>
 
       <h3><span>V</span>Curaduría, no decoración</h3>
       <p>No elegimos obras para que combinen con el sofá. Cada propuesta empieza por el lugar: su arquitectura, su luz, su uso y las personas que lo habitan. Buscamos diálogo entre obras, contexto y relato, de forma que cada pieza tenga sentido en el espacio y el espacio gane sentido con ella.</p>
@@ -2031,7 +2032,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
         </div>
       </div>
       <div class="form-submit">
-        <button class="btn-primary" onclick="submitAccessForm()">Solicitar acceso</button>
+        <button class="btn-primary" onclick="submitAccessForm(this)">Solicitar acceso</button>
       </div>
     </div>
     <div class="dossier">
@@ -2106,7 +2107,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       </div>
     </div>
     <div class="form-submit">
-      <button class="btn-primary" onclick="submitForm()">Enviar solicitud</button>
+      <button class="btn-primary" onclick="submitForm(this)">Enviar solicitud</button>
     </div>
   </div>
 </div>
@@ -5158,32 +5159,43 @@ function scrollToContact(artwork) {
   document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
 }
 
-function submitForm() {
-  const name = document.getElementById('f-name').value;
-  const company = document.getElementById('f-company').value;
-  const email = document.getElementById('f-email').value;
-  const phone = document.getElementById('f-phone').value;
-  const type = document.getElementById('f-type').value;
-  const duration = document.getElementById('f-duration').value;
-  const artwork = document.getElementById('f-artwork').value;
-  const message = document.getElementById('f-message').value;
-
-  const body = `Nombre: ${name}%0AEmpresa: ${company}%0AEmail: ${email}%0ATeléfono: ${phone}%0ATipo de proyecto: ${type}%0ADuración: ${duration}%0AObra(s) de interés: ${artwork}%0A%0AMensaje:%0A${encodeURIComponent(message)}`;
-  const subject = `Solicitud Art Rental${artwork ? ': ' + artwork : ''}`;
-
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+// Envío de formularios: primero al servidor (llega al buzón sin depender del visitante);
+// si falla, se abre el programa de correo del visitante con el mensaje preparado.
+const PROXY_URL = 'https://eleve-proxy-production.up.railway.app';
+function formStatus(btn, text, ok) {
+  let el = btn.parentElement.querySelector('.form-status');
+  if (!el) { el = document.createElement('p'); el.className = 'form-status'; btn.parentElement.appendChild(el); }
+  el.textContent = text;
+  el.style.color = ok ? 'var(--charcoal)' : 'var(--rust)';
+}
+async function sendToInbox(btn, payload, subject, lines) {
+  if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) { formStatus(btn, 'Indica un email válido para poder responderte.', false); return; }
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Enviando…';
+  try {
+    const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 8000);
+    const r = await fetch(PROXY_URL + '/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...payload, subject, page: location.href }), signal: ctrl.signal });
+    clearTimeout(t);
+    const j = r.ok ? await r.json() : null;
+    if (!j || !j.ok) throw new Error('envío fallido');
+    formStatus(btn, 'Gracias. Hemos recibido tu solicitud y te responderemos en menos de 24 horas.', true);
+  } catch (e) {
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+    formStatus(btn, `No hemos podido enviarlo automáticamente. Se ha abierto tu programa de correo con el mensaje preparado: pulsa «Enviar». Si no se abre, escríbenos a ${CONTACT_EMAIL}.`, false);
+  } finally { btn.disabled = false; btn.textContent = label; }
 }
 
-function submitAccessForm() {
-  const name = document.getElementById('a-name').value;
-  const company = document.getElementById('a-company').value;
-  const email = document.getElementById('a-email').value;
-  const project = document.getElementById('a-project').value;
+function submitForm(btn) {
+  const v = id => document.getElementById(id).value.trim();
+  const p = { kind: 'propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
+  const subject = `Solicitud Art Rental${p.artwork ? ': ' + p.artwork : ''}`;
+  sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message]);
+}
 
-  const body = `Nombre: ${encodeURIComponent(name)}%0AEmpresa / Estudio: ${encodeURIComponent(company)}%0AEmail profesional: ${encodeURIComponent(email)}%0ATipo de proyecto: ${encodeURIComponent(project)}`;
-  const subject = 'Solicitud de acceso — colección privada';
-
-  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+function submitAccessForm(btn) {
+  const v = id => document.getElementById(id).value.trim();
+  const p = { kind: 'acceso', name: v('a-name'), company: v('a-company'), email: v('a-email'), project: v('a-project') };
+  sendToInbox(btn, p, 'Solicitud de acceso — colección privada', [`Nombre: ${p.name}`, `Empresa / Estudio: ${p.company}`, `Email profesional: ${p.email}`, `Tipo de proyecto: ${p.project}`]);
 }
 
 function openAdmin() {
@@ -5567,9 +5579,9 @@ function exportHTML() {
     var em=document.getElementById('eleve-lead-email').value.trim();
     if(!em||!em.includes('@'))return;
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
-    addMsg('assistant','Perfecto. Te enviamos la propuesta a '+em+' en breve.');
+    addMsg('assistant','Gracias. Te escribiremos a '+em+' en menos de 24 horas con una propuesta.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).catch(function(){
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');}).catch(function(){
       window.open('mailto:eleve.art@outlook.com?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };
