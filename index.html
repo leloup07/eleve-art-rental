@@ -606,13 +606,23 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .rotation h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.15;color:var(--ink);}
 .rotation-body p{font-size:14.5px;line-height:1.9;color:var(--charcoal);margin-bottom:14px;}
 @media(max-width:900px){.tiers-grid{grid-template-columns:1fr;}.rotation{grid-template-columns:1fr;gap:16px;}}
-.finder{padding:72px 48px 56px;border-bottom:1px solid var(--parchment);scroll-margin-top:64px;}
-.finder-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;}
-.finder .section-title{text-align:left;}
-.finder-desc{font-size:14px;line-height:1.8;color:var(--charcoal);margin-bottom:14px;}
-.finder-note{font-size:11.5px;line-height:1.7;color:var(--ash);font-style:italic;}
-.finder .search-filter-bar{padding:6px 0 0;max-width:none;margin:0;}
-.finder .filter-pills{justify-content:flex-start;}
+.finder{padding:88px 48px 72px;border-bottom:1px solid var(--parchment);scroll-margin-top:64px;}
+.finder-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start;}
+.finder-side{position:sticky;top:96px;}
+.finder .section-title{text-align:left;font-size:clamp(28px,3vw,38px);}
+.finder-desc{font-size:13.5px;line-height:1.8;color:var(--charcoal);margin-bottom:12px;}
+.finder-note{font-size:11px;line-height:1.7;color:var(--ash);font-style:italic;margin-bottom:22px;}
+.finder .search-filter-bar{padding:0;max-width:none;margin:0;}
+.finder .search-wrap input{font-size:13px;padding:12px 14px 12px 42px;}
+.finder .filter-pills{flex-direction:column;align-items:stretch;gap:0;border-top:1px solid var(--parchment);}
+.finder .filter-pill{border:none;border-bottom:1px solid var(--parchment);text-align:left;padding:11px 4px;display:flex;justify-content:space-between;background:none;}
+.finder .filter-pill.active{background:none;color:var(--ink);border-left:2px solid var(--gold);padding-left:12px;}
+.finder .filter-pill:hover{color:var(--gold);}
+.finder-main-head{margin-bottom:24px;}
+.finder-main-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(28px,3vw,38px);color:var(--ink);}
+.finder .featured-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));max-width:none;}
+.finder-empty{font-size:14px;color:var(--ash);padding:40px 0;}
+@media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:28px;}.finder-side{position:static;}.finder .filter-pills{flex-direction:row;flex-wrap:wrap;border:none;gap:8px;}.finder .filter-pill{border:1px solid var(--linen);padding:8px 14px;}.finder .filter-pill.active{background:var(--ink);color:var(--cream);border-left:1px solid var(--ink);padding-left:14px;}}
 #indice{scroll-margin-top:64px;}
 @media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:20px;}}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
@@ -763,6 +773,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
 <!-- COLECCIÓN: BUSCADOR -->
 <section id="coleccion" class="finder" aria-labelledby="coleccion-title">
   <div class="finder-inner">
+    <aside class="finder-side">
     <div class="finder-text">
       <div class="section-label">Índice</div>
       <h2 class="section-title" id="coleccion-title">La colección</h2>
@@ -773,7 +784,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <div class="search-row">
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
-        <input type="search" id="searchInput" aria-label="Buscar en la colección" placeholder="Buscar por artista, título, técnica…" oninput="applyFilters()">
+        <input type="search" id="searchInput" aria-label="Buscar en la colección" placeholder="Artista, obra o técnica…" oninput="applyFilters()">
       </div>
     </div>
     <div class="filter-pills" id="filterPills">
@@ -790,17 +801,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <button class="filter-pill" data-filter="disponibles" onclick="setFilter('disponibles',this)">Disponibles ahora</button>
     </div>
   </div>
-  </div>
-</section>
-
-<!-- OBRAS DESTACADAS -->
-<div class="section" id="destacadas">
-  <div class="section-header anim visible">
-    <div class="section-label">Selección</div>
-    <h2 class="section-title">Obras destacadas</h2>
-    <div class="section-desc">Ocho piezas de la colección. Fotografías y condiciones en la colección privada.</div>
-  </div>
-  <div class="featured-grid" id="featuredGrid">
+    </aside>
+    <div class="finder-main">
+      <div id="destacadas">
+        <div class="finder-main-head"><div class="section-label">Selección</div><h2 class="finder-main-title">Obras destacadas</h2></div>
+        <div class="featured-grid" id="featuredGrid">
     <article class="featured-card anim visible" onclick="openLightbox('picasso')">
       
       <div class="featured-card-body">
@@ -897,7 +902,12 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('derain-perfil')">Solicitar acceso</button>
       </div>
     </article></div><!-- /featured -->
-</div>
+      </div>
+      <div id="finderResults"></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- COLECCIÓN: ÍNDICE -->
 <section id="indice" aria-label="Índice de la colección">
@@ -5094,7 +5104,7 @@ function initAnimations() {
 
 function scrollToCollection() {
   const el = document.getElementById('coleccion');
-  if (el && el.getBoundingClientRect().top < -40) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (el && (el.getBoundingClientRect().top < -40 || el.getBoundingClientRect().top > innerHeight)) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function setFilter(filter, el) {
@@ -5145,8 +5155,11 @@ const USE_SEARCH = {hotel:'hotel boutique hospitality',oficina:'oficina despacho
 
 function renderGallery() {
   const main = document.getElementById('main');
-  main.innerHTML = '';
+  const results = document.getElementById('finderResults');
+  results.innerHTML = '';
   const isFiltered = activeFilter !== 'all' || searchTerm;
+  if (isFiltered) main.style.display = 'none'; else main.style.display = '';
+  if (!isFiltered) main.innerHTML = '';
 
   if (isFiltered) {
     const allItems = COLLECTION.filter(c => {
@@ -5159,17 +5172,12 @@ function renderGallery() {
     });
     lastRendered = allItems;
     if (allItems.length === 0) {
-      main.innerHTML = '<div class="section"><div class="section-header anim visible"><div class="section-desc">No se han encontrado obras con ese criterio. <a href="#contacto" style="color:var(--gold);">Cuéntanos qué buscas</a> y te ayudamos.</div></div></div>';
+      results.innerHTML = '<div class="finder-empty">No se han encontrado obras con ese criterio. <a href="#contacto" style="color:var(--gold);">Cuéntanos qué buscas</a> y te ayudamos.</div>';
       return;
     }
     const div = document.createElement('div');
-    div.className = 'section';
-    div.style.paddingTop = '40px';
     div.innerHTML = `
-      <div class="section-header anim visible" style="margin-bottom:36px;">
-        <div class="section-label">${allItems.length} obra${allItems.length > 1 ? 's' : ''}</div>
-        <h2 class="section-title">Resultados</h2>
-      </div>
+      <div class="finder-main-head"><div class="section-label">${allItems.length} obra${allItems.length > 1 ? 's' : ''}</div><h2 class="finder-main-title">Resultados</h2></div>
       <div class="featured-grid">
         ${allItems.map(item => {
           const gst = item.rental_status || 'disponible';
@@ -5177,7 +5185,7 @@ function renderGallery() {
           return card(item, `<button class="featured-card-btn" onclick="event.stopPropagation();scrollToContactId('${item.id}')">${label}</button>`);
         }).join('')}
       </div>`;
-    main.appendChild(div);
+    results.appendChild(div);
   } else {
     lastRendered = [];
     ['iconic', 'graphic', 'available'].forEach(sectionKey => {
