@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const SITE = 'https://eleve-art.com';
+const SITE = 'https://eleve.art';
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const grab = re => { const m = html.match(re); if (!m) throw new Error('No encontrado: ' + re); return (0, eval)('(' + m[1] + ')'); };
 const COLLECTION = grab(/const COLLECTION = (\[[\s\S]*?\n\]);/);
@@ -91,7 +91,7 @@ COLLECTION.forEach((it, i) => {
   </div>
   <nav class="pager"><a href="${prev.id}.html">← ${esc(prev.artist)} · ${esc(cut(prev.title, 40))}</a><a href="${next.id}.html">${esc(next.artist)} · ${esc(cut(next.title, 40))} →</a></nav>
 </main>
-<footer class="ft">Eleve Art · Alquiler de arte original · <a href="../">eleve-art.com</a> · <a href="../terminos-legales.html">Términos legales</a> · <a href="../privacidad.html">Privacidad</a><br>Los derechos de reproducción de las obras pertenecen a sus autores y herederos. Eleve Art no está vinculada a las webs enlazadas.</footer>
+<footer class="ft">Eleve Art · Alquiler de arte original · <a href="../">eleve.art</a> · <a href="../terminos-legales.html">Términos legales</a> · <a href="../privacidad.html">Privacidad</a><br>Los derechos de reproducción de las obras pertenecen a sus autores y herederos. Eleve Art no está vinculada a las webs enlazadas.</footer>
 </body>
 </html>
 `;

@@ -32,8 +32,8 @@ raw('<title>Eleve Art · Alquiler de arte original moderno y contemporáneo | Ba
     '<title>Eleve Art · Original modern and contemporary art rental | Barcelona · Madrid</title>')
 raw('content="Alquiler de obra original de Picasso, Miró, Tàpies, Barceló, Warhol, Plensa y más de 30 artistas para hoteles, oficinas, despachos e interiorismo. Colección privada documentada. Barcelona, Madrid y toda España."',
     'content="Rent original works by Picasso, Miró, Tàpies, Barceló, Warhol, Plensa and 30 more artists for hotels, offices, professional firms and interior design projects. A documented private collection. Barcelona, Madrid and across Spain."')
-raw('<link rel="canonical" href="https://eleve-art.com/">', '<link rel="canonical" href="https://eleve-art.com/en/">')
-raw('<meta property="og:url" content="https://eleve-art.com/">', '<meta property="og:url" content="https://eleve-art.com/en/">')
+raw('<link rel="canonical" href="https://eleve.art/">', '<link rel="canonical" href="https://eleve.art/en/">')
+raw('<meta property="og:url" content="https://eleve.art/">', '<meta property="og:url" content="https://eleve.art/en/">')
 raw('<meta property="og:locale" content="es_ES">', '<meta property="og:locale" content="en_GB">')
 s = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="Eleve Art | Original modern and contemporary art rental">', s)
 s = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="A private collection of more than 90 original works available to rent for hotels, offices, interior designers and cultural projects. Barcelona · Madrid · Spain.">', s)
@@ -343,7 +343,7 @@ T = [
 ("`No hemos podido enviarlo automáticamente. Se ha abierto tu programa de correo con el mensaje preparado: pulsa «Enviar». Si no se abre, escríbenos a ${CONTACT_EMAIL}.`",
  "`We could not send it automatically. Your email program has opened with the message ready: press “Send”. If it does not open, write to us at ${CONTACT_EMAIL}.`"),
 ("name: 'Colección Eleve Art · Obras disponibles para alquiler'", "name: 'Eleve Art Collection · Works available to rent'"),
-("url: 'https://eleve-art.com/#obra/' + c.id", "url: 'https://eleve-art.com/obra/' + c.id + '.html'"),
+("url: 'https://eleve.art/#obra/' + c.id", "url: 'https://eleve.art/obra/' + c.id + '.html'"),
 ]
 for es, en in T:
     raw(es, en)

@@ -1,6 +1,6 @@
 # Eleve Art — web pública
 
-Web pública de [eleve-art.com](https://eleve-art.com): servicio de alquiler de arte moderno y contemporáneo.
+Web pública de [eleve.art](https://eleve.art): servicio de alquiler de arte moderno y contemporáneo.
 
 **Esta web no contiene imágenes de las obras ni precios.** Las obras se presentan como placas tipográficas y en formato índice.
 
