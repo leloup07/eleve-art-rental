@@ -570,6 +570,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .city-text{font-size:13px;line-height:1.7;color:var(--charcoal);margin-top:6px;}
 .city-credit{font-size:10px;line-height:1.6;color:var(--ash);margin-top:10px;}
 .city-credit a{color:var(--ash);}
+.ill-photo{margin:0;position:relative;overflow:hidden;background:#e9e1d3;}
+.ill-photo img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(.8) sepia(.4) contrast(.95) brightness(1.03);}
+.ill-photo::after{content:'';position:absolute;inset:0;background:#d9c7a6;mix-blend-mode:multiply;opacity:.28;pointer-events:none;}
+.ill-photo figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:18px 12px 6px;font-size:9px;line-height:1.5;color:rgba(255,255,255,.85);background:linear-gradient(transparent,rgba(26,25,23,.55));}
+.ill-photo figcaption a{color:inherit;}
+.ill-photo figcaption b{display:block;font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:4px;}
+.process-strip{max-width:1100px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.process-strip figure{aspect-ratio:4/3;}
+@media(max-width:900px){.process-strip{grid-template-columns:1fr;}}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -636,7 +645,6 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <a href="#coleccion">Colección</a>
     <a href="#destacadas">Destacadas</a>
     <a href="#procedencia">Procedencia</a>
-    <a href="#ciudad">En la ciudad</a>
     <a href="#proyectos">Espacios</a>
     <a href="#packs">Packs</a>
     <a href="#como-funciona">Proceso</a>
@@ -1802,116 +1810,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   <div style="text-align:center;margin-top:40px;"><a href="#acceso" class="btn-secondary">Solicitar dossier documental</a></div>
 </div>
 
-<!-- EN LA CIUDAD -->
-<div class="section" id="ciudad">
-  <div class="section-header anim visible">
-    <div class="section-label">Los artistas en la ciudad</div>
-    <h2 class="section-title">Donde ya puedes verlos</h2>
-    <div class="section-desc">Muchos de los artistas de la colección tienen obra en las calles de Barcelona, Madrid, Zaragoza o Valencia. No forman parte de la colección, pero son la mejor forma de acercarse a su lenguaje antes de ver las piezas en persona.</div>
-  </div>
-  <div class="city-grid">
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/picasso-fris.jpg" alt="Frisos del Col·legi d’Arquitectes de Catalunya, obra pública de Pablo Picasso (1962 · Plaça Nova, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Pablo Picasso</span>
-        <span class="city-title">Frisos del Col·legi d’Arquitectes de Catalunya</span>
-        <span class="city-when">1962 · Plaça Nova, Barcelona</span>
-        <span class="city-text">Dibujados por Picasso y grabados en el hormigón por Carl Nesjar: una de sus pocas obras concebidas para la calle.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:167_Col%C2%B7legi_d%27Arquitectes_de_Catalunya,_pl._Nova_5_(Barcelona),_fris_de_Picasso,_c._Capellans.jpg" target="_blank" rel="noopener">Enric</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/miro-mosaic.jpg" alt="Mosaico del Pla de l’Os, obra pública de Joan Miró (1976 · La Rambla, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Joan Miró</span>
-        <span class="city-title">Mosaico del Pla de l’Os</span>
-        <span class="city-when">1976 · La Rambla, Barcelona</span>
-        <span class="city-text">Miles de personas lo pisan cada día sin saber que caminan sobre un Miró.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Mosaic_del_Pla_de_l%27Os,_Barcelona_(47906068561).jpg" target="_blank" rel="noopener">Mike McBey</a> · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/miro-dona-ocell.jpg" alt="Dona i Ocell, obra pública de Joan Miró (1983 · Parc de Joan Miró, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Joan Miró</span>
-        <span class="city-title">Dona i Ocell</span>
-        <span class="city-when">1983 · Parc de Joan Miró, Barcelona</span>
-        <span class="city-text">Veintidós metros de cerámica trencadís: una de las últimas grandes obras de Miró.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Barcelona_-_Parc_de_Joan_Mir%C3%B3,_escultura_%27Dona_i_Ocell%27_1.jpg" target="_blank" rel="noopener">Zarateman</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/miro-congresos.jpg" alt="Mural cerámico del Palacio de Congresos, obra pública de Joan Miró (1980 · Paseo de la Castellana, Madrid)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Joan Miró</span>
-        <span class="city-title">Mural cerámico del Palacio de Congresos</span>
-        <span class="city-when">1980 · Paseo de la Castellana, Madrid</span>
-        <span class="city-text">Realizado con el ceramista Joan Gardy Artigas para la fachada del edificio.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Madrid_-_Palacio_de_Congresos_(35260705873).jpg" target="_blank" rel="noopener">Fred Romero from Paris, France</a> · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/tapies-homenatge.jpg" alt="Homenatge a Picasso, obra pública de Antoni Tàpies (1983 · Passeig de Picasso, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Antoni Tàpies</span>
-        <span class="city-title">Homenatge a Picasso</span>
-        <span class="city-when">1983 · Passeig de Picasso, Barcelona</span>
-        <span class="city-text">Muebles, telas y vigas dentro de un cubo de cristal bañado por el agua.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Homenatge_a_Picasso_-_Antoni_T%C3%A0pies.jpg" target="_blank" rel="noopener">Slaven Kosanovic</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/tapies-nuvol.jpg" alt="Núvol i Cadira, obra pública de Antoni Tàpies (1990 · Fundació Antoni Tàpies, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Antoni Tàpies</span>
-        <span class="city-title">Núvol i Cadira</span>
-        <span class="city-when">1990 · Fundació Antoni Tàpies, Barcelona</span>
-        <span class="city-text">Una nube de tubo metálico corona la fundación del artista en el Eixample.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fundaci%C3%B3_Antoni_T%C3%A0pies,_Barcelona.jpg" target="_blank" rel="noopener">Equip Fundació Antoni Tàpies</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/subirachs-passio.jpg" alt="Fachada de la Pasión, obra pública de Josep Maria Subirachs (1987–2005 · Sagrada Família, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Josep Maria Subirachs</span>
-        <span class="city-title">Fachada de la Pasión</span>
-        <span class="city-when">1987–2005 · Sagrada Família, Barcelona</span>
-        <span class="city-text">Casi veinte años de trabajo de Subirachs en el templo de Gaudí.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fa%C3%A7ana_Passi%C3%B3,_Sagrada_Familia,_Subirachs.jpg" target="_blank" rel="noopener">Lgz01</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/plensa-alma-ebro.jpg" alt="El Alma del Ebro, obra pública de Jaume Plensa (2008 · Recinto Expo, Zaragoza)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Jaume Plensa</span>
-        <span class="city-title">El Alma del Ebro</span>
-        <span class="city-when">2008 · Recinto Expo, Zaragoza</span>
-        <span class="city-text">Una figura sentada construida con letras: la escritura como cuerpo.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Zaragoza_-_Recinto_Expo_Zaragoza,_escultura_%27El_Alma_del_Ebro%27,_de_Jaume_Plensa_12.jpg" target="_blank" rel="noopener">Zarateman</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/plensa-born.jpg" alt="Born, obra pública de Jaume Plensa (1992 · Passeig del Born, Barcelona)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Jaume Plensa</span>
-        <span class="city-title">Born</span>
-        <span class="city-when">1992 · Passeig del Born, Barcelona</span>
-        <span class="city-text">Un gran baúl y una bala de cañón de hierro fundido, en pleno paseo del Born.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:037_Born,_de_Jaume_Plensa,_pg._del_Born.jpg" target="_blank" rel="noopener">Enfo</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/es/deed.en" target="_blank" rel="noopener">CC BY-SA 3.0 es</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-    <figure class="city-card">
-      <div class="city-photo"><img src="img/ciudad/valdes-dama.jpg" alt="Dama Ibérica, obra pública de Manolo Valdés (Valencia)" loading="lazy"></div>
-      <figcaption>
-        <span class="city-artist">Manolo Valdés</span>
-        <span class="city-title">Dama Ibérica</span>
-        <span class="city-when">Valencia</span>
-        <span class="city-text">La Dama de Elche reinterpretada a escala monumental con su lenguaje de volúmenes.</span>
-        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Dama_Ib%C3%A8rica,_Manolo_Vald%C3%A9s.jpg" target="_blank" rel="noopener">Joanbanjo</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons · filtro de color aplicado por Eleve Art</span>
-      </figcaption>
-    </figure>
-  </div>
-  <p class="rights-note">Fotografías de obras situadas de forma permanente en la vía pública (art. 35.2 de la Ley de Propiedad Intelectual), publicadas por sus autores con licencia libre en Wikimedia Commons. Ninguna de estas obras forma parte de la Colección Eleve.</p>
+<!-- EN LA CIUDAD (página aparte) -->
+<div style="text-align:center;padding:56px 24px;border-top:1px solid var(--parchment);border-bottom:1px solid var(--parchment);">
+  <div class="section-label">Los artistas en la ciudad</div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.4vw,30px);color:var(--ink);max-width:720px;margin:6px auto 18px;line-height:1.3;">Miró en la Rambla, Tàpies en el Passeig de Picasso, Plensa en Zaragoza: dónde ver en la calle a los artistas de la colección.</p>
+  <a href="en-la-ciudad.html" class="btn-secondary">Ver la ruta →</a>
 </div>
 
 <!-- ESPACIOS -->
@@ -1923,6 +1826,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   </div>
   <div class="spaces-grid anim visible">
     <article class="space-card">
+      <figure class="space-photo ill-photo"><img src="img/ilustrativas/int-lobby.jpg" alt="Lobby de hotel con sofás y lámpara de araña" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Lobby_hall_with_couches_and_chandelier_at_The_Fullerton_Bay_Hotel_Singapore.jpg" target="_blank" rel="noopener">Basile Morin</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · filtro de color aplicado</figcaption></figure>
       <div class="space-card-body">
         <div class="space-card-num">01</div>
         <h3 class="space-card-title">Hotel boutique</h3>
@@ -1931,6 +1835,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       </div>
     </article>
     <article class="space-card">
+      <figure class="space-photo ill-photo"><img src="img/ilustrativas/int-conference.jpg" alt="Sala de reuniones con mesa y sillas" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Small_conference_room_(Unsplash).jpg" target="_blank" rel="noopener">Crew crew</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
       <div class="space-card-body">
         <div class="space-card-num">02</div>
         <h3 class="space-card-title">Despachos y notarías</h3>
@@ -1939,6 +1844,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       </div>
     </article>
     <article class="space-card">
+      <figure class="space-photo ill-photo"><img src="img/ilustrativas/int-living.jpg" alt="Salón luminoso con sofá y suelo de madera" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Living_room_(Unsplash).jpg" target="_blank" rel="noopener">Jarosław Ceborski jarson</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
       <div class="space-card-body">
         <div class="space-card-num">03</div>
         <h3 class="space-card-title">Interiorismo residencial</h3>
@@ -1947,6 +1853,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       </div>
     </article>
     <article class="space-card">
+      <figure class="space-photo ill-photo"><img src="img/ilustrativas/int-office-ornate.jpg" alt="Espacio de coworking en un antiguo banco" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Ornate_office_space_(Unsplash).jpg" target="_blank" rel="noopener">Crew crew</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
       <div class="space-card-body">
         <div class="space-card-num">04</div>
         <h3 class="space-card-title">Oficinas y coworking</h3>
@@ -1955,6 +1862,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       </div>
     </article>
     <article class="space-card">
+      <figure class="space-photo ill-photo"><img src="img/ilustrativas/oficio-rubens.jpg" alt="Montaje de una sala de exposición" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Accrochage_de_%22Prom%C3%A9th%C3%A9e_encha%C3%AEn%C3%A9%22_de_Rubens.jpg" target="_blank" rel="noopener">PBA Lille</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · filtro de color aplicado</figcaption></figure>
       <div class="space-card-body">
         <div class="space-card-num">05</div>
         <h3 class="space-card-title">Eventos y rodajes</h3>
@@ -2083,6 +1991,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <div class="step-title">Entrega</div>
       <div class="step-desc">Coordinamos transporte, instalación profesional y duración del alquiler.</div>
     </div>
+  </div>
+  <div class="process-strip anim">
+    <figure class="ill-photo"><img src="img/ilustrativas/oficio-rijks-3.jpg" alt="Desembalaje de una obra enmarcada" loading="lazy"><figcaption><b>Embalaje y transporte</b>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Inrichten_in_het_Rijksmuseum_van_een_tentoonstelling_over_Lodewijk_Napoleon_,_ui,_Bestanddeelnr_910-2197.jpg" target="_blank" rel="noopener">Daan Noske / Anefo</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
+    <figure class="ill-photo"><img src="img/ilustrativas/oficio-chardin.jpg" alt="Manipulación de una pintura enmarcada en una sala" loading="lazy"><figcaption><b>Manipulación profesional</b>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Accrochage_Galerie_Chardin_et_son_temps_Palais_des_Beaux-Arts_de_Lille.jpg" target="_blank" rel="noopener">PBA Lille</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · filtro de color aplicado</figcaption></figure>
+    <figure class="ill-photo"><img src="img/ilustrativas/oficio-millet.jpg" alt="Equipo colgando un cuadro en la pared" loading="lazy"><figcaption><b>Instalación en tu espacio</b>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Accrochage_de_L%27Ang%C3%A9lus_expositionJF.Millet02.jpg" target="_blank" rel="noopener">PBA Lille</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · filtro de color aplicado</figcaption></figure>
   </div>
   <p class="anim" style="text-align:center;font-size:13px;color:var(--ash);margin-top:40px;letter-spacing:1px;">También disponible para alquiler temporal, rodajes y proyectos especiales. Los rodajes están siempre sujetos a la obtención de los permisos de los titulares de derechos.</p>
 </div>
