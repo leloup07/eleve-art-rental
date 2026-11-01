@@ -587,6 +587,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .process-strip{max-width:1100px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .process-strip figure{aspect-ratio:4/3;}
 @media(max-width:900px){.process-strip{grid-template-columns:1fr;}}
+.privacy-check{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:12.5px;line-height:1.6;color:var(--charcoal);cursor:pointer;}
+.privacy-check input{margin-top:3px;accent-color:var(--gold);flex:0 0 auto;}
+.privacy-check a{color:var(--gold);}
+.privacy-chat{margin-top:8px;font-size:11px;color:var(--ash);}
+.privacy-info{margin-top:18px;font-size:10.5px;line-height:1.7;color:var(--ash);text-align:left;}
+.privacy-info a{color:var(--ash);}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -2100,9 +2106,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
           </datalist>
         </div>
       </div>
+      <label class="privacy-check"><input type="checkbox" id="a-privacy"> <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>.</span></label>
       <div class="form-submit">
         <button class="btn-primary" onclick="submitAccessForm(this)">Solicitar acceso</button>
       </div>
+      <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a eleve.art@outlook.com. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
     </div>
     <div class="dossier">
       <div class="dossier-title">Qué incluye el dossier privado</div>
@@ -2176,9 +2184,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
         <textarea id="f-message" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
       </div>
     </div>
+    <label class="privacy-check"><input type="checkbox" id="f-privacy"> <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>.</span></label>
     <div class="form-submit">
       <button class="btn-primary" onclick="submitForm(this)">Enviar solicitud</button>
     </div>
+    <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a eleve.art@outlook.com. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
   </div>
 </div>
 
@@ -5397,7 +5407,10 @@ function formStatus(btn, text, ok) {
   el.textContent = text;
   el.style.color = ok ? 'var(--charcoal)' : 'var(--rust)';
 }
-async function sendToInbox(btn, payload, subject, lines) {
+async function sendToInbox(btn, payload, subject, lines, privacyId) {
+  const pv = document.getElementById(privacyId);
+  if (pv && !pv.checked) { formStatus(btn, 'Para enviar la solicitud debes aceptar la política de privacidad.', false); pv.focus(); return; }
+  payload.privacy = 'Aceptada · ' + new Date().toISOString();
   if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) { formStatus(btn, 'Indica un email válido para poder responderte.', false); return; }
   const label = btn.textContent;
   btn.disabled = true; btn.textContent = 'Enviando…';
@@ -5418,13 +5431,13 @@ function submitForm(btn) {
   const v = id => document.getElementById(id).value.trim();
   const p = { kind: 'propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
   const subject = `Solicitud Art Rental${p.artwork ? ': ' + p.artwork : ''}`;
-  sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message]);
+  sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message, '', 'Política de privacidad: aceptada'], 'f-privacy');
 }
 
 function submitAccessForm(btn) {
   const v = id => document.getElementById(id).value.trim();
   const p = { kind: 'acceso', name: v('a-name'), company: v('a-company'), email: v('a-email'), project: v('a-project') };
-  sendToInbox(btn, p, 'Solicitud de acceso — colección privada', [`Nombre: ${p.name}`, `Empresa / Estudio: ${p.company}`, `Email profesional: ${p.email}`, `Tipo de proyecto: ${p.project}`]);
+  sendToInbox(btn, p, 'Solicitud de acceso — colección privada', [`Nombre: ${p.name}`, `Empresa / Estudio: ${p.company}`, `Email profesional: ${p.email}`, `Tipo de proyecto: ${p.project}`, 'Política de privacidad: aceptada'], 'a-privacy');
 }
 
 function openAdmin() {
@@ -5762,6 +5775,7 @@ function exportHTML() {
   <div id="eleve-chat-lead">
     <p>Para enviarte la propuesta completa:</p>
     <div id="eleve-chat-lead-row"><input type="email" id="eleve-lead-email" placeholder="tu@email.com"><button onclick="eleveSubmitLead()">Enviar</button></div>
+    <label class="privacy-check privacy-chat"><input type="checkbox" id="eleve-lead-privacy"> <span>Acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>. Usaremos tu email y la conversación solo para responderte.</span></label>
   </div>
   <div id="eleve-chat-footer">
     <textarea id="eleve-chat-input" placeholder="Cuéntame tu proyecto..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();eleveSubmitChat();}"></textarea>
@@ -5807,10 +5821,11 @@ function exportHTML() {
   window.eleveSubmitLead=function(){
     var em=document.getElementById('eleve-lead-email').value.trim();
     if(!em||!em.includes('@'))return;
+    var pv=document.getElementById('eleve-lead-privacy'); if(pv&&!pv.checked){pv.parentElement.style.color='var(--rust)';pv.focus();return;}
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Gracias. Te escribiremos a '+em+' en menos de 24 horas con una propuesta.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');}).catch(function(){
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');}).catch(function(){
       window.open('mailto:eleve.art@outlook.com?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };
