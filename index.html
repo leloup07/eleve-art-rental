@@ -647,6 +647,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 @media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:28px;}.finder .filter-pills{display:flex;}.finder-side{position:static;}.finder .filter-pills{flex-direction:row;flex-wrap:wrap;border:none;gap:8px;}.finder .filter-pill{border:1px solid var(--linen);padding:8px 14px;}.finder .filter-pill.active{background:var(--ink);color:var(--cream);border-left:1px solid var(--ink);padding-left:14px;}}
 #indice{scroll-margin-top:64px;}
 @media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:20px;}}
+.anchor-offset{display:block;position:relative;top:-80px;visibility:hidden;}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -719,8 +720,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <a href="#packs">Modalidades</a>
     <a href="#como-funciona">Proceso</a>
     <a href="#preguntas">Preguntas</a>
-    <a href="#acceso">Acceso privado</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#contacto">Solicitar dossier</a>
   </nav>
 </div>
 
@@ -1979,45 +1979,72 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   </div>
 </div>
 
-<!-- ACCESO PRIVADO -->
-<div class="section" id="acceso" style="background:var(--ivory);">
+<!-- CONTACTO: DOSSIER Y PROPUESTA -->
+<div class="section" id="contacto" style="background:var(--ivory);">
+  <span id="acceso" class="anchor-offset"></span>
   <div class="section-header anim visible">
-    <div class="section-label">Acceso privado</div>
-    <h2 class="section-title">Colección privada</h2>
-    <div class="section-desc">El catálogo completo, con imágenes, fichas técnicas y condiciones, está disponible para profesionales y clientes con un proyecto concreto. Solicita acceso y te enviaremos un enlace personal.</div>
+    <div class="section-label">Contacto</div>
+    <h2 class="section-title">Solicita el dossier y una propuesta</h2>
+    <div class="section-desc">Déjanos tu nombre y tu email y te enviaremos el acceso a la colección privada, con fotografías, fichas y condiciones. Si nos cuentas tu proyecto, te respondemos en menos de 24 horas con una selección adaptada a tu espacio.</div>
   </div>
   <figure class="ill-photo band-photo"><img src="img/ilustrativas/corp-hallway.jpg" alt="Pasillo de piedra que conduce a una puerta iluminada" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:Outdoor_corporate_hallway_(Unsplash).jpg" target="_blank" rel="noopener">Simon Launay simonlaunay</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
   <div class="access-wrap anim visible">
     <div class="contact-form">
       <div class="form-grid">
         <div class="form-group">
-          <label for="a-name">Nombre</label>
-          <input type="text" id="a-name" placeholder="Nombre completo" autocomplete="name">
+          <label for="f-name">Nombre *</label>
+          <input type="text" id="f-name" placeholder="Nombre completo" autocomplete="name" required>
         </div>
         <div class="form-group">
-          <label for="a-company">Empresa / Estudio</label>
-          <input type="text" id="a-company" placeholder="Nombre de empresa o estudio" autocomplete="organization">
+          <label for="f-email">Email *</label>
+          <input type="email" id="f-email" placeholder="nombre@empresa.com" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label for="a-email">Email profesional</label>
-          <input type="email" id="a-email" placeholder="nombre@empresa.com" autocomplete="email">
+          <label for="f-company">Empresa / Estudio</label>
+          <input type="text" id="f-company" placeholder="Opcional" autocomplete="organization">
         </div>
         <div class="form-group">
-          <label for="a-project">Tipo de proyecto</label>
-          <input type="text" id="a-project" list="a-project-types" placeholder="Hotel, despacho, interiorismo…">
-          <datalist id="a-project-types">
-            <option value="Hotel / Hospitality">
-            <option value="Oficina / Despacho">
-            <option value="Interiorismo residencial">
-            <option value="Evento / Rodaje">
-            <option value="Staging / Promoción inmobiliaria">
-            <option value="Proyecto cultural">
-          </datalist>
+          <label for="f-phone">Teléfono</label>
+          <input type="tel" id="f-phone" placeholder="Opcional" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label for="f-type">Tipo de proyecto</label>
+          <select id="f-type">
+            <option value="">Seleccionar…</option>
+            <option>Hotel / Hospitality</option>
+            <option>Oficina / Despacho</option>
+            <option>Interiorismo residencial</option>
+            <option>Evento / Rodaje</option>
+            <option>Staging / Promoción inmobiliaria</option>
+            <option>Proyecto cultural</option>
+            <option>Solo quiero ver la colección</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-duration">Duración estimada</label>
+          <select id="f-duration">
+            <option value="">Seleccionar…</option>
+            <option>1-3 meses</option>
+            <option>3-6 meses</option>
+            <option>6-12 meses</option>
+            <option>Más de 12 meses</option>
+            <option>Evento puntual</option>
+            <option>Aún no lo sé</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="f-artwork">Obras o nivel de interés</label>
+          <input type="text" id="f-artwork" placeholder="Opcional: una obra, un artista o un nivel (Esencial, Colección, Maestros)">
+        </div>
+        <div class="form-group full">
+          <label for="f-message">Mensaje</label>
+          <textarea id="f-message" placeholder="Opcional: cuéntanos el espacio, el estilo o el plazo"></textarea>
         </div>
       </div>
-      <label class="privacy-check"><input type="checkbox" id="a-privacy"> <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>.</span></label>
+      <label class="privacy-check"><input type="checkbox" id="f-privacy"> <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>. *</span></label>
       <div class="form-submit">
-        <button class="btn-primary" onclick="submitAccessForm(this)">Solicitar acceso</button>
+        <button class="btn-primary" onclick="submitForm(this)">Solicitar dossier</button>
       </div>
       <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a eleve.art@outlook.com. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
     </div>
@@ -2031,73 +2058,6 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
         <li><span>V</span>Una primera selección curada para tu proyecto</li>
       </ul>
     </div>
-  </div>
-</div>
-
-<!-- CONTACTO -->
-<div class="section" id="contacto">
-  <div class="section-header anim">
-    <div class="section-label">Contacto</div>
-    <h2 class="section-title">Cuéntanos tu proyecto</h2>
-    <div class="section-desc">Respondemos en menos de 24 horas con una selección adaptada a tu espacio y presupuesto.</div>
-  </div>
-  <figure class="ill-photo band-photo"><img src="img/ilustrativas/moma-passage.jpg" alt="Pasaje blanco bañado de luz" loading="lazy"><figcaption>Imagen ilustrativa · Foto: <a href="https://commons.wikimedia.org/wiki/File:White_passage_leading_to_hallway_(Unsplash).jpg" target="_blank" rel="noopener">Drew Patrick Miller drewpatrickmiller</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · filtro de color aplicado</figcaption></figure>
-  <div class="contact-form anim">
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Nombre</label>
-        <input type="text" id="f-name" placeholder="Nombre completo">
-      </div>
-      <div class="form-group">
-        <label>Empresa / Estudio</label>
-        <input type="text" id="f-company" placeholder="Nombre de empresa o estudio">
-      </div>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="f-email" placeholder="email@ejemplo.com">
-      </div>
-      <div class="form-group">
-        <label>Teléfono</label>
-        <input type="tel" id="f-phone" placeholder="+34 ...">
-      </div>
-      <div class="form-group">
-        <label>Tipo de proyecto</label>
-        <select id="f-type">
-          <option value="">Seleccionar...</option>
-          <option>Hotel / Hospitality</option>
-          <option>Oficina / Despacho</option>
-          <option>Interiorismo residencial</option>
-          <option>Evento / Rodaje</option>
-          <option>Staging / Promoción inmobiliaria</option>
-          <option>Proyecto cultural</option>
-          <option>Otro</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Duración estimada</label>
-        <select id="f-duration">
-          <option value="">Seleccionar...</option>
-          <option>1-3 meses</option>
-          <option>3-6 meses</option>
-          <option>6-12 meses</option>
-          <option>Más de 12 meses</option>
-          <option>Evento puntual</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label>Obra(s) de interés</label>
-        <input type="text" id="f-artwork" placeholder="Indicar obra/s o «propuesta a medida»">
-      </div>
-      <div class="form-group full">
-        <label>Mensaje</label>
-        <textarea id="f-message" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-      </div>
-    </div>
-    <label class="privacy-check"><input type="checkbox" id="f-privacy"> <span>He leído y acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>.</span></label>
-    <div class="form-submit">
-      <button class="btn-primary" onclick="submitForm(this)">Enviar solicitud</button>
-    </div>
-    <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a eleve.art@outlook.com. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
   </div>
 </div>
 
@@ -5181,10 +5141,8 @@ function buildCollectionLD() {
 }
 
 function requestAccess(item) {
-  const field = document.getElementById('a-project');
-  if (field && item) field.value = `${item.artist} — ${item.title}`;
-  closeLightbox();
-  document.getElementById('acceso').scrollIntoView({behavior:'smooth'});
+  if (item) scrollToContact(`${item.artist} — ${item.title}`);
+  else { closeLightbox(); document.getElementById('contacto').scrollIntoView({behavior:'smooth'}); }
 }
 function requestAccessId(id) { requestAccess(COLLECTION.find(c => c.id === id)); }
 
@@ -5333,16 +5291,12 @@ async function sendToInbox(btn, payload, subject, lines, privacyId) {
 
 function submitForm(btn) {
   const v = id => document.getElementById(id).value.trim();
-  const p = { kind: 'propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
-  const subject = `Solicitud Art Rental${p.artwork ? ': ' + p.artwork : ''}`;
+  if (!v('f-name')) { formStatus(btn, 'Indica tu nombre.', false); document.getElementById('f-name').focus(); return; }
+  const p = { kind: 'dossier y propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
+  const subject = `Solicitud de dossier${p.artwork ? ': ' + p.artwork : ''}${p.company ? ' · ' + p.company : ''}`;
   sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message, '', 'Política de privacidad: aceptada'], 'f-privacy');
 }
 
-function submitAccessForm(btn) {
-  const v = id => document.getElementById(id).value.trim();
-  const p = { kind: 'acceso', name: v('a-name'), company: v('a-company'), email: v('a-email'), project: v('a-project') };
-  sendToInbox(btn, p, 'Solicitud de acceso — colección privada', [`Nombre: ${p.name}`, `Empresa / Estudio: ${p.company}`, `Email profesional: ${p.email}`, `Tipo de proyecto: ${p.project}`, 'Política de privacidad: aceptada'], 'a-privacy');
-}
 
 function openAdmin() {
   renderAdmin();
