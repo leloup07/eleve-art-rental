@@ -606,6 +606,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .rotation h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(26px,3vw,36px);line-height:1.15;color:var(--ink);}
 .rotation-body p{font-size:14.5px;line-height:1.9;color:var(--charcoal);margin-bottom:14px;}
 @media(max-width:900px){.tiers-grid{grid-template-columns:1fr;}.rotation{grid-template-columns:1fr;gap:16px;}}
+.finder{padding:72px 48px 56px;border-bottom:1px solid var(--parchment);scroll-margin-top:64px;}
+.finder-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;}
+.finder .section-title{text-align:left;}
+.finder-desc{font-size:14px;line-height:1.8;color:var(--charcoal);margin-bottom:14px;}
+.finder-note{font-size:11.5px;line-height:1.7;color:var(--ash);font-style:italic;}
+.finder .search-filter-bar{padding:6px 0 0;max-width:none;margin:0;}
+.finder .filter-pills{justify-content:flex-start;}
+#indice{scroll-margin-top:64px;}
+@media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:20px;}}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -751,6 +760,39 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   </div>
 </section>
 
+<!-- COLECCIÓN: BUSCADOR -->
+<section id="coleccion" class="finder" aria-labelledby="coleccion-title">
+  <div class="finder-inner">
+    <div class="finder-text">
+      <div class="section-label">Índice</div>
+      <h2 class="section-title" id="coleccion-title">La colección</h2>
+      <p class="finder-desc">Más de 90 obras en tres secciones. Busca por artista, título o técnica, o filtra por estilo, y abre cada ficha para leer su historia, sus medidas y su documentación.</p>
+      <p class="finder-note">Sin fotografías por respeto a los derechos de reproducción de los artistas: solo las publicamos con licencia (VEGAP), autorización expresa o si la obra es de dominio público. Cuando existe, cada ficha enlaza a otro ejemplar publicado por un museo o una casa de subastas.</p>
+    </div>
+  <div class="search-filter-bar">
+    <div class="search-row">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        <input type="search" id="searchInput" aria-label="Buscar en la colección" placeholder="Buscar por artista, título, técnica…" oninput="applyFilters()">
+      </div>
+    </div>
+    <div class="filter-pills" id="filterPills">
+      <button class="filter-pill active" data-filter="all" onclick="setFilter('all',this)">Todas</button>
+      <button class="filter-pill" data-filter="abstracto" onclick="setFilter('abstracto',this)">Abstracto</button>
+      <button class="filter-pill" data-filter="figurativo" onclick="setFilter('figurativo',this)">Figurativo</button>
+      <button class="filter-pill" data-filter="surrealismo" onclick="setFilter('surrealismo',this)">Surrealismo</button>
+      <button class="filter-pill" data-filter="informalismo" onclick="setFilter('informalismo',this)">Informalismo / Matérico</button>
+      <button class="filter-pill" data-filter="cubista" onclick="setFilter('cubista',this)">Cubista</button>
+      <button class="filter-pill" data-filter="pop" onclick="setFilter('pop',this)">Pop / Figuración narrativa</button>
+      <button class="filter-pill" data-filter="contemporaneo" onclick="setFilter('contemporaneo',this)">Contemporáneo</button>
+      <button class="filter-pill" data-filter="escultura" onclick="setFilter('escultura',this)">Escultura</button>
+      <button class="filter-pill" data-filter="dauaset" onclick="setFilter('dauaset',this)">Dau al Set / Catalán</button>
+      <button class="filter-pill" data-filter="disponibles" onclick="setFilter('disponibles',this)">Disponibles ahora</button>
+    </div>
+  </div>
+  </div>
+</section>
+
 <!-- OBRAS DESTACADAS -->
 <div class="section" id="destacadas">
   <div class="section-header anim visible">
@@ -857,35 +899,8 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     </article></div><!-- /featured -->
 </div>
 
-<!-- COLECCIÓN -->
-<section id="coleccion" aria-labelledby="coleccion-title">
-  <div class="coleccion-head section-header" style="margin-bottom:28px;">
-    <div class="section-label">Índice</div>
-    <h2 class="section-title" id="coleccion-title">La colección</h2>
-    <div class="section-desc">Más de 90 obras ordenadas en tres secciones. Busca por artista, título o técnica, filtra por estilo y abre cada ficha para leer su historia, sus medidas y su documentación.</div>
-    <p class="rights-note">Sin fotografías por respeto a los derechos de reproducción de los artistas. Solo publicamos fotografías de una obra cuando está permitido: si la obra es de dominio público, si contamos con licencia de la entidad de gestión de derechos (VEGAP) o con autorización expresa del artista o de sus herederos. Cada ficha muestra el formato real de la obra y, cuando existe, un enlace a otro ejemplar publicado por un museo o una casa de subastas.</p>
-  </div>
-  <div class="search-filter-bar">
-    <div class="search-row">
-      <div class="search-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
-        <input type="search" id="searchInput" aria-label="Buscar en la colección" placeholder="Buscar por artista, título, técnica…" oninput="applyFilters()">
-      </div>
-    </div>
-    <div class="filter-pills" id="filterPills">
-      <button class="filter-pill active" data-filter="all" onclick="setFilter('all',this)">Todas</button>
-      <button class="filter-pill" data-filter="abstracto" onclick="setFilter('abstracto',this)">Abstracto</button>
-      <button class="filter-pill" data-filter="figurativo" onclick="setFilter('figurativo',this)">Figurativo</button>
-      <button class="filter-pill" data-filter="surrealismo" onclick="setFilter('surrealismo',this)">Surrealismo</button>
-      <button class="filter-pill" data-filter="informalismo" onclick="setFilter('informalismo',this)">Informalismo / Matérico</button>
-      <button class="filter-pill" data-filter="cubista" onclick="setFilter('cubista',this)">Cubista</button>
-      <button class="filter-pill" data-filter="pop" onclick="setFilter('pop',this)">Pop / Figuración narrativa</button>
-      <button class="filter-pill" data-filter="contemporaneo" onclick="setFilter('contemporaneo',this)">Contemporáneo</button>
-      <button class="filter-pill" data-filter="escultura" onclick="setFilter('escultura',this)">Escultura</button>
-      <button class="filter-pill" data-filter="dauaset" onclick="setFilter('dauaset',this)">Dau al Set / Catalán</button>
-      <button class="filter-pill" data-filter="disponibles" onclick="setFilter('disponibles',this)">Disponibles ahora</button>
-    </div>
-  </div>
+<!-- COLECCIÓN: ÍNDICE -->
+<section id="indice" aria-label="Índice de la colección">
   <div id="main"><div class="section" id="section-iconic">
         <div class="section-header anim visible">
           <div class="section-label">Sección I · 44 obras</div>
@@ -5103,6 +5118,9 @@ function normalize(v) { return String(v || '').toLowerCase().normalize('NFD').re
 
 function applyFilters() {
   searchTerm = normalize(document.getElementById('searchInput').value).trim();
+  const filtered = activeFilter !== 'all' || !!searchTerm;
+  const dest = document.getElementById('destacadas');
+  if (dest) dest.style.display = filtered ? 'none' : '';
   renderGallery();
 }
 
