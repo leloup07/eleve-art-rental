@@ -557,6 +557,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .faq details p{padding:0 40px 24px 4px;font-size:14px;line-height:1.9;color:var(--charcoal);}
 /* ACCESO */
 .form-status{margin-top:16px;font-size:13px;line-height:1.7;text-align:center;max-width:520px;margin-left:auto;margin-right:auto;}
+.city-grid{max-width:1200px;margin:0 auto;columns:3 300px;column-gap:24px;}
+.city-card{break-inside:avoid;margin:0 0 24px;background:var(--cream);border:1px solid var(--parchment);}
+.city-card img{display:block;width:100%;height:auto;}
+.city-card figcaption{padding:18px 20px 20px;display:flex;flex-direction:column;gap:3px;}
+.city-artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.city-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--ink);line-height:1.25;}
+.city-when{font-size:11px;color:var(--ash);letter-spacing:.5px;}
+.city-text{font-size:13px;line-height:1.7;color:var(--charcoal);margin-top:6px;}
+.city-credit{font-size:10px;line-height:1.6;color:var(--ash);margin-top:10px;}
+.city-credit a{color:var(--ash);}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -623,6 +633,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <a href="#coleccion">Colección</a>
     <a href="#destacadas">Destacadas</a>
     <a href="#procedencia">Procedencia</a>
+    <a href="#ciudad">En la ciudad</a>
     <a href="#proyectos">Espacios</a>
     <a href="#packs">Packs</a>
     <a href="#como-funciona">Proceso</a>
@@ -1786,6 +1797,118 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <div class="ref-row"><div class="prov-artist">Pablo Picasso</div><div><span class="prov-work">Corrida (A.R. 182)</span><small>Otro ejemplar de la misma cerámica Madoura (A.R. 182) subastado por Christie’s.</small></div><a href="https://www.christies.com.cn/lot/lot-4699881" target="_blank" rel="noopener nofollow">Christie’s ↗</a></div></div>
   <div class="doc-grid" id="docGrid" hidden></div>
   <div style="text-align:center;margin-top:40px;"><a href="#acceso" class="btn-secondary">Solicitar dossier documental</a></div>
+</div>
+
+<!-- EN LA CIUDAD -->
+<div class="section" id="ciudad">
+  <div class="section-header anim visible">
+    <div class="section-label">Los artistas en la ciudad</div>
+    <h2 class="section-title">Donde ya puedes verlos</h2>
+    <div class="section-desc">Muchos de los artistas de la colección tienen obra en las calles de Barcelona, Madrid, Zaragoza o Valencia. No forman parte de la colección, pero son la mejor forma de acercarse a su lenguaje antes de ver las piezas en persona.</div>
+  </div>
+  <div class="city-grid">
+    <figure class="city-card">
+      <img src="img/ciudad/picasso-fris.jpg" alt="Frisos del Col·legi d’Arquitectes de Catalunya, obra pública de Pablo Picasso (1962 · Plaça Nova, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Pablo Picasso</span>
+        <span class="city-title">Frisos del Col·legi d’Arquitectes de Catalunya</span>
+        <span class="city-when">1962 · Plaça Nova, Barcelona</span>
+        <span class="city-text">Dibujados por Picasso y grabados en el hormigón por Carl Nesjar: una de sus pocas obras concebidas para la calle.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:167_Col%C2%B7legi_d%27Arquitectes_de_Catalunya,_pl._Nova_5_(Barcelona),_fris_de_Picasso,_c._Capellans.jpg" target="_blank" rel="noopener">Enric</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/miro-mosaic.jpg" alt="Mosaico del Pla de l’Os, obra pública de Joan Miró (1976 · La Rambla, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Joan Miró</span>
+        <span class="city-title">Mosaico del Pla de l’Os</span>
+        <span class="city-when">1976 · La Rambla, Barcelona</span>
+        <span class="city-text">Miles de personas lo pisan cada día sin saber que caminan sobre un Miró.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Mosaic_del_Pla_de_l%27Os,_Barcelona_(47906068561).jpg" target="_blank" rel="noopener">Mike McBey</a> · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/miro-dona-ocell.jpg" alt="Dona i Ocell, obra pública de Joan Miró (1983 · Parc de Joan Miró, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Joan Miró</span>
+        <span class="city-title">Dona i Ocell</span>
+        <span class="city-when">1983 · Parc de Joan Miró, Barcelona</span>
+        <span class="city-text">Veintidós metros de cerámica trencadís: una de las últimas grandes obras de Miró.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Barcelona_-_Parc_de_Joan_Mir%C3%B3,_escultura_%27Dona_i_Ocell%27_1.jpg" target="_blank" rel="noopener">Zarateman</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/miro-congresos.jpg" alt="Mural cerámico del Palacio de Congresos, obra pública de Joan Miró (1980 · Paseo de la Castellana, Madrid)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Joan Miró</span>
+        <span class="city-title">Mural cerámico del Palacio de Congresos</span>
+        <span class="city-when">1980 · Paseo de la Castellana, Madrid</span>
+        <span class="city-text">Realizado con el ceramista Joan Gardy Artigas para la fachada del edificio.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Madrid_-_Palacio_de_Congresos_(35260705873).jpg" target="_blank" rel="noopener">Fred Romero from Paris, France</a> · <a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener">CC BY 2.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/tapies-homenatge.jpg" alt="Homenatge a Picasso, obra pública de Antoni Tàpies (1983 · Passeig de Picasso, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Antoni Tàpies</span>
+        <span class="city-title">Homenatge a Picasso</span>
+        <span class="city-when">1983 · Passeig de Picasso, Barcelona</span>
+        <span class="city-text">Muebles, telas y vigas dentro de un cubo de cristal bañado por el agua.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Homenatge_a_Picasso_-_Antoni_T%C3%A0pies.jpg" target="_blank" rel="noopener">Slaven Kosanovic</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/tapies-nuvol.jpg" alt="Núvol i Cadira, obra pública de Antoni Tàpies (1990 · Fundació Antoni Tàpies, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Antoni Tàpies</span>
+        <span class="city-title">Núvol i Cadira</span>
+        <span class="city-when">1990 · Fundació Antoni Tàpies, Barcelona</span>
+        <span class="city-text">Una nube de tubo metálico corona la fundación del artista en el Eixample.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fundaci%C3%B3_Antoni_T%C3%A0pies,_Barcelona.jpg" target="_blank" rel="noopener">Equip Fundació Antoni Tàpies</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/subirachs-passio.jpg" alt="Fachada de la Pasión, obra pública de Josep Maria Subirachs (1987–2005 · Sagrada Família, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Josep Maria Subirachs</span>
+        <span class="city-title">Fachada de la Pasión</span>
+        <span class="city-when">1987–2005 · Sagrada Família, Barcelona</span>
+        <span class="city-text">Casi veinte años de trabajo de Subirachs en el templo de Gaudí.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Fa%C3%A7ana_Passi%C3%B3,_Sagrada_Familia,_Subirachs.jpg" target="_blank" rel="noopener">Lgz01</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener">CC BY-SA 3.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/plensa-alma-ebro.jpg" alt="El Alma del Ebro, obra pública de Jaume Plensa (2008 · Recinto Expo, Zaragoza)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Jaume Plensa</span>
+        <span class="city-title">El Alma del Ebro</span>
+        <span class="city-when">2008 · Recinto Expo, Zaragoza</span>
+        <span class="city-text">Una figura sentada construida con letras: la escritura como cuerpo.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Zaragoza_-_Recinto_Expo_Zaragoza,_escultura_%27El_Alma_del_Ebro%27,_de_Jaume_Plensa_12.jpg" target="_blank" rel="noopener">Zarateman</a> · <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" target="_blank" rel="noopener">CC0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/plensa-born.jpg" alt="Born, obra pública de Jaume Plensa (1992 · Passeig del Born, Barcelona)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Jaume Plensa</span>
+        <span class="city-title">Born</span>
+        <span class="city-when">1992 · Passeig del Born, Barcelona</span>
+        <span class="city-text">Un gran baúl y una bala de cañón de hierro fundido, en pleno paseo del Born.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:037_Born,_de_Jaume_Plensa,_pg._del_Born.jpg" target="_blank" rel="noopener">Enfo</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/es/deed.en" target="_blank" rel="noopener">CC BY-SA 3.0 es</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+    <figure class="city-card">
+      <img src="img/ciudad/valdes-dama.jpg" alt="Dama Ibérica, obra pública de Manolo Valdés (Valencia)" loading="lazy">
+      <figcaption>
+        <span class="city-artist">Manolo Valdés</span>
+        <span class="city-title">Dama Ibérica</span>
+        <span class="city-when">Valencia</span>
+        <span class="city-text">La Dama de Elche reinterpretada a escala monumental con su lenguaje de volúmenes.</span>
+        <span class="city-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Dama_Ib%C3%A8rica,_Manolo_Vald%C3%A9s.jpg" target="_blank" rel="noopener">Joanbanjo</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank" rel="noopener">CC BY-SA 4.0</a> · Wikimedia Commons</span>
+      </figcaption>
+    </figure>
+  </div>
+  <p class="rights-note">Fotografías de obras situadas de forma permanente en la vía pública (art. 35.2 de la Ley de Propiedad Intelectual), publicadas por sus autores con licencia libre en Wikimedia Commons. Ninguna de estas obras forma parte de la Colección Eleve.</p>
 </div>
 
 <!-- ESPACIOS -->
