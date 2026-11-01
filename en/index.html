@@ -676,6 +676,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .lang-switch{font-size:11px;letter-spacing:1.5px;color:var(--ash);white-space:nowrap;}
 .lang-switch span{color:var(--ink);}
 .lang-switch a{color:var(--ash) !important;}
+.ethos.collapsed{padding-top:72px;padding-bottom:72px;}
+.ethos.collapsed .ethos-full,.ethos.collapsed .ethos-photo{display:none;}
+.ethos.collapsed .ethos-head{position:static;}
+.ethos.collapsed h2{font-size:clamp(30px,3.2vw,44px);}
+.ethos-more{display:inline-flex;align-items:center;gap:12px;margin-top:22px;background:none;border:1px solid rgba(212,184,122,.5);color:var(--gold-light);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;padding:13px 22px;cursor:pointer;transition:all .3s;}
+.ethos-more:hover{border-color:var(--ivory);color:var(--ivory);}
+.ethos-more i{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);position:relative;top:-2px;transition:transform .3s;}
+.ethos:not(.collapsed) .ethos-more i{transform:rotate(-135deg);top:2px;}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -743,7 +751,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <span></span><span></span><span></span>
   </button>
   <nav class="nav" aria-label="Main">
-    <a href="#ethos">Ethos</a>
+    <a href="#ethos" onclick="ethosToggle(true)">Ethos</a>
     <a href="#coleccion">Collection</a>
     <a href="#proyectos">Spaces</a>
     <a href="#packs">Plans</a>
@@ -761,7 +769,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   <p class="hero-lead">A private collection of more than 90 works —painting, drawing, sculpture and original prints— available for hotels, offices, professional firms and interior design. Barcelona · Madrid · across Spain.</p>
   <div class="hero-ctas" style="animation:fadeUp .8s ease .8s both;">
     <a href="#contacto" class="btn-primary">Request the dossier</a>
-    <a href="#ethos" class="btn-secondary">Why we exist</a>
+    <a href="#ethos" class="btn-secondary" onclick="ethosToggle(true)">Why we exist</a>
   </div>
   <nav class="hero-artists" aria-label="Artists in the collection">
     <span class="hero-artists-label">In the collection</span>
@@ -779,7 +787,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
 </div>
 
 <!-- ETHOS -->
-<section class="ethos" id="ethos" aria-labelledby="ethos-title">
+<section class="ethos collapsed" id="ethos" aria-labelledby="ethos-title">
   <div class="ethos-inner">
     <div class="ethos-head">
       <div class="section-label">Ethos</div>
@@ -789,6 +797,8 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     </div>
     <div class="ethos-body">
       <p class="ethos-lead">Much of the original art of the twentieth century now lives in the dark: in boxes, storage units and museum stores, waiting for a moment that almost never comes. Meanwhile, the places where we spend our lives —hotels, offices, studios, homes— fill up with reproductions and interchangeable decoration. Eleve Art was created to bring those two realities together.</p>
+      <button class="ethos-more" id="ethosMore" aria-expanded="false" aria-controls="ethosFull" onclick="ethosToggle()" data-open="Read the full manifesto" data-close="Close the manifesto"><span>Read the full manifesto</span><i aria-hidden="true"></i></button>
+      <div class="ethos-full" id="ethosFull">
       <div class="ethos-tabs" role="tablist" aria-label="Principles"><button class="ethos-tab active" role="tab" aria-selected="true" aria-controls="ethos-p1" id="ethos-t1" onclick="ethosTab(1)"><span>I</span>The original matters</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p2" id="ethos-t2" onclick="ethosTab(2)"><span>II</span>Circulate, don’t accumulate</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p3" id="ethos-t3" onclick="ethosTab(3)"><span>III</span>Art where people are</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p4" id="ethos-t4" onclick="ethosTab(4)"><span>IV</span>Why we don’t show images</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p5" id="ethos-t5" onclick="ethosTab(5)"><span>V</span>Curation, not decoration</button></div>
       <div class="ethos-panels">
         <div class="ethos-panel active" role="tabpanel" id="ethos-p1" aria-labelledby="ethos-t1"><h3><span>I</span>The original matters</h3>
@@ -817,6 +827,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
         <div><b>Provenance</b><span>Certificates, studio stamps, catalogues raisonnés and artist archives.</span></div>
         <div><b>Copyright</b><span>No unauthorised public reproductions. Images only in a private dossier.</span></div>
         <div><b>Full service</b><span>Curated proposal, professional transport and installation across Spain.</span></div>
+      </div>
       </div>
     </div>
   </div>
@@ -5266,6 +5277,14 @@ document.addEventListener('keydown', e => {
 });
 document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.nav').classList.remove('open')));
 
+function ethosToggle(force) {
+  const sec = document.getElementById('ethos'), btn = document.getElementById('ethosMore');
+  const open = force === true ? true : sec.classList.contains('collapsed');
+  sec.classList.toggle('collapsed', !open);
+  btn.setAttribute('aria-expanded', open);
+  btn.querySelector('span').textContent = open ? btn.dataset.close : btn.dataset.open;
+  if (!open) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 function ethosTab(n) {
   document.querySelectorAll('.ethos-tab').forEach((t, i) => { const on = i + 1 === n; t.classList.toggle('active', on); t.setAttribute('aria-selected', on); });
   document.querySelectorAll('.ethos-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));

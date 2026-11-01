@@ -75,6 +75,7 @@ T = [
 ('>Contactar por esta obra →<', '>Email us about this work →<'),
 ('El arte no está hecho para esperar en un <em>almacén</em>', 'Art was not made to wait in a <em>storeroom</em>'),
 ('Manifiesto Eleve Art', 'The Eleve Art manifesto'),
+('data-open="Leer el manifiesto completo" data-close="Cerrar el manifiesto"><span>Leer el manifiesto completo</span>', 'data-open="Read the full manifesto" data-close="Close the manifesto"><span>Read the full manifesto</span>'),
 ('Pasillo de un archivo con estanterías llenas de cajas', 'Archive corridor with shelves full of boxes'),
 ('Gran parte del arte original del siglo XX vive hoy a oscuras: en cajas, guardamuebles y reservas, a la espera de un momento que casi nunca llega. Mientras tanto, los lugares donde pasamos la vida —hoteles, oficinas, despachos, casas— se llenan de reproducciones y de decoración intercambiable. Eleve Art nace para unir esas dos realidades.',
  'Much of the original art of the twentieth century now lives in the dark: in boxes, storage units and museum stores, waiting for a moment that almost never comes. Meanwhile, the places where we spend our lives —hotels, offices, studios, homes— fill up with reproductions and interchangeable decoration. Eleve Art was created to bring those two realities together.'),
