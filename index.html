@@ -607,7 +607,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .rotation-body p{font-size:14.5px;line-height:1.9;color:var(--charcoal);margin-bottom:14px;}
 @media(max-width:900px){.tiers-grid{grid-template-columns:1fr;}.rotation{grid-template-columns:1fr;gap:16px;}}
 .finder{padding:88px 48px 72px;border-bottom:1px solid var(--parchment);scroll-margin-top:64px;}
-.finder-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start;}
+.finder-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start;}
 .finder-side{position:sticky;top:96px;}
 .finder .section-title{text-align:left;font-size:clamp(36px,4vw,56px);margin-bottom:18px;}
 .finder-desc{font-size:15px;line-height:1.8;color:var(--charcoal);margin-bottom:12px;max-width:520px;}
@@ -615,7 +615,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .finder .search-filter-bar{padding:0;max-width:none;margin:0;}
 .finder .search-wrap input{font-size:14px;padding:15px 16px 15px 46px;}
 .finder .search-row{margin-bottom:20px;}
-.finder .filter-pills{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;row-gap:0;border-top:1px solid var(--parchment);}
+.finder .filter-pills{display:flex;flex-direction:column;align-items:stretch;gap:0;border-top:1px solid var(--parchment);}
 .finder .filter-pill{border:none;border-bottom:1px solid var(--parchment);text-align:left;padding:11px 4px;display:flex;justify-content:space-between;background:none;}
 .finder .filter-pill.active{background:none;color:var(--ink);border-left:2px solid var(--gold);padding-left:12px;}
 .finder .filter-pill:hover{color:var(--gold);}
@@ -630,6 +630,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .finder-main .featured-card-no{margin-bottom:8px;}
 .finder-main .featured-card-btn{padding:8px;font-size:9px;}
 .finder .featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:none;}
+.finder-main .index-block{margin-bottom:56px;}
+.finder-main .index-block .section-header{text-align:left;margin-bottom:20px;}
+.finder-main .index-block .section-title{font-size:clamp(26px,2.6vw,34px);margin-bottom:8px;}
+.finder-main .index-block .section-desc{margin:0;max-width:640px;}
+.finder-main .cat-index{max-width:none;}
+.finder-main .cat-row{grid-template-columns:56px minmax(120px,190px) 1fr auto;}
 .finder-empty{font-size:14px;color:var(--ash);padding:40px 0;}
 @media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:28px;}.finder .filter-pills{display:flex;}.finder-side{position:static;}.finder .filter-pills{flex-direction:row;flex-wrap:wrap;border:none;gap:8px;}.finder .filter-pill{border:1px solid var(--linen);padding:8px 14px;}.finder .filter-pill.active{background:var(--ink);color:var(--cream);border-left:1px solid var(--ink);padding-left:14px;}}
 #indice{scroll-margin-top:64px;}
@@ -701,7 +707,6 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   <nav class="nav" aria-label="Principal">
     <a href="#ethos">Ethos</a>
     <a href="#coleccion">Colección</a>
-    <a href="#destacadas">Destacadas</a>
     <a href="#procedencia">Procedencia</a>
     <a href="#proyectos">Espacios</a>
     <a href="#packs">Modalidades</a>
@@ -812,115 +817,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   </div>
     </aside>
     <div class="finder-main">
-      <div id="destacadas">
-        <div class="finder-main-head"><div class="section-label">Selección</div><h2 class="finder-main-title">Obras destacadas</h2></div>
-        <div class="featured-grid" id="featuredGrid">
-    <article class="featured-card anim visible" onclick="openLightbox('picasso')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 01</div>
-        <div class="featured-card-artist">Pablo Picasso</div>
-        <h3 class="featured-card-title">Femme se coiffant devant la glace</h3>
-        <div class="featured-card-meta">1933 · Aguafuerte sobre papel verjurado · 31,7 × 24,7 cm</div>
-        <p class="featured-card-blurb">Una de las cien estampas de la Suite Vollard, el conjunto que Picasso grabó entre 1930 y 1937 y que muchos consideran la cumbre de su obra gráfica. La línea, limpia y clásica, convierte un gesto cotidiano en un pequeño teatro íntimo. Pieza de museo a escala doméstica.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('picasso')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('dominguez')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 02</div>
-        <div class="featured-card-artist">Óscar Domínguez</div>
-        <h3 class="featured-card-title">La Maison</h3>
-        <div class="featured-card-meta">1953-1954 · Óleo sobre lienzo · 33 × 41 cm</div>
-        <p class="featured-card-blurb">Óleo de la etapa parisina de Óscar Domínguez, el surrealista canario que inventó la decalcomanía. En la serie «Vistas urbanas de una ciudad irreal» la arquitectura se descompone en planos de raíz cubista y atmósfera onírica. Obra certificada e inscrita en el TEA de Tenerife.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('dominguez')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('tapies-sin-titulo')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 03</div>
-        <div class="featured-card-artist">Antoni Tàpies</div>
-        <h3 class="featured-card-title">Sin Título</h3>
-        <div class="featured-card-meta">1976 · Pintura y lápiz sobre papel · 30,6 × 40,5 cm</div>
-        <p class="featured-card-blurb">Pintura original sobre papel firmada por Antoni Tàpies en 1976, en plena madurez del artista. Tajos, empastes ásperos y lápiz construyen una superficie que se lee como un muro: el lenguaje matérico que hizo de Tàpies una figura central del arte europeo de posguerra.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('tapies-sin-titulo')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('miro-barcelona-iii')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 22</div>
-        <div class="featured-card-artist">Joan Miró</div>
-        <h3 class="featured-card-title">Barcelona III (Serie Barcelona)</h3>
-        <div class="featured-card-meta">1972 · Aguafuerte · 69,2 × 106 cm · <a class="card-ref" href="https://bidsquare.com/online-auctions/setdart-auction-house/joan-mir-i-ferr-barcelona-1893---palma-de-mallorca-1983-barcelona-iii-1972-etching-aquatint-and-carborundum-on-guarro-paper-h-c-copy-2331679" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en Setdart (subasta) ↗</a></div>
-        <p class="featured-card-blurb">Grabado de gran formato de Joan Miró en aguafuerte, aguatinta y carborundo sobre papel Guarro, editado por la Sala Gaspar de Barcelona en tirada de 50. El carborundo da relieve y profundidad al color: Miró en estado puro, con su vocabulario de signos y su energía.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('miro-barcelona-iii')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('barcelo')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 05</div>
-        <div class="featured-card-artist">Miquel Barceló</div>
-        <h3 class="featured-card-title">Cabeza de cabra</h3>
-        <div class="featured-card-meta">1988 · Gouache sobre papel · 50 × 66 cm</div>
-        <p class="featured-card-blurb">Gouache sobre papel de 1988, certificado por la Galerie Bruno Bischofberger de Zúrich, una de las galerías de referencia del arte contemporáneo internacional. Pintura directa, de gesto rápido y materia viva, de uno de los artistas españoles vivos más reconocidos.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('barcelo')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('warhol-flowers')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 11</div>
-        <div class="featured-card-artist">Andy Warhol</div>
-        <h3 class="featured-card-title">Flowers</h3>
-        <div class="featured-card-meta">1970 · Serigrafía sobre papel · 91,4 × 91,4 cm · <a class="card-ref" href="https://www.moma.org/collection/works/64279" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en MoMA, Nueva York ↗</a></div>
-        <p class="featured-card-blurb">Serigrafía de la serie Flowers (1970), una de las imágenes más reconocibles del pop. Warhol partió de una fotografía de revista y la convirtió en un motivo plano, repetible y luminoso. Formato cuadrado de más de 90 cm, pensado para dominar una pared.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('warhol-flowers')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('plensa-untitled')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 85</div>
-        <div class="featured-card-artist">Jaume Plensa</div>
-        <h3 class="featured-card-title">Untitled</h3>
-        <div class="featured-card-meta">2020 · Aguafuerte sobre papel Hanji Korean hecho a mano · 178 × 125 cm</div>
-        <p class="featured-card-blurb">Aguafuerte de 178 × 125 cm sobre papel coreano Hanji hecho a mano: una pieza excepcional por escala dentro de la obra gráfica de Plensa. Edición de 15, certificada por Polígrafa Obra Gráfica.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('plensa-untitled')">Solicitar acceso</button>
-      </div>
-    </article>
-    <article class="featured-card anim visible" onclick="openLightbox('derain-perfil')">
-      
-      <div class="featured-card-body">
-        
-        <div class="featured-card-no">Nº 19</div>
-        <div class="featured-card-artist">André Derain</div>
-        <h3 class="featured-card-title">Cara de perfil</h3>
-        <div class="featured-card-meta">1920 · Dibujo a lápiz · 14 × 13 cm</div>
-        <p class="featured-card-blurb">Dibujo a lápiz de 1920 con sello del taller de André Derain, cofundador del fauvismo junto a Matisse. Tras la explosión de color, Derain volvió al dibujo clásico: aquí, un perfil resuelto con economía y seguridad. Pequeño formato, gran firma.</p>
-        <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('derain-perfil')">Solicitar acceso</button>
-      </div>
-    </article></div><!-- /featured -->
-      </div>
-      <div id="finderResults"></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- COLECCIÓN: ÍNDICE -->
-<section id="indice" aria-label="Índice de la colección">
-  <div id="main"><div class="section" id="section-iconic">
+      <div id="main"><div class="index-block" id="section-iconic">
         <div class="section-header anim visible">
           <div class="section-label">Sección I · 44 obras</div>
           <h2 class="section-title">Piezas Icónicas</h2>
@@ -1368,7 +1265,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
               </div>
               <a class="cat-link" href="#obra/picasso-corrida" onclick="event.preventDefault();event.stopPropagation();openLightbox('picasso-corrida')">Ver ficha</a>
             </div>
-        </div></div><div class="section" id="section-graphic">
+        </div></div><div class="index-block" id="section-graphic">
         <div class="section-header anim visible">
           <div class="section-label">Sección II · 26 obras</div>
           <h2 class="section-title">Obra Gráfica</h2>
@@ -1636,7 +1533,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
               </div>
               <a class="cat-link" href="#obra/plensa-untitled2" onclick="event.preventDefault();event.stopPropagation();openLightbox('plensa-untitled2')">Ver ficha</a>
             </div>
-        </div></div><div class="section" id="section-available">
+        </div></div><div class="index-block" id="section-available">
         <div class="section-header anim visible">
           <div class="section-label">Sección III · 20 obras</div>
           <h2 class="section-title">Obra Accesible</h2>
@@ -1845,7 +1742,10 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
               <a class="cat-link" href="#obra/cuixart-1" onclick="event.preventDefault();event.stopPropagation();openLightbox('cuixart-1')">Ver ficha</a>
             </div>
         </div></div></div><!-- /main -->
+    </div>
+  </div>
 </section>
+
 
 <!-- PROCEDENCIA -->
 <div class="section" id="procedencia" style="background:var(--ivory);">
@@ -5137,9 +5037,6 @@ function normalize(v) { return String(v || '').toLowerCase().normalize('NFD').re
 
 function applyFilters() {
   searchTerm = normalize(document.getElementById('searchInput').value).trim();
-  const filtered = activeFilter !== 'all' || !!searchTerm;
-  const dest = document.getElementById('destacadas');
-  if (dest) dest.style.display = filtered ? 'none' : '';
   renderGallery();
 }
 
@@ -5164,11 +5061,8 @@ const USE_SEARCH = {hotel:'hotel boutique hospitality',oficina:'oficina despacho
 
 function renderGallery() {
   const main = document.getElementById('main');
-  const results = document.getElementById('finderResults');
-  results.innerHTML = '';
+  main.innerHTML = '';
   const isFiltered = activeFilter !== 'all' || searchTerm;
-  if (isFiltered) main.style.display = 'none'; else main.style.display = '';
-  if (!isFiltered) main.innerHTML = '';
 
   if (isFiltered) {
     const allItems = COLLECTION.filter(c => {
@@ -5181,7 +5075,7 @@ function renderGallery() {
     });
     lastRendered = allItems;
     if (allItems.length === 0) {
-      results.innerHTML = '<div class="finder-empty">No se han encontrado obras con ese criterio. <a href="#contacto" style="color:var(--gold);">Cuéntanos qué buscas</a> y te ayudamos.</div>';
+      main.innerHTML = '<div class="finder-empty">No se han encontrado obras con ese criterio. <a href="#contacto" style="color:var(--gold);">Cuéntanos qué buscas</a> y te ayudamos.</div>';
       return;
     }
     const div = document.createElement('div');
@@ -5194,7 +5088,7 @@ function renderGallery() {
           return card(item, `<button class="featured-card-btn" onclick="event.stopPropagation();scrollToContactId('${item.id}')">${label}</button>`);
         }).join('')}
       </div>`;
-    results.appendChild(div);
+    main.appendChild(div);
   } else {
     lastRendered = [];
     ['iconic', 'graphic', 'available'].forEach(sectionKey => {
@@ -5203,7 +5097,7 @@ function renderGallery() {
       if (items.length === 0) return;
       lastRendered.push(...items);
       const div = document.createElement('div');
-      div.className = 'section';
+      div.className = 'index-block';
       div.id = 'section-' + sectionKey;
       div.innerHTML = `
         <div class="section-header anim visible">
