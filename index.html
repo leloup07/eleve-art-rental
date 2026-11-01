@@ -630,7 +630,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .finder-main .featured-card-no{margin-bottom:8px;}
 .finder-main .featured-card-btn{padding:8px;font-size:9px;}
 .finder .featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:none;}
-.finder-main .index-block{margin-bottom:56px;}
+.finder-main .index-block{margin-bottom:28px;padding:32px 32px 20px;border:1px solid rgba(217,208,193,.6);}
+.finder-main #section-iconic{background:#efe6d6;}
+.finder-main #section-graphic{background:#ebeae4;}
+.finder-main #section-available{background:#f4efe6;}
+.finder-main .index-block .cat-index{border-top-color:rgba(158,152,144,.25);}
+.finder-main .index-block .cat-row{border-bottom-color:rgba(158,152,144,.22);}
+.finder-main .index-block .cat-row:hover{background:rgba(255,255,255,.45);}
+@media(max-width:600px){.finder-main .index-block{padding:22px 16px 12px;}}
 .finder-main .index-block .section-header{text-align:left;margin-bottom:20px;}
 .finder-main .index-block .section-title{font-size:clamp(26px,2.6vw,34px);margin-bottom:8px;}
 .finder-main .index-block .section-desc{margin:0;max-width:640px;}
