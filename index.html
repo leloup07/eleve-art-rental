@@ -33,7 +33,7 @@
       "name": "Eleve Art",
       "description": "Colección privada de más de 90 obras de arte moderno y contemporáneo disponibles para alquiler",
       "url": "https://eleve.art",
-      "email": "eleve.art@outlook.com",
+      "email": "coleccion@eleve.art",
       "areaServed": "España"
     },
     {
@@ -2059,7 +2059,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <div class="form-submit">
         <button class="btn-primary" onclick="submitForm(this)">Solicitar dossier</button>
       </div>
-      <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a eleve.art@outlook.com. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
+      <p class="privacy-info"><b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a coleccion@eleve.art. Más información en la <a href="privacidad.html" target="_blank">política de privacidad</a>.</p>
     </div>
     <div class="dossier">
       <div class="dossier-title">Qué incluye el dossier privado</div>
@@ -2131,7 +2131,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-email">Contacto: <a href="mailto:eleve.art@outlook.com">eleve.art@outlook.com</a></div>
+  <div class="footer-email">Contacto: <a href="mailto:coleccion@eleve.art">coleccion@eleve.art</a></div>
   <p>Eleve Art · Todos los derechos reservados</p>
   <p style="margin-top:8px;font-size:11px;letter-spacing:.5px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">Los derechos de reproducción de las obras pertenecen a sus autores y herederos. Esta web no publica imágenes de las obras salvo dominio público, licencia de VEGAP o autorización expresa. Los enlaces externos remiten a publicaciones de terceros autorizadas. Eleve Art no está vinculada a los museos, fundaciones o webs enlazadas.</p>
   <p style="margin-top:8px;font-size:11px;letter-spacing:1.5px;"><a href="terminos-legales.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Términos legales</a> &nbsp;·&nbsp; <a href="privacidad.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Privacidad</a></p>
@@ -4844,7 +4844,7 @@ const SECTIONS = {
   available: {label:"Sección III", title:"Obra Accesible", desc:"Piezas de artistas reconocidos en condiciones accesibles. Ideales para completar proyectos de interiorismo y coleccionismo.", bg:"var(--cream)"}
 };
 
-const CONTACT_EMAIL = "eleve.art@outlook.com";
+const CONTACT_EMAIL = "coleccion@eleve.art";
 const USAGE_LABELS = {"hotel":"Hotel boutique","oficina":"Oficina / Despacho","interiorismo":"Interiorismo residencial","evento":"Evento / Rodaje"};
 
 let adminState = {};
@@ -5711,10 +5711,10 @@ function exportHTML() {
     try{
       var r=await fetch('https://eleve-proxy-production.up.railway.app/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SP,messages:msgs})});
       var d=await r.json();
-      var rep=d.reply||'Ha habido un problema. Contacta a eleve.art@outlook.com';
+      var rep=d.reply||'Ha habido un problema. Contacta a coleccion@eleve.art';
       t.remove();addMsg('assistant',rep);msgs.push({role:'assistant',content:rep});
       if(!leadOK&&msgs.length>=4)document.getElementById('eleve-chat-lead').style.display='flex';
-    }catch(e){t.remove();addMsg('assistant','Problema de conexion. Contacta a eleve.art@outlook.com');}
+    }catch(e){t.remove();addMsg('assistant','Problema de conexion. Contacta a coleccion@eleve.art');}
     btn.disabled=false;inp.focus();
   };
   window.eleveSubmitLead=function(){
@@ -5725,7 +5725,7 @@ function exportHTML() {
     addMsg('assistant','Gracias. Te escribiremos a '+em+' en menos de 24 horas con una propuesta.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
     fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');}).catch(function(){
-      window.open('mailto:eleve.art@outlook.com?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
+      window.open('mailto:coleccion@eleve.art?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };
   function addMsg(role,text){
