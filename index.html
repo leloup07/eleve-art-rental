@@ -638,6 +638,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .finder-main #section-iconic{background:#efe6d6;}
 .finder-main #section-graphic{background:#ebeae4;}
 .finder-main #section-available{background:#f4efe6;}
+.index-toggle{cursor:pointer;position:relative;padding-right:44px;}
+.index-chevron{display:inline-block;width:12px;height:12px;border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg);margin-left:16px;vertical-align:middle;position:relative;top:-6px;transition:transform .3s;}
+.index-block.collapsed .index-chevron{transform:rotate(-45deg);top:-2px;}
+.index-block.collapsed .cat-index{display:none;}
+.index-block.collapsed .section-header{margin-bottom:0;}
+.index-toggle:hover .section-title{color:var(--gold);}
 .finder-main .index-block .cat-index{border-top-color:rgba(158,152,144,.25);}
 .finder-main .index-block .cat-row{border-bottom-color:rgba(158,152,144,.22);}
 .finder-main .index-block .cat-row:hover{background:rgba(255,255,255,.45);}
@@ -845,12 +851,12 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     </aside>
     <div class="finder-main">
       <div id="main"><div class="index-block" id="section-iconic">
-        <div class="section-header anim visible">
+        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="list-iconic" onclick="toggleIndex('iconic')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('iconic')}">
           <div class="section-label">Sección I · 44 obras</div>
-          <h2 class="section-title">Piezas Icónicas</h2>
+          <h2 class="section-title">Piezas Icónicas<span class="index-chevron" aria-hidden="true"></span></h2>
           <div class="section-desc">Obras originales de los maestros: óleos, pinturas y grabados de autoría singular. Piezas con certificación y procedencia documentada.</div>
         </div>
-        <div class="cat-index">
+        <div class="cat-index" id="list-iconic">
           
             <div class="cat-row" onclick="openLightbox('picasso')">
               <div class="cat-num">Nº 01</div>
@@ -1292,13 +1298,13 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
               </div>
               <a class="cat-link" href="obra/picasso-corrida.html" onclick="event.preventDefault();event.stopPropagation();openLightbox('picasso-corrida')">Ver ficha</a>
             </div>
-        </div></div><div class="index-block" id="section-graphic">
-        <div class="section-header anim visible">
+        </div></div><div class="index-block collapsed" id="section-graphic">
+        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="list-graphic" onclick="toggleIndex('graphic')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('graphic')}">
           <div class="section-label">Sección II · 26 obras</div>
-          <h2 class="section-title">Obra Gráfica</h2>
+          <h2 class="section-title">Obra Gráfica<span class="index-chevron" aria-hidden="true"></span></h2>
           <div class="section-desc">Grabados, aguafuertes y ediciones limitadas de artistas consagrados. Obra múltiple de alta calidad con certificados de autenticidad.</div>
         </div>
-        <div class="cat-index">
+        <div class="cat-index" id="list-graphic">
           
             <div class="cat-row" onclick="openLightbox('tapies-visca')">
               <div class="cat-num">Nº 25</div>
@@ -1560,13 +1566,13 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
               </div>
               <a class="cat-link" href="obra/plensa-untitled2.html" onclick="event.preventDefault();event.stopPropagation();openLightbox('plensa-untitled2')">Ver ficha</a>
             </div>
-        </div></div><div class="index-block" id="section-available">
-        <div class="section-header anim visible">
+        </div></div><div class="index-block collapsed" id="section-available">
+        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="list-available" onclick="toggleIndex('available')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('available')}">
           <div class="section-label">Sección III · 20 obras</div>
-          <h2 class="section-title">Obra Accesible</h2>
+          <h2 class="section-title">Obra Accesible<span class="index-chevron" aria-hidden="true"></span></h2>
           <div class="section-desc">Piezas de artistas reconocidos en condiciones accesibles. Ideales para completar proyectos de interiorismo y coleccionismo.</div>
         </div>
-        <div class="cat-index">
+        <div class="cat-index" id="list-available">
           
             <div class="cat-row" onclick="openLightbox('cuixart')">
               <div class="cat-num">Nº 45</div>
@@ -5018,6 +5024,14 @@ function updatePillCounts() {
 const CAT_SEARCH = {abstracto:'abstracto',figurativo:'figurativo',surrealismo:'surrealismo',informalismo:'informalismo matérico',cubista:'cubista',pop:'pop figuración narrativa',contemporaneo:'contemporáneo',dauaset:'dau al set catalán català',escultura:'escultura'};
 const USE_SEARCH = {hotel:'hotel boutique hospitality',oficina:'oficina despacho corporate',interiorismo:'interiorismo residencial decoración',evento:'evento rodaje producción'};
 
+const indexOpen = {};
+function toggleIndex(key) {
+  const el = document.getElementById('section-' + key);
+  const open = el.classList.toggle('collapsed') === false;
+  indexOpen[key] = open;
+  el.querySelector('.index-toggle').setAttribute('aria-expanded', open);
+}
+
 function renderGallery() {
   const main = document.getElementById('main');
   main.innerHTML = '';
@@ -5056,15 +5070,16 @@ function renderGallery() {
       if (items.length === 0) return;
       lastRendered.push(...items);
       const div = document.createElement('div');
-      div.className = 'index-block';
+      const open = indexOpen[sectionKey] !== undefined ? indexOpen[sectionKey] : sectionKey === 'iconic';
+      div.className = 'index-block' + (open ? '' : ' collapsed');
       div.id = 'section-' + sectionKey;
       div.innerHTML = `
-        <div class="section-header anim visible">
+        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="${open}" aria-controls="list-${sectionKey}" onclick="toggleIndex('${sectionKey}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('${sectionKey}')}">
           <div class="section-label">${sec.label} · ${items.length} obras</div>
-          <h2 class="section-title">${sec.title}</h2>
+          <h2 class="section-title">${sec.title}<span class="index-chevron" aria-hidden="true"></span></h2>
           <div class="section-desc">${sec.desc}</div>
         </div>
-        <div class="cat-index">
+        <div class="cat-index" id="list-${sectionKey}">
           ${items.map(item => {
             const gst = item.rental_status || 'disponible';
             const tag = gst === 'alquilado' ? '<span class="cat-tag">Alquilado</span>' : gst === 'reservado' ? '<span class="cat-tag">Reservado</span>' : '';
