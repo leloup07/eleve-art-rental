@@ -614,6 +614,17 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !important;}
 .lb-ref{display:block;margin:-8px 0 24px;padding:14px 18px;border:1px solid rgba(212,184,122,.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);text-decoration:none;transition:all .3s;}
 .lb-ref[hidden]{display:none;}
+.lb-artist-link{display:inline-block;margin:-8px 0 24px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--linen);text-decoration:none;border-bottom:1px solid rgba(217,208,193,.35);padding-bottom:2px;}
+.lb-artist-link:hover{color:var(--gold-light);border-color:var(--gold-light);}
+.lb-artist-link[hidden]{display:none;}
+.artist-dir{max-width:1000px;margin:56px auto 0;}
+.artist-dir h3{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:400;text-align:center;margin-bottom:8px;}
+.artist-dir > p{font-size:13px;color:var(--ash);text-align:center;max-width:620px;margin:0 auto 22px;line-height:1.7;}
+.artist-dir ul{list-style:none;columns:3 240px;column-gap:32px;}
+.artist-dir li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--parchment);font-size:13px;display:flex;justify-content:space-between;gap:12px;}
+.artist-dir li span{font-variant:small-caps;letter-spacing:1px;color:var(--charcoal);}
+.artist-dir li a{color:var(--gold);text-decoration:none;font-size:11px;white-space:nowrap;}
+.artist-dir li a:hover{color:var(--rust);}
 .lb-ref:hover{color:var(--ivory);border-color:var(--ivory);background:rgba(212,184,122,.08);}
 .lb-ref small{display:block;text-transform:none;letter-spacing:.3px;color:var(--ash);font-size:11px;margin-top:4px;}
 .lb-docs figure{margin:0;}
@@ -1810,6 +1821,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     <div class="prov-row" onclick="openLightbox('plensa-untitled')"><div class="prov-artist">Jaume Plensa</div><div class="prov-work">Untitled</div><div class="prov-doc">Ed. 14/15 · Firmado a mano · Certificado de Polígrafa Obra Gráfica, Barcelona</div></div>
     <div class="prov-row" onclick="openLightbox('picasso-corrida')"><div class="prov-artist">Pablo Picasso</div><div class="prov-work">Corrida</div><div class="prov-doc">Catálogo razonado de Alain Ramié, A.R. 182 · Taller Madoura, Vallauris</div></div>
   </div>
+  <div class="artist-dir">
+    <h3>Los artistas</h3>
+    <p>Webs oficiales, fundaciones y galerías de los artistas de la colección. Cuando no existe una web propia, enlazamos a su biografía en Wikipedia.</p>
+    <ul><li><span>Hiro Ando</span><a href="https://www.hiroando.com/" target="_blank" rel="noopener">Web del artista ↗</a></li><li><span>Eduardo Arroyo</span><a href="https://es.wikipedia.org/wiki/Eduardo_Arroyo" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Pablo Atchugarry</span><a href="https://atchugarry.uy/" target="_blank" rel="noopener">Fundación Pablo Atchugarry ↗</a></li><li><span>Miquel Barceló</span><a href="https://ropac.net/artists/33-miquel-barcelo/" target="_blank" rel="noopener">Galerie Thaddaeus Ropac ↗</a></li><li><span>Monika Brandmeier</span><a href="https://monikabrandmeier.de/" target="_blank" rel="noopener">Web de la artista ↗</a></li><li><span>Erik Bulatov</span><a href="https://en.wikipedia.org/wiki/Erik_Bulatov" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Antoni Clavé</span><a href="https://es.wikipedia.org/wiki/Antoni_Clavé" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Modest Cuixart</span><a href="https://es.wikipedia.org/wiki/Modest_Cuixart" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>André Derain</span><a href="https://es.wikipedia.org/wiki/André_Derain" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Óscar Domínguez</span><a href="https://es.wikipedia.org/wiki/Óscar_Domínguez" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Bob Dylan</span><a href="https://www.bobdylan.com/" target="_blank" rel="noopener">Web oficial ↗</a></li><li><span>Tracey Emin</span><a href="https://www.whitecube.com/artists/emin" target="_blank" rel="noopener">White Cube ↗</a></li><li><span>Luis Feito</span><a href="https://es.wikipedia.org/wiki/Luis_Feito" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Josep Grau-Garriga</span><a href="https://www.nathalieobadia.com/artists/40-josep-grau-garriga/" target="_blank" rel="noopener">Galerie Nathalie Obadia ↗</a></li><li><span>Hans Hartung</span><a href="https://fondationhartungbergman.fr/" target="_blank" rel="noopener">Fondation Hartung-Bergman ↗</a></li><li><span>Josep Hurtuna</span><a href="https://ca.wikipedia.org/wiki/Josep_Hurtuna_i_Giralt" target="_blank" rel="noopener">Viquipèdia ↗</a></li><li><span>Farideh Lashai</span><a href="https://es.wikipedia.org/wiki/Farideh_Lashai" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Joan Miró</span><a href="https://www.fmirobcn.org/" target="_blank" rel="noopener">Fundació Joan Miró ↗</a></li><li><span>Julian Opie</span><a href="https://www.julianopie.com/" target="_blank" rel="noopener">Web del artista ↗</a></li><li><span>Pedro Paricio</span><a href="https://pedroparicio.com/" target="_blank" rel="noopener">Web del artista ↗</a></li><li><span>Pablo Picasso</span><a href="https://picasso.fr/" target="_blank" rel="noopener">Picasso Administration ↗</a></li><li><span>Jaume Plensa</span><a href="https://jaumeplensa.com/" target="_blank" rel="noopener">Web del artista ↗</a></li><li><span>Maria Assumpció Raventós</span><a href="https://ca.wikipedia.org/wiki/Maria_Assumpció_Raventós_i_Torras" target="_blank" rel="noopener">Viquipèdia ↗</a></li><li><span>Lluís Ribas</span><a href="https://es.wikipedia.org/wiki/Lluís_Ribas" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Alceu Ribeiro</span><a href="https://es.wikipedia.org/wiki/Alceu_Ribeiro" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Albert Ràfols-Casamada</span><a href="https://es.wikipedia.org/wiki/Albert_Ràfols-Casamada" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Josep Maria Subirachs</span><a href="https://www.subirachs.cat/" target="_blank" rel="noopener">Espai Subirachs ↗</a></li><li><span>Joan-Josep Tharrats</span><a href="https://es.wikipedia.org/wiki/Joan-Josep_Tharrats" target="_blank" rel="noopener">Wikipedia ↗</a></li><li><span>Antoni Tàpies</span><a href="https://fundaciotapies.org/" target="_blank" rel="noopener">Fundació Antoni Tàpies ↗</a></li><li><span>Manolo Valdés</span><a href="https://www.operagallery.com/artist/manolo-valdes" target="_blank" rel="noopener">Opera Gallery ↗</a></li><li><span>Andy Warhol</span><a href="https://www.warhol.org/" target="_blank" rel="noopener">The Andy Warhol Museum ↗</a></li><li><span>Tom Wesselmann</span><a href="https://www.tomwesselmannestate.org/" target="_blank" rel="noopener">The Estate of Tom Wesselmann ↗</a></li></ul>
+  </div>
   <div class="ref-list" id="refList"><h3>Otros ejemplares publicados</h3><p>No reproducimos las obras, pero de algunas existen otros ejemplares de la misma edición publicados de forma autorizada por museos y casas de subastas.</p>
     <div class="ref-row"><div class="prov-artist">Andy Warhol</div><div><span class="prov-work">Flowers</span><small>Ejemplar del mismo portfolio Flowers (1970, 10 serigrafías) en la colección del Museum of Modern Art.</small></div><a href="https://www.moma.org/collection/works/64279" target="_blank" rel="noopener nofollow">MoMA, Nueva York ↗</a></div>
     <div class="ref-row"><div class="prov-artist">Joan Miró</div><div><span class="prov-work">Barcelona III (Serie Barcelona)</span><small>Otro ejemplar de la misma estampa (prueba H.C.) subastado por Setdart, Barcelona.</small></div><a href="https://bidsquare.com/online-auctions/setdart-auction-house/joan-mir-i-ferr-barcelona-1893---palma-de-mallorca-1983-barcelona-iii-1972-etching-aquatint-and-carborundum-on-guarro-paper-h-c-copy-2331679" target="_blank" rel="noopener nofollow">Setdart (subasta) ↗</a></div>
@@ -2193,6 +2209,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <p class="lb-blurb" id="lbBlurb"></p>
       <p class="lb-nophoto" id="lbNoPhoto">Fotografía no publicada por respeto a los derechos de reproducción del artista. Disponible en el dossier privado, a solicitud.</p>
       <a class="lb-ref" id="lbRef" target="_blank" rel="noopener nofollow" hidden></a>
+      <a class="lb-artist-link" id="lbArtistLink" target="_blank" rel="noopener" hidden></a>
       <div class="lb-fields"></div>
       <div class="lb-desc"></div>
       <div class="lb-docs" id="lbDocs"></div>
@@ -2248,6 +2265,170 @@ const IMG = {};
 // Si un certificado incluye una foto de la obra, taparla o recortarla antes de subirlo.
 // Formato: "id": [{"src": "img/documentos/archivo.jpg", "caption": "Texto"}]
 const DOCS = {};
+
+// Web del artista: oficial (artista, fundación, archivo o museo propio), galería que lo representa o, en su defecto, Wikipedia.
+const ARTIST_LINKS = {
+ "Pablo Picasso": {
+  "url": "https://picasso.fr/",
+  "label": "Picasso Administration",
+  "type": "oficial"
+ },
+ "Óscar Domínguez": {
+  "url": "https://es.wikipedia.org/wiki/Óscar_Domínguez",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Antoni Tàpies": {
+  "url": "https://fundaciotapies.org/",
+  "label": "Fundació Antoni Tàpies",
+  "type": "oficial"
+ },
+ "Miquel Barceló": {
+  "url": "https://ropac.net/artists/33-miquel-barcelo/",
+  "label": "Galerie Thaddaeus Ropac",
+  "type": "galeria"
+ },
+ "Andy Warhol": {
+  "url": "https://www.warhol.org/",
+  "label": "The Andy Warhol Museum",
+  "type": "oficial"
+ },
+ "Erik Bulatov": {
+  "url": "https://en.wikipedia.org/wiki/Erik_Bulatov",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Monika Brandmeier": {
+  "url": "https://monikabrandmeier.de/",
+  "label": "Web de la artista",
+  "type": "oficial"
+ },
+ "Farideh Lashai": {
+  "url": "https://es.wikipedia.org/wiki/Farideh_Lashai",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Eduardo Arroyo": {
+  "url": "https://es.wikipedia.org/wiki/Eduardo_Arroyo",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "André Derain": {
+  "url": "https://es.wikipedia.org/wiki/André_Derain",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Josep Grau-Garriga": {
+  "url": "https://www.nathalieobadia.com/artists/40-josep-grau-garriga/",
+  "label": "Galerie Nathalie Obadia",
+  "type": "galeria"
+ },
+ "Joan Miró": {
+  "url": "https://www.fmirobcn.org/",
+  "label": "Fundació Joan Miró",
+  "type": "oficial"
+ },
+ "Tracey Emin": {
+  "url": "https://www.whitecube.com/artists/emin",
+  "label": "White Cube",
+  "type": "galeria"
+ },
+ "Jaume Plensa": {
+  "url": "https://jaumeplensa.com/",
+  "label": "Web del artista",
+  "type": "oficial"
+ },
+ "Manolo Valdés": {
+  "url": "https://www.operagallery.com/artist/manolo-valdes",
+  "label": "Opera Gallery",
+  "type": "galeria"
+ },
+ "Modest Cuixart": {
+  "url": "https://es.wikipedia.org/wiki/Modest_Cuixart",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Josep Maria Subirachs": {
+  "url": "https://www.subirachs.cat/",
+  "label": "Espai Subirachs",
+  "type": "oficial"
+ },
+ "Maria Assumpció Raventós": {
+  "url": "https://ca.wikipedia.org/wiki/Maria_Assumpció_Raventós_i_Torras",
+  "label": "Viquipèdia",
+  "type": "wiki"
+ },
+ "Joan-Josep Tharrats": {
+  "url": "https://es.wikipedia.org/wiki/Joan-Josep_Tharrats",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Josep Hurtuna": {
+  "url": "https://ca.wikipedia.org/wiki/Josep_Hurtuna_i_Giralt",
+  "label": "Viquipèdia",
+  "type": "wiki"
+ },
+ "Lluís Ribas": {
+  "url": "https://es.wikipedia.org/wiki/Lluís_Ribas",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Albert Ràfols-Casamada": {
+  "url": "https://es.wikipedia.org/wiki/Albert_Ràfols-Casamada",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Bob Dylan": {
+  "url": "https://www.bobdylan.com/",
+  "label": "Web oficial",
+  "type": "oficial"
+ },
+ "Julian Opie": {
+  "url": "https://www.julianopie.com/",
+  "label": "Web del artista",
+  "type": "oficial"
+ },
+ "Tom Wesselmann": {
+  "url": "https://www.tomwesselmannestate.org/",
+  "label": "The Estate of Tom Wesselmann",
+  "type": "oficial"
+ },
+ "Luis Feito": {
+  "url": "https://es.wikipedia.org/wiki/Luis_Feito",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Hans Hartung": {
+  "url": "https://fondationhartungbergman.fr/",
+  "label": "Fondation Hartung-Bergman",
+  "type": "oficial"
+ },
+ "Pedro Paricio": {
+  "url": "https://pedroparicio.com/",
+  "label": "Web del artista",
+  "type": "oficial"
+ },
+ "Pablo Atchugarry": {
+  "url": "https://atchugarry.uy/",
+  "label": "Fundación Pablo Atchugarry",
+  "type": "oficial"
+ },
+ "Antoni Clavé": {
+  "url": "https://es.wikipedia.org/wiki/Antoni_Clavé",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Alceu Ribeiro": {
+  "url": "https://es.wikipedia.org/wiki/Alceu_Ribeiro",
+  "label": "Wikipedia",
+  "type": "wiki"
+ },
+ "Hiro Ando": {
+  "url": "https://www.hiroando.com/",
+  "label": "Web del artista",
+  "type": "oficial"
+ }
+};
 
 const COLLECTION = [
   {
@@ -5149,6 +5330,8 @@ function openLightbox(id) {
     ref.innerHTML = `Ver la obra en ${esc(item.ref_label || host)} ↗${item.ref_note ? `<small>${esc(item.ref_note)}</small>` : ''}`;
     ref.hidden = false;
   } else { ref.hidden = true; ref.removeAttribute('href'); }
+  const al = ARTIST_LINKS[item.artist], alEl = document.getElementById('lbArtistLink');
+  if (al) { alEl.href = al.url; alEl.textContent = `Sobre ${item.artist}: ${al.label} ↗`; alEl.hidden = false; } else { alEl.hidden = true; alEl.removeAttribute('href'); }
   document.getElementById('lbDocs').innerHTML = (DOCS[item.id] || []).map(d => `<figure><img src="${esc(d.src)}" alt="${esc(d.caption)}" loading="lazy"><figcaption>${esc(d.caption)}</figcaption></figure>`).join('');
 
   // Rental block
