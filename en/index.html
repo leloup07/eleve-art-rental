@@ -643,6 +643,11 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .index-block.collapsed .index-chevron{transform:rotate(-45deg);top:-2px;}
 .index-block.collapsed .cat-index{display:none;}
 .index-block.collapsed .section-header{margin-bottom:0;}
+.finder-main .index-block.collapsed{padding:18px 26px;margin-bottom:12px;transition:background .3s;}
+.finder-main .index-block.collapsed .section-title{font-size:22px;margin-bottom:0;}
+.finder-main .index-block.collapsed .section-label{margin-bottom:4px;}
+.finder-main .index-block.collapsed .section-desc{display:none;}
+.finder-main .index-block.collapsed:hover{filter:brightness(.98);}
 .index-toggle:hover .section-title{color:var(--gold);}
 .finder-main .index-block .cat-index{border-top-color:rgba(158,152,144,.25);}
 .finder-main .index-block .cat-row{border-bottom-color:rgba(158,152,144,.22);}
@@ -850,8 +855,8 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   </div>
     </aside>
     <div class="finder-main">
-      <div id="main"><div class="index-block" id="section-iconic">
-        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="true" aria-controls="list-iconic" onclick="toggleIndex('iconic')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('iconic')}">
+      <div id="main"><div class="index-block collapsed" id="section-iconic">
+        <div class="section-header anim visible index-toggle" role="button" tabindex="0" aria-expanded="false" aria-controls="list-iconic" onclick="toggleIndex('iconic')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleIndex('iconic')}">
           <div class="section-label">Section I · 44 works</div>
           <h2 class="section-title">Iconic Pieces<span class="index-chevron" aria-hidden="true"></span></h2>
           <div class="section-desc">Original works by the masters: oils, paintings and prints of singular authorship. Pieces with certification and documented provenance.</div>
@@ -5070,7 +5075,7 @@ function renderGallery() {
       if (items.length === 0) return;
       lastRendered.push(...items);
       const div = document.createElement('div');
-      const open = indexOpen[sectionKey] !== undefined ? indexOpen[sectionKey] : sectionKey === 'iconic';
+      const open = indexOpen[sectionKey] !== undefined ? indexOpen[sectionKey] : false;
       div.className = 'index-block' + (open ? '' : ' collapsed');
       div.id = 'section-' + sectionKey;
       div.innerHTML = `
