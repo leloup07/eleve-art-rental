@@ -20,8 +20,7 @@
 <meta name="twitter:title" content="Eleve Art | Alquiler de arte moderno y contemporáneo">
 <meta name="twitter:description" content="Colección privada de arte moderno y contemporáneo disponible para alquiler para hoteles, oficinas, interioristas y proyectos culturales.">
 <meta name="keywords" content="alquiler de arte, art rental, arte para hoteles, arte para oficinas, arte para interioristas, alquiler de cuadros para empresas, art rental Spain, Picasso, Tàpies, Miró, Barceló">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Jost:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -650,6 +649,16 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 #indice{scroll-margin-top:64px;}
 @media(max-width:900px){.finder{padding:56px 24px 40px;}.finder-inner{grid-template-columns:1fr;gap:20px;}}
 .anchor-offset{display:block;position:relative;top:-80px;visibility:hidden;}
+.ethos-tabs{display:flex;flex-wrap:wrap;gap:0;margin:40px 0 0;border-bottom:1px solid rgba(217,208,193,.2);}
+.ethos-tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--ash);font-family:'Jost',sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;padding:12px 16px 12px 0;margin-right:18px;cursor:pointer;display:flex;gap:8px;align-items:baseline;transition:color .3s,border-color .3s;}
+.ethos-tab span{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0;}
+.ethos-tab:hover{color:var(--ivory);}
+.ethos-tab.active{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+.ethos-panels{min-height:260px;}
+.ethos-panel{display:none;animation:fadeUp .5s ease both;}
+.ethos-panel.active{display:block;}
+.ethos-panel h3{margin-top:32px !important;}
+@media(max-width:600px){.ethos-tab{margin-right:10px;padding-right:6px;font-size:9.5px;}.ethos-panels{min-height:0;}}
 .dossier{border:1px solid var(--parchment);background:var(--cream);padding:36px 36px 30px;}
 .dossier-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
 .dossier ul{list-style:none;}
@@ -760,28 +769,29 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
     </div>
     <div class="ethos-body">
       <p class="ethos-lead">Gran parte del arte original del siglo XX vive hoy a oscuras: en cajas, guardamuebles y reservas, a la espera de un momento que casi nunca llega. Mientras tanto, los lugares donde pasamos la vida —hoteles, oficinas, despachos, casas— se llenan de reproducciones y de decoración intercambiable. Eleve Art nace para unir esas dos realidades.</p>
-
-      <h3><span>I</span>Lo original importa</h3>
-      <p>Una obra original no es una imagen: es un objeto. Tiene materia, escala, peso y la huella de una mano. En un aguafuerte, la presión de la plancha deja un relieve en el papel; en un óleo, la luz se queda atrapada en el empaste; en un dibujo de Derain todavía se adivina la duda del lápiz. Esa diferencia se percibe aunque no se sepa explicar, y cambia la manera en que se habita un espacio, cómo se conversa en él y cómo se recuerda.</p>
+      <div class="ethos-tabs" role="tablist" aria-label="Principios"><button class="ethos-tab active" role="tab" aria-selected="true" aria-controls="ethos-p1" id="ethos-t1" onclick="ethosTab(1)"><span>I</span>Lo original importa</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p2" id="ethos-t2" onclick="ethosTab(2)"><span>II</span>Circular en lugar de acumular</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p3" id="ethos-t3" onclick="ethosTab(3)"><span>III</span>El arte, donde está la gente</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p4" id="ethos-t4" onclick="ethosTab(4)"><span>IV</span>Por qué no mostramos imágenes</button><button class="ethos-tab" role="tab" aria-selected="false" aria-controls="ethos-p5" id="ethos-t5" onclick="ethosTab(5)"><span>V</span>Curaduría, no decoración</button></div>
+      <div class="ethos-panels">
+        <div class="ethos-panel active" role="tabpanel" id="ethos-p1" aria-labelledby="ethos-t1"><h3><span>I</span>Lo original importa</h3>
+          <p>Una obra original no es una imagen: es un objeto. Tiene materia, escala, peso y la huella de una mano. En un aguafuerte, la presión de la plancha deja un relieve en el papel; en un óleo, la luz se queda atrapada en el empaste; en un dibujo de Derain todavía se adivina la duda del lápiz. Esa diferencia se percibe aunque no se sepa explicar, y cambia la manera en que se habita un espacio, cómo se conversa en él y cómo se recuerda.</p>
       <p>Por eso trabajamos solo con obra original: pinturas, dibujos, esculturas, cerámicas y obra gráfica de edición limitada, con procedencia documentada.</p>
-
-      <h3><span>II</span>Circular en lugar de acumular</h3>
-      <p>Durante siglos, coleccionar ha sido sinónimo de poseer y guardar. Proponemos otra ética: que las obras circulen, que trabajen, que sean vistas. Una pieza colgada en un lobby recibe en una semana más miradas que en diez años dentro de una caja.</p>
+        </div>
+        <div class="ethos-panel" role="tabpanel" id="ethos-p2" aria-labelledby="ethos-t2"><h3><span>II</span>Circular en lugar de acumular</h3>
+          <p>Durante siglos, coleccionar ha sido sinónimo de poseer y guardar. Proponemos otra ética: que las obras circulen, que trabajen, que sean vistas. Una pieza colgada en un lobby recibe en una semana más miradas que en diez años dentro de una caja.</p>
       <p>El alquiler permite a hoteles, empresas y estudios de interiorismo convivir con obras de primer nivel sin inmovilizar capital, adaptar la selección a cada proyecto y a cada etapa, y apostar por algo más duradero que la decoración de temporada. Reutilizar lo que ya existe es, también, una forma de responsabilidad.</p>
-
-      <blockquote class="ethos-quote">Una obra colgada es una obra viva. Una obra guardada es solo inventario.</blockquote>
-
-      <h3><span>III</span>El arte, donde está la gente</h3>
-      <p>Para muchas personas, el primer encuentro con un Tàpies, un Miró o un Warhol no ocurre en un museo, sino en la recepción de una empresa, en la sala de espera de una notaría o en el pasillo de un hotel. Llevar arte a los espacios cotidianos es una forma discreta de mediación cultural: abre preguntas, provoca conversaciones y devuelve a las obras su función primera, que es ser miradas.</p>
-
-      <h3><span>IV</span>Por qué no mostramos imágenes</h3>
-      <p>Los derechos de reproducción de una obra pertenecen a sus autores y herederos, no a quien posee el original. Por respeto a ellos, esta web no reproduce las obras sin licencia. Solo publicamos fotografías de una obra cuando está permitido: si la obra es de dominio público, si contamos con licencia de la entidad de gestión de derechos (VEGAP) o con autorización expresa del artista o de sus herederos. Cuando otro ejemplar de la misma edición está publicado de forma autorizada —por un museo, una fundación o una casa de subastas—, enlazamos a esa página en lugar de copiar la imagen.</p>
+        </div>
+        <div class="ethos-panel" role="tabpanel" id="ethos-p3" aria-labelledby="ethos-t3"><h3><span>III</span>El arte, donde está la gente</h3>
+          <p>Para muchas personas, el primer encuentro con un Tàpies, un Miró o un Warhol no ocurre en un museo, sino en la recepción de una empresa, en la sala de espera de una notaría o en el pasillo de un hotel. Llevar arte a los espacios cotidianos es una forma discreta de mediación cultural: abre preguntas, provoca conversaciones y devuelve a las obras su función primera, que es ser miradas.</p>
+        </div>
+        <div class="ethos-panel" role="tabpanel" id="ethos-p4" aria-labelledby="ethos-t4"><h3><span>IV</span>Por qué no mostramos imágenes</h3>
+          <p>Los derechos de reproducción de una obra pertenecen a sus autores y herederos, no a quien posee el original. Por respeto a ellos, esta web no reproduce las obras sin licencia. Solo publicamos fotografías de una obra cuando está permitido: si la obra es de dominio público, si contamos con licencia de la entidad de gestión de derechos (VEGAP) o con autorización expresa del artista o de sus herederos. Cuando otro ejemplar de la misma edición está publicado de forma autorizada —por un museo, una fundación o una casa de subastas—, enlazamos a esa página en lugar de copiar la imagen.</p>
       <p>Lo que encontrarás aquí son textos, fichas, medidas y documentación; las fotografías se comparten en un dossier privado, en el marco de un proyecto concreto.</p>
       <p>Hay también una convicción detrás: una pantalla no sustituye la experiencia de estar frente a una obra. Esta web es un índice y una invitación. El encuentro de verdad ocurre cuando la obra cuelga en tu pared: en el hotel, la oficina o la casa donde va a vivir.</p>
-
-      <h3><span>V</span>Curaduría, no decoración</h3>
-      <p>No elegimos obras para que combinen con el sofá. Cada propuesta empieza por el lugar: su arquitectura, su luz, su uso y las personas que lo habitan. Buscamos diálogo entre obras, contexto y relato, de forma que cada pieza tenga sentido en el espacio y el espacio gane sentido con ella.</p>
-
+        </div>
+        <div class="ethos-panel" role="tabpanel" id="ethos-p5" aria-labelledby="ethos-t5"><h3><span>V</span>Curaduría, no decoración</h3>
+          <p>No elegimos obras para que combinen con el sofá. Cada propuesta empieza por el lugar: su arquitectura, su luz, su uso y las personas que lo habitan. Buscamos diálogo entre obras, contexto y relato, de forma que cada pieza tenga sentido en el espacio y el espacio gane sentido con ella.</p>
+        </div>
+      </div>
+      <blockquote class="ethos-quote">Una obra colgada es una obra viva. Una obra guardada es solo inventario.</blockquote>
       <div class="ethos-commit">
         <div><b>Obra original</b><span>Piezas únicas y ediciones limitadas, nunca reproducciones.</span></div>
         <div><b>Procedencia</b><span>Certificados, sellos de taller, catálogos razonados y archivos de artista.</span></div>
@@ -5225,6 +5235,10 @@ document.addEventListener('keydown', e => {
 });
 document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click', () => document.querySelector('.nav').classList.remove('open')));
 
+function ethosTab(n) {
+  document.querySelectorAll('.ethos-tab').forEach((t, i) => { const on = i + 1 === n; t.classList.toggle('active', on); t.setAttribute('aria-selected', on); });
+  document.querySelectorAll('.ethos-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+}
 function scrollToContactId(id) { const c = COLLECTION.find(x => x.id === id); if (c) scrollToContact(`${c.artist} — ${c.title}`); }
 function scrollToContact(artwork) {
   document.getElementById('f-artwork').value = artwork || '';
@@ -5617,14 +5631,14 @@ function exportHTML() {
   var SP='';
   function buildSP(){
     var col=(typeof COLLECTION!=='undefined')?COLLECTION.map(function(c){return c.artist+' - '+c.title+' | '+(c.medium||'')+' | '+(c.year||'');}).join('\n'):'Coleccion de mas de 90 obras de Picasso, Tapies, Barcelo, Plensa, Miro, Warhol y otros.';
-    SP='Eres el asistente de Eleve Art, servicio de alquiler de arte moderno y contemporaneo de una colección privada en España.\n\nColeccion:\n'+col+'\n\nReglas:\n- Responde en el idioma del usuario\n- Sé conciso y elegante\n- Sugiere obras concretas segun el espacio descrito\n- Tras 2 intercambios ofrece enviar propuesta por email\n- No des precios ni rangos: las condiciones se facilitan en propuesta personalizada\n- No inventes obras\n- Si piden imagenes, ofrece el dossier privado por email\n- Max 3-4 obras por sugerencia\n- Tono calido y culto';
+    SP='Eres el asistente de Eleve Art, servicio de alquiler de obra original de arte moderno y contemporáneo de una colección privada (Barcelona, Madrid y toda España).\n\nColección (artista - obra | técnica | año):\n'+col+'\n\nModalidades:\n- Esencial: 3 a 5 piezas de series del mismo formato (Tharrats, Valdés obra gráfica, Cuixart, Ribas, Hurtuna). Rotación hasta 4 veces al año. Mínimo 6 meses.\n- Colección: 2 a 4 piezas de firma (Plensa, Miró, Tàpies obra gráfica, Warhol, Opie, Wesselmann, Hartung). Rotación 2 veces al año. Mínimo 12 meses.\n- Maestros: 1 a 3 obras únicas (Picasso, Domínguez, Tàpies obra única, Barceló, Derain, Emin). Sin rotación. Mínimo 12 meses.\n- También obras sueltas, plazos cortos, eventos y selecciones a medida. Los rodajes requieren siempre que el cliente obtenga los permisos de los titulares de derechos.\n\nReglas:\n- Responde en el idioma del usuario, con tono cálido, culto y breve (máximo 120 palabras).\n- Recomienda el nivel y 2-4 obras concretas de la lista según el espacio descrito. No inventes obras, datos ni procedencias.\n- No des precios ni rangos: las condiciones van en la propuesta personalizada.\n- No hay fotografías públicas de las obras por derechos de autor: ofrece el dossier privado.\n- Tras 2 intercambios, invita a dejar su email aquí o a usar el formulario «Solicita el dossier y una propuesta».\n- No pidas datos personales distintos del email.';
   }
   var msgs=[],leadOK=false,isOpen=false,init=false;
   window.eleveToggleChat=function(){
     var p=document.getElementById('eleve-chat-panel');
     isOpen=!isOpen;
     if(isOpen)p.classList.add('open');else p.classList.remove('open');
-    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\nCuéntame tu proyecto: tipo de espacio, estilo o presupuesto, y te sugiero obras de la colección.');}
+    if(isOpen&&!init){init=true;buildSP();addMsg('assistant','Hola. Soy el asistente de Eleve Art.\n\nCuéntame tu espacio (hotel, oficina, casa…), el estilo que buscas y el plazo, y te sugiero un nivel y obras de la colección.');}
     if(isOpen)setTimeout(function(){document.getElementById('eleve-chat-input').focus();},200);
   };
   window.eleveCloseChat=function(){
