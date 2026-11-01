@@ -519,6 +519,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .plate-no{left:14px;top:12px;color:var(--gold);}
 .plate-dim{right:14px;bottom:10px;color:var(--ash);letter-spacing:1px;text-transform:none;}
 .featured-card-img.has-plate{padding:0;}
+.featured-card-no{font-size:9px;letter-spacing:2.5px;color:var(--ash);margin-bottom:14px;}
+.featured-card{display:flex;flex-direction:column;}
+.featured-card-body{display:flex;flex-direction:column;flex:1;padding:28px 28px 28px;}
+.featured-card-body .featured-card-btn{margin-top:auto;}
 .featured-card-meta{font-size:11px;color:var(--ash);letter-spacing:.5px;margin:-6px 0 10px;}
 .featured-card-blurb{font-size:12.5px;line-height:1.7;color:var(--ash);margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 /* PROCEDENCIA */
@@ -573,6 +577,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .lb-desc::before{content:'Catalogación y procedencia';display:block;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ash);font-style:normal;margin-bottom:8px;}
 .lb-docs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
 .lb-docs:empty{display:none;}
+.lb-content.lb-text-only{max-width:680px;}
+.lb-text-only .lb-details{flex:1 1 auto;}
+.lb-nophoto{font-size:12px;line-height:1.7;color:var(--ash);font-style:italic;margin:-8px 0 20px;}
+.lb-nophoto[hidden]{display:none;}
 body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !important;}
 .lb-ref{display:block;margin:-8px 0 24px;padding:14px 18px;border:1px solid rgba(212,184,122,.45);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-light);text-decoration:none;transition:all .3s;}
 .lb-ref[hidden]{display:none;}
@@ -694,93 +702,101 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   <div class="section-header anim visible">
     <div class="section-label">Selección</div>
     <h2 class="section-title">Obras destacadas</h2>
-    <div class="section-desc">Ocho piezas de la colección, dibujadas a la proporción real de cada obra. Fotografías y condiciones en la colección privada.</div>
+    <div class="section-desc">Ocho piezas de la colección. Fotografías y condiciones en la colección privada.</div>
   </div>
   <div class="featured-grid" id="featuredGrid">
     <article class="featured-card anim visible" onclick="openLightbox('picasso')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 31,7 × 24,7 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="111.61076923076924" rx="110.87766561514196" ry="118.8723076923077" fill="#fff8ea" opacity=".5"></ellipse><rect x="160.4328075709779" y="78.36923076923077" width="85.13438485804417" height="109.26153846153848" fill="#3a2f22" opacity=".1"></rect><rect x="157.4328075709779" y="73.36923076923077" width="85.13438485804417" height="109.26153846153848" fill="#b89a5e"></rect><rect x="160.41251104100945" y="76.34893423926232" width="79.17497791798108" height="103.30213152147539" fill="#fbf8f2"></rect><rect x="171.4799810725552" y="87.41640427080806" width="57.04003785488959" height="81.1671914583839" fill="#f4efe6" stroke="#cbbfac" stroke-width=".8"></rect></svg><span class="plate-no">Nº 01</span><span class="plate-dim">31,7 × 24,7 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 01</div>
         <div class="featured-card-artist">Pablo Picasso</div>
         <h3 class="featured-card-title">Femme se coiffant devant la glace</h3>
-        <div class="featured-card-meta">1933 · Aguafuerte sobre papel verjurado</div>
+        <div class="featured-card-meta">1933 · Aguafuerte sobre papel verjurado · 31,7 × 24,7 cm</div>
         <p class="featured-card-blurb">Una de las cien estampas de la Suite Vollard, el conjunto que Picasso grabó entre 1930 y 1937 y que muchos consideran la cumbre de su obra gráfica. La línea, limpia y clásica, convierte un gesto cotidiano en un pequeño teatro íntimo. Pieza de museo a escala doméstica.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('picasso')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('dominguez')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 33 × 41 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="111.63806754221389" rx="158.74692307692305" ry="118.71761726078799" fill="#fff8ea" opacity=".5"></ellipse><rect x="135.23846153846154" y="78.46022514071295" width="135.5230769230769" height="109.0795497185741" fill="#3a2f22" opacity=".1"></rect><rect x="132.23846153846154" y="73.46022514071295" width="135.5230769230769" height="109.0795497185741" fill="#ece4d6" stroke="#cdbfa9"></rect><rect x="267.7615384615384" y="76.46022514071295" width="3" height="109.0795497185741" fill="#d9cdb9"></rect><rect x="135.23846153846154" y="182.53977485928704" width="135.5230769230769" height="3" fill="#d9cdb9"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="22" fill="#2c2a27">Domínguez</text></svg><span class="plate-no">Nº 02</span><span class="plate-dim">33 × 41 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 02</div>
         <div class="featured-card-artist">Óscar Domínguez</div>
         <h3 class="featured-card-title">La Maison</h3>
-        <div class="featured-card-meta">1953-1954 · Óleo sobre lienzo</div>
+        <div class="featured-card-meta">1953-1954 · Óleo sobre lienzo · 33 × 41 cm</div>
         <p class="featured-card-blurb">Óleo de la etapa parisina de Óscar Domínguez, el surrealista canario que inventó la decalcomanía. En la serie «Vistas urbanas de una ciudad irreal» la arquitectura se descompone en planos de raíz cubista y atmósfera onírica. Obra certificada e inscrita en el TEA de Tenerife.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('dominguez')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('tapies-sin-titulo')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 30,6 × 40,5 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="112.7008717948718" rx="158.2426923076923" ry="112.69505982905983" fill="#fff8ea" opacity=".5"></ellipse><rect x="135.50384615384615" y="82.00290598290599" width="134.9923076923077" height="101.99418803418804" fill="#3a2f22" opacity=".1"></rect><rect x="132.50384615384615" y="77.00290598290599" width="134.9923076923077" height="101.99418803418804" fill="#c9b08a"></rect><rect x="136.07364273504274" y="80.57270256410257" width="127.85271452991452" height="94.85459487179487" fill="#fbf8f2"></rect><rect x="147.77306153846155" y="92.77212136752138" width="107.45387692307692" height="74.45575726495727" fill="#3a2f22" opacity=".08"></rect><rect x="146.27306153846155" y="90.77212136752138" width="107.45387692307692" height="74.45575726495727" fill="#f3ede2"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="19.53706853146853" fill="#2c2a27">Tàpies</text></svg><span class="plate-no">Nº 03</span><span class="plate-dim">30,6 × 40,5 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 03</div>
         <div class="featured-card-artist">Antoni Tàpies</div>
         <h3 class="featured-card-title">Sin Título</h3>
-        <div class="featured-card-meta">1976 · Pintura y lápiz sobre papel</div>
+        <div class="featured-card-meta">1976 · Pintura y lápiz sobre papel · 30,6 × 40,5 cm</div>
         <p class="featured-card-blurb">Pintura original sobre papel firmada por Antoni Tàpies en 1976, en plena madurez del artista. Tajos, empastes ásperos y lápiz construyen una superficie que se lee como un muro: el lenguaje matérico que hizo de Tàpies una figura central del arte europeo de posguerra.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('tapies-sin-titulo')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('miro-barcelona-iii')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 69,2 × 106 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="107.97217416545718" rx="224.2969230769231" ry="139.4910130624093" fill="#fff8ea" opacity=".5"></ellipse><rect x="100.73846153846152" y="66.24058055152393" width="204.52307692307696" height="133.51883889695213" fill="#3a2f22" opacity=".1"></rect><rect x="97.73846153846152" y="61.240580551523934" width="204.52307692307696" height="133.51883889695213" fill="#b89a5e"></rect><rect x="102.41162089985485" y="65.91373991291726" width="195.1767582002903" height="124.17252017416548" fill="#fbf8f2"></rect><rect x="119.76906995645862" y="83.27118896952103" width="160.46186008708275" height="89.45762206095793" fill="#f4efe6" stroke="#cbbfac" stroke-width=".8"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="22" fill="#2c2a27">Miró</text></svg><span class="plate-no">Nº 22</span><span class="plate-dim">69,2 × 106 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 22</div>
         <div class="featured-card-artist">Joan Miró</div>
         <h3 class="featured-card-title">Barcelona III (Serie Barcelona)</h3>
-        <div class="featured-card-meta">1972 · Aguafuerte · <a class="card-ref" href="https://bidsquare.com/online-auctions/setdart-auction-house/joan-mir-i-ferr-barcelona-1893---palma-de-mallorca-1983-barcelona-iii-1972-etching-aquatint-and-carborundum-on-guarro-paper-h-c-copy-2331679" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en Setdart (subasta) ↗</a></div>
+        <div class="featured-card-meta">1972 · Aguafuerte · 69,2 × 106 cm · <a class="card-ref" href="https://bidsquare.com/online-auctions/setdart-auction-house/joan-mir-i-ferr-barcelona-1893---palma-de-mallorca-1983-barcelona-iii-1972-etching-aquatint-and-carborundum-on-guarro-paper-h-c-copy-2331679" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en Setdart (subasta) ↗</a></div>
         <p class="featured-card-blurb">Grabado de gran formato de Joan Miró en aguafuerte, aguatinta y carborundo sobre papel Guarro, editado por la Sala Gaspar de Barcelona en tirada de 50. El carborundo da relieve y profundidad al color: Miró en estado puro, con su vocabulario de signos y su energía.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('miro-barcelona-iii')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('barcelo')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 50 × 66 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="109.58391608391608" rx="183.95846153846153" ry="130.35780885780886" fill="#fff8ea" opacity=".5"></ellipse><rect x="121.96923076923076" y="71.61305361305361" width="162.06153846153848" height="122.77389277389278" fill="#3a2f22" opacity=".1"></rect><rect x="118.96923076923076" y="66.61305361305361" width="162.06153846153848" height="122.77389277389278" fill="#c9b08a"></rect><rect x="123.266317016317" y="70.91013986013985" width="153.467365967366" height="114.17972027972029" fill="#fbf8f2"></rect><rect x="137.0437062937063" y="85.18752913752913" width="128.9125874125874" height="89.62494172494172" fill="#3a2f22" opacity=".08"></rect><rect x="135.5437062937063" y="83.18752913752913" width="128.9125874125874" height="89.62494172494172" fill="#f3ede2"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="22" fill="#2c2a27">Barceló</text></svg><span class="plate-no">Nº 05</span><span class="plate-dim">50 × 66 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 05</div>
         <div class="featured-card-artist">Miquel Barceló</div>
         <h3 class="featured-card-title">Cabeza de cabra</h3>
-        <div class="featured-card-meta">1988 · Gouache sobre papel</div>
+        <div class="featured-card-meta">1988 · Gouache sobre papel · 50 × 66 cm</div>
         <p class="featured-card-blurb">Gouache sobre papel de 1988, certificado por la Galerie Bruno Bischofberger de Zúrich, una de las galerías de referencia del arte contemporáneo internacional. Pintura directa, de gesto rápido y materia viva, de uno de los artistas españoles vivos más reconocidos.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('barcelo')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('warhol-flowers')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 91,4 × 91,4 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="103.34461538461538" rx="186.1507692307692" ry="165.71384615384616" fill="#fff8ea" opacity=".5"></ellipse><rect x="120.81538461538462" y="50.815384615384616" width="164.36923076923077" height="164.36923076923077" fill="#3a2f22" opacity=".1"></rect><rect x="117.81538461538462" y="45.815384615384616" width="164.36923076923077" height="164.36923076923077" fill="#2c2a27"></rect><rect x="123.5683076923077" y="51.56830769230769" width="152.8633846153846" height="152.8633846153846" fill="#fbf8f2"></rect><rect x="144.9363076923077" y="72.9363076923077" width="110.12738461538461" height="110.12738461538461" fill="#efe9df"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="20.023160839160838" fill="#2c2a27">Warhol</text></svg><span class="plate-no">Nº 11</span><span class="plate-dim">91,4 × 91,4 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 11</div>
         <div class="featured-card-artist">Andy Warhol</div>
         <h3 class="featured-card-title">Flowers</h3>
-        <div class="featured-card-meta">1970 · Serigrafía sobre papel · <a class="card-ref" href="https://www.moma.org/collection/works/64279" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en MoMA, Nueva York ↗</a></div>
+        <div class="featured-card-meta">1970 · Serigrafía sobre papel · 91,4 × 91,4 cm · <a class="card-ref" href="https://www.moma.org/collection/works/64279" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en MoMA, Nueva York ↗</a></div>
         <p class="featured-card-blurb">Serigrafía de la serie Flowers (1970), una de las imágenes más reconocibles del pop. Warhol partió de una fotografía de revista y la convirtió en un motivo plano, repetible y luminoso. Formato cuadrado de más de 90 cm, pensado para dominar una pared.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('warhol-flowers')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('plensa-untitled')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 178 × 125 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="98" rx="163.42696629213484" ry="196" fill="#fff8ea" opacity=".5"></ellipse><rect x="132.77528089887642" y="33" width="140.4494382022472" height="200" fill="#3a2f22" opacity=".1"></rect><rect x="129.77528089887642" y="28" width="140.4494382022472" height="200" fill="#b89a5e"></rect><rect x="134.69101123595507" y="32.91573033707865" width="130.61797752808988" height="190.1685393258427" fill="#fbf8f2"></rect><rect x="152.94943820224722" y="51.174157303370784" width="94.10112359550561" height="153.65168539325842" fill="#f4efe6" stroke="#cbbfac" stroke-width=".8"></rect><text x="200" y="134" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-style="italic" font-size="17.10929519918284" fill="#2c2a27">Plensa</text></svg><span class="plate-no">Nº 85</span><span class="plate-dim">178 × 125 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 85</div>
         <div class="featured-card-artist">Jaume Plensa</div>
         <h3 class="featured-card-title">Untitled</h3>
-        <div class="featured-card-meta">2020 · Aguafuerte sobre papel Hanji Korean hecho a mano</div>
+        <div class="featured-card-meta">2020 · Aguafuerte sobre papel Hanji Korean hecho a mano · 178 × 125 cm</div>
         <p class="featured-card-blurb">Aguafuerte de 178 × 125 cm sobre papel coreano Hanji hecho a mano: una pieza excepcional por escala dentro de la obra gráfica de Plensa. Edición de 15, certificada por Polígrafa Obra Gráfica.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('plensa-untitled')">Solicitar acceso</button>
       </div>
     </article>
     <article class="featured-card anim visible" onclick="openLightbox('derain-perfil')">
-      <div class="featured-card-img has-plate"><div class="plate-wall"><svg viewBox="0 0 400 300" role="img" aria-label="Formato de la obra: 14 × 13 cm"><rect width="400" height="264" fill="#f1ebe1"></rect><rect y="264" width="400" height="36" fill="#e6dccb"></rect><path d="M0 264H400" stroke="#d3c6b2"></path><ellipse cx="200" cy="114.06153846153846" rx="111.97142857142859" ry="104.9846153846154" fill="#fff8ea" opacity=".5"></ellipse><rect x="159.85714285714283" y="86.53846153846153" width="86.2857142857143" height="92.92307692307693" fill="#3a2f22" opacity=".1"></rect><rect x="156.85714285714283" y="81.53846153846153" width="86.2857142857143" height="92.92307692307693" fill="#c9b08a"></rect><rect x="159.87714285714284" y="84.55846153846153" width="80.2457142857143" height="86.88307692307693" fill="#fbf8f2"></rect><rect x="170.00571428571428" y="95.18703296703296" width="62.98857142857144" height="69.62593406593408" fill="#3a2f22" opacity=".08"></rect><rect x="168.50571428571428" y="93.18703296703296" width="62.98857142857144" height="69.62593406593408" fill="#f3ede2"></rect></svg><span class="plate-no">Nº 19</span><span class="plate-dim">14 × 13 cm</span></div></div>
+      
       <div class="featured-card-body">
         
+        <div class="featured-card-no">Nº 19</div>
         <div class="featured-card-artist">André Derain</div>
         <h3 class="featured-card-title">Cara de perfil</h3>
-        <div class="featured-card-meta">1920 · Dibujo a lápiz</div>
+        <div class="featured-card-meta">1920 · Dibujo a lápiz · 14 × 13 cm</div>
         <p class="featured-card-blurb">Dibujo a lápiz de 1920 con sello del taller de André Derain, cofundador del fauvismo junto a Matisse. Tras la explosión de color, Derain volvió al dibujo clásico: aquí, un perfil resuelto con economía y seguridad. Pequeño formato, gran firma.</p>
         <button class="featured-card-btn" onclick="event.stopPropagation();requestAccessId('derain-perfil')">Solicitar acceso</button>
       </div>
@@ -2124,6 +2140,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
       <div class="lb-artist"></div>
       <h3 class="lb-title" id="lbTitle"></h3>
       <p class="lb-blurb" id="lbBlurb"></p>
+      <p class="lb-nophoto" id="lbNoPhoto">Fotografía no publicada por respeto a los derechos de reproducción del artista. Disponible en el dossier privado, a solicitud.</p>
       <a class="lb-ref" id="lbRef" target="_blank" rel="noopener nofollow" hidden></a>
       <div class="lb-fields"></div>
       <div class="lb-desc"></div>
@@ -4832,7 +4849,7 @@ function scaleSVG(item) {
 function cardVisual(item, extraClass) {
   const src = imgFor(item);
   if (src) return `<div class="featured-card-img${extraClass}"><img src="${src}" alt="${esc(item.artist)} - ${esc(item.title)} | Eleve Art" loading="lazy"></div>`;
-  return `<div class="featured-card-img has-plate${extraClass}"><div class="plate-wall">${plateSVG(item)}<span class="plate-no">${plateNum(item)}</span><span class="plate-dim">${dimsLabel(item)}</span></div></div>`;
+  return '';
 }
 function statusBadge(item) {
   const gst = item.rental_status || 'disponible';
@@ -4845,9 +4862,10 @@ function card(item, btn) {
       ${cardVisual(item, gst === 'alquilado' ? ' featured-card-img-rented' : '')}
       <div class="featured-card-body">
         ${statusBadge(item)}
+        <div class="featured-card-no">${plateNum(item)}</div>
         <div class="featured-card-artist">${esc(item.artist)}</div>
         <h3 class="featured-card-title">${esc(item.title)}</h3>
-        <div class="featured-card-meta">${esc(metaLine(item))}${item.ref_url ? ` · <a class="card-ref" href="${esc(item.ref_url)}" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en ${esc(item.ref_label || 'web')} ↗</a>` : ''}</div>
+        <div class="featured-card-meta">${esc([metaLine(item), dimsLabel(item)].filter(Boolean).join(' · '))}${item.ref_url ? ` · <a class="card-ref" href="${esc(item.ref_url)}" target="_blank" rel="noopener nofollow" onclick="event.stopPropagation()">Ver en ${esc(item.ref_label || 'web')} ↗</a>` : ''}</div>
         <p class="featured-card-blurb">${esc(item.blurb || '')}</p>
         ${btn}
       </div>
@@ -5053,16 +5071,11 @@ function openLightbox(id) {
 
   const plate = document.getElementById('lbPlate');
   const src = imgFor(item);
-  if (src) {
-    plate.innerHTML = `<img src="${src}" alt="${esc(item.artist)} - ${esc(item.title)}" style="max-width:100%;max-height:70vh;object-fit:contain;">`;
-  } else {
-    const scale = scaleSVG(item);
-    plate.innerHTML = `<div class="plate-num">${plateNum(item)} · Colección Eleve</div>
-      <div class="plate-name">${esc(surname(item.artist))}</div>
-      <div class="plate-rule"></div>
-      ${scale ? scale + '<div class="lb-scale-cap">Escala orientativa · persona de 1,70 m</div>' : `<div class="plate-meta">${esc(metaLine(item))}</div>`}
-      <div class="plate-note">Fotografía no publicada por respeto a los derechos de reproducción del artista. Disponible en el dossier privado, a solicitud.</div>`;
-  }
+  // Solo hay columna de imagen si la obra tiene licencia de reproducción.
+  plate.innerHTML = src ? `<img src="${src}" alt="${esc(item.artist)} - ${esc(item.title)}" style="max-width:100%;max-height:70vh;object-fit:contain;">` : '';
+  plate.parentElement.style.display = src ? '' : 'none';
+  lb.querySelector('.lb-content').classList.toggle('lb-text-only', !src);
+  document.getElementById('lbNoPhoto').hidden = !!src;
   document.getElementById('lbCount').textContent = `${lbIndex + 1} / ${lbList.length}`;
   lb.querySelector('.lb-artist').textContent = item.artist;
   lb.querySelector('.lb-title').textContent = item.title;
