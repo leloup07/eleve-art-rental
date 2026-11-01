@@ -11,3 +11,5 @@ Web pública de [eleve-art.com](https://eleve-art.com): servicio de alquiler de 
 - **Fotos de espacios** (`img/espacios/`): solo interiores sin obras de terceros visibles, propias o con licencia que permita uso comercial.
 - **Enlaces externos** (`ref_url`, `ref_label`, `ref_note` en cada obra): solo enlazar, nunca incrustar ni descargar la imagen. Solo fuentes autorizadas (museo, fundación del artista, catálogo razonado, editor, casa de subastas). Si es otro ejemplar de la misma edición, indicarlo en `ref_note`.
 - El índice de la colección y los datos estructurados están pre-renderizados en el HTML. Tras editar obras desde el panel, usar **Exportar HTML** para regenerarlos.
+- Cada obra tiene página propia en `/obra/<id>.html` (para Google). Tras cualquier cambio de obras, regenerarlas con `node _tools/generar-fichas.js`, que también actualiza `sitemap.xml`.
+- Tipografías alojadas en `/fonts` (sin Google Fonts).
