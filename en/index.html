@@ -5318,7 +5318,7 @@ async function sendToInbox(btn, payload, subject, lines, privacyId) {
     clearTimeout(t);
     const j = r.ok ? await r.json() : null;
     if (!j || !j.ok) throw new Error('envío fallido');
-    formStatus(btn, 'Thank you. We have received your request and will reply within 24 hours.', true);
+    formStatus(btn, j.access ? 'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF (in Spanish). If it does not arrive within a few minutes, please check your spam folder.' : 'Thank you. We have received your request and will reply within 24 hours.', true);
   } catch (e) {
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
     formStatus(btn, `We could not send it automatically. Your email program has opened with the message ready: press “Send”. If it does not open, write to us at ${CONTACT_EMAIL}.`, false);
@@ -5724,7 +5724,7 @@ function exportHTML() {
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Thank you. We will write to '+em+' within 24 hours with a proposal.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');}).catch(function(){
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');if(j.access)addMsg('assistant','We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier (in Spanish).');}).catch(function(){
       window.open('mailto:coleccion@eleve.art?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };

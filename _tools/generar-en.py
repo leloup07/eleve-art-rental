@@ -341,6 +341,8 @@ T = [
 ("'Indica tu nombre.'", "'Please enter your name.'"),
 ("btn.textContent = 'Enviando…';", "btn.textContent = 'Sending…';"),
 ("'Gracias. Hemos recibido tu solicitud y te responderemos en menos de 24 horas.'", "'Thank you. We have received your request and will reply within 24 hours.'"),
+("'Gracias. Te hemos enviado a ' + payload.email + ' un enlace personal a la colección privada para que veas las obras y descargues tu dossier en PDF. Si no lo recibes en unos minutos, revisa la carpeta de spam.'", "'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF (in Spanish). If it does not arrive within a few minutes, please check your spam folder.'"),
+("'Te acabamos de enviar a '+em+' un enlace personal a la colección privada, con las fotos de las obras, para que prepares y descargues tu dossier.'", "'We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier (in Spanish).'"),
 ("`No hemos podido enviarlo automáticamente. Se ha abierto tu programa de correo con el mensaje preparado: pulsa «Enviar». Si no se abre, escríbenos a ${CONTACT_EMAIL}.`",
  "`We could not send it automatically. Your email program has opened with the message ready: press “Send”. If it does not open, write to us at ${CONTACT_EMAIL}.`"),
 ("name: 'Colección Eleve Art · Obras disponibles para alquiler'", "name: 'Eleve Art Collection · Works available to rent'"),
