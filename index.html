@@ -5328,7 +5328,7 @@ async function sendToInbox(btn, payload, subject, lines, privacyId) {
 function submitForm(btn) {
   const v = id => document.getElementById(id).value.trim();
   if (!v('f-name')) { formStatus(btn, 'Indica tu nombre.', false); document.getElementById('f-name').focus(); return; }
-  const p = { kind: 'dossier y propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
+  const p = { kind: 'dossier y propuesta', lang: document.documentElement.lang, name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
   const subject = `Solicitud de dossier${p.artwork ? ': ' + p.artwork : ''}${p.company ? ' · ' + p.company : ''}`;
   sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message, '', 'Política de privacidad: aceptada'], 'f-privacy');
 }
@@ -5724,7 +5724,7 @@ function exportHTML() {
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Gracias. Te escribiremos a '+em+' en menos de 24 horas con una propuesta.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');if(j.access)addMsg('assistant','Te acabamos de enviar a '+em+' un enlace personal a la colección privada, con las fotos de las obras, para que prepares y descargues tu dossier.');}).catch(function(){
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,lang:document.documentElement.lang,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');if(j.access)addMsg('assistant','Te acabamos de enviar a '+em+' un enlace personal a la colección privada, con las fotos de las obras, para que prepares y descargues tu dossier.');}).catch(function(){
       window.open('mailto:coleccion@eleve.art?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };

@@ -44,7 +44,7 @@ s = re.sub(r'<meta name="keywords" content="[^"]*">', '<meta name="keywords" con
 # rutas relativas (la página vive en /en/)
 for a, b in [('href="img/', 'href="../img/'), ('src="img/', 'src="../img/'), ('url(img/', 'url(../img/'),
              ('href="fonts/', 'href="../fonts/'), ('href="obra/', 'href="../obra/'), ("'obra/' + item.id", "'../obra/' + item.id"),
-             ('href="privacidad.html"', 'href="../privacidad.html"'), ('href="terminos-legales.html"', 'href="../terminos-legales.html"'),
+             # privacidad.html y terminos-legales.html: versiones inglesas en /en/
              ('href="en-la-ciudad.html"', 'href="../en-la-ciudad.html"')]:
     s = s.replace(a, b)
 
@@ -279,7 +279,7 @@ T = [
 ('<option>1-3 meses</option>', '<option>1-3 months</option>'), ('<option>3-6 meses</option>', '<option>3-6 months</option>'),
 ('<option>6-12 meses</option>', '<option>6-12 months</option>'), ('<option>Más de 12 meses</option>', '<option>More than 12 months</option>'),
 ('<option>Evento puntual</option>', '<option>One-off event</option>'), ('<option>Aún no lo sé</option>', '<option>Not sure yet</option>'),
-('He leído y acepto la <a href="../privacidad.html" target="_blank">política de privacidad</a>. *', 'I have read and accept the <a href="../privacidad.html" target="_blank">privacy policy</a> (in Spanish). *'),
+('He leído y acepto la <a href="../privacidad.html" target="_blank">política de privacidad</a>. *', 'I have read and accept the <a href="privacidad.html" target="_blank">privacy policy</a>. *'),
 ('>Solicitar dossier</button>', '>Request the dossier</button>'),
 ('<b>Protección de datos.</b> Responsable: Enrique Aznar (Eleve Art). Finalidad: responder a tu solicitud y enviarte la información pedida. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: proveedores tecnológicos que prestan el servidor y el envío de correo, algunos en EE. UU. con las garantías del RGPD. Derechos: acceso, rectificación, supresión, oposición y demás, escribiendo a coleccion@eleve.art. Más información en la <a href="../privacidad.html" target="_blank">política de privacidad</a>.',
  '<b>Data protection.</b> Controller: Enrique Aznar (Eleve Art). Purpose: to answer your request and send you the information requested. Legal basis: your consent and pre-contractual measures. Recipients: technology providers supplying the server and email delivery, some in the USA with GDPR safeguards. Rights: access, rectification, erasure, objection and others, by writing to coleccion@eleve.art. More information in the <a href="../privacidad.html" target="_blank">privacy policy</a> (in Spanish).'),
@@ -301,7 +301,7 @@ T = [
 ('Eleve Art · Todos los derechos reservados', 'Eleve Art · All rights reserved'),
 ('Los derechos de reproducción de las obras pertenecen a sus autores y herederos. Esta web no publica imágenes de las obras salvo dominio público, licencia de VEGAP o autorización expresa. Los enlaces externos remiten a publicaciones de terceros autorizadas. Eleve Art no está vinculada a los museos, fundaciones o webs enlazadas.',
  'Reproduction rights in the works belong to their authors and heirs. This website does not publish images of the works except in the public domain, under a VEGAP licence or with express permission. External links point to authorised third-party publications. Eleve Art is not affiliated with the museums, foundations or websites linked.'),
-('>Términos legales<', '>Legal terms (ES)<'), ('>Privacidad<', '>Privacy (ES)<'),
+('>Términos legales<', '>Legal terms<'), ('>Privacidad<', '>Privacy<'),
 ('<div class="footer-email">Contacto:', '<div class="footer-email">Contact:'),
 # ---------- chat ----------
 ('<p>Asistente de colección</p>', '<p>Collection assistant</p>'),
@@ -341,8 +341,8 @@ T = [
 ("'Indica tu nombre.'", "'Please enter your name.'"),
 ("btn.textContent = 'Enviando…';", "btn.textContent = 'Sending…';"),
 ("'Gracias. Hemos recibido tu solicitud y te responderemos en menos de 24 horas.'", "'Thank you. We have received your request and will reply within 24 hours.'"),
-("'Gracias. Te hemos enviado a ' + payload.email + ' un enlace personal a la colección privada para que veas las obras y descargues tu dossier en PDF. Si no lo recibes en unos minutos, revisa la carpeta de spam.'", "'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF (in Spanish). If it does not arrive within a few minutes, please check your spam folder.'"),
-("'Te acabamos de enviar a '+em+' un enlace personal a la colección privada, con las fotos de las obras, para que prepares y descargues tu dossier.'", "'We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier (in Spanish).'"),
+("'Gracias. Te hemos enviado a ' + payload.email + ' un enlace personal a la colección privada para que veas las obras y descargues tu dossier en PDF. Si no lo recibes en unos minutos, revisa la carpeta de spam.'", "'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF. If it does not arrive within a few minutes, please check your spam folder.'"),
+("'Te acabamos de enviar a '+em+' un enlace personal a la colección privada, con las fotos de las obras, para que prepares y descargues tu dossier.'", "'We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier.'"),
 ("`No hemos podido enviarlo automáticamente. Se ha abierto tu programa de correo con el mensaje preparado: pulsa «Enviar». Si no se abre, escríbenos a ${CONTACT_EMAIL}.`",
  "`We could not send it automatically. Your email program has opened with the message ready: press “Send”. If it does not open, write to us at ${CONTACT_EMAIL}.`"),
 ("name: 'Colección Eleve Art · Obras disponibles para alquiler'", "name: 'Eleve Art Collection · Works available to rent'"),

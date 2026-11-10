@@ -2055,11 +2055,11 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
           <textarea id="f-message" placeholder="Optional: tell us about the space, the style or the timing"></textarea>
         </div>
       </div>
-      <label class="privacy-check"><input type="checkbox" id="f-privacy"> <span>I have read and accept the <a href="../privacidad.html" target="_blank">privacy policy</a> (in Spanish). *</span></label>
+      <label class="privacy-check"><input type="checkbox" id="f-privacy"> <span>I have read and accept the <a href="privacidad.html" target="_blank">privacy policy</a>. *</span></label>
       <div class="form-submit">
         <button class="btn-primary" onclick="submitForm(this)">Request the dossier</button>
       </div>
-      <p class="privacy-info"><b>Data protection.</b> Controller: Enrique Aznar (Eleve Art). Purpose: to answer your request and send you the information requested. Legal basis: your consent and pre-contractual measures. Recipients: technology providers supplying the server and email delivery, some in the USA with GDPR safeguards. Rights: access, rectification, erasure, objection and others, by writing to coleccion@eleve.art. More information in the <a href="../privacidad.html" target="_blank">privacy policy</a> (in Spanish).</p>
+      <p class="privacy-info"><b>Data protection.</b> Controller: Enrique Aznar (Eleve Art). Purpose: to answer your request and send you the information requested. Legal basis: your consent and pre-contractual measures. Recipients: technology providers supplying the server and email delivery, some in the USA with GDPR safeguards. Rights: access, rectification, erasure, objection and others, by writing to coleccion@eleve.art. More information in the <a href="privacidad.html" target="_blank">privacy policy</a>.</p>
     </div>
     <div class="dossier">
       <div class="dossier-title">What the private dossier includes</div>
@@ -2134,7 +2134,7 @@ body.lb-open #eleve-chat-btn,body.lb-open #eleve-chat-panel{display:none !import
   <div class="footer-email">Contact: <a href="mailto:coleccion@eleve.art">coleccion@eleve.art</a></div>
   <p>Eleve Art · All rights reserved</p>
   <p style="margin-top:8px;font-size:11px;letter-spacing:.5px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.7;">Reproduction rights in the works belong to their authors and heirs. This website does not publish images of the works except in the public domain, under a VEGAP licence or with express permission. External links point to authorised third-party publications. Eleve Art is not affiliated with the museums, foundations or websites linked.</p>
-  <p style="margin-top:8px;font-size:11px;letter-spacing:1.5px;"><a href="../terminos-legales.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Legal terms (ES)</a> &nbsp;·&nbsp; <a href="../privacidad.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Privacy (ES)</a></p>
+  <p style="margin-top:8px;font-size:11px;letter-spacing:1.5px;"><a href="terminos-legales.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Legal terms</a> &nbsp;·&nbsp; <a href="privacidad.html" style="color:var(--ash);text-decoration:none;transition:color .3s;">Privacy</a></p>
 </div>
 
 <script>
@@ -5318,7 +5318,7 @@ async function sendToInbox(btn, payload, subject, lines, privacyId) {
     clearTimeout(t);
     const j = r.ok ? await r.json() : null;
     if (!j || !j.ok) throw new Error('envío fallido');
-    formStatus(btn, j.access ? 'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF (in Spanish). If it does not arrive within a few minutes, please check your spam folder.' : 'Thank you. We have received your request and will reply within 24 hours.', true);
+    formStatus(btn, j.access ? 'Thank you. We have sent ' + payload.email + ' a personal link to the private collection, where you can see the works and download your dossier as a PDF. If it does not arrive within a few minutes, please check your spam folder.' : 'Thank you. We have received your request and will reply within 24 hours.', true);
   } catch (e) {
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
     formStatus(btn, `We could not send it automatically. Your email program has opened with the message ready: press “Send”. If it does not open, write to us at ${CONTACT_EMAIL}.`, false);
@@ -5328,7 +5328,7 @@ async function sendToInbox(btn, payload, subject, lines, privacyId) {
 function submitForm(btn) {
   const v = id => document.getElementById(id).value.trim();
   if (!v('f-name')) { formStatus(btn, 'Please enter your name.', false); document.getElementById('f-name').focus(); return; }
-  const p = { kind: 'dossier y propuesta', name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
+  const p = { kind: 'dossier y propuesta', lang: document.documentElement.lang, name: v('f-name'), company: v('f-company'), email: v('f-email'), phone: v('f-phone'), project: v('f-type'), duration: v('f-duration'), artwork: v('f-artwork'), message: v('f-message') };
   const subject = `Solicitud de dossier${p.artwork ? ': ' + p.artwork : ''}${p.company ? ' · ' + p.company : ''}`;
   sendToInbox(btn, p, subject, [`Nombre: ${p.name}`, `Empresa: ${p.company}`, `Email: ${p.email}`, `Teléfono: ${p.phone}`, `Tipo de proyecto: ${p.project}`, `Duración: ${p.duration}`, `Obra(s) de interés: ${p.artwork}`, '', 'Mensaje:', p.message, '', 'Política de privacidad: aceptada'], 'f-privacy');
 }
@@ -5674,7 +5674,7 @@ function exportHTML() {
   <div id="eleve-chat-lead">
     <p>So we can send you the full proposal:</p>
     <div id="eleve-chat-lead-row"><input type="email" id="eleve-lead-email" placeholder="you@email.com"><button onclick="eleveSubmitLead()">Send</button></div>
-    <label class="privacy-check privacy-chat"><input type="checkbox" id="eleve-lead-privacy"> <span>I accept the <a href="../privacidad.html" target="_blank">privacy policy</a> (in Spanish). We will use your email and the conversation only to reply to you.</span></label>
+    <label class="privacy-check privacy-chat"><input type="checkbox" id="eleve-lead-privacy"> <span>I accept the <a href="privacidad.html" target="_blank">privacy policy</a>. We will use your email and the conversation only to reply to you.</span></label>
   </div>
   <div id="eleve-chat-footer">
     <textarea id="eleve-chat-input" placeholder="Tell me about your project..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();eleveSubmitChat();}"></textarea>
@@ -5724,7 +5724,7 @@ function exportHTML() {
     leadOK=true;document.getElementById('eleve-chat-lead').style.display='none';
     addMsg('assistant','Thank you. We will write to '+em+' within 24 hours with a proposal.');
     var conv=msgs.map(function(m){return (m.role==='user'?'Cliente':'Eleve Art')+': '+m.content;}).join('\n\n');
-    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');if(j.access)addMsg('assistant','We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier (in Spanish).');}).catch(function(){
+    fetch('https://eleve-proxy-production.up.railway.app/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,lang:document.documentElement.lang,privacy:'Aceptada · '+new Date().toISOString(),conversation:msgs.map(function(m){return m.role+': '+m.content;}).join('\n\n')})}).then(function(r){return r.ok?r.json():null;}).then(function(j){if(!j||!j.ok)throw new Error('lead');if(j.access)addMsg('assistant','We have just sent '+em+' a personal link to the private collection, with photos of the works, so you can prepare and download your dossier.');}).catch(function(){
       window.open('mailto:coleccion@eleve.art?subject='+encodeURIComponent('Lead chat: '+em)+'&body='+encodeURIComponent('Email: '+em+'\n\n'+conv),'_blank');
     });
   };
